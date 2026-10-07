@@ -34,6 +34,16 @@ type funcInstance struct {
 	Logger          *log.Entry
 	SnapBooted      bool
 	StartVMResponse *ctriface.StartVMResponse
+
+	// Set when the instance is backed by a KubeVirt VM instead of a Firecracker microVM
+	kubevirtVM *kubevirtVM
+}
+
+func newKubevirtFuncInstance(vm *kubevirtVM) *funcInstance {
+	vmID := "kubevirt/" + vm.namespace + "/" + vm.name
+	f := newFuncInstance(vmID, kubevirtGuestImage, "", false, nil)
+	f.kubevirtVM = vm
+	return f
 }
 
 func newFuncInstance(vmID, image, revision string, snapBooted bool, startVMResponse *ctriface.StartVMResponse) *funcInstance {

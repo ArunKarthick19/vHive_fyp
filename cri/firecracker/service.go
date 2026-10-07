@@ -41,6 +41,14 @@ const (
 	guestPortEnv      = "GUEST_PORT"
 	guestImageEnv     = "GUEST_IMAGE"
 	revisionEnv       = "K_REVISION"
+
+	// Prototype: a GUEST_IMAGE of kubevirtGuestImage routes the function to the
+	// KubeVirt VirtualMachine below instead of booting a Firecracker microVM.
+	// The VM is started for the first pod and stopped after the last one.
+	kubevirtGuestImage = "kubevirt://webvm"
+	kubevirtNamespace  = "default"
+	kubevirtVMName     = "webvm"
+	kubevirtGuestPort  = "80"
 )
 
 type FirecrackerService struct {
@@ -51,6 +59,8 @@ type FirecrackerService struct {
 	coordinator *coordinator
 
 	vmConfigs map[string]*VMConfig
+
+	webvm *kubevirtVM
 }
 
 // VMConfig wraps the IP and port of the guest VM
@@ -69,6 +79,7 @@ func NewFirecrackerService(orch *ctriface.Orchestrator) (*FirecrackerService, er
 	fs.stockRuntimeClient = stockRuntimeClient
 	fs.coordinator = newFirecrackerCoordinator(orch)
 	fs.vmConfigs = make(map[string]*VMConfig)
+	fs.webvm = newKubevirtVM(kubevirtNamespace, kubevirtVMName, kubevirtGuestPort)
 	return fs, nil
 }
 
@@ -110,6 +121,37 @@ func (fs *FirecrackerService) createUserContainer(ctx context.Context, r *criapi
 	if err != nil {
 		log.WithError(err).Error()
 		return nil, err
+	}
+
+	if guestImage == kubevirtGuestImage {
+		guestIP, err := fs.webvm.acquire(ctx)
+
+		// Wait for placeholder UC to be created
+		<-stockDone
+
+		if err != nil {
+			log.WithError(err).Error("failed to start KubeVirt VM")
+			return nil, err
+		}
+
+		if stockErr != nil {
+			log.WithError(stockErr).Error("failed to create container")
+			fs.releaseKubevirtVM()
+			return nil, stockErr
+		}
+
+		// Registered like a Firecracker instance so that RemoveContainer's stopVM
+		// releases the VM when Knative removes the pod.
+		if err := fs.coordinator.insertActive(stockResp.ContainerId, newKubevirtFuncInstance(fs.webvm)); err != nil {
+			log.WithError(err).Error("failed to insert active VM")
+			fs.releaseKubevirtVM()
+			return nil, err
+		}
+
+		vmConfig := &VMConfig{guestIP: guestIP, guestPort: kubevirtGuestPort}
+		fs.insertVMConfig(r.GetPodSandboxId(), vmConfig)
+
+		return stockResp, nil
 	}
 
 	revision, err := getEnvVal(revisionEnv, config)
@@ -186,6 +228,14 @@ func (fs *FirecrackerService) RemoveContainer(ctx context.Context, r *criapi.Rem
 	}()
 
 	return fs.stockRuntimeClient.RemoveContainer(ctx, r)
+}
+
+func (fs *FirecrackerService) releaseKubevirtVM() {
+	go func() {
+		if err := fs.webvm.release(context.Background()); err != nil {
+			log.WithError(err).Error("failed to stop KubeVirt VM")
+		}
+	}()
 }
 
 func (fs *FirecrackerService) insertVMConfig(podID string, vmConfig *VMConfig) {

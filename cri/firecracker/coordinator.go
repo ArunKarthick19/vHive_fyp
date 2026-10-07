@@ -102,6 +102,10 @@ func (c *coordinator) stopVM(ctx context.Context, containerID string) error {
 		return nil
 	}
 
+	if fi.kubevirtVM != nil {
+		return fi.kubevirtVM.release(ctx)
+	}
+
 	if c.orch != nil && c.orch.GetSnapshotsEnabled() && !fi.SnapBooted {
 		err := c.orchCreateSnapshot(ctx, fi)
 		if err != nil {
