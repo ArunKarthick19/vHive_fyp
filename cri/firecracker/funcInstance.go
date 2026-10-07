@@ -37,6 +37,14 @@ type funcInstance struct {
 
 	// Set when the instance is backed by a KubeVirt VM instead of a Firecracker microVM
 	kubevirtVM *kubevirtVM
+	// Set when the instance is backed by a standalone Firecracker VM
+	firecrackerVM *firecrackerVM
+}
+
+func newFirecrackerFuncInstance(vm *firecrackerVM) *funcInstance {
+	f := newFuncInstance("firecracker-vm/"+fcwebTap, firecrackerGuestImage, "", false, nil)
+	f.firecrackerVM = vm
+	return f
 }
 
 func newKubevirtFuncInstance(vm *kubevirtVM) *funcInstance {
