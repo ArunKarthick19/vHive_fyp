@@ -51,7 +51,6 @@ import (
 const (
 	fcwebBin     = "/usr/local/bin/firecracker"
 	fcwebKernel  = "/var/lib/firecracker-containerd/runtime/hello-vmlinux.bin"
-	fcwebRootfs  = "/users/Arun1903/fc-vm/rootfs.ext4"
 	fcwebRunDir  = "/run/vhive-fcweb"
 	fcwebSock    = fcwebRunDir + "/fc.sock"
 	fcwebTap     = "fcweb0"
@@ -59,8 +58,6 @@ const (
 	fcwebGuestIP = "10.200.0.2"
 	fcwebMask    = 30
 	fcwebMAC     = "06:00:0a:c8:00:02"
-	fcwebVCPUs   = 1
-	fcwebMemMiB  = 256
 
 	// acpi=off: Firecracker 1.13 describes devices via ACPI, which this 5.10
 	// kernel cannot parse, so it would never find the root disk.
@@ -85,6 +82,7 @@ type firecrackerVM struct {
 	refs   int
 	cmd    *exec.Cmd
 	exited chan struct{} // closed once cmd has exited and been reaped
+	cfg    fcwebConfig   // size/image the running VM was booted with
 }
 
 func newFirecrackerVM(port string) *firecrackerVM {
@@ -99,10 +97,18 @@ func (vm *firecrackerVM) logger() *log.Entry {
 // HTTP and returns the guest IP. Each successful acquire must be paired with a
 // release. On failure nothing is left behind.
 func (vm *firecrackerVM) acquire(ctx context.Context) (string, error) {
+	return vm.acquireWith(ctx, defaultFcwebConfig())
+}
+
+// acquireWith is acquire with an explicit VM size/image (per-function config).
+func (vm *firecrackerVM) acquireWith(ctx context.Context, cfg fcwebConfig) (string, error) {
 	vm.Lock()
 	defer vm.Unlock()
 
 	if vm.running() {
+		if cfg != vm.cfg {
+			return "", fmt.Errorf("fcweb VM is running with %+v but this pod wants %+v; it will boot once the current VM is released", vm.cfg, cfg)
+		}
 		vm.refs++
 		vm.logger().WithField("refs", vm.refs).Info("Firecracker VM already running")
 		return fcwebGuestIP, nil
@@ -117,6 +123,7 @@ func (vm *firecrackerVM) acquire(ctx context.Context) (string, error) {
 		return "", fmt.Errorf("cleaning up stale Firecracker VM state: %w", err)
 	}
 
+	vm.cfg = cfg
 	if err := vm.boot(ctx); err != nil {
 		if cerr := vm.cleanup(); cerr != nil {
 			vm.logger().WithError(cerr).Error("failed to clean up after failed boot")
@@ -166,7 +173,7 @@ func (vm *firecrackerVM) running() bool {
 }
 
 func (vm *firecrackerVM) boot(ctx context.Context) error {
-	for _, f := range []string{fcwebBin, fcwebKernel, fcwebRootfs} {
+	for _, f := range []string{fcwebBin, fcwebKernel, vm.cfg.Rootfs} {
 		if _, err := os.Stat(f); err != nil {
 			return fmt.Errorf("firecracker VM: %w", err)
 		}
@@ -232,12 +239,12 @@ func (vm *firecrackerVM) writeConfig() (string, error) {
 		},
 		// Read-only, so one image can back several VMs.
 		"drives": []map[string]any{
-			{"drive_id": "rootfs", "path_on_host": fcwebRootfs, "is_root_device": true, "is_read_only": true},
+			{"drive_id": "rootfs", "path_on_host": vm.cfg.Rootfs, "is_root_device": true, "is_read_only": true},
 		},
 		"network-interfaces": []map[string]any{
 			{"iface_id": "eth0", "guest_mac": fcwebMAC, "host_dev_name": fcwebTap},
 		},
-		"machine-config": map[string]any{"vcpu_count": fcwebVCPUs, "mem_size_mib": fcwebMemMiB},
+		"machine-config": map[string]any{"vcpu_count": vm.cfg.VCPUs, "mem_size_mib": vm.cfg.MemMiB},
 		"logger":         map[string]any{"log_path": logPath, "level": "Warning"},
 	}
 	data, err := json.MarshalIndent(cfg, "", "  ")
@@ -405,4 +412,67 @@ func isFcwebPid(pid int) bool {
 		}
 	}
 	return false
+}
+
+// envInt reads an int from an env var, falling back to def when it is
+// unset, not a number, or outside [lo, hi].
+func envInt(name string, def, lo, hi int) int {
+	v, err := strconv.Atoi(os.Getenv(name))
+	if err != nil || v < lo || v > hi {
+		return def
+	}
+	return v
+}
+
+// Defaults are 1 vCPU / 256 MiB. Override with FCWEB_VCPUS / FCWEB_MEM_MIB
+// in the vhive process environment; read each time a fresh VM boots.
+func fcwebVCPUs() int  { return envInt("FCWEB_VCPUS", 1, 1, 4) }
+func fcwebMemMiB() int { return envInt("FCWEB_MEM_MIB", 256, 128, 1024) }
+
+// Guest disk image. Default is the plain http.server image; override with FCWEB_ROOTFS.
+func fcwebRootfs() string {
+	if p := os.Getenv("FCWEB_ROOTFS"); p != "" {
+		return p
+	}
+	return "/users/Arun1903/fc-vm/rootfs.ext4"
+}
+
+// fcwebConfig is the size and disk image of the fcweb VM. vhive's FCWEB_* env
+// gives the defaults; a function overrides them with FC_VCPUS, FC_MEM_MIB and
+// FC_ROOTFS in its Knative Service env.
+type fcwebConfig struct {
+	VCPUs  int
+	MemMiB int
+	Rootfs string
+}
+
+func defaultFcwebConfig() fcwebConfig {
+	return fcwebConfig{VCPUs: fcwebVCPUs(), MemMiB: fcwebMemMiB(), Rootfs: fcwebRootfs()}
+}
+
+// fcwebConfigFromEnv applies FC_* overrides. get returns "" for unset keys.
+// Bad values are an error rather than silently falling back to the default.
+func fcwebConfigFromEnv(get func(string) string) (fcwebConfig, error) {
+	cfg := defaultFcwebConfig()
+	if v := get("FC_VCPUS"); v != "" {
+		n, err := strconv.Atoi(v)
+		if err != nil || n < 1 || n > 4 {
+			return cfg, fmt.Errorf("FC_VCPUS=%q: want an integer 1-4", v)
+		}
+		cfg.VCPUs = n
+	}
+	if v := get("FC_MEM_MIB"); v != "" {
+		n, err := strconv.Atoi(v)
+		if err != nil || n < 128 || n > 1024 {
+			return cfg, fmt.Errorf("FC_MEM_MIB=%q: want an integer 128-1024", v)
+		}
+		cfg.MemMiB = n
+	}
+	if v := get("FC_ROOTFS"); v != "" {
+		if _, err := os.Stat(v); err != nil {
+			return cfg, fmt.Errorf("FC_ROOTFS=%q: %w", v, err)
+		}
+		cfg.Rootfs = v
+	}
+	return cfg, nil
 }
