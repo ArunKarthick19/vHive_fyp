@@ -25,6 +25,7 @@ package firecracker
 import (
 	"context"
 	"errors"
+	"fmt"
 	"sync"
 
 	log "github.com/sirupsen/logrus"
@@ -254,7 +255,18 @@ func (fs *FirecrackerService) createUserContainer(ctx context.Context, r *criapi
 func (fs *FirecrackerService) createPodVMUserContainer(ctx context.Context, r *criapi.CreateContainerRequest,
 	stockDone <-chan struct{}, stockResp **criapi.CreateContainerResponse, stockErr *error) (*criapi.CreateContainerResponse, error) {
 	sandboxID := r.GetPodSandboxId()
-	guestIP, vmID, fresh, err := fs.podvms.acquire(ctx, sandboxID, defaultFcwebConfig())
+	var (
+		guestIP, vmID string
+		fresh         bool
+	)
+	// The function's FC_* env sizes its VM; a bad value fails the create
+	// before anything boots.
+	cfg, err := fcwebConfigFromEnv(containerEnvGetter(r.GetConfig()))
+	if err != nil {
+		err = fmt.Errorf("per-pod Firecracker VM config: %w", err)
+	} else {
+		guestIP, vmID, fresh, err = fs.podvms.acquire(ctx, sandboxID, cfg)
+	}
 
 	// Wait for placeholder UC to be created
 	<-stockDone
@@ -383,6 +395,15 @@ func (fs *FirecrackerService) getVMConfig(podID string) (*VMConfig, error) {
 	}
 
 	return vmConfig, nil
+}
+
+// containerEnvGetter returns the value of an env var of the container, or ""
+// if it is unset.
+func containerEnvGetter(config *criapi.ContainerConfig) func(string) string {
+	return func(key string) string {
+		v, _ := getEnvVal(key, config)
+		return v
+	}
 }
 
 func getEnvVal(key string, config *criapi.ContainerConfig) (string, error) {
