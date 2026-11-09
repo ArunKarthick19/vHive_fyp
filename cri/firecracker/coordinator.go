@@ -102,6 +102,11 @@ func (c *coordinator) stopVM(ctx context.Context, containerID string) error {
 		return nil
 	}
 
+	// A per-pod VM outlives its containers (a restarted container reuses it);
+	// StopPodSandbox tears it down.
+	if fi.perPodVM {
+		return nil
+	}
 	if fi.kubevirtVM != nil {
 		return fi.kubevirtVM.release(ctx)
 	}

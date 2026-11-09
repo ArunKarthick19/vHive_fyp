@@ -55,6 +55,12 @@ const (
 	// pod and torn down after the last one.
 	firecrackerGuestImage = "firecracker-vm://webvm"
 	firecrackerGuestPort  = "80"
+
+	// Prototype: a GUEST_IMAGE of firecrackerPodGuestImage gives each pod
+	// sandbox its own standalone Firecracker VM in a numbered slot (see
+	// podvm.go), booted by the sandbox's first user container and torn down
+	// by StopPodSandbox.
+	firecrackerPodGuestImage = "firecracker-vm://pod"
 )
 
 type FirecrackerService struct {
@@ -68,6 +74,7 @@ type FirecrackerService struct {
 
 	webvm   *kubevirtVM
 	fcwebvm *firecrackerVM
+	podvms  *podVMs
 }
 
 // VMConfig wraps the IP and port of the guest VM
@@ -88,6 +95,8 @@ func NewFirecrackerService(orch *ctriface.Orchestrator) (*FirecrackerService, er
 	fs.vmConfigs = make(map[string]*VMConfig)
 	fs.webvm = newKubevirtVM(kubevirtNamespace, kubevirtVMName, kubevirtGuestPort)
 	fs.fcwebvm = newFirecrackerVM(firecrackerGuestPort)
+	fs.podvms = newPodVMs(newRealPodVM)
+	fs.podvms.sweep()
 	return fs, nil
 }
 
@@ -193,6 +202,10 @@ func (fs *FirecrackerService) createUserContainer(ctx context.Context, r *criapi
 		return stockResp, nil
 	}
 
+	if guestImage == firecrackerPodGuestImage {
+		return fs.createPodVMUserContainer(ctx, r, stockDone, &stockResp, &stockErr)
+	}
+
 	revision, err := getEnvVal(revisionEnv, config)
 	if err != nil {
 		log.WithError(err).Error()
@@ -232,6 +245,66 @@ func (fs *FirecrackerService) createUserContainer(ctx context.Context, r *criapi
 	}
 
 	return stockResp, stockErr
+}
+
+// createPodVMUserContainer boots (or, on a container restart, reuses) the
+// sandbox's own Firecracker VM while containerd creates the placeholder user
+// container. If this create fails, a VM it booted is torn down and the
+// placeholder is removed; a VM it merely reused keeps running.
+func (fs *FirecrackerService) createPodVMUserContainer(ctx context.Context, r *criapi.CreateContainerRequest,
+	stockDone <-chan struct{}, stockResp **criapi.CreateContainerResponse, stockErr *error) (*criapi.CreateContainerResponse, error) {
+	sandboxID := r.GetPodSandboxId()
+	guestIP, vmID, fresh, err := fs.podvms.acquire(ctx, sandboxID, defaultFcwebConfig())
+
+	// Wait for placeholder UC to be created
+	<-stockDone
+
+	fail := func(err error, msg string) (*criapi.CreateContainerResponse, error) {
+		log.WithError(err).WithField("sandbox", sandboxID).Error(msg)
+		if fresh {
+			if serr := fs.podvms.stop(sandboxID); serr != nil {
+				log.WithError(serr).Error("failed to stop per-pod Firecracker VM")
+			}
+		}
+		if *stockErr == nil {
+			fs.removePlaceholder((*stockResp).GetContainerId())
+		}
+		return nil, err
+	}
+
+	if err != nil {
+		return fail(err, "failed to start per-pod Firecracker VM")
+	}
+	if *stockErr != nil {
+		return fail(*stockErr, "failed to create container")
+	}
+	if err := fs.coordinator.insertActive((*stockResp).ContainerId, newPodFuncInstance(vmID)); err != nil {
+		return fail(err, "failed to insert active VM")
+	}
+
+	fs.insertVMConfig(sandboxID, &VMConfig{guestIP: guestIP, guestPort: firecrackerGuestPort})
+	return *stockResp, nil
+}
+
+// removePlaceholder deletes the placeholder user container of a failed
+// per-pod create, so that kubelet's retry starts from a clean sandbox.
+func (fs *FirecrackerService) removePlaceholder(containerID string) {
+	if containerID == "" {
+		return
+	}
+	if _, err := fs.stockRuntimeClient.RemoveContainer(context.Background(), &criapi.RemoveContainerRequest{ContainerId: containerID}); err != nil {
+		log.WithError(err).WithField("containerID", containerID).Error("failed to remove placeholder container")
+	}
+}
+
+// StopPodSandbox tears down the sandbox's per-pod Firecracker VM, if any, then
+// forwards to containerd and returns its answer unchanged. Calling it again
+// for the same sandbox is harmless.
+func (fs *FirecrackerService) StopPodSandbox(ctx context.Context, r *criapi.StopPodSandboxRequest) (*criapi.StopPodSandboxResponse, error) {
+	if err := fs.podvms.stop(r.GetPodSandboxId()); err != nil {
+		log.WithError(err).WithField("sandbox", r.GetPodSandboxId()).Error("failed to stop per-pod Firecracker VM")
+	}
+	return fs.stockRuntimeClient.StopPodSandbox(ctx, r)
 }
 
 func (fs *FirecrackerService) createQueueProxy(ctx context.Context, r *criapi.CreateContainerRequest) (*criapi.CreateContainerResponse, error) {
