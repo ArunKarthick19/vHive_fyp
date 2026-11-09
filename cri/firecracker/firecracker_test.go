@@ -44,10 +44,11 @@ func TestFirecrackerVM(t *testing.T) {
 
 	requireClean := func(t *testing.T) {
 		t.Helper()
-		require.Empty(t, fcwebPids(), "firecracker still running")
-		_, err := netlink.LinkByName(fcwebTap)
+		spec := sharedFcwebSpec()
+		require.Empty(t, fcwebPids(spec.Sock), "firecracker still running")
+		_, err := netlink.LinkByName(spec.Tap)
 		require.Error(t, err, "tap still present")
-		_, err = os.Stat(fcwebSock)
+		_, err = os.Stat(spec.Sock)
 		require.ErrorIs(t, err, os.ErrNotExist, "socket still present")
 	}
 	get := func(t *testing.T, ip string) string {
@@ -91,7 +92,7 @@ func TestFirecrackerVM(t *testing.T) {
 		ip, err := vm.acquire(ctx)
 		require.NoError(t, err)
 		require.NotEqual(t, oldPid, vm.cmd.Process.Pid)
-		require.Equal(t, []int{vm.cmd.Process.Pid}, fcwebPids())
+		require.Equal(t, []int{vm.cmd.Process.Pid}, fcwebPids(vm.spec.Sock))
 		require.Contains(t, get(t, ip), "hello from firecracker webvm")
 
 		require.NoError(t, vm.release(ctx))
@@ -99,7 +100,7 @@ func TestFirecrackerVM(t *testing.T) {
 	})
 
 	t.Run("StaleTapOnly", func(t *testing.T) {
-		require.NoError(t, createFcwebTap())
+		require.NoError(t, createFcwebTap(sharedFcwebSpec()))
 		vm := newFirecrackerVM("80")
 		_, err := vm.acquire(ctx)
 		require.NoError(t, err)

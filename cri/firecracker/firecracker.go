@@ -47,17 +47,13 @@ import (
 // Port of ~/fc-vm/fcvm.sh; the rootfs is built by `fcvm.sh build`.
 //
 // Networking avoids vHive's ranges (172.16-18/16) and k8s's (192.168/16,
-// 10.96/12): tap fcwebTap in the root netns with a /30.
+// 10.96/12): each VM gets its own tap in the root netns with a /30 (see
+// fcwebSpec).
 const (
-	fcwebBin     = "/usr/local/bin/firecracker"
-	fcwebKernel  = "/var/lib/firecracker-containerd/runtime/hello-vmlinux.bin"
-	fcwebRunDir  = "/run/vhive-fcweb"
-	fcwebSock    = fcwebRunDir + "/fc.sock"
-	fcwebTap     = "fcweb0"
-	fcwebHostIP  = "10.200.0.1"
-	fcwebGuestIP = "10.200.0.2"
-	fcwebMask    = 30
-	fcwebMAC     = "06:00:0a:c8:00:02"
+	fcwebBin    = "/usr/local/bin/firecracker"
+	fcwebKernel = "/var/lib/firecracker-containerd/runtime/hello-vmlinux.bin"
+	fcwebRunDir = "/run/vhive-fcweb"
+	fcwebMask   = 30
 
 	// acpi=off: Firecracker 1.13 describes devices via ACPI, which this 5.10
 	// kernel cannot parse, so it would never find the root disk.
@@ -70,6 +66,31 @@ const (
 	fcwebStopTimeout  = 2 * time.Second
 )
 
+// fcwebSpec is the identity of one Firecracker VM on the host: its tap, the
+// /30 between host and guest, the guest MAC, and the directory holding its API
+// socket, config and logs. Two VMs never share any of these.
+type fcwebSpec struct {
+	Tap     string // host tap device
+	HostIP  string // host end of the /30, the guest's gateway
+	GuestIP string // guest end of the /30
+	MAC     string // guest NIC MAC
+	Dir     string // config, console and Firecracker logs
+	Sock    string // Firecracker API socket
+}
+
+// sharedFcwebSpec is the single VM shared by every pod of a function
+// (firecracker-vm://webvm).
+func sharedFcwebSpec() fcwebSpec {
+	return fcwebSpec{
+		Tap:     "fcweb0",
+		HostIP:  "10.200.0.1",
+		GuestIP: "10.200.0.2",
+		MAC:     "06:00:0a:c8:00:02",
+		Dir:     fcwebRunDir,
+		Sock:    fcwebRunDir + "/fc.sock",
+	}
+}
+
 // firecrackerVM is a single Firecracker VM shared by every pod of a function.
 // It is booted when the first pod needs it and torn down (process, tap and API
 // socket) when the last pod using it is removed.
@@ -78,6 +99,7 @@ type firecrackerVM struct {
 	// down while a new pod is booting it.
 	sync.Mutex
 
+	spec   fcwebSpec
 	port   string
 	refs   int
 	cmd    *exec.Cmd
@@ -86,11 +108,11 @@ type firecrackerVM struct {
 }
 
 func newFirecrackerVM(port string) *firecrackerVM {
-	return &firecrackerVM{port: port}
+	return &firecrackerVM{spec: sharedFcwebSpec(), port: port}
 }
 
 func (vm *firecrackerVM) logger() *log.Entry {
-	return log.WithField("firecrackerVM", fcwebTap)
+	return log.WithField("firecrackerVM", vm.spec.Tap)
 }
 
 // acquire boots the VM if it is not running, waits until its guest port answers
@@ -111,7 +133,7 @@ func (vm *firecrackerVM) acquireWith(ctx context.Context, cfg fcwebConfig) (stri
 		}
 		vm.refs++
 		vm.logger().WithField("refs", vm.refs).Info("Firecracker VM already running")
-		return fcwebGuestIP, nil
+		return vm.spec.GuestIP, nil
 	}
 	if vm.refs > 0 {
 		vm.logger().WithField("refs", vm.refs).Warn("Firecracker VM exited while in use, rebooting")
@@ -132,8 +154,8 @@ func (vm *firecrackerVM) acquireWith(ctx context.Context, cfg fcwebConfig) (stri
 	}
 
 	vm.refs++
-	vm.logger().WithFields(log.Fields{"ip": fcwebGuestIP, "refs": vm.refs, "took": time.Since(start)}).Info("Firecracker VM reachable")
-	return fcwebGuestIP, nil
+	vm.logger().WithFields(log.Fields{"ip": vm.spec.GuestIP, "refs": vm.refs, "took": time.Since(start)}).Info("Firecracker VM reachable")
+	return vm.spec.GuestIP, nil
 }
 
 // release tears the VM down once no pod uses it, and fails if the process, the
@@ -178,7 +200,7 @@ func (vm *firecrackerVM) boot(ctx context.Context) error {
 			return fmt.Errorf("firecracker VM: %w", err)
 		}
 	}
-	if err := os.MkdirAll(fcwebRunDir, 0o755); err != nil {
+	if err := os.MkdirAll(vm.spec.Dir, 0o755); err != nil {
 		return err
 	}
 	cfgPath, err := vm.writeConfig()
@@ -187,11 +209,11 @@ func (vm *firecrackerVM) boot(ctx context.Context) error {
 	}
 
 	t0 := time.Now()
-	if err := createFcwebTap(); err != nil {
+	if err := createFcwebTap(vm.spec); err != nil {
 		return err
 	}
 
-	console, err := os.Create(filepath.Join(fcwebRunDir, "console.log"))
+	console, err := os.Create(filepath.Join(vm.spec.Dir, "console.log"))
 	if err != nil {
 		return err
 	}
@@ -199,7 +221,7 @@ func (vm *firecrackerVM) boot(ctx context.Context) error {
 
 	// Not CommandContext: the VM must outlive the CRI request that boots it.
 	// Own session so a signal to vHive's terminal does not reach the VM.
-	cmd := exec.Command(fcwebBin, "--api-sock", fcwebSock, "--config-file", cfgPath)
+	cmd := exec.Command(fcwebBin, "--api-sock", vm.spec.Sock, "--config-file", cfgPath)
 	cmd.Stdout = console
 	cmd.Stderr = console
 	cmd.SysProcAttr = &syscall.SysProcAttr{Setsid: true}
@@ -226,59 +248,65 @@ func (vm *firecrackerVM) boot(ctx context.Context) error {
 }
 
 func (vm *firecrackerVM) writeConfig() (string, error) {
-	logPath := filepath.Join(fcwebRunDir, "firecracker.log")
+	logPath := filepath.Join(vm.spec.Dir, "firecracker.log")
 	// Firecracker does not create its log file.
 	if err := os.WriteFile(logPath, nil, 0o644); err != nil {
 		return "", err
 	}
 
-	cfg := map[string]any{
-		"boot-source": map[string]any{
-			"kernel_image_path": fcwebKernel,
-			"boot_args":         fmt.Sprintf("%s fcweb.ip=%s/%d fcweb.gw=%s", fcwebBootArgs, fcwebGuestIP, fcwebMask, fcwebHostIP),
-		},
-		// Read-only, so one image can back several VMs.
-		"drives": []map[string]any{
-			{"drive_id": "rootfs", "path_on_host": vm.cfg.Rootfs, "is_root_device": true, "is_read_only": true},
-		},
-		"network-interfaces": []map[string]any{
-			{"iface_id": "eth0", "guest_mac": fcwebMAC, "host_dev_name": fcwebTap},
-		},
-		"machine-config": map[string]any{"vcpu_count": vm.cfg.VCPUs, "mem_size_mib": vm.cfg.MemMiB},
-		"logger":         map[string]any{"log_path": logPath, "level": "Warning"},
-	}
-	data, err := json.MarshalIndent(cfg, "", "  ")
+	data, err := fcwebConfigJSON(vm.spec, vm.cfg)
 	if err != nil {
 		return "", err
 	}
-	cfgPath := filepath.Join(fcwebRunDir, "vm-config.json")
+	cfgPath := filepath.Join(vm.spec.Dir, "vm-config.json")
 	return cfgPath, os.WriteFile(cfgPath, data, 0o644)
 }
 
-func createFcwebTap() error {
-	tap := &netlink.Tuntap{LinkAttrs: netlink.LinkAttrs{Name: fcwebTap}, Mode: netlink.TUNTAP_MODE_TAP}
-	if err := netlink.LinkAdd(tap); err != nil {
-		return fmt.Errorf("creating tap %s: %w", fcwebTap, err)
+// fcwebConfigJSON is the Firecracker --config-file for a VM. Pure, so the
+// shared VM's config can be checked against a golden file.
+func fcwebConfigJSON(spec fcwebSpec, c fcwebConfig) ([]byte, error) {
+	cfg := map[string]any{
+		"boot-source": map[string]any{
+			"kernel_image_path": fcwebKernel,
+			"boot_args":         fmt.Sprintf("%s fcweb.ip=%s/%d fcweb.gw=%s", fcwebBootArgs, spec.GuestIP, fcwebMask, spec.HostIP),
+		},
+		// Read-only, so one image can back several VMs.
+		"drives": []map[string]any{
+			{"drive_id": "rootfs", "path_on_host": c.Rootfs, "is_root_device": true, "is_read_only": true},
+		},
+		"network-interfaces": []map[string]any{
+			{"iface_id": "eth0", "guest_mac": spec.MAC, "host_dev_name": spec.Tap},
+		},
+		"machine-config": map[string]any{"vcpu_count": c.VCPUs, "mem_size_mib": c.MemMiB},
+		"logger":         map[string]any{"log_path": filepath.Join(spec.Dir, "firecracker.log"), "level": "Warning"},
 	}
-	link, err := netlink.LinkByName(fcwebTap)
+	return json.MarshalIndent(cfg, "", "  ")
+}
+
+func createFcwebTap(spec fcwebSpec) error {
+	tap := &netlink.Tuntap{LinkAttrs: netlink.LinkAttrs{Name: spec.Tap}, Mode: netlink.TUNTAP_MODE_TAP}
+	if err := netlink.LinkAdd(tap); err != nil {
+		return fmt.Errorf("creating tap %s: %w", spec.Tap, err)
+	}
+	link, err := netlink.LinkByName(spec.Tap)
 	if err != nil {
-		return fmt.Errorf("finding tap %s: %w", fcwebTap, err)
+		return fmt.Errorf("finding tap %s: %w", spec.Tap, err)
 	}
 
-	addr, err := netlink.ParseAddr(fmt.Sprintf("%s/%d", fcwebHostIP, fcwebMask))
+	addr, err := netlink.ParseAddr(fmt.Sprintf("%s/%d", spec.HostIP, fcwebMask))
 	if err != nil {
 		return err
 	}
 	if err := netlink.AddrAdd(link, addr); err != nil {
-		return fmt.Errorf("adding %s to %s: %w", addr, fcwebTap, err)
+		return fmt.Errorf("adding %s to %s: %w", addr, spec.Tap, err)
 	}
 	if err := netlink.LinkSetUp(link); err != nil {
-		return fmt.Errorf("bringing up %s: %w", fcwebTap, err)
+		return fmt.Errorf("bringing up %s: %w", spec.Tap, err)
 	}
 
 	// Static ARP for the guest (its MAC is fixed): no ARP round trip before the
 	// first probe, and no FAILED entry if we probe before the guest NIC is up.
-	mac, err := net.ParseMAC(fcwebMAC)
+	mac, err := net.ParseMAC(spec.MAC)
 	if err != nil {
 		return err
 	}
@@ -286,11 +314,11 @@ func createFcwebTap() error {
 		LinkIndex:    link.Attrs().Index,
 		Family:       netlink.FAMILY_V4,
 		State:        netlink.NUD_PERMANENT,
-		IP:           net.ParseIP(fcwebGuestIP),
+		IP:           net.ParseIP(spec.GuestIP),
 		HardwareAddr: mac,
 	}
 	if err := netlink.NeighSet(neigh); err != nil {
-		return fmt.Errorf("adding static ARP entry on %s: %w", fcwebTap, err)
+		return fmt.Errorf("adding static ARP entry on %s: %w", spec.Tap, err)
 	}
 	return nil
 }
@@ -308,7 +336,7 @@ func (vm *firecrackerVM) waitReachable(ctx context.Context) error {
 		Timeout:   time.Second,
 		Transport: &http.Transport{DialContext: dialer.DialContext, DisableKeepAlives: true},
 	}
-	url := "http://" + fcwebGuestIP + ":" + vm.port + "/"
+	url := "http://" + vm.spec.GuestIP + ":" + vm.port + "/"
 	for {
 		if resp, err := client.Get(url); err == nil {
 			resp.Body.Close()
@@ -317,16 +345,16 @@ func (vm *firecrackerVM) waitReachable(ctx context.Context) error {
 
 		select {
 		case <-vm.exited:
-			return fmt.Errorf("firecracker exited during boot: %s", consoleTail())
+			return fmt.Errorf("firecracker exited during boot: %s", consoleTail(vm.spec))
 		case <-ctx.Done():
-			return fmt.Errorf("Firecracker VM not reachable at %s: %w: %s", url, ctx.Err(), consoleTail())
+			return fmt.Errorf("Firecracker VM not reachable at %s: %w: %s", url, ctx.Err(), consoleTail(vm.spec))
 		case <-time.After(fcwebPollInterval):
 		}
 	}
 }
 
-func consoleTail() string {
-	data, _ := os.ReadFile(filepath.Join(fcwebRunDir, "console.log"))
+func consoleTail(spec fcwebSpec) string {
+	data, _ := os.ReadFile(filepath.Join(spec.Dir, "console.log"))
 	if len(data) > 2048 {
 		data = data[len(data)-2048:]
 	}
@@ -344,28 +372,28 @@ func (vm *firecrackerVM) cleanup() error {
 	// Firecrackers started by an earlier vHive run are not our children:
 	// liveness is judged by their command line still being in /proc (an exited
 	// process, even unreaped, has an empty one).
-	for _, pid := range fcwebPids() {
-		stopProcess(pid, func() bool { return !isFcwebPid(pid) })
+	for _, pid := range fcwebPids(vm.spec.Sock) {
+		stopProcess(pid, func() bool { return !isFcwebPid(pid, vm.spec.Sock) })
 	}
 
-	if link, err := netlink.LinkByName(fcwebTap); err == nil {
+	if link, err := netlink.LinkByName(vm.spec.Tap); err == nil {
 		if err := netlink.LinkDel(link); err != nil {
 			vm.logger().WithError(err).Error("failed to delete tap")
 		}
 	}
-	if err := os.Remove(fcwebSock); err != nil && !errors.Is(err, os.ErrNotExist) {
+	if err := os.Remove(vm.spec.Sock); err != nil && !errors.Is(err, os.ErrNotExist) {
 		vm.logger().WithError(err).Error("failed to remove API socket")
 	}
 
 	var errs []error
-	if pids := fcwebPids(); len(pids) > 0 {
+	if pids := fcwebPids(vm.spec.Sock); len(pids) > 0 {
 		errs = append(errs, fmt.Errorf("firecracker still running: pids %v", pids))
 	}
-	if _, err := netlink.LinkByName(fcwebTap); err == nil {
-		errs = append(errs, fmt.Errorf("tap %s still present", fcwebTap))
+	if _, err := netlink.LinkByName(vm.spec.Tap); err == nil {
+		errs = append(errs, fmt.Errorf("tap %s still present", vm.spec.Tap))
 	}
-	if _, err := os.Stat(fcwebSock); !errors.Is(err, os.ErrNotExist) {
-		errs = append(errs, fmt.Errorf("API socket %s still present", fcwebSock))
+	if _, err := os.Stat(vm.spec.Sock); !errors.Is(err, os.ErrNotExist) {
+		errs = append(errs, fmt.Errorf("API socket %s still present", vm.spec.Sock))
 	}
 	return errors.Join(errs...)
 }
@@ -384,30 +412,38 @@ func stopProcess(pid int, gone func() bool) {
 	}
 }
 
-// fcwebPids returns every firecracker process bound to our API socket. vHive's
-// own microVMs use a different (relative) socket path and are never matched.
-func fcwebPids() []int {
+// fcwebPids returns every firecracker process bound to the API socket sock.
+// vHive's own microVMs use a different (relative) socket path and are never
+// matched.
+func fcwebPids(sock string) []int {
 	entries, _ := os.ReadDir("/proc")
 	var pids []int
 	for _, e := range entries {
-		if pid, err := strconv.Atoi(e.Name()); err == nil && isFcwebPid(pid) {
+		if pid, err := strconv.Atoi(e.Name()); err == nil && isFcwebPid(pid, sock) {
 			pids = append(pids, pid)
 		}
 	}
 	return pids
 }
 
-func isFcwebPid(pid int) bool {
+func isFcwebPid(pid int, sock string) bool {
 	cmdline, err := os.ReadFile("/proc/" + strconv.Itoa(pid) + "/cmdline")
 	if err != nil {
 		return false
 	}
+	return cmdlineUsesSock(cmdline, sock)
+}
+
+// cmdlineUsesSock reports whether a NUL-separated /proc/<pid>/cmdline is a
+// firecracker started with exactly `--api-sock sock`. The comparison is exact,
+// so /run/vhive-fcweb/1/fc.sock never matches /run/vhive-fcweb/10/fc.sock.
+func cmdlineUsesSock(cmdline []byte, sock string) bool {
 	args := bytes.Split(bytes.TrimRight(cmdline, "\x00"), []byte{0})
 	if len(args) < 3 || filepath.Base(string(args[0])) != "firecracker" {
 		return false
 	}
 	for i := 1; i+1 < len(args); i++ {
-		if string(args[i]) == "--api-sock" && string(args[i+1]) == fcwebSock {
+		if string(args[i]) == "--api-sock" && string(args[i+1]) == sock {
 			return true
 		}
 	}
