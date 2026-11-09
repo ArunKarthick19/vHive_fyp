@@ -283,41 +283,64 @@ func fcwebConfigJSON(spec fcwebSpec, c fcwebConfig) ([]byte, error) {
 	return json.MarshalIndent(cfg, "", "  ")
 }
 
+// fcwebTapSetup is everything createFcwebTap installs for one VM.
+type fcwebTapSetup struct {
+	Tap  *netlink.Tuntap
+	Addr *netlink.Addr // host end of the /30
+	// Static ARP entry for the guest. LinkIndex is filled in by
+	// createFcwebTap once the tap exists.
+	Neigh *netlink.Neigh
+}
+
+// newFcwebTapSetup builds the netlink objects for spec without any system call.
+func newFcwebTapSetup(spec fcwebSpec) (fcwebTapSetup, error) {
+	addr, err := netlink.ParseAddr(fmt.Sprintf("%s/%d", spec.HostIP, fcwebMask))
+	if err != nil {
+		return fcwebTapSetup{}, err
+	}
+	mac, err := net.ParseMAC(spec.MAC)
+	if err != nil {
+		return fcwebTapSetup{}, err
+	}
+	guestIP := net.ParseIP(spec.GuestIP)
+	if guestIP == nil {
+		return fcwebTapSetup{}, fmt.Errorf("invalid guest IP %q", spec.GuestIP)
+	}
+	return fcwebTapSetup{
+		Tap:  &netlink.Tuntap{LinkAttrs: netlink.LinkAttrs{Name: spec.Tap}, Mode: netlink.TUNTAP_MODE_TAP},
+		Addr: addr,
+		// Static ARP for the guest (its MAC is fixed): no ARP round trip before
+		// the first probe, and no FAILED entry if we probe before the guest NIC
+		// is up.
+		Neigh: &netlink.Neigh{
+			Family:       netlink.FAMILY_V4,
+			State:        netlink.NUD_PERMANENT,
+			IP:           guestIP,
+			HardwareAddr: mac,
+		},
+	}, nil
+}
+
 func createFcwebTap(spec fcwebSpec) error {
-	tap := &netlink.Tuntap{LinkAttrs: netlink.LinkAttrs{Name: spec.Tap}, Mode: netlink.TUNTAP_MODE_TAP}
-	if err := netlink.LinkAdd(tap); err != nil {
+	setup, err := newFcwebTapSetup(spec)
+	if err != nil {
+		return err
+	}
+	if err := netlink.LinkAdd(setup.Tap); err != nil {
 		return fmt.Errorf("creating tap %s: %w", spec.Tap, err)
 	}
 	link, err := netlink.LinkByName(spec.Tap)
 	if err != nil {
 		return fmt.Errorf("finding tap %s: %w", spec.Tap, err)
 	}
-
-	addr, err := netlink.ParseAddr(fmt.Sprintf("%s/%d", spec.HostIP, fcwebMask))
-	if err != nil {
-		return err
-	}
-	if err := netlink.AddrAdd(link, addr); err != nil {
-		return fmt.Errorf("adding %s to %s: %w", addr, spec.Tap, err)
+	if err := netlink.AddrAdd(link, setup.Addr); err != nil {
+		return fmt.Errorf("adding %s to %s: %w", setup.Addr, spec.Tap, err)
 	}
 	if err := netlink.LinkSetUp(link); err != nil {
 		return fmt.Errorf("bringing up %s: %w", spec.Tap, err)
 	}
-
-	// Static ARP for the guest (its MAC is fixed): no ARP round trip before the
-	// first probe, and no FAILED entry if we probe before the guest NIC is up.
-	mac, err := net.ParseMAC(spec.MAC)
-	if err != nil {
-		return err
-	}
-	neigh := &netlink.Neigh{
-		LinkIndex:    link.Attrs().Index,
-		Family:       netlink.FAMILY_V4,
-		State:        netlink.NUD_PERMANENT,
-		IP:           net.ParseIP(spec.GuestIP),
-		HardwareAddr: mac,
-	}
-	if err := netlink.NeighSet(neigh); err != nil {
+	setup.Neigh.LinkIndex = link.Attrs().Index
+	if err := netlink.NeighSet(setup.Neigh); err != nil {
 		return fmt.Errorf("adding static ARP entry on %s: %w", spec.Tap, err)
 	}
 	return nil
