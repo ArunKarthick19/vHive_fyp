@@ -508,9 +508,10 @@ func fcwebRootfs() string {
 	return "/users/Arun1903/fc-vm/rootfs.ext4"
 }
 
-// fcwebConfig is the size and disk image of the fcweb VM. vhive's FCWEB_* env
-// gives the defaults; a function overrides them with FC_VCPUS, FC_MEM_MIB and
-// FC_ROOTFS in its Knative Service env.
+// fcwebConfig is the size and disk image of a standalone Firecracker VM.
+// vhive's FCWEB_* env gives the defaults (falling back to built-ins). In
+// per-pod mode only, a function overrides them with FC_VCPUS, FC_MEM_MIB and
+// FC_ROOTFS in its Knative Service env; the shared VM ignores FC_*.
 type fcwebConfig struct {
 	VCPUs  int
 	MemMiB int
@@ -521,8 +522,9 @@ func defaultFcwebConfig() fcwebConfig {
 	return fcwebConfig{VCPUs: fcwebVCPUs(), MemMiB: fcwebMemMiB(), Rootfs: fcwebRootfs()}
 }
 
-// fcwebConfigFromEnv applies FC_* overrides. get returns "" for unset keys.
-// Bad values are an error rather than silently falling back to the default.
+// fcwebConfigFromEnv applies FC_* overrides. get returns "" for unset keys,
+// and an empty value counts as unset. Bad values are an error rather than
+// silently falling back to the default.
 func fcwebConfigFromEnv(get func(string) string) (fcwebConfig, error) {
 	cfg := defaultFcwebConfig()
 	if v := get("FC_VCPUS"); v != "" {
