@@ -28,6 +28,7 @@ import (
 	"testing"
 
 	"github.com/stretchr/testify/require"
+	"github.com/vishvananda/netlink"
 )
 
 func TestSharedFcwebSpecValues(t *testing.T) {
@@ -85,6 +86,41 @@ func TestCmdlineUsesSock(t *testing.T) {
 	} {
 		t.Run(tc.name, func(t *testing.T) {
 			require.Equal(t, tc.want, cmdlineUsesSock(tc.cmdline, tc.sock))
+		})
+	}
+}
+
+func TestFcwebTapSetupShared(t *testing.T) {
+	setup, err := newFcwebTapSetup(sharedFcwebSpec())
+	require.NoError(t, err)
+
+	require.Equal(t, "fcweb0", setup.Tap.Name)
+	require.Equal(t, netlink.TUNTAP_MODE_TAP, setup.Tap.Mode)
+
+	require.Equal(t, "10.200.0.1", setup.Addr.IP.String())
+	ones, bits := setup.Addr.Mask.Size()
+	require.Equal(t, 30, ones)
+	require.Equal(t, 32, bits)
+	require.Equal(t, "10.200.0.1/30", setup.Addr.IPNet.String())
+
+	require.Equal(t, "10.200.0.2", setup.Neigh.IP.String())
+	require.Equal(t, "06:00:0a:c8:00:02", setup.Neigh.HardwareAddr.String())
+	require.Equal(t, netlink.NUD_PERMANENT, setup.Neigh.State)
+	require.Equal(t, netlink.FAMILY_V4, setup.Neigh.Family)
+	require.Zero(t, setup.Neigh.LinkIndex, "set only once the tap exists")
+}
+
+func TestFcwebTapSetupRejectsBadSpec(t *testing.T) {
+	for name, mutate := range map[string]func(*fcwebSpec){
+		"host IP":  func(s *fcwebSpec) { s.HostIP = "10.200.0" },
+		"guest IP": func(s *fcwebSpec) { s.GuestIP = "nope" },
+		"MAC":      func(s *fcwebSpec) { s.MAC = "06:00" },
+	} {
+		t.Run(name, func(t *testing.T) {
+			spec := sharedFcwebSpec()
+			mutate(&spec)
+			_, err := newFcwebTapSetup(spec)
+			require.Error(t, err)
 		})
 	}
 }
