@@ -139,17 +139,8 @@ func (vm *firecrackerVM) acquireWith(ctx context.Context, cfg fcwebConfig) (stri
 		vm.logger().WithField("refs", vm.refs).Warn("Firecracker VM exited while in use, rebooting")
 	}
 
-	// Leftovers of a previous vHive run, or of a VM that died under us.
 	start := time.Now()
-	if err := vm.cleanup(); err != nil {
-		return "", fmt.Errorf("cleaning up stale Firecracker VM state: %w", err)
-	}
-
-	vm.cfg = cfg
-	if err := vm.boot(ctx); err != nil {
-		if cerr := vm.cleanup(); cerr != nil {
-			vm.logger().WithError(cerr).Error("failed to clean up after failed boot")
-		}
+	if err := vm.coldBoot(ctx, cfg); err != nil {
 		return "", err
 	}
 
@@ -157,6 +148,27 @@ func (vm *firecrackerVM) acquireWith(ctx context.Context, cfg fcwebConfig) (stri
 	vm.logger().WithFields(log.Fields{"ip": vm.spec.GuestIP, "refs": vm.refs, "took": time.Since(start)}).Info("Firecracker VM reachable")
 	return vm.spec.GuestIP, nil
 }
+
+// coldBoot removes any leftover of this VM, boots it with cfg and waits until
+// it is reachable. On failure nothing is left behind unless cleanup itself
+// fails. The caller serializes calls for the same VM.
+func (vm *firecrackerVM) coldBoot(ctx context.Context, cfg fcwebConfig) error {
+	// Leftovers of a previous vHive run, or of a VM that died under us.
+	if err := vm.cleanup(); err != nil {
+		return fmt.Errorf("cleaning up stale Firecracker VM state: %w", err)
+	}
+
+	vm.cfg = cfg
+	if err := vm.boot(ctx); err != nil {
+		if cerr := vm.cleanup(); cerr != nil {
+			vm.logger().WithError(cerr).Error("failed to clean up after failed boot")
+		}
+		return err
+	}
+	return nil
+}
+
+func (vm *firecrackerVM) guestIP() string { return vm.spec.GuestIP }
 
 // release tears the VM down once no pod uses it, and fails if the process, the
 // tap or the API socket is still there afterwards.

@@ -53,7 +53,7 @@ func (s *Service) PodSandboxStatus(ctx context.Context, r *criapi.PodSandboxStat
 // reclaims network resources (e.g., IP addresses) allocated to the sandbox.
 func (s *Service) StopPodSandbox(ctx context.Context, r *criapi.StopPodSandboxRequest) (*criapi.StopPodSandboxResponse, error) {
 	log.Debugf("StopPodSandbox for %q", r.GetPodSandboxId())
-	return s.stockRuntimeClient.StopPodSandbox(ctx, r)
+	return s.serv.StopPodSandbox(ctx, r)
 }
 
 // RemovePodSandbox removes the sandbox. If there are any running containers

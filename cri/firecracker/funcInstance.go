@@ -39,6 +39,15 @@ type funcInstance struct {
 	kubevirtVM *kubevirtVM
 	// Set when the instance is backed by a standalone Firecracker VM
 	firecrackerVM *firecrackerVM
+	// Set when the instance is backed by its pod's own Firecracker VM, which
+	// lives until StopPodSandbox rather than until RemoveContainer.
+	perPodVM bool
+}
+
+func newPodFuncInstance(vmID string) *funcInstance {
+	f := newFuncInstance(vmID, firecrackerPodGuestImage, "", false, nil)
+	f.perPodVM = true
+	return f
 }
 
 func newFirecrackerFuncInstance(vm *firecrackerVM) *funcInstance {
