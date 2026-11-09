@@ -42,7 +42,7 @@ type funcInstance struct {
 }
 
 func newFirecrackerFuncInstance(vm *firecrackerVM) *funcInstance {
-	f := newFuncInstance("firecracker-vm/"+fcwebTap, firecrackerGuestImage, "", false, nil)
+	f := newFuncInstance("firecracker-vm/"+vm.spec.Tap, firecrackerGuestImage, "", false, nil)
 	f.firecrackerVM = vm
 	return f
 }
