@@ -171,6 +171,8 @@ func (fs *FirecrackerService) imageVMConfig(ctx context.Context, r *criapi.Creat
 		return cfg, "", err
 	}
 
+	log.WithFields(log.Fields{"image": ref, "rootfs": disk.Path, "port": port, "took": time.Since(start)}).
+		Debug("image VM config ready")
 	cfg.Rootfs = disk.Path
 	cfg.Init = guest.InitPath
 	cfg.Port = port

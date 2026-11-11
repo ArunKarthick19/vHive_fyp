@@ -257,10 +257,17 @@ func (vm *firecrackerVM) boot(ctx context.Context) error {
 	if err := vm.waitReachable(ctx); err != nil {
 		return err
 	}
+	// launchToHTTP200 keeps its name so existing log parsers keep working;
+	// for an image VM (probe=tcp) it is launch -> app accepts TCP.
+	probe := "http"
+	if vm.cfg.ProbeTCP {
+		probe = "tcp"
+	}
 	vm.logger().WithFields(log.Fields{
 		"pid":             cmd.Process.Pid,
 		"tapAndLaunch":    t1.Sub(t0),
 		"launchToHTTP200": time.Since(t1),
+		"probe":           probe,
 	}).Info("Firecracker VM booted")
 	return nil
 }
