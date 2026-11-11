@@ -31,6 +31,7 @@ import (
 	log "github.com/sirupsen/logrus"
 	"github.com/vhive-serverless/vhive/common"
 	"github.com/vhive-serverless/vhive/cri"
+	"github.com/vhive-serverless/vhive/cri/firecracker/rootfs"
 	"github.com/vhive-serverless/vhive/ctriface"
 	criapi "k8s.io/cri-api/pkg/apis/runtime/v1"
 )
@@ -76,6 +77,10 @@ type FirecrackerService struct {
 	webvm   *kubevirtVM
 	fcwebvm *firecrackerVM
 	podvms  *podVMs
+
+	// firecracker-vm://image (imagevm.go)
+	images    imageDisks
+	nameImage imageNamer
 }
 
 // VMConfig wraps the IP and port of the guest VM
@@ -98,6 +103,13 @@ func NewFirecrackerService(orch *ctriface.Orchestrator) (*FirecrackerService, er
 	fs.fcwebvm = newFirecrackerVM(firecrackerGuestPort)
 	fs.podvms = newPodVMs(newRealPodVM)
 	fs.podvms.sweep()
+	fs.images = rootfs.NewDefault()
+	stockImageClient, err := cri.NewStockImageServiceClient()
+	if err != nil {
+		// Only image IDs need it; FC_IMAGE and named images still work.
+		log.WithError(err).Warn("no stock image service client; firecracker-vm://image needs FC_IMAGE for image IDs")
+	}
+	fs.nameImage = stockImageNamer(stockImageClient)
 	return fs, nil
 }
 
@@ -204,7 +216,18 @@ func (fs *FirecrackerService) createUserContainer(ctx context.Context, r *criapi
 	}
 
 	if guestImage == firecrackerPodGuestImage {
-		return fs.createPodVMUserContainer(ctx, r, stockDone, &stockResp, &stockErr)
+		// The function's FC_* env sizes its VM; a bad value fails the create
+		// before anything boots.
+		prepare := func() (fcwebConfig, string, error) {
+			cfg, err := fcwebConfigFromEnv(containerEnvGetter(r.GetConfig()))
+			return cfg, firecrackerGuestPort, err
+		}
+		return fs.createPodVMUserContainer(ctx, r, prepare, stockDone, &stockResp, &stockErr)
+	}
+
+	if guestImage == firecrackerImageGuestImage {
+		prepare := func() (fcwebConfig, string, error) { return fs.imageVMConfig(ctx, r) }
+		return fs.createPodVMUserContainer(ctx, r, prepare, stockDone, &stockResp, &stockErr)
 	}
 
 	revision, err := getEnvVal(revisionEnv, config)
@@ -250,18 +273,19 @@ func (fs *FirecrackerService) createUserContainer(ctx context.Context, r *criapi
 
 // createPodVMUserContainer boots (or, on a container restart, reuses) the
 // sandbox's own Firecracker VM while containerd creates the placeholder user
-// container. If this create fails, a VM it booted is torn down and the
+// container. prepare gives the VM's config and the guest port queue-proxy
+// forwards to; it runs before anything boots, so its error leaves nothing
+// behind. If this create fails, a VM it booted is torn down and the
 // placeholder is removed; a VM it merely reused keeps running.
 func (fs *FirecrackerService) createPodVMUserContainer(ctx context.Context, r *criapi.CreateContainerRequest,
+	prepare func() (fcwebConfig, string, error),
 	stockDone <-chan struct{}, stockResp **criapi.CreateContainerResponse, stockErr *error) (*criapi.CreateContainerResponse, error) {
 	sandboxID := r.GetPodSandboxId()
 	var (
 		guestIP, vmID string
 		fresh         bool
 	)
-	// The function's FC_* env sizes its VM; a bad value fails the create
-	// before anything boots.
-	cfg, err := fcwebConfigFromEnv(containerEnvGetter(r.GetConfig()))
+	cfg, guestPort, err := prepare()
 	if err != nil {
 		err = fmt.Errorf("per-pod Firecracker VM config: %w", err)
 	} else {
@@ -294,7 +318,7 @@ func (fs *FirecrackerService) createPodVMUserContainer(ctx context.Context, r *c
 		return fail(err, "failed to insert active VM")
 	}
 
-	fs.insertVMConfig(sandboxID, &VMConfig{guestIP: guestIP, guestPort: firecrackerGuestPort})
+	fs.insertVMConfig(sandboxID, &VMConfig{guestIP: guestIP, guestPort: guestPort})
 	return *stockResp, nil
 }
 
