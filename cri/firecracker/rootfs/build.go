@@ -45,6 +45,7 @@ import (
 	"path/filepath"
 	"sort"
 	"strings"
+	"sync"
 	"syscall"
 
 	v1 "github.com/google/go-containerregistry/pkg/v1"
@@ -70,6 +71,12 @@ type Builder struct {
 	Source   Source
 
 	Logf func(format string, args ...any) // optional progress log
+
+	// initHash memo: Lookup runs on every cold start, and hashing the
+	// 2-3 MB fcinit each time would add milliseconds to it.
+	hashMu   sync.Mutex
+	hashKey  string // path, size and mtime the memo is for
+	hashMemo string
 }
 
 // Result describes a cached rootfs.
@@ -87,7 +94,18 @@ func (b *Builder) logf(format string, args ...any) {
 
 // initHash is the first 12 hex digits of the fcinit binary's sha256, so a
 // changed fcinit never runs with a disk built for an older one.
+// The hash is recomputed only when the file's size or mtime changes.
 func (b *Builder) initHash() (string, error) {
+	st, err := os.Stat(b.InitPath)
+	if err != nil {
+		return "", fmt.Errorf("fcinit binary: %w", err)
+	}
+	key := fmt.Sprintf("%s|%d|%d", b.InitPath, st.Size(), st.ModTime().UnixNano())
+	b.hashMu.Lock()
+	defer b.hashMu.Unlock()
+	if key == b.hashKey {
+		return b.hashMemo, nil
+	}
 	f, err := os.Open(b.InitPath)
 	if err != nil {
 		return "", fmt.Errorf("fcinit binary: %w", err)
@@ -97,7 +115,8 @@ func (b *Builder) initHash() (string, error) {
 	if _, err := io.Copy(h, f); err != nil {
 		return "", err
 	}
-	return hex.EncodeToString(h.Sum(nil))[:12], nil
+	b.hashKey, b.hashMemo = key, hex.EncodeToString(h.Sum(nil))[:12]
+	return b.hashMemo, nil
 }
 
 // CachePath is the disk for image digest dgst (sha256:...) and fcinit hash.

@@ -272,8 +272,9 @@ func TestEnsureBuildsAndCaches(t *testing.T) {
 		t.Fatalf("Lookup after build: ok=%v err=%v", ok, err)
 	}
 
-	// A different fcinit is a different disk.
-	if err := os.WriteFile(b.InitPath, []byte("fake fcinit v2"), 0o755); err != nil {
+	// A different fcinit is a different disk (even within the same second:
+	// the memo is keyed by size and mtime).
+	if err := os.WriteFile(b.InitPath, []byte("fake fcinit v2 longer"), 0o755); err != nil {
 		t.Fatal(err)
 	}
 	if _, ok, _ := b.Lookup(ctx, "example/app:1"); ok {

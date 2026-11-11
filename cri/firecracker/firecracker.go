@@ -273,7 +273,9 @@ func (vm *firecrackerVM) writeConfig() (string, error) {
 	}
 
 	if vm.cfg.GuestConfig != "" {
-		if err := os.WriteFile(guestConfigPath(vm.spec), []byte(vm.cfg.GuestConfig), 0o644); err != nil {
+		// 0600: the pod env can carry secrets (env from secretKeyRef).
+		// Firecracker runs as root and can still read it.
+		if err := os.WriteFile(guestConfigPath(vm.spec), []byte(vm.cfg.GuestConfig), 0o600); err != nil {
 			return "", err
 		}
 	}
@@ -462,6 +464,10 @@ func (vm *firecrackerVM) cleanup() error {
 	}
 	if err := os.Remove(vm.spec.Sock); err != nil && !errors.Is(err, os.ErrNotExist) {
 		vm.logger().WithError(err).Error("failed to remove API socket")
+	}
+	// The config drive holds the pod env; do not leave it behind.
+	if err := os.Remove(guestConfigPath(vm.spec)); err != nil && !errors.Is(err, os.ErrNotExist) {
+		vm.logger().WithError(err).Error("failed to remove guest config drive")
 	}
 
 	var errs []error
