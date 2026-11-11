@@ -393,3 +393,23 @@ func TestRemoteImagePull(t *testing.T) {
 		t.Errorf("/bin/app: %s", got)
 	}
 }
+
+func TestDiskSizeCountsHardlinksOnce(t *testing.T) {
+	stage := t.TempDir()
+	big := filepath.Join(stage, "busybox")
+	if err := os.WriteFile(big, make([]byte, 1<<20), 0o755); err != nil {
+		t.Fatal(err)
+	}
+	for i := 0; i < 50; i++ {
+		if err := os.Link(big, filepath.Join(stage, fmt.Sprint("applet", i))); err != nil {
+			t.Fatal(err)
+		}
+	}
+	size, inodes, err := diskSize(stage)
+	if err != nil {
+		t.Fatal(err)
+	}
+	if size > 20<<20 || inodes != 2 {
+		t.Fatalf("size %d MiB, %d inodes: hardlinks counted more than once", size>>20, inodes)
+	}
+}
