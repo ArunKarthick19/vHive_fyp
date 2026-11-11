@@ -34,6 +34,8 @@ require (
 	k8s.io/cri-api v0.27.1
 )
 
+require github.com/google/go-containerregistry v0.20.1 // indirect
+
 require (
 	codeberg.org/go-fonts/liberation v0.5.0 // indirect
 	codeberg.org/go-latex/latex v0.2.0 // indirect
