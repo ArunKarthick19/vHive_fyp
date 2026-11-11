@@ -280,10 +280,23 @@ func main() {
 		fail(err)
 	}
 
-	consoleFile, ok := console.(*os.File)
-	if !ok {
-		consoleFile = os.Stderr
+	// stdout/stderr are a pipe that fcinit copies to the console, as a
+	// container runtime does. The app cannot use /dev/console directly: images
+	// like nginx re-open /dev/stderr (/proc/self/fd/2), which for a non-root
+	// app fails on the root-owned 0600 console. The pipe is chowned to the app
+	// so re-opening it works.
+	outR, outW, err := os.Pipe()
+	if err != nil {
+		fail(err)
 	}
+	if err := syscall.Fchown(int(outW.Fd()), user.UID, user.GID); err != nil {
+		logf("WARN: chown stdout pipe: %v", err)
+	}
+	copied := make(chan struct{})
+	go func() {
+		_, _ = io.Copy(console, outR)
+		close(copied)
+	}()
 	devnull, err := os.Open("/dev/null")
 	if err != nil {
 		fail(err)
@@ -301,7 +314,7 @@ func main() {
 	pid, err := syscall.ForkExec(exe, argv, &syscall.ProcAttr{
 		Dir:   dir,
 		Env:   env,
-		Files: []uintptr{devnull.Fd(), consoleFile.Fd(), consoleFile.Fd()},
+		Files: []uintptr{devnull.Fd(), outW.Fd(), outW.Fd()},
 		Sys: &syscall.SysProcAttr{
 			Setsid:     true,
 			Credential: &syscall.Credential{Uid: uint32(user.UID), Gid: uint32(user.GID), Groups: groups},
@@ -310,6 +323,7 @@ func main() {
 	if err != nil {
 		fail(fmt.Errorf("starting %s: %w", exe, err))
 	}
+	outW.Close() // only the app holds the write end now
 	go func() {
 		for s := range sigs {
 			_ = syscall.Kill(pid, s.(syscall.Signal))
@@ -329,8 +343,14 @@ func main() {
 			poweroff()
 		}
 		if p == pid {
-			logf("app exited (%s); powering off", describe(ws))
 			_ = syscall.Kill(-1, syscall.SIGKILL)
+			// Let the last log lines reach the console (the pipe closes once
+			// every process holding it is gone).
+			select {
+			case <-copied:
+			case <-time.After(200 * time.Millisecond):
+			}
+			logf("app exited (%s); powering off", describe(ws))
 			poweroff()
 		}
 	}
