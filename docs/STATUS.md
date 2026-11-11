@@ -68,6 +68,13 @@ The node runs the new daemon (commit `7829a19`). The original binary is at `~/vh
 - Verified binaries are kept: `vhive-perpod.good` (original, Nov 9, sha256 bb87834b…, **never touched**), `vhive-perpod.good-aac437a`
   (first working image-mode build). `vhive-perpod` = 7829a19 (final).
 
+## Branches
+- `main`, `firecracker-guest-prototype`: untouched (local = origin).
+- `per-pod-vm`: untouched. Note that your **local** per-pod-vm (4d02a14, "bench/night-1111") is one commit ahead of
+  `origin/per-pod-vm` (ddcba7a): you had not pushed it. real-image-vm branches off 4d02a14, so that commit is now on GitHub as
+  part of `origin/real-image-vm`, but `origin/per-pod-vm` itself was not changed.
+- `real-image-vm`: all work, pushed after every commit.
+
 ## How to reproduce from scratch
 ```bash
 cd ~/vhive && git checkout real-image-vm
