@@ -46,7 +46,7 @@ PID 1. In order: mount a tmpfs and an **overlay** (lower = the read-only disk, u
 `/proc`, `/sys`, `/dev` (devtmpfs), `/dev/pts`, `/dev/shm`. Read the per-VM config. Bring up `lo` and `eth0` with netlink (address and
 default route), set the hostname and add it to `/etc/hosts`. Build the environment (image env, then pod env on top: the same precedence
 Docker and containerd use). Resolve the user (`uid[:gid]` or a name looked up in the image's `/etc/passwd`/`/etc/group`). `chdir`
-WorkingDir. Start Entrypoint+Cmd as a **child** with stdout/stderr on the serial console. Then loop on `wait4(-1)` to reap every zombie,
+WorkingDir. Start Entrypoint+Cmd as a **child** whose stdout/stderr is a pipe (chowned to the app's user) that fcinit copies to the serial console. A container runtime does the same, and non-root apps such as nginx re-open `/dev/stderr`, which fails on the root-only console. Then loop on `wait4(-1)` to reap every zombie,
 and forward SIGTERM/SIGINT to the app. When the app exits, `sync` and `reboot()`, which makes Firecracker exit (`reboot=k`).
 fcinit stays PID 1 rather than exec'ing the app because many images (including our target, `sh -c "httpd & wait"`) never reap
 orphans, and the kernel kills the VM if PID 1 exits.
@@ -56,7 +56,7 @@ orphans, and the kernel kills the VM if PID 1 exits.
 |---|---|---|
 | baked into the rootfs (`/.fcinit/image.json`) | **image config** | it is per image, like the disk, so it is cached together with the disk. |
 | kernel cmdline | **network** (`fcweb.ip=`, `fcweb.gw=`, already used) | tiny, per slot, known before boot. Not used for env: x86 5.10 limits the cmdline to 2048 bytes, values with spaces need quoting, and the kernel passes unknown `k=v` words on to init's env. |
-| per-VM **config drive** (2nd read-only virtio disk, raw JSON padded to 4 KiB, `/run/vhive-fcweb/<n>/guest.json`) | **pod env, port** | no size limit, no network needed, readable in microseconds as `/dev/vdb`. |
+| per-VM **config drive** (2nd read-only virtio disk, raw JSON padded to 4 KiB, `/run/vhive-fcweb/<n>/guest-config.bin`, mode 0600, deleted at teardown) | **pod env, port** | no size limit, no network needed, readable in microseconds as `/dev/vdb`. |
 | Firecracker MMDS | rejected | the guest needs a network stack plus an HTTP (and v2 token) exchange before it can even read its config, and the config file needs an `mmds-config`. That is more moving parts for the same data. |
 
 ## 3. Writable root: read-only shared disk + tmpfs overlay
@@ -81,3 +81,9 @@ and it is only worth it for apps that write a lot, so it is noted as future work
 Unit tests run without root: builder (synthetic in-memory images: whiteouts, symlinks, hardlinks, owners and modes, checked with `debugfs`; cache hit/miss),
 fcinit pure parts (env merge, user and PATH resolution, config parsing), config JSON (golden files for the old modes, new drive for image mode), service routing
 (image mode uses the resolver and port; webvm and pod modes are unchanged). End to end: `~/fc-vm/real/check.sh`.
+
+## Changes made during implementation
+- stdout/stderr: the design first said "on the serial console". The nginx-unprivileged test showed why a pipe is needed (commit 73028e0).
+- The config drive is written 0600 and deleted at teardown, because the pod env can contain secrets (dfde642).
+- The fcinit hash is memoised (by size and mtime) so the cache lookup on the cold-start path costs a `stat`, not a 2.6 MB sha256 (dfde642).
+- The "Firecracker VM booted" log line gained `probe=tcp|http`. `launchToHTTP200` keeps its name so your scripts keep parsing it (7829a19).
