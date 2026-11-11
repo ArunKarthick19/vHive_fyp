@@ -350,6 +350,9 @@ func TestWriteConfigWritesConfigDrive(t *testing.T) {
 	got, err := os.ReadFile(filepath.Join(spec.Dir, fcwebGuestConfigFile))
 	require.NoError(t, err)
 	require.Equal(t, drive, got)
+	st, err := os.Stat(filepath.Join(spec.Dir, fcwebGuestConfigFile))
+	require.NoError(t, err)
+	require.Equal(t, os.FileMode(0o600), st.Mode().Perm(), "the pod env may hold secrets")
 	data, err := os.ReadFile(cfgPath)
 	require.NoError(t, err)
 	require.Contains(t, string(data), filepath.Join(spec.Dir, fcwebGuestConfigFile))
@@ -361,4 +364,17 @@ func TestWriteConfigWritesConfigDrive(t *testing.T) {
 	require.NoError(t, err)
 	_, err = os.Stat(filepath.Join(spec.Dir, fcwebGuestConfigFile))
 	require.True(t, os.IsNotExist(err))
+}
+
+func TestCleanupRemovesConfigDrive(t *testing.T) {
+	spec := slotFcwebSpec(5)
+	spec.Dir = t.TempDir()
+	spec.Sock = filepath.Join(spec.Dir, "fc.sock")
+	spec.Tap = "fcwebtest-none" // never exists, so cleanup needs no privileges
+	require.NoError(t, os.WriteFile(guestConfigPath(spec), []byte("{}"), 0o600))
+
+	vm := &firecrackerVM{spec: spec}
+	require.NoError(t, vm.cleanup())
+	_, err := os.Stat(guestConfigPath(spec))
+	require.True(t, os.IsNotExist(err), "config drive with the pod env must not outlive the VM")
 }
