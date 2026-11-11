@@ -1,0 +1,24 @@
+# Extra check: non-root image (USER 101) whose entrypoint script and nginx write into the root filesystem
+# (/etc/nginx/conf.d, /tmp, /var/cache/nginx). In the VM those writes land in the tmpfs overlay.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: nginx-vm
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+    spec:
+      containers:
+      - env:
+        - name: GUEST_PORT
+          value: "8080"
+        - name: GUEST_IMAGE
+          value: firecracker-vm://image
+        image: docker.io/nginxinc/nginx-unprivileged:1.27-alpine
+        name: user-container
+        ports:
+        - containerPort: 8080
+      enableServiceLinks: false

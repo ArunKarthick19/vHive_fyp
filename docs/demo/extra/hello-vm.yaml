@@ -1,0 +1,26 @@
+# Extra check (not the main deliverable): Knative's helloworld-go answers "Hello $TARGET!", so the response proves
+# that ksvc env vars reach the app. Same image in hello-stock.yaml and hello-vm.yaml.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: hello-vm
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+    spec:
+      containers:
+      - env:
+        - name: TARGET
+          value: "env passed through (vm)"
+        - name: GUEST_PORT
+          value: "8080"
+        - name: GUEST_IMAGE
+          value: firecracker-vm://image
+        image: gcr.io/knative-samples/helloworld-go:latest
+        name: user-container
+        ports:
+        - containerPort: 8080
+      enableServiceLinks: false

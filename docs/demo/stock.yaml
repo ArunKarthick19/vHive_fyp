@@ -1,0 +1,31 @@
+# Stock vHive path: firecracker-containerd boots its generic microVM and runs the image as a container.
+# Identical image and Knative settings to vm.yaml; only GUEST_IMAGE differs (stock vHive reads the image to run from it).
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: real-stock
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+    spec:
+      containerConcurrency: 0
+      containers:
+      - env:
+        - name: GUEST_PORT
+          value: "8000"
+        - name: GUEST_IMAGE
+          value: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+        image: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+        name: user-container
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+      enableServiceLinks: false
+      timeoutSeconds: 300
