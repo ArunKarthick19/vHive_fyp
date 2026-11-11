@@ -1,0 +1,29 @@
+{
+  "boot-source": {
+    "boot_args": "console=ttyS0 quiet acpi=off random.trust_cpu=on reboot=k panic=1 pci=off nomodules ro i8042.noaux i8042.nomux i8042.nopnp i8042.dumbkbd init=/sbin/fcinit fcweb.ip=10.200.0.14/30 fcweb.gw=10.200.0.13",
+    "kernel_image_path": "/var/lib/firecracker-containerd/runtime/hello-vmlinux.bin"
+  },
+  "drives": [
+    {
+      "drive_id": "rootfs",
+      "is_read_only": true,
+      "is_root_device": true,
+      "path_on_host": "/users/Arun1903/fc-vm/rootfs.ext4"
+    }
+  ],
+  "logger": {
+    "level": "Warning",
+    "log_path": "/run/vhive-fcweb/3/firecracker.log"
+  },
+  "machine-config": {
+    "mem_size_mib": 512,
+    "vcpu_count": 2
+  },
+  "network-interfaces": [
+    {
+      "guest_mac": "06:00:0a:c8:00:0e",
+      "host_dev_name": "fcweb3",
+      "iface_id": "eth0"
+    }
+  ]
+}

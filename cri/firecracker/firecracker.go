@@ -59,7 +59,13 @@ const (
 	// kernel cannot parse, so it would never find the root disk.
 	// random.trust_cpu=on: python reads urandom right after boot.
 	fcwebBootArgs = "console=ttyS0 quiet acpi=off random.trust_cpu=on reboot=k panic=1 pci=off nomodules ro " +
-		"i8042.noaux i8042.nomux i8042.nopnp i8042.dumbkbd init=/sbin/fcinit"
+		"i8042.noaux i8042.nomux i8042.nopnp i8042.dumbkbd init="
+	// fcwebDefaultInit is the init of the baked-in rootfs.ext4 (a shell
+	// script, see ~/fc-vm/fcvm.sh build).
+	fcwebDefaultInit = "/sbin/fcinit"
+	// fcwebGuestConfigFile is the per-VM config drive of an image VM, in the
+	// VM's directory.
+	fcwebGuestConfigFile = "guest-config.bin"
 
 	fcwebBootTimeout  = 30 * time.Second
 	fcwebPollInterval = 5 * time.Millisecond
@@ -266,6 +272,11 @@ func (vm *firecrackerVM) writeConfig() (string, error) {
 		return "", err
 	}
 
+	if vm.cfg.GuestConfig != "" {
+		if err := os.WriteFile(guestConfigPath(vm.spec), []byte(vm.cfg.GuestConfig), 0o644); err != nil {
+			return "", err
+		}
+	}
 	data, err := fcwebConfigJSON(vm.spec, vm.cfg)
 	if err != nil {
 		return "", err
@@ -274,18 +285,31 @@ func (vm *firecrackerVM) writeConfig() (string, error) {
 	return cfgPath, os.WriteFile(cfgPath, data, 0o644)
 }
 
+func guestConfigPath(spec fcwebSpec) string { return filepath.Join(spec.Dir, fcwebGuestConfigFile) }
+
 // fcwebConfigJSON is the Firecracker --config-file for a VM. Pure, so the
 // shared VM's config can be checked against a golden file.
 func fcwebConfigJSON(spec fcwebSpec, c fcwebConfig) ([]byte, error) {
+	init := c.Init
+	if init == "" {
+		init = fcwebDefaultInit
+	}
+	// Read-only, so one image can back several VMs.
+	drives := []map[string]any{
+		{"drive_id": "rootfs", "path_on_host": c.Rootfs, "is_root_device": true, "is_read_only": true},
+	}
+	if c.GuestConfig != "" {
+		// The image VM's config drive, /dev/vdb in the guest (see package guest).
+		drives = append(drives, map[string]any{
+			"drive_id": "config", "path_on_host": guestConfigPath(spec), "is_root_device": false, "is_read_only": true,
+		})
+	}
 	cfg := map[string]any{
 		"boot-source": map[string]any{
 			"kernel_image_path": fcwebKernel,
-			"boot_args":         fmt.Sprintf("%s fcweb.ip=%s/%d fcweb.gw=%s", fcwebBootArgs, spec.GuestIP, fcwebMask, spec.HostIP),
+			"boot_args":         fmt.Sprintf("%s%s fcweb.ip=%s/%d fcweb.gw=%s", fcwebBootArgs, init, spec.GuestIP, fcwebMask, spec.HostIP),
 		},
-		// Read-only, so one image can back several VMs.
-		"drives": []map[string]any{
-			{"drive_id": "rootfs", "path_on_host": c.Rootfs, "is_root_device": true, "is_read_only": true},
-		},
+		"drives": drives,
 		"network-interfaces": []map[string]any{
 			{"iface_id": "eth0", "guest_mac": spec.MAC, "host_dev_name": spec.Tap},
 		},
@@ -371,10 +395,30 @@ func (vm *firecrackerVM) waitReachable(ctx context.Context) error {
 		Timeout:   time.Second,
 		Transport: &http.Transport{DialContext: dialer.DialContext, DisableKeepAlives: true},
 	}
-	url := "http://" + vm.spec.GuestIP + ":" + vm.port + "/"
-	for {
-		if resp, err := client.Get(url); err == nil {
+	port := vm.port
+	if vm.cfg.Port != "" {
+		port = vm.cfg.Port
+	}
+	addr := net.JoinHostPort(vm.spec.GuestIP, port)
+	url := "http://" + addr + "/"
+	probe := func() bool {
+		if vm.cfg.ProbeTCP {
+			// A real app may not speak HTTP/1 on "/": wait until it accepts
+			// connections, which is what Knative's tcpSocket probe checks.
+			c, err := dialer.DialContext(ctx, "tcp", addr)
+			if err == nil {
+				c.Close()
+			}
+			return err == nil
+		}
+		resp, err := client.Get(url)
+		if err == nil {
 			resp.Body.Close()
+		}
+		return err == nil
+	}
+	for {
+		if probe() {
 			return nil
 		}
 
@@ -382,7 +426,7 @@ func (vm *firecrackerVM) waitReachable(ctx context.Context) error {
 		case <-vm.exited:
 			return fmt.Errorf("firecracker exited during boot: %s", consoleTail(vm.spec))
 		case <-ctx.Done():
-			return fmt.Errorf("Firecracker VM not reachable at %s: %w: %s", url, ctx.Err(), consoleTail(vm.spec))
+			return fmt.Errorf("Firecracker VM not reachable at %s: %w: %s", addr, ctx.Err(), consoleTail(vm.spec))
 		case <-time.After(fcwebPollInterval):
 		}
 	}
@@ -512,10 +556,19 @@ func fcwebRootfs() string {
 // vhive's FCWEB_* env gives the defaults (falling back to built-ins). In
 // per-pod mode only, a function overrides them with FC_VCPUS, FC_MEM_MIB and
 // FC_ROOTFS in its Knative Service env; the shared VM ignores FC_*.
+//
+// The last four fields are only set for an image VM (firecracker-vm://image,
+// see imagevm.go); their zero values give the baked-in rootfs behaviour.
+// Every field is comparable, so configs can be compared with ==.
 type fcwebConfig struct {
 	VCPUs  int
 	MemMiB int
 	Rootfs string
+
+	Init        string // guest init (kernel init=); "" is fcwebDefaultInit
+	Port        string // guest port to wait for; "" is the VM's default port
+	ProbeTCP    bool   // wait for a TCP accept instead of an HTTP response
+	GuestConfig string // config drive contents; "" attaches no config drive
 }
 
 func defaultFcwebConfig() fcwebConfig {
