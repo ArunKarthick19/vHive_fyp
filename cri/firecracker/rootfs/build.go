@@ -459,16 +459,24 @@ func addFcinit(stage, initPath string, icfg guest.ImageConfig, ents []entry) ([]
 // diskSize estimates the ext4 size for stage: file data rounded up to 4 KiB
 // blocks, one block per other inode, plus 25% and 16 MiB of headroom for
 // metadata. The disk is read-only in the guest, so little slack is needed.
+// Hardlinks (busybox images have hundreds) are counted once.
 func diskSize(stage string) (bytes int64, inodes int, err error) {
+	seen := map[uint64]bool{}
 	err = filepath.WalkDir(stage, func(_ string, d fs.DirEntry, err error) error {
 		if err != nil {
 			return err
 		}
-		inodes++
 		info, err := d.Info()
 		if err != nil {
 			return err
 		}
+		if st, ok := info.Sys().(*syscall.Stat_t); ok && st.Nlink > 1 && !info.IsDir() {
+			if seen[st.Ino] {
+				return nil
+			}
+			seen[st.Ino] = true
+		}
+		inodes++
 		if info.Mode().IsRegular() {
 			bytes += (info.Size() + 4095) / 4096 * 4096
 		} else {
