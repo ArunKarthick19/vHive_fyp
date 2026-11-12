@@ -1,0 +1,45 @@
+# ONE template for the phase-D services. night.sh fills in the name, the guest image, the port and FC_MEM_MIB
+# (placeholders below; FC_MEM_MIB is 256 for every mode except image512, which gets 512); every other line is identical.
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: __NAME__
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/min-scale: "0"
+        autoscaling.knative.dev/max-scale: "8"
+        autoscaling.knative.dev/target: "4"
+        autoscaling.knative.dev/metric: "concurrency"
+    spec:
+      containerConcurrency: 0
+      timeoutSeconds: 300
+      enableServiceLinks: false
+      containers:
+      - name: user-container
+        image: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+        ports:
+        - containerPort: __PORT__
+          protocol: TCP
+        env:
+        - name: GUEST_IMAGE
+          value: "__GUEST_IMAGE__"
+        - name: GUEST_PORT
+          value: "__PORT__"
+        - name: FC_VCPUS
+          value: "1"
+        - name: FC_MEM_MIB
+          value: "__MEM__"
+        resources:
+          requests:
+            cpu: 100m
+            memory: 64Mi
+          limits:
+            cpu: "1"
+            memory: 256Mi
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0

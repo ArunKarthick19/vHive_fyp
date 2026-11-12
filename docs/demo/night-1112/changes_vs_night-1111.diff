@@ -1,22 +1,25 @@
-diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-vm/night-1111/analyze.py /users/Arun1903/fc-vm/night-1112/analyze.py
+diff -ru -x smoke -x 'smoke*' -x '*.diff' -x .night.lock /users/Arun1903/fc-vm/night-1111/analyze.py /users/Arun1903/fc-vm/night-1112/analyze.py
 --- /users/Arun1903/fc-vm/night-1111/analyze.py	2026-11-11 06:57:43.816514971 -0700
-+++ /users/Arun1903/fc-vm/night-1112/analyze.py	2026-11-11 09:07:39.401873327 -0700
-@@ -9,10 +9,12 @@
++++ /users/Arun1903/fc-vm/night-1112/analyze.py	2026-11-11 18:48:13.036084086 -0700
+@@ -9,10 +9,13 @@
  
  ROOT, E = sys.argv[1], sys.argv[2]
  B, C, D, A = (os.path.join(ROOT, x) for x in ('B_cold', 'C_stock_breakdown', 'D_scaleout', 'A_preflight'))
 -MODES = ('stock', 'shared', 'perpod')
-+# night-1112: the modes come from night.sh's MODES (default: all four).
-+MODES = tuple(os.environ.get('MODES', 'stock shared perpod image').split())
- LABEL = {'stock': 'stock (fcmicro-fn, firecracker-containerd uVM)',
-          'shared': 'shared (fcweb-fn, one Firecracker VM)',
+-LABEL = {'stock': 'stock (fcmicro-fn, firecracker-containerd uVM)',
+-         'shared': 'shared (fcweb-fn, one Firecracker VM)',
 -         'perpod': 'per-pod (fcpod-fn, one Firecracker VM per pod)'}
-+         'perpod': 'per-pod (fcpod-fn, one Firecracker VM per pod)',
-+         'image': 'image (real-vm, per-pod Firecracker VM booting the same image as stock)'}
++# night-1112: the modes come from night.sh's MODES (default: all five).
++MODES = tuple(os.environ.get('MODES', 'stock shared perpod image image512').split())
++LABEL = {'stock': 'stock (fcmicro-fn / n12-stock): firecracker-containerd uVM, 1 vCPU / 512 MiB (hard-coded)',
++         'shared': 'shared (fcweb-fn / n12-shared): one Firecracker VM for all pods, baked-in rootfs, 1 vCPU / 256 MiB',
++         'perpod': 'per-pod (fcpod-fn / n12-perpod): one Firecracker VM per pod, baked-in rootfs, 1 vCPU / 256 MiB',
++         'image': 'image (real-vm / n12-image): per-pod Firecracker VM booting the SAME image as stock, 1 vCPU / 256 MiB',
++         'image512': 'image512 (real-vm-512 / n12-image512): exactly image, but 1 vCPU / 512 MiB = the same size as stock'}
  summary = []          # rows: section, mode, metric, n, mean, min, max
  notes = []            # data problems found while reading
  
-@@ -108,7 +110,7 @@
+@@ -108,12 +111,13 @@
              return f'{fmt(s[4], d)} ({fmt(s[5], d)}–{fmt(s[6], d)})' if s[3] else '–'
      return '–'
  
@@ -25,18 +28,25 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  env = open(f'{A}/fcweb_env.txt').read().split() if os.path.exists(f'{A}/fcweb_env.txt') else []
  ver = open(f'{A}/versions.txt').read().splitlines() if os.path.exists(f'{A}/versions.txt') else []
  rev = next((l for l in ver if re.fullmatch(r'[0-9a-f]{40}', l)), 'unknown')
-@@ -123,7 +125,9 @@
+ out += [f'vhive rev `{rev}`, daemon env {" ".join(env) or "unknown"}. '
+-        'Values are **mean (min–max)**; cycle 1 of every cold-start run is a warm-up and is excluded.', '']
++        'Values are **mean (min–max)**; cycle 1 of every cold-start run is a warm-up and is excluded.', '',
++        '**Modes (columns):**', ''] + [f'- {LABEL.get(m, m)}' for m in MODES] + ['']
+ 
+ out += ['## B. Cold start (seconds)', '',
+         '| metric | ' + ' | '.join(MODES) + ' |', '|---|' + '---|' * len(MODES)]
+@@ -123,7 +127,9 @@
               'idle -> pod gone', 'vhive VM stop call'):
      out.append(f'| {name} | ' + ' | '.join(cell('cold', m, name) for m in MODES) + ' |')
  out += ['', 'VM stage = stock: firecracker-containerd `create VM request` → guest prints `httpd started`; '
 -        'shared/per-pod: vhive acquire start → `Firecracker VM reachable` (guest app answered HTTP 200).', '']
 +        'shared/per-pod: vhive acquire start → `Firecracker VM reachable` (guest app answered HTTP 200); '
-+        'image: vhive acquire start (includes naming the image and the rootfs cache lookup) → `Firecracker VM reachable` '
++        'image/image512: vhive acquire start (includes naming the image and the rootfs cache lookup) → `Firecracker VM reachable` '
 +        '(guest app accepted a TCP connection on :8000; log field probe=tcp).', '']
  
  out += ['## C. Stock VM stage, step by step (seconds)', '']
  if crow:
-@@ -155,22 +159,27 @@
+@@ -155,22 +161,29 @@
  
  # ------------------------------------------------------------------ caveats (automatic)
  cav = [
@@ -46,8 +56,11 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
 -    '**Memory differs: 256 MiB vs 512 MiB.** shared and per-pod VMs get '
 +    '**Memory differs: 256 MiB vs 512 MiB.** shared, per-pod and image VMs get '
      + (next((e.split('=')[1] for e in env if e.startswith('FCWEB_MEM_MIB=')), '256')) +
-     ' MiB (FCWEB_MEM_MIB / FC_MEM_MIB); stock uVMs get 512 MiB, hard-coded in vHive\'s ctriface. All use 1 vCPU.',
-+    '**stock vs image is the like-for-like pair.** Both run the identical image (crccheck-hello-world, `sh -c "httpd & wait"`); '
+-    ' MiB (FCWEB_MEM_MIB / FC_MEM_MIB); stock uVMs get 512 MiB, hard-coded in vHive\'s ctriface. All use 1 vCPU.',
++    ' MiB (FCWEB_MEM_MIB / FC_MEM_MIB); stock uVMs get 512 MiB, hard-coded in vHive\'s ctriface. All use 1 vCPU.'
++    + (' **image512** removes this difference: it is image with FC_MEM_MIB=512, so stock vs image512 is the same image '
++       'AND the same VM size; image vs image512 shows how much the VM size itself matters.' if 'image512' in MODES else ''),
++    '**stock vs image (and image512) is the like-for-like comparison.** Both run the identical image (crccheck-hello-world, `sh -c "httpd & wait"`); '
 +    'image boots it from a pre-built read-only ext4 with fcinit as PID 1 and a tmpfs overlay, without agent, '
 +    'devmapper snapshot or per-VM netns. Remaining differences: memory (above), the VM-stage end point (below), '
 +    'and image VMs never pull an image at cold start (the rootfs is built ahead of time; phase A makes sure).',
@@ -70,15 +83,15 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  ]
  for m in MODES:
      if ns[m] and ns[m] < 10:
-Only in /users/Arun1903/fc-vm/night-1112: changes_vs_night-1111.diff
-diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-vm/night-1111/night.sh /users/Arun1903/fc-vm/night-1112/night.sh
+diff -ru -x smoke -x 'smoke*' -x '*.diff' -x .night.lock /users/Arun1903/fc-vm/night-1111/night.sh /users/Arun1903/fc-vm/night-1112/night.sh
 --- /users/Arun1903/fc-vm/night-1111/night.sh	2026-11-11 06:56:11.099406849 -0700
-+++ /users/Arun1903/fc-vm/night-1112/night.sh	2026-11-11 09:07:39.401873327 -0700
-@@ -1,18 +1,21 @@
++++ /users/Arun1903/fc-vm/night-1112/night.sh	2026-11-11 18:47:58.338587928 -0700
+@@ -1,18 +1,22 @@
  #!/usr/bin/env bash
 -# night.sh — overnight benchmark: stock vHive microVM vs shared Firecracker VM vs per-pod Firecracker VM.
 +# night.sh — overnight benchmark: stock vHive microVM vs shared Firecracker VM vs per-pod Firecracker VM
-+# vs per-pod Firecracker VM running the REAL image (firecracker-vm://image, mode "image").
++# vs per-pod Firecracker VM running the REAL image (firecracker-vm://image, mode "image", 256 MiB)
++# and the same with 512 MiB like stock (mode "image512").
 +# night-1112 = night-1111 plus the "image" mode and a MODES knob; see README.md "What changed vs night-1111".
  # Phases A..E (see README.md). Each phase runs in its own process under `timeout`; a failing phase is
  # logged and the next one starts. Never uses sudo, never restarts daemons, never edits vhive.
@@ -89,7 +102,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  # Knobs (environment): CYCLES (11), LEVELS ("1 2 4 8 16 32"), WARM_S (10), MEASURE_S (30),
 -#   C_CYCLES (6), PHASES ("A B C D E"), OUT_ROOT (~/fc-vm/night-1111), BUDGET_S (24600 = 6h50m).
 +#   C_CYCLES (6), PHASES ("A B C D E"), OUT_ROOT (~/fc-vm/night-1112), BUDGET_S (24600 = 6h50m),
-+#   MODES ("stock shared perpod image"; e.g. MODES="stock image" for only the same-image pair).
++#   MODES ("stock shared perpod image image512"; e.g. MODES="stock image image512" for only the same-image runs).
  set -u
  
  FCVM=${FCVM:-$HOME/fc-vm}
@@ -100,34 +113,37 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  CYCLES=${CYCLES:-11}
  C_CYCLES=${C_CYCLES:-6}
  LEVELS=${LEVELS:-"1 2 4 8 16 32"}
-@@ -20,6 +23,11 @@
+@@ -20,6 +24,12 @@
  MEASURE_S=${MEASURE_S:-30}
  PHASES=${PHASES:-"A B C D E"}
  BUDGET_S=${BUDGET_S:-24600}
-+MODES=${MODES:-"stock shared perpod image"}
++MODES=${MODES:-"stock shared perpod image image512"}
 +# mode "image": same image as stock (crccheck-hello-world), booted by vhive in a per-pod Firecracker VM
 +IMAGE_REF=ghcr.io/vhive-serverless/crccheck-hello-world:latest
-+IMAGE_YAML=$FCVM/real/vm.yaml      # ksvc real-vm, used for phase B
++IMAGE_YAML=$FCVM/real/vm.yaml      # ksvc real-vm, used for phase B (VM 256 MiB, vhive's default)
++IMAGE512_YAML=$FCVM/real/vm-512.yaml  # ksvc real-vm-512, used for phase B (VM 512 MiB = stock's size)
 +FC_ROOTFS_CLI=$HOME/vhive/bin/fc-rootfs
  
  INGRESS_IP=10.106.195.52
  INGRESS=http://$INGRESS_IP/
-@@ -29,6 +37,10 @@
+@@ -29,6 +39,12 @@
  CTRD_PANE=containerd:0.0    # containerd (info, CRI calls), read only
  MASTER_LOG="$OUT_ROOT/night.log"
  export FCVM HERE OUT_ROOT CYCLES C_CYCLES LEVELS WARM_S MEASURE_S INGRESS DOMAIN VLOG FC_PANE CTRD_PANE MASTER_LOG
-+export MODES IMAGE_REF IMAGE_YAML FC_ROOTFS_CLI
++export MODES IMAGE_REF IMAGE_YAML IMAGE512_YAML FC_ROOTFS_CLI
 +has_mode() { case " $MODES " in *" $1 "*) return 0;; esac; return 1; }
 +# phase B service of each mode
-+bsvc() { case $1 in stock) echo fcmicro-fn;; shared) echo fcweb-fn;; perpod) echo fcpod-fn;; image) echo real-vm;; esac; }
++bsvc() { case $1 in stock) echo fcmicro-fn;; shared) echo fcweb-fn;; perpod) echo fcpod-fn;; image) echo real-vm;; image512) echo real-vm-512;; esac; }
++# wait until every phase-B service of MODES is at zero (pods and VMs)
++wait_zero_all() { local m; for m in $MODES; do wait_zero "$(bsvc "$m")" "$m" "$1"; done; }
  
  # phase letter -> output directory and time budget in seconds (sum 24300 s = 6h45m < 7 h)
  pdir() { case $1 in A) echo A_preflight;; B) echo B_cold;; C) echo C_stock_breakdown;; D) echo D_scaleout;; E) echo E_analysis;; esac; }
-@@ -40,13 +52,14 @@
+@@ -40,13 +56,14 @@
  # ---------------------------------------------------------------- shared helpers
  pods_of() { kubectl get pods -l serving.knative.dev/service="$1" --no-headers 2>/dev/null | wc -l; }
  stock_vms() { pgrep -f '^/usr/local/bin/firecracker --api-sock firecracker.sock' | wc -l; }
-+# (perpod and image share the slots fcweb1..16, so both use slot_vms)
++# (perpod, image and image512 share the slots fcweb1..16, so all use slot_vms)
  shared_vm() { pgrep -f '^/usr/local/bin/firecracker --api-sock /run/vhive-fcweb/fc.sock' | wc -l; }
  slot_vms() { pgrep -f '^/usr/local/bin/firecracker --api-sock /run/vhive-fcweb/[0-9]+/fc.sock' | wc -l; }
  # wait until ksvc $1 has no pods and no VM of its kind ($2 = stock|shared|perpod) is left; give up after $3 s
@@ -135,24 +151,29 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
    local svc=$1 kind=$2 lim=${3:-600} t0=$SECONDS vm
    while :; do
 -    case $kind in stock) vm=$(stock_vms);; shared) vm=$(shared_vm);; perpod) vm=$(slot_vms);; esac
-+    case $kind in stock) vm=$(stock_vms);; shared) vm=$(shared_vm);; perpod|image) vm=$(slot_vms);; esac
++    case $kind in stock) vm=$(stock_vms);; shared) vm=$(shared_vm);; perpod|image|image512) vm=$(slot_vms);; esac
      [ "$(pods_of "$svc")" = 0 ] && [ "$vm" = 0 ] && return 0
      [ $((SECONDS - t0)) -ge "$lim" ] && { log "WARN: $svc not at zero after ${lim}s (pods=$(pods_of "$svc") vms=$vm)"; return 1; }
      sleep 2
-@@ -73,13 +86,23 @@
+@@ -73,13 +90,28 @@
      log "creating fcmicro-fn from $FCVM/fcmicro-fn.yaml"
      kubectl apply -f "$FCVM/fcmicro-fn.yaml" > "$d/fcmicro_apply.txt" 2>&1 || ok=1
    fi
 -  for s in fcmicro-fn fcweb-fn fcpod-fn; do
-+  if has_mode image; then
++  if has_mode image || has_mode image512; then
 +    # The image VM's rootfs must be built BEFORE any measurement (a cache miss would put a ~1 s build
 +    # into the first cold start). fc-rootfs is a no-op if it is already cached.
 +    if "$FC_ROOTFS_CLI" build "$IMAGE_REF" > "$d/fc_rootfs.txt" 2>&1; then
 +      log "image rootfs ready: $(tail -1 "$d/fc_rootfs.txt")"
 +    else log "fc-rootfs build $IMAGE_REF FAILED (see fc_rootfs.txt)"; ok=1; fi
-+    if kubectl get ksvc real-vm >/dev/null 2>&1; then log "real-vm already exists"
-+    else log "creating real-vm from $IMAGE_YAML"; kubectl apply -f "$IMAGE_YAML" > "$d/real_vm_apply.txt" 2>&1 || ok=1; fi
 +  fi
++  local m y s
++  for m in image image512; do
++    has_mode $m || continue
++    s=$(bsvc $m); y=$IMAGE_YAML; [ $m = image512 ] && y=$IMAGE512_YAML
++    if kubectl get ksvc $s >/dev/null 2>&1; then log "$s already exists"
++    else log "creating $s from $y"; kubectl apply -f "$y" > "$d/${s}_apply.txt" 2>&1 || ok=1; fi
++  done
 +  for m in $MODES; do
 +    s=$(bsvc "$m")
      if kubectl wait ksvc/$s --for=condition=Ready --timeout=300s >> "$d/ksvc_wait.txt" 2>&1; then
@@ -165,16 +186,16 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  
    # Versions
    {
-@@ -90,6 +113,8 @@
+@@ -90,6 +122,8 @@
      git -C "$HOME/vhive" log -1 --format='%ci %s'; git -C "$HOME/vhive" status --short
      echo "--- vhive-perpod binary"
      ls -l --time-style=full-iso "$HOME/vhive/vhive-perpod"; sha256sum "$HOME/vhive/vhive-perpod"
-+    echo "--- image mode: fcinit and rootfs"
++    echo "--- image modes: fcinit and rootfs (one disk shared by image and image512)"
 +    sha256sum /users/Arun1903/fc-vm/images/fcinit; "$FC_ROOTFS_CLI" path "$IMAGE_REF"
    } > "$d/versions.txt" 2>&1
  
    # Daemon env. /proc/<pid>/environ of the root vhive process is not readable without sudo, so the FCWEB_*
-@@ -113,9 +138,10 @@
+@@ -113,9 +147,10 @@
  # themselves (the originals in ~/fc-vm stay untouched and their old results are not overwritten).
  phase_B() {
    local d=$1 rc=0 adapt_ok=1
@@ -188,7 +209,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
    # per-pod: same script, pointed at fcpod-fn and at the slot VMs (fcweb1..16, /run/vhive-fcweb/<n>/fc.sock).
    # Its log greps ('Firecracker VM reachable|booted|stopped') already match the per-pod log lines.
    sed -e 's/fcweb-fn/fcpod-fn/g' \
-@@ -123,22 +149,33 @@
+@@ -123,22 +158,43 @@
        -e 's#ip link show fcweb0 >/dev/null 2>&1#ip -o link show | grep -qE ": fcweb([1-9]|1[0-6])[:@]"#g' \
        -e 's#\[ -e /run/vhive-fcweb/fc.sock \]#compgen -G "/run/vhive-fcweb/[0-9]*/fc.sock" >/dev/null#g' \
        "$FCVM/cold_cycles_fc.sh" > "$d/perpod/cold_cycles_fc.sh"
@@ -198,6 +219,12 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
 +    sed -e 's/fcpod-fn/real-vm/g' "$d/perpod/cold_cycles_fc.sh" > "$d/image/cold_cycles_fc.sh"
 +    diff "$FCVM/cold_cycles_fc.sh" "$d/image/cold_cycles_fc.sh" > "$d/image/changes_vs_original.diff"
 +  fi
++  # image512: the same, pointed at real-vm-512 (the 512 MiB copy of real-vm).
++  if has_mode image512; then
++    mkdir -p "$d/image512"
++    sed -e 's/fcpod-fn/real-vm-512/g' "$d/perpod/cold_cycles_fc.sh" > "$d/image512/cold_cycles_fc.sh"
++    diff "$FCVM/cold_cycles_fc.sh" "$d/image512/cold_cycles_fc.sh" > "$d/image512/changes_vs_original.diff"
++  fi
    chmod +x "$d"/*/*.sh
    diff "$FCVM/cold_cycles_fc.sh" "$d/perpod/cold_cycles_fc.sh" > "$d/perpod/changes_vs_original.diff"
    if [ "$(grep -c '^>' "$d/perpod/changes_vs_original.diff")" -lt 5 ] || grep -q 'fcweb-fn\|fcweb0' "$d/perpod/cold_cycles_fc.sh"; then
@@ -205,6 +232,9 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
    fi
 +  if has_mode image && { grep -q 'fcweb-fn\|fcweb0\|fcpod-fn' "$d/image/cold_cycles_fc.sh" || ! grep -q 'real-vm' "$d/image/cold_cycles_fc.sh"; }; then
 +    log "image script adaptation incomplete, see image/changes_vs_original.diff"; rc=1; adapt_ok=0
++  fi
++  if has_mode image512 && { grep -q 'fcweb-fn\|fcweb0\|fcpod-fn' "$d/image512/cold_cycles_fc.sh" || ! grep -q 'real-vm-512' "$d/image512/cold_cycles_fc.sh"; }; then
++    log "image512 script adaptation incomplete, see image512/changes_vs_original.diff"; rc=1; adapt_ok=0
 +  fi
  
    local mode script svc kind
@@ -215,33 +245,36 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
        shared) script=cold_cycles_fc.sh;           svc=fcweb-fn;   kind=shared;;
        perpod) script=cold_cycles_fc.sh;           svc=fcpod-fn;   kind=perpod;;
 +      image)  script=cold_cycles_fc.sh;           svc=real-vm;    kind=image;;
++      image512) script=cold_cycles_fc.sh;         svc=real-vm-512; kind=image512;;
      esac
 -    [ $mode = perpod ] && [ $adapt_ok = 0 ] && { log "skipping perpod"; continue; }
 -    # Everything else idle first, so the three modes see the same quiet node.
-+    { [ $mode = perpod ] || [ $mode = image ]; } && [ $adapt_ok = 0 ] && { log "skipping $mode"; continue; }
++    { [ $mode = perpod ] || [ $mode = image ] || [ $mode = image512 ]; } && [ $adapt_ok = 0 ] && { log "skipping $mode"; continue; }
 +    # Everything else idle first, so all modes see the same quiet node.
      wait_zero fcmicro-fn stock 900; wait_zero fcweb-fn shared 900; wait_zero fcpod-fn perpod 900
-+    has_mode image && wait_zero real-vm image 900
++    wait_zero_all 900
      local lim=$(( CYCLES * 300 + 600 ))
      log "$mode ($svc): $CYCLES cold cycles via $script (timeout ${lim}s)"
      local t0=$SECONDS
-@@ -150,7 +187,7 @@
+@@ -150,7 +206,7 @@
      [ $r = 0 ] || rc=1
    done
    # phases.py as is (it includes cycle 1; the warm-up exclusion happens in phase E)
 -  for mode in shared perpod; do
-+  for mode in shared perpod image; do
++  for mode in shared perpod image image512; do
      [ -s "$d/$mode/cold_cycles_fc_phases.csv" ] && python3 "$FCVM/phases.py" "$d/$mode" > "$d/$mode/phases.txt" 2>&1
    done
    return $rc
-@@ -182,20 +219,21 @@
+@@ -182,20 +238,24 @@
  }
  
  # ================================================================ Phase D: scale-out
 -# One template -> three ksvcs that differ only in name / guest image / guest port.
+-gen_yaml() {   # $1 name  $2 GUEST_IMAGE  $3 port
+-  sed -e "s#__NAME__#$1#" -e "s#__GUEST_IMAGE__#$2#" -e "s#__PORT__#$3#g" "$HERE/scale-template.yaml"
 +# One template -> one ksvc per mode; they differ only in name / guest image / guest port.
- gen_yaml() {   # $1 name  $2 GUEST_IMAGE  $3 port
-   sed -e "s#__NAME__#$1#" -e "s#__GUEST_IMAGE__#$2#" -e "s#__PORT__#$3#g" "$HERE/scale-template.yaml"
++gen_yaml() {   # $1 name  $2 GUEST_IMAGE  $3 port  $4 FC_MEM_MIB
++  sed -e "s#__NAME__#$1#" -e "s#__GUEST_IMAGE__#$2#" -e "s#__PORT__#$3#g" -e "s#__MEM__#$4#" "$HERE/scale-template.yaml"
  }
  phase_D() {
    local d=$1 rc=0 m
@@ -249,27 +282,32 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
 -  declare -A GIMG=([stock]=ghcr.io/vhive-serverless/crccheck-hello-world:latest [shared]=firecracker-vm://webvm [perpod]=firecracker-vm://pod)
 -  declare -A PORT=([stock]=8000 [shared]=80 [perpod]=80)
 -  for m in stock shared perpod; do
-+  declare -A NAME=([stock]=n12-stock [shared]=n12-shared [perpod]=n12-perpod [image]=n12-image)
-+  declare -A GIMG=([stock]=ghcr.io/vhive-serverless/crccheck-hello-world:latest [shared]=firecracker-vm://webvm [perpod]=firecracker-vm://pod [image]=firecracker-vm://image)
-+  declare -A PORT=([stock]=8000 [shared]=80 [perpod]=80 [image]=8000)
-+  for m in stock shared perpod image; do
-     gen_yaml "${NAME[$m]}" "${GIMG[$m]}" "${PORT[$m]}" > "$d/${NAME[$m]}.yaml"
+-    gen_yaml "${NAME[$m]}" "${GIMG[$m]}" "${PORT[$m]}" > "$d/${NAME[$m]}.yaml"
++  declare -A NAME=([stock]=n12-stock [shared]=n12-shared [perpod]=n12-perpod [image]=n12-image [image512]=n12-image512)
++  declare -A GIMG=([stock]=ghcr.io/vhive-serverless/crccheck-hello-world:latest [shared]=firecracker-vm://webvm [perpod]=firecracker-vm://pod [image]=firecracker-vm://image [image512]=firecracker-vm://image)
++  declare -A PORT=([stock]=8000 [shared]=80 [perpod]=80 [image]=8000 [image512]=8000)
++  # FC_MEM_MIB: 256 everywhere as before (stock ignores it: its uVM is always 512), 512 only for image512
++  declare -A MEM=([stock]=256 [shared]=256 [perpod]=256 [image]=256 [image512]=512)
++  for m in stock shared perpod image image512; do
++    gen_yaml "${NAME[$m]}" "${GIMG[$m]}" "${PORT[$m]}" "${MEM[$m]}" > "$d/${NAME[$m]}.yaml"
    done
 -  { echo "# Lines that differ between the three generated ksvc yamls (everything else is identical):"
 -    diff "$d/n11-stock.yaml" "$d/n11-shared.yaml"; echo "---- shared vs perpod"; diff "$d/n11-shared.yaml" "$d/n11-perpod.yaml"
 +  { echo "# Lines that differ between the generated ksvc yamls (everything else is identical):"
 +    diff "$d/n12-stock.yaml" "$d/n12-shared.yaml"; echo "---- shared vs perpod"; diff "$d/n12-shared.yaml" "$d/n12-perpod.yaml"
 +    echo "---- stock vs image (same image, same port; only GUEST_IMAGE differs)"; diff "$d/n12-stock.yaml" "$d/n12-image.yaml"
++    echo "---- image vs image512 (only FC_MEM_MIB differs: 256 -> 512)"; diff "$d/n12-image.yaml" "$d/n12-image512.yaml"
      cat <<'EOF'
  
  # Differences that remain and are NOT visible in the yaml:
-@@ -205,12 +243,15 @@
+@@ -205,12 +265,16 @@
  #   devmapper snapshot and per-VM netns; shared/perpod boot the baked-in rootfs.ext4 (python3 http.server on :80).
  # - shared: every pod of the ksvc talks to ONE VM (fcweb0); perpod: one VM per pod (slots fcweb1..16);
  #   stock: one uVM per pod.
 +# - image: one VM per pod like perpod, but booting a rootfs built from the SAME image as stock
 +#   (crccheck-hello-world, busybox httpd on :8000) with fcinit as PID 1; 1 vCPU / 256 MiB like shared/perpod,
 +#   stock stays at 512 MiB.
++# - image512: exactly image, but the VM gets 512 MiB (FC_MEM_MIB=512), the same size as the stock uVM.
  EOF
    } > "$d/yaml_differences.txt"
 -  for m in stock shared perpod; do
@@ -281,7 +319,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
      kubectl wait ksvc/"${NAME[$m]}" --for=condition=Ready --timeout=300s >> "$d/apply.txt" 2>&1 \
        && log "ksvc ${NAME[$m]} Ready" || { log "ksvc ${NAME[$m]} NOT Ready"; rc=1; }
    done
-@@ -218,10 +259,11 @@
+@@ -218,10 +282,11 @@
  
    local c
    for c in $LEVELS; do
@@ -290,15 +328,15 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
        local n=${NAME[$m]} r="$d/$m/c$c"; mkdir -p "$r"
        wait_zero fcmicro-fn stock 300; wait_zero fcweb-fn shared 300; wait_zero fcpod-fn perpod 300
 -      wait_zero n11-stock stock 900; wait_zero n11-shared shared 900; wait_zero n11-perpod perpod 900
-+      has_mode image && wait_zero real-vm image 300
++      wait_zero_all 300
 +      local m2; for m2 in $MODES; do wait_zero "${NAME[$m2]}" "$m2" 900; done
        local st; st=$(now)
        # pod sampler (1 Hz): epoch, total pods, Ready pods
        ( while :; do
-diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-vm/night-1111/README.md /users/Arun1903/fc-vm/night-1112/README.md
+diff -ru -x smoke -x 'smoke*' -x '*.diff' -x .night.lock /users/Arun1903/fc-vm/night-1111/README.md /users/Arun1903/fc-vm/night-1112/README.md
 --- /users/Arun1903/fc-vm/night-1111/README.md	2026-11-11 07:20:37.353560326 -0700
-+++ /users/Arun1903/fc-vm/night-1112/README.md	2026-11-11 09:08:04.718725677 -0700
-@@ -1,4 +1,24 @@
++++ /users/Arun1903/fc-vm/night-1112/README.md	2026-11-11 18:49:39.219994495 -0700
+@@ -1,4 +1,30 @@
 -# night-1111: stock vs shared vs per-pod Firecracker, overnight run
 +# night-1112: night-1111 plus the "image" mode (same image as stock, in your per-pod Firecracker VM)
 +
@@ -314,8 +352,14 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
 +| phase B: image uses the per-pod copy of `cold_cycles_fc.sh` with `fcpod-fn` → `real-vm` (`B_cold/image/changes_vs_original.diff`) | `night.sh` phase B | same slots, same vhive log lines, so the same script measures it |
 +| phase D service names `n11-*` → `n12-*` (new services; the old `n11-*` stay as they are) | `night.sh` phase D | so runs do not mix |
 +| report: image column, notes on the VM-stage end point (TCP accept, log field `probe=tcp`) | `analyze.py` | |
++| **(added 2026-11-11 evening)** a 5th mode **image512** = ksvc `real-vm-512` (`~/fc-vm/real/vm-512.yaml`) in phase B and `n12-image512` in phase D | `night.sh`, `scale-template.yaml`, `analyze.py` | exactly the same as image, but the VM gets 512 MiB (`FC_MEM_MIB=512`) like the stock uVM. So the report has image-256 and image-512 next to stock. Before this change the phase-D template had `FC_MEM_MIB "256"` written in; now it has a placeholder `__MEM__`, which is 256 for every mode except image512. The generated yamls of the other modes are byte-for-byte what they were |
++| `MODES` default is now `"stock shared perpod image image512"`; phase A creates `real-vm-512` if missing; the "wait for zero" steps wait for every service in `MODES` | `night.sh` | |
++| report: a legend at the top that states each mode's service and VM size, and a memory caveat that says image512 removes the 256 vs 512 difference | `analyze.py` | |
 +
 +`diff -r ~/fc-vm/night-1111 ~/fc-vm/night-1112` shows every change (`changes_vs_night-1111.diff` holds a copy).
++The image512 additions on their own are in `changes_image512.diff`. **How to launch the stock / image / image512 run, how long it
++takes and what must not run meanwhile: `~/fc-vm/real/BENCH.md`.** In short:
++`tmux new -d -s night 'MODES="stock image image512" bash ~/fc-vm/night-1112/night.sh'` takes about 2 h to 2 h 15 min.
 +Everything below is the night-1111 README with paths and names updated. Where it says "three modes", read "the modes in `MODES`".
 +
 +---
@@ -324,7 +368,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  
  One script, `night.sh`, runs five phases (A to E) one after another and is built to finish in under 7 hours
  (expected: about 2 to 2.5 hours, based on the smoke test). It only reads from the daemons. It never uses `sudo`, never restarts vhive,
-@@ -8,20 +28,20 @@
+@@ -8,20 +34,20 @@
  ## Launch
  
  ```bash
@@ -351,7 +395,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  
  A **cold start** is a request that arrives when the service has 0 pods: Knative has to create a pod, and vhive has
  to start a VM before the request can be answered. **Scale to zero**: after about 60 to 90 s with no traffic Knative
-@@ -37,10 +57,10 @@
+@@ -37,10 +63,10 @@
    limit of 6 h 50 (`BUDGET_S`): a phase never gets more time than is left, and is skipped if less than a minute remains.
  - Every line in `night.log` starts with a date, time and phase, for example `2026-11-11 23:04:10 [B] ...`.
    Each phase also writes its full console output to `<phase dir>/phase.out`.
@@ -364,7 +408,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  
  Files in this folder:
  
-@@ -144,7 +164,7 @@
+@@ -144,7 +170,7 @@
  **Matched services from one template.** `scale-template.yaml` is filled in three times; only the name, `GUEST_IMAGE` and
  the port change. Everything else is identical: max-scale 8, min-scale 0, target concurrency 4 per pod,
  `containerConcurrency: 0`, the same TCP readiness probe, the same CPU/memory requests and limits, and
@@ -373,7 +417,7 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  changed. `yaml_differences.txt` shows the `diff` of the three files and lists the differences that are not visible in YAML
  (stock uVM size is hard-coded at 512 MiB; different guest program; one shared VM vs one VM per pod).
  
-@@ -161,8 +181,8 @@
+@@ -161,8 +187,8 @@
  5. Record the highest pod count during the measurement and the count at the end.
  
  Result: `scale.csv` with columns `mode, conc, rps, p50_ms, p99_ms, errors, max_pods, end_pods, warmup_errors, start_epoch`.
@@ -384,3 +428,23 @@ diff -ru -x smoke -x 'prev-*' -x '*.console' -x __pycache__ /users/Arun1903/fc-v
  
  ## Phase E: analysis (`E_analysis/`, seconds)
  
+diff -ru -x smoke -x 'smoke*' -x '*.diff' -x .night.lock /users/Arun1903/fc-vm/night-1111/scale-template.yaml /users/Arun1903/fc-vm/night-1112/scale-template.yaml
+--- /users/Arun1903/fc-vm/night-1111/scale-template.yaml	2026-11-11 07:20:21.960044282 -0700
++++ /users/Arun1903/fc-vm/night-1112/scale-template.yaml	2026-11-11 18:47:58.339587962 -0700
+@@ -1,5 +1,5 @@
+-# ONE template for the three phase-D services. night.sh fills in the name, the guest image and the port
+-# (placeholders below); every other line is identical for stock, shared and per-pod.
++# ONE template for the phase-D services. night.sh fills in the name, the guest image, the port and FC_MEM_MIB
++# (placeholders below; FC_MEM_MIB is 256 for every mode except image512, which gets 512); every other line is identical.
+ apiVersion: serving.knative.dev/v1
+ kind: Service
+ metadata:
+@@ -31,7 +31,7 @@
+         - name: FC_VCPUS
+           value: "1"
+         - name: FC_MEM_MIB
+-          value: "256"
++          value: "__MEM__"
+         resources:
+           requests:
+             cpu: 100m

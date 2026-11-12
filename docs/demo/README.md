@@ -5,5 +5,5 @@
 
 | here | original |
 |---|---|
-| `stock.yaml`, `vm.yaml`, `check.sh`, `regress.sh`, `BENCH.md`, `extra/` | `~/fc-vm/real/` |
+| `stock.yaml`, `vm.yaml`, `vm-512.yaml`, `check.sh`, `check-512.last.log`, `regress.sh`, `BENCH.md`, `extra/` | `~/fc-vm/real/` |
 | `night-1112/` (night.sh, analyze.py, README.md, the diff vs night-1111) | `~/fc-vm/night-1112/` (stock_breakdown.py and scale-template.yaml there are unchanged copies from night-1111) |

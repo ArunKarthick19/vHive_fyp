@@ -12,8 +12,14 @@ night-1112 is a **copy** of `~/fc-vm/night-1111` (that folder is unchanged). The
 | phase B: image uses the per-pod copy of `cold_cycles_fc.sh` with `fcpod-fn` → `real-vm` (`B_cold/image/changes_vs_original.diff`) | `night.sh` phase B | same slots, same vhive log lines, so the same script measures it |
 | phase D service names `n11-*` → `n12-*` (new services; the old `n11-*` stay as they are) | `night.sh` phase D | so runs do not mix |
 | report: image column, notes on the VM-stage end point (TCP accept, log field `probe=tcp`) | `analyze.py` | |
+| **(added 2026-11-11 evening)** a 5th mode **image512** = ksvc `real-vm-512` (`~/fc-vm/real/vm-512.yaml`) in phase B and `n12-image512` in phase D | `night.sh`, `scale-template.yaml`, `analyze.py` | exactly the same as image, but the VM gets 512 MiB (`FC_MEM_MIB=512`) like the stock uVM. So the report has image-256 and image-512 next to stock. Before this change the phase-D template had `FC_MEM_MIB "256"` written in; now it has a placeholder `__MEM__`, which is 256 for every mode except image512. The generated yamls of the other modes are the same as before apart from the two comment lines at the top |
+| `MODES` default is now `"stock shared perpod image image512"`; phase A creates `real-vm-512` if missing; the "wait for zero" steps wait for every service in `MODES` | `night.sh` | |
+| report: a legend at the top that states each mode's service and VM size, and a memory caveat that says image512 removes the 256 vs 512 difference | `analyze.py` | |
 
 `diff -r ~/fc-vm/night-1111 ~/fc-vm/night-1112` shows every change (`changes_vs_night-1111.diff` holds a copy).
+The image512 additions on their own are in `changes_image512.diff`. **How to launch the stock / image / image512 run, how long it
+takes and what must not run meanwhile: `~/fc-vm/real/BENCH.md`.** In short:
+`tmux new -d -s night 'MODES="stock image image512" bash ~/fc-vm/night-1112/night.sh'` takes about 2 h to 2 h 15 min.
 Everything below is the night-1111 README with paths and names updated. Where it says "three modes", read "the modes in `MODES`".
 
 ---

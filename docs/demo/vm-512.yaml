@@ -1,0 +1,37 @@
+# Same as vm.yaml (your per-pod Firecracker VM running the SAME image as stock), but the VM gets 512 MiB of memory,
+# like the stock firecracker-containerd uVM (512 MiB, hard-coded in vHive's ctriface). vm.yaml (real-vm) keeps
+# vhive's default of 256 MiB, so the benchmark has image-256 and image-512 next to stock.
+# The ONLY difference from vm.yaml: the name and the FC_MEM_MIB env (check with: diff vm.yaml vm-512.yaml).
+# Pre-build first (shared with real-vm, same image = same disk):
+#   ~/vhive/bin/fc-rootfs build ghcr.io/vhive-serverless/crccheck-hello-world:latest
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: real-vm-512
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+    spec:
+      containerConcurrency: 0
+      containers:
+      - env:
+        - name: GUEST_PORT
+          value: "8000"
+        - name: GUEST_IMAGE
+          value: firecracker-vm://image
+        - name: FC_MEM_MIB
+          value: "512"
+        image: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+        name: user-container
+        ports:
+        - containerPort: 8000
+          protocol: TCP
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+      enableServiceLinks: false
+      timeoutSeconds: 300

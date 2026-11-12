@@ -9,12 +9,13 @@ import csv, os, re, sys, statistics as st
 
 ROOT, E = sys.argv[1], sys.argv[2]
 B, C, D, A = (os.path.join(ROOT, x) for x in ('B_cold', 'C_stock_breakdown', 'D_scaleout', 'A_preflight'))
-# night-1112: the modes come from night.sh's MODES (default: all four).
-MODES = tuple(os.environ.get('MODES', 'stock shared perpod image').split())
-LABEL = {'stock': 'stock (fcmicro-fn, firecracker-containerd uVM)',
-         'shared': 'shared (fcweb-fn, one Firecracker VM)',
-         'perpod': 'per-pod (fcpod-fn, one Firecracker VM per pod)',
-         'image': 'image (real-vm, per-pod Firecracker VM booting the same image as stock)'}
+# night-1112: the modes come from night.sh's MODES (default: all five).
+MODES = tuple(os.environ.get('MODES', 'stock shared perpod image image512').split())
+LABEL = {'stock': 'stock (fcmicro-fn / n12-stock): firecracker-containerd uVM, 1 vCPU / 512 MiB (hard-coded)',
+         'shared': 'shared (fcweb-fn / n12-shared): one Firecracker VM for all pods, baked-in rootfs, 1 vCPU / 256 MiB',
+         'perpod': 'per-pod (fcpod-fn / n12-perpod): one Firecracker VM per pod, baked-in rootfs, 1 vCPU / 256 MiB',
+         'image': 'image (real-vm / n12-image): per-pod Firecracker VM booting the SAME image as stock, 1 vCPU / 256 MiB',
+         'image512': 'image512 (real-vm-512 / n12-image512): exactly image, but 1 vCPU / 512 MiB = the same size as stock'}
 summary = []          # rows: section, mode, metric, n, mean, min, max
 notes = []            # data problems found while reading
 
@@ -115,7 +116,8 @@ env = open(f'{A}/fcweb_env.txt').read().split() if os.path.exists(f'{A}/fcweb_en
 ver = open(f'{A}/versions.txt').read().splitlines() if os.path.exists(f'{A}/versions.txt') else []
 rev = next((l for l in ver if re.fullmatch(r'[0-9a-f]{40}', l)), 'unknown')
 out += [f'vhive rev `{rev}`, daemon env {" ".join(env) or "unknown"}. '
-        'Values are **mean (min–max)**; cycle 1 of every cold-start run is a warm-up and is excluded.', '']
+        'Values are **mean (min–max)**; cycle 1 of every cold-start run is a warm-up and is excluded.', '',
+        '**Modes (columns):**', ''] + [f'- {LABEL.get(m, m)}' for m in MODES] + ['']
 
 out += ['## B. Cold start (seconds)', '',
         '| metric | ' + ' | '.join(MODES) + ' |', '|---|' + '---|' * len(MODES)]
@@ -126,7 +128,7 @@ for name in ('before VM stage', 'VM stage', 'after VM stage', 'total (script clo
     out.append(f'| {name} | ' + ' | '.join(cell('cold', m, name) for m in MODES) + ' |')
 out += ['', 'VM stage = stock: firecracker-containerd `create VM request` → guest prints `httpd started`; '
         'shared/per-pod: vhive acquire start → `Firecracker VM reachable` (guest app answered HTTP 200); '
-        'image: vhive acquire start (includes naming the image and the rootfs cache lookup) → `Firecracker VM reachable` '
+        'image/image512: vhive acquire start (includes naming the image and the rootfs cache lookup) → `Firecracker VM reachable` '
         '(guest app accepted a TCP connection on :8000; log field probe=tcp).', '']
 
 out += ['## C. Stock VM stage, step by step (seconds)', '']
@@ -163,8 +165,10 @@ cav = [
     'for shared/per-pod). No real function code, no state, no CPU or I/O work; results say nothing about heavier functions.',
     '**Memory differs: 256 MiB vs 512 MiB.** shared, per-pod and image VMs get '
     + (next((e.split('=')[1] for e in env if e.startswith('FCWEB_MEM_MIB=')), '256')) +
-    ' MiB (FCWEB_MEM_MIB / FC_MEM_MIB); stock uVMs get 512 MiB, hard-coded in vHive\'s ctriface. All use 1 vCPU.',
-    '**stock vs image is the like-for-like pair.** Both run the identical image (crccheck-hello-world, `sh -c "httpd & wait"`); '
+    ' MiB (FCWEB_MEM_MIB / FC_MEM_MIB); stock uVMs get 512 MiB, hard-coded in vHive\'s ctriface. All use 1 vCPU.'
+    + (' **image512** removes this difference: it is image with FC_MEM_MIB=512, so stock vs image512 is the same image '
+       'AND the same VM size; image vs image512 shows how much the VM size itself matters.' if 'image512' in MODES else ''),
+    '**stock vs image (and image512) is the like-for-like comparison.** Both run the identical image (crccheck-hello-world, `sh -c "httpd & wait"`); '
     'image boots it from a pre-built read-only ext4 with fcinit as PID 1 and a tmpfs overlay, without agent, '
     'devmapper snapshot or per-VM netns. Remaining differences: memory (above), the VM-stage end point (below), '
     'and image VMs never pull an image at cold start (the rootfs is built ahead of time; phase A makes sure).',

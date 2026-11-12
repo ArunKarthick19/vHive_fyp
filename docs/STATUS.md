@@ -15,6 +15,9 @@ The node runs the new daemon (commit `7829a19`). The original binary is at `~/vh
 2. `kubectl get nodes` shows Ready; `pgrep -a -x vhive-perpod` shows `./vhive-perpod`.
 3. `bash ~/fc-vm/real/check.sh`: about 4 minutes, ends with `ALL CHECKS PASSED` (logs from my runs: `~/fc-vm/real/check.last.log`).
 4. Read `~/fc-vm/real/BENCH.md` before benchmarking. It uses `~/fc-vm/night-1112/` (a copy; night-1111 is untouched).
+   **Update 2026-11-11 18:55:** the benchmark is prepared but not started. There are now three modes, stock, image (256 MiB) and image512
+   (`real-vm-512`, `FC_MEM_MIB=512`, the same size as stock). `VM_YAML=vm-512.yaml check.sh` passed and confirmed the VM really has 512 MiB.
+   The launch command, the expected time (about 2 h 15 min) and what must not run meanwhile are in BENCH.md.
 5. Skim "Known bugs / surprises" below. Point 1 (the shared VM's teardown waits for kubelet) matters for your shared-mode numbers.
 
 ## What works (all verified on the node today)
@@ -140,3 +143,7 @@ If the `vhive` session is missing: `tmux new -d -s vhive -c ~/vhive` first.
 - 09:06 daemon swap #2 (7829a19). check.sh passes again. regress.sh flagged the shared-VM teardown delay (existing behaviour, see bugs #1).
 - 09:10–09:15 BENCH.md, night-1112, LIMITS.md, DESIGN.md updates. 
 - 09:14–09:19 regress.sh passes (final binary). 09:19–09:24 night-1112 smoke passes. 09:25 final docs. `real-vm` was left created (at zero pods) by the smoke run; night-1112 would create it anyway.
+- 18:43–18:55 (evening, separate request) benchmark prep: `~/fc-vm/real/vm-512.yaml` (ksvc `real-vm-512`, FC_MEM_MIB=512); check.sh takes
+  `VM_YAML=` and now checks the running VM's memory; `VM_YAML=vm-512.yaml check.sh` passed (512 MiB, 1 vCPU, identical bytes, zero, clean slot).
+  night-1112 gained mode `image512` (phase B `real-vm-512`, phase D `n12-image512`; diff in `night-1112/changes_image512.diff`).
+  A phase-A-only dry run (scratch output) created `real-vm-512`, which is left in place at zero pods. BENCH.md rewritten. Nothing was benchmarked.
