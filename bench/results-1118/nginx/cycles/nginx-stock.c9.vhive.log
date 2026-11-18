@@ -1,0 +1,24 @@
+time="2026-11-18T10:14:09.225602879-07:00" level=info msg="/docker-entrypoint.sh: /docker-entrypoint.d/ is not empty, will attempt to perform configuration" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.225652054-07:00" level=info msg="/docker-entrypoint.sh: Looking for shell scripts in /docker-entrypoint.d/" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.225665325-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.228663097-07:00" level=info msg="/docker-entrypoint.sh: Launching /docker-entrypoint.d/10-listen-on-ipv6-by-default.sh" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.228690799-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.230860975-07:00" level=info msg="10-listen-on-ipv6-by-default.sh: info: ipv6 not available" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.230875743-07:00" level=info msg="/docker-entrypoint.sh: Sourcing /docker-entrypoint.d/15-local-resolvers.envsh" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.230884923-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.233014109-07:00" level=info msg="/docker-entrypoint.sh: Launching /docker-entrypoint.d/20-envsubst-on-templates.sh" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.233030654-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.242037693-07:00" level=info msg="/docker-entrypoint.sh: Launching /docker-entrypoint.d/30-tune-worker-processes.sh" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.242052481-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.243315953-07:00" level=info msg="/docker-entrypoint.sh: Configuration complete; ready for start up" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.243329082-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314808346-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: using the \"epoll\" event method" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314834364-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: nginx/1.27.5" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314840139-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: built by gcc 14.2.0 (Alpine 14.2.0) " vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314848113-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: OS: Linux 5.10.0" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314852626-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: getrlimit(RLIMIT_NOFILE): 1024:1024" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314860139-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: start worker processes" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314867996-07:00" level=info msg="2026/11/18 17:14:09 [notice] 1#1: start worker process 19" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:09.314880886-07:00" level=info vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:10.380903305-07:00" level=info msg="172.17.0.9 - - [18/Nov/2026:17:14:10 +0000] \"GET / HTTP/1.1\" 200 615 \"-\" \"curl/8.5.0\" \"128.110.218.148, 192.168.77.134, 192.168.77.137\"" vmID=26-076206ba-8608-4a
+time="2026-11-18T10:14:10.381047789-07:00" level=info vmID=26-076206ba-8608-4a
