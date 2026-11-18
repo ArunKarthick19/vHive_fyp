@@ -1,0 +1,3 @@
+NAME       URL                                              LATESTCREATED    LATESTREADY      READY   REASON
+bb-stock   http://bb-stock.default.192.168.1.240.sslip.io   bb-stock-00001   bb-stock-00001   True    
+bb-mine    http://bb-mine.default.192.168.1.240.sslip.io    bb-mine-00001    bb-mine-00001    True    

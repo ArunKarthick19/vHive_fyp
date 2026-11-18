@@ -1,0 +1,6 @@
+time="2026-11-18T09:22:13.349654995-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-18T09:22:14.142855784-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-18T09:22:16.364514191-07:00" level=info msg="httpd started" vmID=12-81e2811e-5a3b-4c
+time="2026-11-18T09:22:16.364561225-07:00" level=info vmID=12-81e2811e-5a3b-4c
+time="2026-11-18T09:22:16.709118137-07:00" level=info msg="172.17.0.9:42153: response:200" vmID=12-81e2811e-5a3b-4c
+time="2026-11-18T09:22:16.709151128-07:00" level=info vmID=12-81e2811e-5a3b-4c

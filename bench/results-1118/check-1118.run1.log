@@ -1,0 +1,27 @@
+08:54:24 PASS: identical image in both manifests: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+08:54:24 PASS: rootfs pre-built: /users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0182ded729c9.ext4
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+Warning: Kubernetes default value is insecure, Knative may default this to secure in a future release: spec.template.spec.containers[0].securityContext.allowPrivilegeEscalation, spec.template.spec.containers[0].securityContext.capabilities, spec.template.spec.containers[0].securityContext.runAsNonRoot, spec.template.spec.containers[0].securityContext.seccompProfile
+08:54:34 PASS: ksvc real-stock Ready
+08:54:34 PASS: ksvc real-vm-512 Ready
+08:54:34 real-stock request 1: HTTP 200 0.015356 s
+08:54:34 real-stock request 2: HTTP 200 0.004245 s
+08:54:34 real-stock request 3: HTTP 200 0.004237 s
+08:54:34 real-vm-512 request 1: HTTP 200 0.015004 s
+08:54:34 real-vm-512 request 2: HTTP 200 0.003536 s
+08:54:34 real-vm-512 request 3: HTTP 200 0.003826 s
+08:54:34 PASS: all 6 responses identical (439 bytes, sha256 d05318e5f8904725)
+08:54:34 PASS: real-vm-512 VM in slot 1 runs with 512 MiB, 1 vCPU (wanted 512 MiB)
+08:54:34 waiting for scale to zero (no traffic; Knative needs about 60-90 s)
+08:56:07 PASS: both services at zero pods after 93 s
+08:56:10 PASS: VM in slot 1 fully torn down (no firecracker, tap or socket)
+  vhive: time="2026-11-18T08:56:05.864368021-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=2f8a6474f79e8ffe314fb346f6109e597add7985ddcd7d18ade6d41d43814a83 slot=1 took=71.232929ms vmI
+08:56:17 real-stock cold request (from zero pods): HTTP 200 7.457425 s
+08:56:17 PASS: real-stock cold answer identical
+08:56:18 real-vm-512 cold request (from zero pods): HTTP 200 0.962494 s
+08:56:18 PASS: real-vm-512 cold answer identical
+  vhive: time="2026-11-18T08:56:18.392464209-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=8bb11552e990089945105593abd7090ff44188779bf102c105a78423c3d0e4df slot=1 took=146.945248ms vmID=f
+08:56:18 PASS: deleted real-stock and real-vm-512
+08:56:58 PASS: after delete: slot 1 clean
+08:56:58 responses kept in /users/Arun1903/fc-vm/real/out/check-1118-085424
+08:56:58 ALL CHECKS PASSED
