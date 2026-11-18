@@ -1,0 +1,49 @@
+2026-11-18 10:23:16 start workload=httpbin services='httpbin-stock httpbin-mine' cycles=11 ingress=10.103.200.78
+2026-11-18 10:23:16   httpbin-stock -> Host: httpbin-stock.default.192.168.1.240.sslip.io
+2026-11-18 10:23:16   httpbin-mine -> Host: httpbin-mine.default.192.168.1.240.sslip.io
+2026-11-18 10:23:16   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-18 10:23:16 cycle 1 httpbin-stock: waiting for idle
+2026-11-18 10:25:03 cycle 1 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.117568s bytes=9593 idle_wait=101s  
+2026-11-18 10:25:03 cycle 1 httpbin-mine: waiting for idle
+2026-11-18 10:26:51 cycle 1 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.231760s bytes=9593 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=861.646123ms probe=tcp] 
+2026-11-18 10:26:51 cycle 2 httpbin-stock: waiting for idle
+2026-11-18 10:28:40 cycle 2 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.352213s bytes=9593 idle_wait=104s  
+2026-11-18 10:28:40 cycle 2 httpbin-mine: waiting for idle
+2026-11-18 10:30:31 cycle 2 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.206226s bytes=9593 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=855.521348ms probe=tcp] 
+2026-11-18 10:30:31 cycle 3 httpbin-stock: waiting for idle
+2026-11-18 10:32:20 cycle 3 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.410750s bytes=9593 idle_wait=103s  
+2026-11-18 10:32:20 cycle 3 httpbin-mine: waiting for idle
+2026-11-18 10:34:11 cycle 3 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.231543s bytes=9593 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=868.144471ms probe=tcp] 
+2026-11-18 10:34:11 cycle 4 httpbin-stock: waiting for idle
+2026-11-18 10:36:00 cycle 4 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.317439s bytes=9593 idle_wait=103s  
+2026-11-18 10:36:00 cycle 4 httpbin-mine: waiting for idle
+2026-11-18 10:37:51 cycle 4 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.229873s bytes=9593 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=861.74677ms probe=tcp] 
+2026-11-18 10:37:51 cycle 5 httpbin-stock: waiting for idle
+2026-11-18 10:39:38 cycle 5 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.405335s bytes=9593 idle_wait=101s  
+2026-11-18 10:39:38 cycle 5 httpbin-mine: waiting for idle
+2026-11-18 10:42:07 cycle 5 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.216717s bytes=9593 idle_wait=146s [firecrackerVM=fcweb1 launchToHTTP200=849.161413ms probe=tcp] 
+2026-11-18 10:42:07 cycle 6 httpbin-stock: waiting for idle
+2026-11-18 10:43:56 cycle 6 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.225481s bytes=9593 idle_wait=103s  
+2026-11-18 10:43:56 cycle 6 httpbin-mine: waiting for idle
+2026-11-18 10:45:47 cycle 6 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.213979s bytes=9593 idle_wait=107s [firecrackerVM=fcweb1 launchToHTTP200=848.069762ms probe=tcp] 
+2026-11-18 10:45:47 cycle 7 httpbin-stock: waiting for idle
+2026-11-18 10:47:34 cycle 7 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.424523s bytes=9593 idle_wait=101s  
+2026-11-18 10:47:34 cycle 7 httpbin-mine: waiting for idle
+2026-11-18 10:50:07 cycle 7 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.222776s bytes=9593 idle_wait=150s [firecrackerVM=fcweb1 launchToHTTP200=849.959152ms probe=tcp] 
+2026-11-18 10:50:07 cycle 8 httpbin-stock: waiting for idle
+2026-11-18 10:51:56 cycle 8 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.207890s bytes=9593 idle_wait=104s  
+2026-11-18 10:51:56 cycle 8 httpbin-mine: waiting for idle
+2026-11-18 10:53:47 cycle 8 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.235932s bytes=9593 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=853.325498ms probe=tcp] 
+2026-11-18 10:53:47 cycle 9 httpbin-stock: waiting for idle
+2026-11-18 10:55:34 cycle 9 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.166733s bytes=9593 idle_wait=101s  
+2026-11-18 10:55:34 cycle 9 httpbin-mine: waiting for idle
+2026-11-18 10:57:25 cycle 9 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.231077s bytes=9593 idle_wait=107s [firecrackerVM=fcweb1 launchToHTTP200=844.403739ms probe=tcp] 
+2026-11-18 10:57:25 cycle 10 httpbin-stock: waiting for idle
+2026-11-18 10:59:11 cycle 10 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.487864s bytes=9593 idle_wait=101s  
+2026-11-18 10:59:11 cycle 10 httpbin-mine: waiting for idle
+2026-11-18 11:01:09 cycle 10 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.793127s bytes=9593 idle_wait=114s [firecrackerVM=fcweb1 launchToHTTP200=864.518496ms probe=tcp] 
+2026-11-18 11:01:09 cycle 11 httpbin-stock: waiting for idle
+2026-11-18 11:02:58 cycle 11 httpbin-stock: HTTP 200 curl_exit=0 time_total=4.421227s bytes=9593 idle_wait=104s  
+2026-11-18 11:02:58 cycle 11 httpbin-mine: waiting for idle
+2026-11-18 11:04:49 cycle 11 httpbin-mine: HTTP 200 curl_exit=0 time_total=2.239609s bytes=9593 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=856.568287ms probe=tcp] 
+2026-11-18 11:04:49 done workload=httpbin

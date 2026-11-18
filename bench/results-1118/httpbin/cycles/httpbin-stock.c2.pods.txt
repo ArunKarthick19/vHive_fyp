@@ -1,0 +1,2 @@
+NAME                                              READY   STATUS    RESTARTS   AGE   IP               NODE                                                      NOMINATED NODE   READINESS GATES
+httpbin-stock-00001-deployment-55c59cd46d-hdmxq   2/2     Running   0          5s    192.168.77.173   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
