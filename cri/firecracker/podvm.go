@@ -27,6 +27,7 @@ import (
 	"errors"
 	"fmt"
 	"os"
+	"path/filepath"
 	"sync"
 	"time"
 
@@ -82,6 +83,8 @@ type podVMs struct {
 	// (firecracker-vm://image) stops on its own, i.e. not through stop or a
 	// failed create. It runs on the watcher goroutine. nil: only logged.
 	onAppExit func(sandboxID string, e vmExit)
+	// dirOf is a slot's VM directory (slotFcwebSpec(n).Dir); tests override it.
+	dirOf func(slot int) string
 }
 
 func newPodVMs(newVM func(fcwebSpec) podVMHandle) *podVMs {
@@ -90,7 +93,20 @@ func newPodVMs(newVM func(fcwebSpec) podVMHandle) *podVMs {
 		pods:      make(map[string]*podVM),
 		newVM:     newVM,
 		removeDir: os.RemoveAll,
+		dirOf:     func(n int) string { return slotFcwebSpec(n).Dir },
 	}
+}
+
+// consolePath is the serial console log of the sandbox's VM, or "" if the
+// sandbox has none.
+func (m *podVMs) consolePath(sandboxID string) string {
+	m.mu.Lock()
+	defer m.mu.Unlock()
+	p := m.pods[sandboxID]
+	if p == nil {
+		return ""
+	}
+	return filepath.Join(m.dirOf(p.slot), "console.log")
 }
 
 // podVMID is unique per VM: the slot tells VMs alive at the same time apart,
