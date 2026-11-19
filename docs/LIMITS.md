@@ -45,14 +45,15 @@ judge whether it matters for a given function. Items marked *(same as stock)* ar
 14. **Writes live in RAM.** `/` is an overlay whose upper layer is tmpfs inside the VM, so every written byte uses VM memory
     (`FC_MEM_MIB`, default 256). Writing a lot (big temp files, caches) can run the VM out of memory. Writes are lost when the
     VM stops, just like a container's writable layer.
-15. **Logs are not in `kubectl logs`.** The app's stdout/stderr go to `/run/vhive-fcweb/<slot>/console.log` (readable without sudo
-    while the VM runs; the next boot in the same slot truncates it). `kubectl logs` shows the placeholder container.
+15. **Logs:** `kubectl logs` (and `--previous`) show the VM's console (the app's stdout+stderr and fcinit's lines), copied by vhive into the container log
+    file (branch drawbacks-1119, DRAWBACKS_PLAN.md §2). Still: the host placeholder's own output is interleaved, stdout and stderr are not separated, and
+    the raw `/run/vhive-fcweb/<slot>/console.log` is unbounded while the VM runs and truncated by the next boot in the slot.
 16. **No graceful shutdown.** Scale-to-zero stops the Firecracker process. The app's SIGTERM handler does not run. *(Stock
     also stops its VM on scale-down; I did not check whether stock delivers SIGTERM to the app first.)*
-17. **A crash after start is not reported to Kubernetes.** If the app exits, fcinit powers the VM off. Kubernetes still
-    sees the placeholder as Running; queue-proxy's readiness probe then fails and Knative stops routing to that pod, but nothing
-    restarts it until the pod is replaced. A crash **during** boot is reported: CreateContainer fails with the console tail, and kubelet
-    retries.
+17. **A crash after start is reported (branch drawbacks-1119, DRAWBACKS_PLAN.md §1).** When the app exits, fcinit records its exit code on a status drive and powers off;
+    vhive stops the placeholder and reports the container as exited with that code (`kubectl describe`: Last State Terminated, Exit Code N), and kubelet restarts it
+    (CrashLoopBackOff if it keeps exiting). If the VM dies without a record (kernel panic, OOM, killed), the code is 255 with reason `VMExited`.
+    Not covered: a hung app (no exit) is only seen by queue-proxy's readiness probe, as for any container without a liveness probe.
 18. **At most 16 per-pod VMs on the node**, shared with `firecracker-vm://pod` (slots 1-16).
 19. **The config drive is readable by the app** (`/dev/vdb`). It holds the same env the app already has. On the host it is
     0600 and deleted when the VM stops.

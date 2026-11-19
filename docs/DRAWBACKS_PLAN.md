@@ -40,3 +40,68 @@ Branch `drawbacks-1119` (from `real-image-vm`). Progress log: `~/fc-vm/DRAWBACKS
   the host placeholder (no `/.fcinit`) serves forever, so it cannot fake the result. The same service is run with the **old** binary (expect: stays Running,
   0 restarts) and the **new** binary (expect: restarts, Exit Code 3 in describe). Before every push: `go test -race ./cri/firecracker/...`, `check-1118.sh` with
   `VM_YAML=vm-512.yaml`, and `regress.sh`.
+
+**Result (verified 2026-11-18, logs in `~/fc-vm/drawbacks/`).** The old binary left the pod `Running` with 0 restarts for 120 s after the app exited.
+With the new one, the test app's `exit 3` gives `RESTARTS` 1, 2, 3, then `Error` and `CrashLoopBackOff`. `kubectl describe` shows
+`Last State: Terminated, Reason: Error, Exit Code: 3` with the console tail. Killing the VM's Firecracker from outside gives `Reason: VMExited, Exit Code: 255`.
+Scale-to-zero (check-1118.sh) is *not* reported as a crash.
+
+## 2. Logs: `kubectl logs` (implemented on this branch)
+
+### What kubelet needs
+kubelet sends `CreateContainer` with `config.log_path` (`user-container/<attempt>.log`) relative to the sandbox's `log_directory`
+(`/var/log/pods/<ns>_<pod>_<uid>/`). It reads the container's log from the full path that `ContainerStatus.log_path` returns, in the CRI log format,
+one record per line: `<RFC3339Nano time> <stdout|stderr> <F|P> <text>` (`P` = partial line). When the file reaches `containerLogMaxSize`, kubelet
+renames it and calls `ReopenContainerLog`. `kubectl logs -f` follows the file. There is no CRI streaming call for logs; the file is the whole contract.
+Before this branch, that file was written by containerd **for the host placeholder**, so `kubectl logs` showed the placeholder's output, not the VM's.
+
+### What was implemented (smallest step that gives correct output)
+A per-container **log forwarder** in vhive (`cri/firecracker/vmlogs.go`) polls the VM's `console.log` every 250 ms and appends its new lines in CRI format
+to that same file. Firecracker's own lines are dropped and CRs are removed; lines over 16 KiB are split into `P` records. The file is opened for each write with `O_APPEND`, so after kubelet's
+rotation the next write goes to the new file (no `ReopenContainerLog` handling needed). For a freshly booted VM the forwarder copies the whole console (fcinit's
+start-up lines included). For a container that reuses a running VM, it copies from the console's current end. It is drained and stopped when the app exits, before the
+placeholder is stopped, so `kubectl logs --previous` has the last lines, and also at StopPodSandbox. Baked-in modes and stock are untouched.
+
+### What is still missing (documented, not done)
+- The **placeholder's own output** is still in the same file, interleaved (e.g. a second `httpd started`). Fixing it needs the placeholder's log
+  redirected (rewrite `log_path` in the forwarded CreateContainer and patch it back in ContainerStatus) or the placeholder replaced by a no-op image.
+- **stdout and stderr are not separated:** fcinit gives the app one pipe. Two pipes plus a tag per console line would fix it.
+- **Not live while vhive is down:** lines written while vhive restarts are copied when it is back only if the forwarder is restarted. Today, a vhive restart loses the
+  forwarders of running VMs (like every other in-memory state of the per-pod VMs).
+- `console.log` itself still grows without a bound during a VM's life and is truncated on the next boot in the slot (LIMITS #15). A size cap would mean a
+  rotating writer between Firecracker's stdout and the file. That is not done.
+
+## 3. Outbound network and DNS (design only, not implemented)
+
+### What is missing today (checked read-only on node-000, 2026-11-18)
+- **Routing:** the guest has `10.200.0.4n+2/30` with its gateway on the host tap `fcweb<n>`. The host forwards (`net.ipv4.ip_forward = 1`, FORWARD policy ACCEPT behind
+  Calico's and kube-proxy's chains), but **no NAT rule covers 10.200.0.0/24** (`iptables-save | grep 10.200` is empty). Replies from the
+  internet or from other pods cannot find their way back to 10.200.0.x, so no connection succeeds.
+- **DNS:** fcinit writes no `/etc/resolv.conf`. crccheck's image has none, and httpbin's is empty. The host's own resolver is `127.0.0.53` (systemd-resolved),
+  which the guest cannot use anyway. Pods normally get `nameserver 10.96.0.10` (CoreDNS) plus `search <ns>.svc.cluster.local svc.cluster.local cluster.local`
+  and `options ndots:5`. kubelet hands vhive exactly this in the CRI request: `CreateContainerRequest.sandbox_config.dns_config` (servers, searches, options).
+- **What Kubernetes/Knative expect:** a pod can reach Services (ClusterIP, DNS names), other pods and the internet, subject to NetworkPolicy. Knative itself needs nothing
+  from the user container except the inbound port. Ingress already works (queue-proxy → guest IP).
+- Stock vHive gives its uVMs egress through `networking/networking.go`: a netns per VM, SNAT inside it, and an nftables `masquerade` on the host uplink.
+
+### Options
+| | what | pros | cons | effort |
+|---|---|---|---|---|
+| **A. Host NAT + resolv.conf** (recommended first step) | per slot at tap creation: `iptables -t nat -A POSTROUTING -s 10.200.0.4n+2/32 ! -d 10.200.0.0/24 -j MASQUERADE` plus an anti-spoof rule `-i fcweb<n> ! -s <guestIP> -j DROP`. Removed in cleanup and by the startup sweep. vhive copies `dns_config` onto the config drive and fcinit writes `/etc/resolv.conf` from it | small, mirrors stock vHive, ClusterIP Services work (kube-proxy DNATs in PREROUTING for packets from the tap), CoreDNS works | traffic leaves as the **node's** IP: NetworkPolicy, which Calico applies on the pod's `cali*` interface, does **not** apply to the VM; other pods see the node, not the pod IP | about 1 day: rule lifecycle + sweep + tests (resolv.conf part: 2–3 h) |
+| B. VM inside the pod's network namespace | create the tap in the placeholder sandbox's netns and redirect eth0↔tap with tc (like Kata Containers) | the VM *is* the pod IP: NetworkPolicy, Services and source IP are all correct | queue-proxy shares that netns and must reach the app differently; slot networking, probes and teardown change; large | 1–2 weeks |
+| C. Proxy on the host (HTTP CONNECT / SOCKS on the tap) | only proxied traffic leaves | very easy to control | apps must be proxy-aware; not transparent; no DNS | 1–2 days |
+
+### Security implications (for A)
+- **The VM is root inside its guest** and can send any packet on its tap. Without the anti-spoof rule it could use another slot's guest IP, or any source.
+- **NetworkPolicy is bypassed** (traffic is masqueraded as the node), and so are egress restrictions a cluster may rely on.
+- **The node's own services become reachable**, as from any host process: kubelet `:10250`, etcd `:2379`/`:2380` (on this single-node cluster), the Kubernetes API,
+  and the cloud metadata address if there is one. INPUT rules for `-i fcweb+` (allow only the established/related traffic for probes, plus DNS to CoreDNS through the
+  Service IP) should come with the NAT rules.
+- Rate limiting and connection tracking limits per tap are optional hardening.
+- Stock vHive's uVMs have the same exposure today (their egress is also masqueraded on the host), so option A does not add a new class of risk compared to stock. It is still a change from today's
+  image VMs, which cannot reach anything.
+
+### How it would be tested
+Unit: rule generation per slot (pure), resolv.conf rendering from `DNSConfig` (pure). End to end: an image whose app runs `nslookup kubernetes.default` and
+`wget -qO- http://<Service>` and prints the results. Check the rules are gone after scale-to-zero and after the startup sweep. Run regress plus a NetworkPolicy
+test documenting that the policy is *not* applied (until option B).
