@@ -87,7 +87,13 @@ func (s *Service) ListContainers(ctx context.Context, r *criapi.ListContainersRe
 // present, returns an error.
 func (s *Service) ContainerStatus(ctx context.Context, r *criapi.ContainerStatusRequest) (*criapi.ContainerStatusResponse, error) {
 	log.Tracef("ContainerStatus for %q", r.GetContainerId())
-	return s.stockRuntimeClient.ContainerStatus(ctx, r)
+	resp, err := s.stockRuntimeClient.ContainerStatus(ctx, r)
+	if err == nil && resp != nil {
+		if p, ok := s.serv.(ContainerStatusPatcher); ok {
+			p.PatchContainerStatus(resp)
+		}
+	}
+	return resp, err
 }
 
 // StopContainer stops a running container with a grace period (i.e., timeout).

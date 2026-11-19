@@ -44,6 +44,11 @@ type podVMHandle interface {
 	// them is still there. It is idempotent.
 	cleanup() error
 	guestIP() string
+	// exitCh is closed when the VM process booted last has exited (nil if
+	// none). exitReport tells how its app ended. Both are called with the
+	// podVM's lock held, or (exitReport) after exitCh is closed.
+	exitCh() <-chan struct{}
+	exitReport() vmExit
 }
 
 func newRealPodVM(spec fcwebSpec) podVMHandle {
@@ -72,6 +77,11 @@ type podVMs struct {
 
 	newVM     func(fcwebSpec) podVMHandle
 	removeDir func(string) error
+
+	// onAppExit is told when the app of a VM booted with a status drive
+	// (firecracker-vm://image) stops on its own, i.e. not through stop or a
+	// failed create. It runs on the watcher goroutine. nil: only logged.
+	onAppExit func(sandboxID string, e vmExit)
 }
 
 func newPodVMs(newVM func(fcwebSpec) podVMHandle) *podVMs {
@@ -142,7 +152,37 @@ func (m *podVMs) acquire(ctx context.Context, sandboxID string, cfg fcwebConfig)
 	}
 	p.cfg = cfg
 	p.logger().WithFields(log.Fields{"ip": p.vm.guestIP(), "took": time.Since(start)}).Info("per-pod Firecracker VM reachable")
+	if cfg.StatusDrive {
+		go m.watchExit(p, p.vm.exitCh())
+	}
 	return p.vm.guestIP(), p.vmID, true, nil
+}
+
+// watchExit waits until the VM process of one boot exits. If vhive did not
+// cause it (p was not torn down, and no newer boot replaced that process), it
+// reads the app's exit record and reports it.
+func (m *podVMs) watchExit(p *podVM, exited <-chan struct{}) {
+	if exited == nil {
+		return
+	}
+	<-exited
+	e := p.vm.exitReport()
+
+	p.Lock()
+	stale := p.gone || p.vm.exitCh() != exited
+	p.Unlock()
+	if stale {
+		return
+	}
+
+	l := p.logger().WithFields(log.Fields{"exitCode": e.Status.ExitCode, "reason": e.Status.Reason})
+	if e.Err != nil {
+		l = p.logger().WithField("statusDrive", e.Err.Error())
+	}
+	l.Warn("app in per-pod Firecracker VM exited; reporting the container as exited")
+	if m.onAppExit != nil {
+		m.onAppExit(p.sandboxID, e)
+	}
 }
 
 // stop tears down the sandbox's VM. Stopping a sandbox with no VM, or one

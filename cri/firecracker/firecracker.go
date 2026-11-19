@@ -39,6 +39,7 @@ import (
 	"time"
 
 	log "github.com/sirupsen/logrus"
+	"github.com/vhive-serverless/vhive/cri/firecracker/guest"
 	"github.com/vishvananda/netlink"
 )
 
@@ -66,6 +67,9 @@ const (
 	// fcwebGuestConfigFile is the per-VM config drive of an image VM, in the
 	// VM's directory.
 	fcwebGuestConfigFile = "guest-config.bin"
+	// fcwebStatusFile is the image VM's status drive (fcinit records the
+	// app's exit on it), in the VM's directory.
+	fcwebStatusFile = "exit-status.bin"
 
 	fcwebBootTimeout  = 30 * time.Second
 	fcwebPollInterval = 5 * time.Millisecond
@@ -286,6 +290,12 @@ func (vm *firecrackerVM) writeConfig() (string, error) {
 			return "", err
 		}
 	}
+	if vm.cfg.StatusDrive {
+		// Zeroed: an empty drive after the VM stops means fcinit wrote no record.
+		if err := os.WriteFile(statusPath(vm.spec), make([]byte, guest.StatusDriveSize), 0o600); err != nil {
+			return "", err
+		}
+	}
 	data, err := fcwebConfigJSON(vm.spec, vm.cfg)
 	if err != nil {
 		return "", err
@@ -295,6 +305,33 @@ func (vm *firecrackerVM) writeConfig() (string, error) {
 }
 
 func guestConfigPath(spec fcwebSpec) string { return filepath.Join(spec.Dir, fcwebGuestConfigFile) }
+
+func statusPath(spec fcwebSpec) string { return filepath.Join(spec.Dir, fcwebStatusFile) }
+
+// vmExit is what is known about a VM that stopped on its own: fcinit's
+// record from the status drive (Err set if there is none) and the console tail.
+type vmExit struct {
+	Status  guest.ExitStatus
+	Err     error
+	Console string
+}
+
+// exitCh is closed when the current Firecracker process has exited; nil if
+// none was started. The caller serializes it with boot and cleanup.
+func (vm *firecrackerVM) exitCh() <-chan struct{} { return vm.exited }
+
+// exitReport reads how the app ended. Only meaningful after exitCh is closed
+// and before the next boot or cleanup.
+func (vm *firecrackerVM) exitReport() vmExit {
+	r := vmExit{Console: consoleTail(vm.spec)}
+	data, err := os.ReadFile(statusPath(vm.spec))
+	if err != nil {
+		r.Err = err
+		return r
+	}
+	r.Status, r.Err = guest.DecodeExitStatus(data)
+	return r
+}
 
 // fcwebConfigJSON is the Firecracker --config-file for a VM. Pure, so the
 // shared VM's config can be checked against a golden file.
@@ -311,6 +348,15 @@ func fcwebConfigJSON(spec fcwebSpec, c fcwebConfig) ([]byte, error) {
 		// The image VM's config drive, /dev/vdb in the guest (see package guest).
 		drives = append(drives, map[string]any{
 			"drive_id": "config", "path_on_host": guestConfigPath(spec), "is_root_device": false, "is_read_only": true,
+		})
+	}
+	if c.StatusDrive {
+		// /dev/vdc in the guest: only valid as the third drive, after the config drive.
+		if c.GuestConfig == "" {
+			return nil, errors.New("a status drive needs a config drive")
+		}
+		drives = append(drives, map[string]any{
+			"drive_id": "status", "path_on_host": statusPath(spec), "is_root_device": false, "is_read_only": false,
 		})
 	}
 	cfg := map[string]any{
@@ -476,6 +522,9 @@ func (vm *firecrackerVM) cleanup() error {
 	if err := os.Remove(guestConfigPath(vm.spec)); err != nil && !errors.Is(err, os.ErrNotExist) {
 		vm.logger().WithError(err).Error("failed to remove guest config drive")
 	}
+	if err := os.Remove(statusPath(vm.spec)); err != nil && !errors.Is(err, os.ErrNotExist) {
+		vm.logger().WithError(err).Error("failed to remove status drive")
+	}
 
 	var errs []error
 	if pids := fcwebPids(vm.spec.Sock); len(pids) > 0 {
@@ -570,7 +619,7 @@ func fcwebRootfs() string {
 // per-pod mode only, a function overrides them with FC_VCPUS, FC_MEM_MIB and
 // FC_ROOTFS in its Knative Service env; the shared VM ignores FC_*.
 //
-// The last four fields are only set for an image VM (firecracker-vm://image,
+// The last five fields are only set for an image VM (firecracker-vm://image,
 // see imagevm.go); their zero values give the baked-in rootfs behaviour.
 // Every field is comparable, so configs can be compared with ==.
 type fcwebConfig struct {
@@ -582,6 +631,7 @@ type fcwebConfig struct {
 	Port        string // guest port to wait for; "" is the VM's default port
 	ProbeTCP    bool   // wait for a TCP accept instead of an HTTP response
 	GuestConfig string // config drive contents; "" attaches no config drive
+	StatusDrive bool   // attach a status drive and watch for the app's exit (needs GuestConfig)
 }
 
 func defaultFcwebConfig() fcwebConfig {
