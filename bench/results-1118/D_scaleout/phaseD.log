@@ -1,0 +1,40 @@
+service.serving.knative.dev/d19-stock created
+service.serving.knative.dev/d19-mine created
+service.serving.knative.dev/d19-stock condition met
+service.serving.knative.dev/d19-mine condition met
+2026-11-18 19:30:35 phase D start ingress=10.103.200.78 levels=[1 2 4 8 16 32] churn=[8 16] warm=30s measure=30s deadline 22:15:00
+2026-11-18 19:30:35   stock: d19-stock Host d19-stock.default.192.168.1.240.sslip.io
+2026-11-18 19:30:35   mine: d19-mine Host d19-mine.default.192.168.1.240.sslip.io
+2026-11-18 19:30:35 stock keepalive c=1: waiting for zero
+2026-11-18 19:33:20 stock keepalive c=1: 246.1 rps p50 4.27 p99 5.09 ms, errors 0 [], conns 1, pods max 1 | warm-up errors 0 [] | TIME_WAIT 435/463/464 
+2026-11-18 19:33:20 mine keepalive c=1: waiting for zero
+2026-11-18 19:36:08 mine keepalive c=1: 310.7 rps p50 3.34 p99 4.02 ms, errors 0 [], conns 1, pods max 1 | warm-up errors 0 [] | TIME_WAIT 430/452/456 
+2026-11-18 19:36:08 stock keepalive c=2: waiting for zero
+2026-11-18 19:38:52 stock keepalive c=2: 548.2 rps p50 3.65 p99 5.00 ms, errors 0 [], conns 2, pods max 1 | warm-up errors 0 [] | TIME_WAIT 432/461/453 
+2026-11-18 19:38:52 mine keepalive c=2: waiting for zero
+2026-11-18 19:42:14 mine keepalive c=2: 622.4 rps p50 3.19 p99 4.15 ms, errors 0 [], conns 2, pods max 1 | warm-up errors 0 [] | TIME_WAIT 438/452/479 
+2026-11-18 19:42:14 stock keepalive c=4: waiting for zero
+2026-11-18 19:44:58 stock keepalive c=4: 1314.3 rps p50 3.04 p99 4.53 ms, errors 0 [], conns 4, pods max 2 | warm-up errors 0 [] | TIME_WAIT 440/414/419 
+2026-11-18 19:44:58 mine keepalive c=4: waiting for zero
+2026-11-18 19:48:15 mine keepalive c=4: 1222.6 rps p50 3.21 p99 4.91 ms, errors 0 [], conns 4, pods max 2 | warm-up errors 0 [] | TIME_WAIT 459/442/480 
+2026-11-18 19:48:15 stock keepalive c=8: waiting for zero
+2026-11-18 19:50:59 stock keepalive c=8: 2687.6 rps p50 2.86 p99 5.06 ms, errors 0 [], conns 8, pods max 3 | warm-up errors 0 [] | TIME_WAIT 439/383/367 
+2026-11-18 19:50:59 mine keepalive c=8: waiting for zero
+2026-11-18 19:53:49 mine keepalive c=8: 1993.3 rps p50 3.85 p99 7.51 ms, errors 0 [], conns 8, pods max 3 | warm-up errors 0 [] | TIME_WAIT 435/439/406 
+2026-11-18 19:53:49 stock new-conn c=8: waiting for zero
+2026-11-18 19:56:33 stock new-conn c=8: 2305.4 rps p50 3.34 p99 5.64 ms, errors 0 [], conns 69173, pods max 3 | warm-up errors 0 [] | TIME_WAIT 444/422/352 
+2026-11-18 19:56:33 mine new-conn c=8: waiting for zero
+2026-11-18 19:59:21 mine new-conn c=8: 1934.4 rps p50 3.95 p99 7.65 ms, errors 0 [], conns 58043, pods max 3 | warm-up errors 0 [] | TIME_WAIT 438/413/360 
+2026-11-18 19:59:21 stock keepalive c=16: waiting for zero
+2026-11-18 20:02:05 stock keepalive c=16: 3300.0 rps p50 4.61 p99 9.56 ms, errors 0 [], conns 16, pods max 6 | warm-up errors 0 [] | TIME_WAIT 428/386/344 
+2026-11-18 20:02:05 mine keepalive c=16: waiting for zero
+2026-11-18 20:04:51 mine keepalive c=16: 2761.3 rps p50 5.55 p99 12.24 ms, errors 0 [], conns 16, pods max 5 | warm-up errors 0 [] | TIME_WAIT 427/423/406 
+2026-11-18 20:04:51 stock new-conn c=16: waiting for zero
+2026-11-18 20:07:35 stock new-conn c=16: 2484.3 rps p50 6.20 p99 11.24 ms, errors 0 [], conns 74543, pods max 6 | warm-up errors 0 [] | TIME_WAIT 418/392/364 
+2026-11-18 20:07:35 mine new-conn c=16: waiting for zero
+2026-11-18 20:11:21 mine new-conn c=16: 2467.2 rps p50 6.26 p99 11.67 ms, errors 0 [], conns 74030, pods max 5 | warm-up errors 0 [] | TIME_WAIT 424/414/344 
+2026-11-18 20:11:21 stock keepalive c=32: waiting for zero
+2026-11-18 20:14:05 stock keepalive c=32: 3259.1 rps p50 9.65 p99 19.17 ms, errors 0 [], conns 32, pods max 8 | warm-up errors 0 [] | TIME_WAIT 429/421/366 
+2026-11-18 20:14:05 mine keepalive c=32: waiting for zero
+2026-11-18 20:16:54 mine keepalive c=32: 3084.8 rps p50 9.96 p99 21.06 ms, errors 0 [], conns 32, pods max 8 | warm-up errors 0 [] | TIME_WAIT 447/448/398 
+2026-11-18 20:16:54 phase D done

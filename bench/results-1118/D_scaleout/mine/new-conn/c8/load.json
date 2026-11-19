@@ -1,0 +1,18 @@
+{
+ "conc": 8,
+ "rps": "1934.4",
+ "p50_ms": "3.95",
+ "p99_ms": "7.65",
+ "errors": 0,
+ "ok": 58043,
+ "attempts": 58043,
+ "elapsed_s": "30.00",
+ "conns_opened": 58043,
+ "mode": "new-conn",
+ "err_breakdown": "",
+ "client_cpu_s": "33.29",
+ "errors_by_type": {},
+ "timeout_s": 10.0,
+ "path": "/",
+ "host": "d19-mine.default.192.168.1.240.sslip.io"
+}

@@ -1,0 +1,9 @@
+NAME            URL                                                   LATESTCREATED         LATESTREADY           READY   REASON
+bb-mine         http://bb-mine.default.192.168.1.240.sslip.io         bb-mine-00001         bb-mine-00001         True    
+bb-stock        http://bb-stock.default.192.168.1.240.sslip.io        bb-stock-00001        bb-stock-00001        True    
+d19-mine        http://d19-mine.default.192.168.1.240.sslip.io        d19-mine-00001        d19-mine-00001        True    
+d19-stock       http://d19-stock.default.192.168.1.240.sslip.io       d19-stock-00001       d19-stock-00001       True    
+httpbin-mine    http://httpbin-mine.default.192.168.1.240.sslip.io    httpbin-mine-00001    httpbin-mine-00001    True    
+httpbin-stock   http://httpbin-stock.default.192.168.1.240.sslip.io   httpbin-stock-00001   httpbin-stock-00001   True    
+nginx-mine      http://nginx-mine.default.192.168.1.240.sslip.io      nginx-mine-00001      nginx-mine-00001      True    
+nginx-stock     http://nginx-stock.default.192.168.1.240.sslip.io     nginx-stock-00001     nginx-stock-00001     True    

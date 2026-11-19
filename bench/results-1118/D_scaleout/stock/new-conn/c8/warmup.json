@@ -1,0 +1,18 @@
+{
+ "conc": 8,
+ "rps": "1981.6",
+ "p50_ms": "3.34",
+ "p99_ms": "5.70",
+ "errors": 0,
+ "ok": 59457,
+ "attempts": 59457,
+ "elapsed_s": "30.00",
+ "conns_opened": 59457,
+ "mode": "new-conn",
+ "err_breakdown": "",
+ "client_cpu_s": "33.16",
+ "errors_by_type": {},
+ "timeout_s": 10.0,
+ "path": "/",
+ "host": "d19-stock.default.192.168.1.240.sslip.io"
+}

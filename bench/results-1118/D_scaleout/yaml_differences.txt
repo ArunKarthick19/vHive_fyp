@@ -1,0 +1,8 @@
+6c6
+<   name: d19-stock
+---
+>   name: d19-mine
+28c28
+<           value: "ghcr.io/vhive-serverless/crccheck-hello-world:latest"
+---
+>           value: "firecracker-vm://image"
