@@ -1,0 +1,15 @@
+Traceback (most recent call last):
+  File "/users/Arun1903/vhive/docs/spike/probe_container_path.py", line 21, in <module>
+    code, resp = api("PUT", "/snapshot/load", {"snapshot_path": snap + "/snap_file", "mem_backend": {"backend_type": "File", "backend_path": snap + "/mem_file"},
+                 ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/users/Arun1903/vhive/docs/spike/probe_container_path.py", line 13, in api
+    r = c.getresponse(); d = r.read().decode(); c.close(); return r.status, d
+        ^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 1457, in getresponse
+    response.begin()
+  File "/usr/lib/python3.12/http/client.py", line 336, in begin
+    version, status, reason = self._read_status()
+                              ^^^^^^^^^^^^^^^^^^^
+  File "/usr/lib/python3.12/http/client.py", line 305, in _read_status
+    raise RemoteDisconnected("Remote end closed connection without"
+http.client.RemoteDisconnected: Remote end closed connection without response

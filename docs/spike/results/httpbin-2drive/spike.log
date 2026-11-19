@@ -1,0 +1,37 @@
+01:16:07 [httpbin] slot 30 ready: tap fcweb30 10.200.0.121/30, guest 10.200.0.122:80, rootfs /users/Arun1903/fc-vm/images/sha256-599fe5e5073102dbb0ee3dbb65f049dab44fa9fc251f6835c9990f8fb196a72b-0d8b2d6b512e.ext4
+01:16:08 [httpbin] boot 1: 841.4 ms
+01:16:09 [httpbin] boot 2: 835.5 ms
+01:16:10 [httpbin] boot 3: 838.6 ms
+01:16:11 [httpbin] boot 4: 815.3 ms
+01:16:12 [httpbin] boot 5: 837.7 ms
+01:16:13 [httpbin] boot 6: 835.2 ms
+01:16:13 [httpbin] boot 7: 847.1 ms
+01:16:14 [httpbin] boot 8: 838.3 ms
+01:16:15 [httpbin] boot 9: 829.9 ms
+01:16:16 [httpbin] boot 10: 847.5 ms
+01:16:16 [httpbin] boot n=10 median=838.0 min=815.3 max=847.5 mean=836.6
+01:16:18 [httpbin] snapshot source VM booted in 821.9 ms; GET / -> 200, 9593 B
+01:16:20 [httpbin] pause 204 1 ms; create 204 1775 ms ; sizes {'pause': (204, ''), 'create': (204, ''), 'pause_ms': 0.8255630018538795, 'create_ms': 1774.690300997463, 'snap_file_bytes': 16063, 'mem_file_bytes': 536870912, 'mem_file_du': '513M', 'created_at': '01:16:20'}
+01:16:20 [httpbin] restore[mem_backend_File] 1: 10.2 ms {'spawn_to_sock_ms': 4.173217996140011, 'load_call_ms': 3.7553160000243224, 'load_to_tcp_ms': 2.2319929994409904}
+01:16:23 [httpbin] restore[mem_backend_File] 2: 10.3 ms {'spawn_to_sock_ms': 4.213603999232873, 'load_call_ms': 4.139036995184142, 'load_to_tcp_ms': 1.9160960000590421}
+01:16:23 [httpbin] restore[mem_backend_File] 3: 10.1 ms {'spawn_to_sock_ms': 4.066763001901563, 'load_call_ms': 4.019405001599807, 'load_to_tcp_ms': 1.9957599943154491}
+01:16:23 [httpbin] restore[mem_backend_File] 4: 9.2 ms {'spawn_to_sock_ms': 2.9677030033781193, 'load_call_ms': 3.806773995165713, 'load_to_tcp_ms': 2.4585130013292655}
+01:16:23 [httpbin] restore[mem_backend_File] 5: 9.9 ms {'spawn_to_sock_ms': 4.113351998967119, 'load_call_ms': 3.8579600004595704, 'load_to_tcp_ms': 1.9382099999347702}
+01:16:23 [httpbin] restore[mem_backend_File] 6: 10.0 ms {'spawn_to_sock_ms': 3.881342003296595, 'load_call_ms': 3.7897489964962006, 'load_to_tcp_ms': 2.304516005096957}
+01:16:23 [httpbin] restore[mem_backend_File] 7: 9.7 ms {'spawn_to_sock_ms': 3.9436849983758293, 'load_call_ms': 3.577378003683407, 'load_to_tcp_ms': 2.215079999587033}
+01:16:23 [httpbin] restore[mem_backend_File] 8: 9.9 ms {'spawn_to_sock_ms': 4.035356003441848, 'load_call_ms': 3.7985079979989678, 'load_to_tcp_ms': 2.0913970001856796}
+01:16:24 [httpbin] restore[mem_backend_File] 9: 8.3 ms {'spawn_to_sock_ms': 2.782118994218763, 'load_call_ms': 3.6236000014469028, 'load_to_tcp_ms': 1.9395900017116219}
+01:16:24 [httpbin] restore[mem_backend_File] 10: 7.7 ms {'spawn_to_sock_ms': 2.8018299999530427, 'load_call_ms': 2.9421579965855926, 'load_to_tcp_ms': 1.912626001285389}
+01:16:24 [httpbin] restore[mem_backend_File] n=10 median=9.9 min=7.7 max=10.3 mean=9.5
+01:16:24 [httpbin] restore[mem_file_path_legacy] 1: 9.9 ms {'spawn_to_sock_ms': 4.081193001184147, 'load_call_ms': 3.6926220054738224, 'load_to_tcp_ms': 2.1294170001056045}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 2: 10.0 ms {'spawn_to_sock_ms': 4.1541870014043525, 'load_call_ms': 3.9102399969124235, 'load_to_tcp_ms': 1.9049840047955513}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 3: 10.1 ms {'spawn_to_sock_ms': 4.083053994690999, 'load_call_ms': 3.9159959997050464, 'load_to_tcp_ms': 2.062857005512342}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 4: 8.7 ms {'spawn_to_sock_ms': 3.0059949931455776, 'load_call_ms': 3.6926300017512403, 'load_to_tcp_ms': 2.0459810039028525}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 5: 10.0 ms {'spawn_to_sock_ms': 4.220135997456964, 'load_call_ms': 3.6431420012377203, 'load_to_tcp_ms': 2.146829996490851}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 6: 7.8 ms {'spawn_to_sock_ms': 2.641182996740099, 'load_call_ms': 3.3329720026813447, 'load_to_tcp_ms': 1.827422995120287}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 7: 10.3 ms {'spawn_to_sock_ms': 3.924632001144346, 'load_call_ms': 3.6128709980403073, 'load_to_tcp_ms': 2.773588006675709}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 8: 10.0 ms {'spawn_to_sock_ms': 4.20841700542951, 'load_call_ms': 3.79414799681399, 'load_to_tcp_ms': 2.023209002800286}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 9: 8.6 ms {'spawn_to_sock_ms': 3.0014180010766722, 'load_call_ms': 3.7206920023891144, 'load_to_tcp_ms': 1.9275640006526373}
+01:16:27 [httpbin] restore[mem_file_path_legacy] 10: 9.3 ms {'spawn_to_sock_ms': 3.957644003094174, 'load_call_ms': 3.322181997646112, 'load_to_tcp_ms': 2.036591002251953}
+01:16:27 [httpbin] restore[mem_file_path_legacy] n=10 median=9.9 min=7.8 max=10.3 mean=9.5
+01:16:27 [httpbin] wrote results.json

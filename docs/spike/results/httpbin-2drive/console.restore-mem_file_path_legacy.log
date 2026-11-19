@@ -1,0 +1,14 @@
+2026-11-19T01:16:24.078641728 [anonymous-instance:main] Running Firecracker v1.13.1
+2026-11-19T01:16:24.080594812 [anonymous-instance:main] Listening on API socket ("/run/vhive-fcweb/30/fc.sock").
+2026-11-19T01:16:24.081014964 [anonymous-instance:fc_api] API server started.
+2026-11-19T01:16:24.081984803 [anonymous-instance:fc_api] The API server received a Put request on "/snapshot/load" with body "{\"snapshot_path\": \"/users/Arun1903/fc-vm/spike/httpbin-2drive/snap_file\", \"mem_file_path\": \"/users/Arun1903/fc-vm/spike/httpbin-2drive/mem_file\", \"resume_vm\": true, \"container_snapshot_path\": \"/run/vhive-fcweb/30/guest-config.bin\"}".
+2026-11-19T01:16:24.082280058 [anonymous-instance:main] Host CPU vendor ID: [71, 101, 110, 117, 105, 110, 101, 73, 110, 116, 101, 108]
+2026-11-19T01:16:24.082313115 [anonymous-instance:main] Snapshot CPU vendor ID: [71, 101, 110, 117, 105, 110, 101, 73, 110, 116, 101, 108]
+2026-11-19T01:16:24.084934985 [anonymous-instance:main] Artificially kick devices
+2026-11-19T01:16:24.084946253 [anonymous-instance:main] kick block rootfs.
+2026-11-19T01:16:24.084966184 [anonymous-instance:main] kick block config.
+2026-11-19T01:16:24.084987773 [anonymous-instance:main] kick net eth0.
+2026-11-19T01:16:24.085086591 [anonymous-instance:fc_vcpu 0] Received a VcpuEvent::Resume message with immediate_exit enabled. immediate_exit was disabled before proceeding
+2026-11-19T01:16:24.085158737 [anonymous-instance:fc_api] The request was executed successfully. Status code: 204 No Content.
+2026-11-19T01:16:24.085178674 [anonymous-instance:fc_api] 'load snapshot' API request took 3225 us.
+2026-11-19T01:16:24.085187575 [anonymous-instance:fc_api] PUT /snapshot/load: mem_file_path and enable_diff_snapshots fields are deprecated.

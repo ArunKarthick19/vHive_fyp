@@ -1,0 +1,10 @@
+01:16:01 [httpbin] slot 30 ready: tap fcweb30 10.200.0.121/30, guest 10.200.0.122:80, rootfs /users/Arun1903/fc-vm/images/sha256-599fe5e5073102dbb0ee3dbb65f049dab44fa9fc251f6835c9990f8fb196a72b-0d8b2d6b512e.ext4
+01:16:02 [httpbin] boot 1: 836.5 ms
+01:16:02 [httpbin] boot n=1 median=836.5 min=836.5 max=836.5 mean=836.5
+01:16:04 [httpbin] snapshot source VM booted in 824.5 ms; GET / -> 200, 9593 B
+01:16:06 [httpbin] pause 204 1 ms; create 204 2014 ms ; sizes {'pause': (204, ''), 'create': (204, ''), 'pause_ms': 0.8223919940064661, 'create_ms': 2014.133048003714, 'snap_file_bytes': 16289, 'mem_file_bytes': 536870912, 'mem_file_du': '513M', 'created_at': '01:16:06'}
+01:16:06 [httpbin] restore[mem_backend_File] 1: None ms 
+01:16:06 [httpbin] restore[mem_backend_File] n=0
+01:16:06 [httpbin] restore[mem_file_path_legacy] 1: None ms 
+01:16:06 [httpbin] restore[mem_file_path_legacy] n=0
+01:16:06 [httpbin] wrote results.json

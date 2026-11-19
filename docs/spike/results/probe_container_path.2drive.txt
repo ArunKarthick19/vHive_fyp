@@ -1,0 +1,6 @@
+== rootfs: load -> 204 
+   drives after load: [('rootfs', '/users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0d8b2d6b512e.ext4', True), ('config', '/run/vhive-fcweb/30/guest-config.bin', True)]
+   console tail: s-instance:fc_api] 'load snapshot' API request took 6945 us. | 8722026-11-19T01:15:50.465043242 [anonymous-instance:fc_api] The API server received a Get request on "/vm/config". | :2026-11-19T01:15:50.465080711 [anonymous-instance:fc_api] The request was executed successfully. Status code: 200 OK. |  res
+== nonexistent: load -> 204 
+   drives after load: [('rootfs', '/users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0d8b2d6b512e.ext4', True), ('config', '/run/vhive-fcweb/30/guest-config.bin', True)]
+   console tail: s-instance:fc_api] 'load snapshot' API request took 2794 us. | 872: res2026-11-19T01:15:50.507400785 [anonymous-instance:fc_api] The API server received a Get request on "/vm/config". | 2026-11-19T01:15:50.507453867 [anonymous-instance:fc_api] The request was executed successfully. Status code: 200 OK. | 

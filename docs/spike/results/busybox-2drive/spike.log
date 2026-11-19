@@ -1,0 +1,37 @@
+01:15:16 [busybox] slot 30 ready: tap fcweb30 10.200.0.121/30, guest 10.200.0.122:8000, rootfs /users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0d8b2d6b512e.ext4
+01:15:17 [busybox] boot 1: 115.9 ms
+01:15:17 [busybox] boot 2: 124.8 ms
+01:15:17 [busybox] boot 3: 121.0 ms
+01:15:17 [busybox] boot 4: 119.7 ms
+01:15:18 [busybox] boot 5: 117.9 ms
+01:15:18 [busybox] boot 6: 107.7 ms
+01:15:18 [busybox] boot 7: 113.4 ms
+01:15:18 [busybox] boot 8: 116.6 ms
+01:15:18 [busybox] boot 9: 113.9 ms
+01:15:18 [busybox] boot 10: 119.2 ms
+01:15:18 [busybox] boot n=10 median=117.2 min=107.7 max=124.8 mean=117.0
+01:15:19 [busybox] snapshot source VM booted in 114.7 ms; GET / -> 200, 439 B
+01:15:21 [busybox] pause 204 1 ms; create 204 2022 ms ; sizes {'pause': (204, ''), 'create': (204, ''), 'pause_ms': 0.8008219956536777, 'create_ms': 2022.3187759984285, 'snap_file_bytes': 16063, 'mem_file_bytes': 536870912, 'mem_file_du': '513M', 'created_at': '01:15:21'}
+01:15:22 [busybox] restore[mem_backend_File] 1: 11.0 ms {'spawn_to_sock_ms': 4.122967002331279, 'load_call_ms': 3.6001150001538917, 'load_to_tcp_ms': 3.3040859998436645}
+01:15:25 [busybox] restore[mem_backend_File] 2: 10.9 ms {'spawn_to_sock_ms': 4.038566999952309, 'load_call_ms': 3.9138200008892454, 'load_to_tcp_ms': 2.956690004793927}
+01:15:25 [busybox] restore[mem_backend_File] 3: 11.2 ms {'spawn_to_sock_ms': 4.091078997589648, 'load_call_ms': 4.380865997518413, 'load_to_tcp_ms': 2.7112349998787977}
+01:15:25 [busybox] restore[mem_backend_File] 4: 11.2 ms {'spawn_to_sock_ms': 4.154638998443261, 'load_call_ms': 3.630261002399493, 'load_to_tcp_ms': 3.3967670024139807}
+01:15:25 [busybox] restore[mem_backend_File] 5: 9.6 ms {'spawn_to_sock_ms': 3.0467340038740076, 'load_call_ms': 3.530074995069299, 'load_to_tcp_ms': 3.0403060009120964}
+01:15:25 [busybox] restore[mem_backend_File] 6: 8.7 ms {'spawn_to_sock_ms': 2.816886000800878, 'load_call_ms': 3.330128005472943, 'load_to_tcp_ms': 2.543004993640352}
+01:15:25 [busybox] restore[mem_backend_File] 7: 8.9 ms {'spawn_to_sock_ms': 2.8905719955218956, 'load_call_ms': 3.32016299944371, 'load_to_tcp_ms': 2.6670860024751164}
+01:15:25 [busybox] restore[mem_backend_File] 8: 10.9 ms {'spawn_to_sock_ms': 3.036736998183187, 'load_call_ms': 4.460213996935636, 'load_to_tcp_ms': 3.3968150019063614}
+01:15:25 [busybox] restore[mem_backend_File] 9: 10.9 ms {'spawn_to_sock_ms': 3.8900930012459867, 'load_call_ms': 4.2605779963196255, 'load_to_tcp_ms': 2.717331997700967}
+01:15:25 [busybox] restore[mem_backend_File] 10: 11.0 ms {'spawn_to_sock_ms': 4.157723000389524, 'load_call_ms': 3.5259729993413202, 'load_to_tcp_ms': 3.3600979950278997}
+01:15:25 [busybox] restore[mem_backend_File] n=10 median=10.9 min=8.7 max=11.2 mean=10.4
+01:15:25 [busybox] restore[mem_file_path_legacy] 1: 11.1 ms {'spawn_to_sock_ms': 4.030007003166247, 'load_call_ms': 3.7323689975892194, 'load_to_tcp_ms': 3.299754003819544}
+01:15:29 [busybox] restore[mem_file_path_legacy] 2: 10.8 ms {'spawn_to_sock_ms': 4.212170002574567, 'load_call_ms': 3.935252003429923, 'load_to_tcp_ms': 2.617120997456368}
+01:15:29 [busybox] restore[mem_file_path_legacy] 3: 11.5 ms {'spawn_to_sock_ms': 4.159973999776412, 'load_call_ms': 4.323373002989683, 'load_to_tcp_ms': 3.047375001187902}
+01:15:29 [busybox] restore[mem_file_path_legacy] 4: 10.8 ms {'spawn_to_sock_ms': 3.9996440027607605, 'load_call_ms': 4.887229995802045, 'load_to_tcp_ms': 1.9627970032161102}
+01:15:29 [busybox] restore[mem_file_path_legacy] 5: 9.6 ms {'spawn_to_sock_ms': 2.973059003124945, 'load_call_ms': 3.9194609998958185, 'load_to_tcp_ms': 2.6586960011627525}
+01:15:29 [busybox] restore[mem_file_path_legacy] 6: 9.3 ms {'spawn_to_sock_ms': 2.8392789972713217, 'load_call_ms': 3.7901920004514977, 'load_to_tcp_ms': 2.698026000871323}
+01:15:29 [busybox] restore[mem_file_path_legacy] 7: 10.7 ms {'spawn_to_sock_ms': 3.8396840027417056, 'load_call_ms': 3.8640639977529645, 'load_to_tcp_ms': 2.962042002764065}
+01:15:29 [busybox] restore[mem_file_path_legacy] 8: 10.6 ms {'spawn_to_sock_ms': 4.012523997516837, 'load_call_ms': 4.087469998921733, 'load_to_tcp_ms': 2.5333120065624826}
+01:15:29 [busybox] restore[mem_file_path_legacy] 9: 10.1 ms {'spawn_to_sock_ms': 3.799673999310471, 'load_call_ms': 3.621807998570148, 'load_to_tcp_ms': 2.7178489981452003}
+01:15:29 [busybox] restore[mem_file_path_legacy] 10: 10.3 ms {'spawn_to_sock_ms': 3.706490999320522, 'load_call_ms': 3.8645509994239546, 'load_to_tcp_ms': 2.7342309986124747}
+01:15:29 [busybox] restore[mem_file_path_legacy] n=10 median=10.6 min=9.3 max=11.5 mean=10.5
+01:15:29 [busybox] wrote results.json

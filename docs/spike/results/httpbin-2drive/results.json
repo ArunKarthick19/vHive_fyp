@@ -1,0 +1,210 @@
+{
+ "name": "httpbin",
+ "drives": 2,
+ "rootfs": "/users/Arun1903/fc-vm/images/sha256-599fe5e5073102dbb0ee3dbb65f049dab44fa9fc251f6835c9990f8fb196a72b-0d8b2d6b512e.ext4",
+ "port": 80,
+ "boot_ms": [
+  841.4180020045023,
+  835.458200002904,
+  838.559849995363,
+  815.345590999641,
+  837.6827930042055,
+  835.2010309972684,
+  847.1029440042912,
+  838.2638839975698,
+  829.9274759992841,
+  847.4527400030638
+ ],
+ "restore": {
+  "mem_backend_File": {
+   "ms": [
+    10.160526995605323,
+    10.268736994476058,
+    10.08192799781682,
+    9.232989999873098,
+    9.90952199936146,
+    9.975607004889753,
+    9.73614300164627,
+    9.925261001626495,
+    8.345308997377288,
+    7.656613997824024
+   ],
+   "parts": [
+    {
+     "spawn_to_sock_ms": 4.173217996140011,
+     "load_call_ms": 3.7553160000243224,
+     "load_to_tcp_ms": 2.2319929994409904
+    },
+    {
+     "spawn_to_sock_ms": 4.213603999232873,
+     "load_call_ms": 4.139036995184142,
+     "load_to_tcp_ms": 1.9160960000590421
+    },
+    {
+     "spawn_to_sock_ms": 4.066763001901563,
+     "load_call_ms": 4.019405001599807,
+     "load_to_tcp_ms": 1.9957599943154491
+    },
+    {
+     "spawn_to_sock_ms": 2.9677030033781193,
+     "load_call_ms": 3.806773995165713,
+     "load_to_tcp_ms": 2.4585130013292655
+    },
+    {
+     "spawn_to_sock_ms": 4.113351998967119,
+     "load_call_ms": 3.8579600004595704,
+     "load_to_tcp_ms": 1.9382099999347702
+    },
+    {
+     "spawn_to_sock_ms": 3.881342003296595,
+     "load_call_ms": 3.7897489964962006,
+     "load_to_tcp_ms": 2.304516005096957
+    },
+    {
+     "spawn_to_sock_ms": 3.9436849983758293,
+     "load_call_ms": 3.577378003683407,
+     "load_to_tcp_ms": 2.215079999587033
+    },
+    {
+     "spawn_to_sock_ms": 4.035356003441848,
+     "load_call_ms": 3.7985079979989678,
+     "load_to_tcp_ms": 2.0913970001856796
+    },
+    {
+     "spawn_to_sock_ms": 2.782118994218763,
+     "load_call_ms": 3.6236000014469028,
+     "load_to_tcp_ms": 1.9395900017116219
+    },
+    {
+     "spawn_to_sock_ms": 2.8018299999530427,
+     "load_call_ms": 2.9421579965855926,
+     "load_to_tcp_ms": 1.912626001285389
+    }
+   ]
+  },
+  "mem_file_path_legacy": {
+   "ms": [
+    9.903232006763574,
+    9.969411003112327,
+    10.061906999908388,
+    8.74460599879967,
+    10.010107995185535,
+    7.801577994541731,
+    10.311091005860362,
+    10.025774005043786,
+    8.649674004118424,
+    9.316417002992239
+   ],
+   "parts": [
+    {
+     "spawn_to_sock_ms": 4.081193001184147,
+     "load_call_ms": 3.6926220054738224,
+     "load_to_tcp_ms": 2.1294170001056045
+    },
+    {
+     "spawn_to_sock_ms": 4.1541870014043525,
+     "load_call_ms": 3.9102399969124235,
+     "load_to_tcp_ms": 1.9049840047955513
+    },
+    {
+     "spawn_to_sock_ms": 4.083053994690999,
+     "load_call_ms": 3.9159959997050464,
+     "load_to_tcp_ms": 2.062857005512342
+    },
+    {
+     "spawn_to_sock_ms": 3.0059949931455776,
+     "load_call_ms": 3.6926300017512403,
+     "load_to_tcp_ms": 2.0459810039028525
+    },
+    {
+     "spawn_to_sock_ms": 4.220135997456964,
+     "load_call_ms": 3.6431420012377203,
+     "load_to_tcp_ms": 2.146829996490851
+    },
+    {
+     "spawn_to_sock_ms": 2.641182996740099,
+     "load_call_ms": 3.3329720026813447,
+     "load_to_tcp_ms": 1.827422995120287
+    },
+    {
+     "spawn_to_sock_ms": 3.924632001144346,
+     "load_call_ms": 3.6128709980403073,
+     "load_to_tcp_ms": 2.773588006675709
+    },
+    {
+     "spawn_to_sock_ms": 4.20841700542951,
+     "load_call_ms": 3.79414799681399,
+     "load_to_tcp_ms": 2.023209002800286
+    },
+    {
+     "spawn_to_sock_ms": 3.0014180010766722,
+     "load_call_ms": 3.7206920023891144,
+     "load_to_tcp_ms": 1.9275640006526373
+    },
+    {
+     "spawn_to_sock_ms": 3.957644003094174,
+     "load_call_ms": 3.322181997646112,
+     "load_to_tcp_ms": 2.036591002251953
+    }
+   ]
+  }
+ },
+ "notes": [
+  {
+   "probe_Uffd_without_handler": [
+    400,
+    "{\"fault_message\":\"Load snapshot error: Failed to restore from snapshot: Failed to load guest memory: Error creating guest memory from uffd: Failed to connect to UDS Unix stream: No such file or directory (os error 2)\"}"
+   ]
+  }
+ ],
+ "failures": [],
+ "boot_http": {
+  "status": 200,
+  "bytes": 9593,
+  "sha16": "7c7b091e007ce3f2",
+  "date_hdr": "Thu, 19 Nov 2026 08:16:08 GMT",
+  "host_time": "Thu, 19 Nov 2026 08:16:08 GMT"
+ },
+ "snapshot": {
+  "pause": [
+   204,
+   ""
+  ],
+  "create": [
+   204,
+   ""
+  ],
+  "pause_ms": 0.8255630018538795,
+  "create_ms": 1774.690300997463,
+  "snap_file_bytes": 16063,
+  "mem_file_bytes": 536870912,
+  "mem_file_du": "513M",
+  "created_at": "01:16:20"
+ },
+ "restore_http": {
+  "mem_backend_File": {
+   "status": 200,
+   "bytes": 9593,
+   "sha16": "7c7b091e007ce3f2",
+   "same_body_as_boot": true,
+   "date_hdr": "Thu, 19 Nov 2026 08:16:18 GMT",
+   "host_time": "Thu, 19 Nov 2026 08:16:20 GMT",
+   "after_3s": {
+    "status": 200,
+    "same_body": true
+   }
+  },
+  "mem_file_path_legacy": {
+   "status": 200,
+   "bytes": 9593,
+   "sha16": "7c7b091e007ce3f2",
+   "same_body_as_boot": true,
+   "date_hdr": "Thu, 19 Nov 2026 08:16:18 GMT",
+   "host_time": "Thu, 19 Nov 2026 08:16:24 GMT",
+   "after_3s": {
+    "status": 200,
+    "same_body": true
+   }
+  }
+ }
+}

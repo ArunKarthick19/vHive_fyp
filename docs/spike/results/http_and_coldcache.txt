@@ -1,0 +1,8 @@
+busybox boot_warm     n=5 tcp median   119.0 min   113.9 max   125.0 | first HTTP 200 median   121.2 min   116.1 max   131.5 ms
+busybox boot_cold     n=5 tcp median   299.8 min   295.7 max   302.3 | first HTTP 200 median   302.4 min   298.2 max   305.0 ms
+busybox restore_warm  n=5 tcp median    11.2 min    10.3 max   145.0 | first HTTP 200 median    15.4 min    14.3 max   202.7 ms
+busybox restore_cold  n=5 tcp median   175.6 min   165.3 max   197.1 | first HTTP 200 median   231.8 min   225.2 max   249.5 ms
+httpbin boot_warm     n=5 tcp median   860.9 min   822.1 max  1341.8 | first HTTP 200 median  1489.6 min  1454.8 max  2098.8 ms
+httpbin boot_cold     n=5 tcp median  1406.7 min  1402.9 max  1425.4 | first HTTP 200 median  2155.5 min  2149.3 max  2190.9 ms
+httpbin restore_warm  n=5 tcp median    10.7 min     9.7 max   133.0 | first HTTP 200 median    32.4 min    30.4 max   560.5 ms
+httpbin restore_cold  n=5 tcp median   159.6 min   158.4 max   177.9 | first HTTP 200 median   590.2 min   582.1 max   608.1 ms

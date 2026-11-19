@@ -1,0 +1,10 @@
+01:15:02 [busybox] slot 30 ready: tap fcweb30 10.200.0.121/30, guest 10.200.0.122:8000, rootfs /users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0d8b2d6b512e.ext4
+01:15:02 [busybox] boot 1: 120.3 ms
+01:15:02 [busybox] boot n=1 median=120.3 min=120.3 max=120.3 mean=120.3
+01:15:04 [busybox] snapshot source VM booted in 123.9 ms; GET / -> 200, 439 B
+01:15:06 [busybox] pause 204 1 ms; create 204 2059 ms ; sizes {'pause': (204, ''), 'create': (204, ''), 'pause_ms': 0.8064719950198196, 'create_ms': 2059.0922650007997, 'snap_file_bytes': 16289, 'mem_file_bytes': 536870912, 'mem_file_du': '513M', 'created_at': '01:15:06'}
+01:15:06 [busybox] restore[mem_backend_File] 1: None ms 
+01:15:06 [busybox] restore[mem_backend_File] n=0
+01:15:06 [busybox] restore[mem_file_path_legacy] 1: None ms 
+01:15:06 [busybox] restore[mem_file_path_legacy] n=0
+01:15:06 [busybox] wrote results.json

@@ -1,0 +1,37 @@
+01:13:23 [busybox] slot 30 ready: tap fcweb30 10.200.0.121/30, guest 10.200.0.122:8000, rootfs /users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0d8b2d6b512e.ext4
+01:13:23 [busybox] boot 1: 119.7 ms
+01:13:23 [busybox] boot 2: 118.4 ms
+01:13:23 [busybox] boot 3: 115.9 ms
+01:13:24 [busybox] boot 4: 121.9 ms
+01:13:24 [busybox] boot 5: 119.2 ms
+01:13:24 [busybox] boot 6: 126.6 ms
+01:13:24 [busybox] boot 7: 115.4 ms
+01:13:24 [busybox] boot 8: 117.9 ms
+01:13:24 [busybox] boot 9: 123.6 ms
+01:13:24 [busybox] boot 10: 113.5 ms
+01:13:25 [busybox] boot n=10 median=118.8 min=113.5 max=126.6 mean=119.2
+01:13:26 [busybox] snapshot source VM booted in 124.6 ms; GET / -> 200, 439 B
+01:13:27 [busybox] pause 204 1 ms; create 204 1692 ms ; sizes {'pause': (204, ''), 'create': (204, ''), 'pause_ms': 0.6215379980858415, 'create_ms': 1691.6196429956472, 'snap_file_bytes': 16289, 'mem_file_bytes': 536870912, 'mem_file_du': '513M', 'created_at': '01:13:27'}
+01:13:27 [busybox] restore[mem_backend_File] 1: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 2: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 3: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 4: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 5: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 6: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 7: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 8: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 9: None ms 
+01:13:27 [busybox] restore[mem_backend_File] 10: None ms 
+01:13:27 [busybox] restore[mem_backend_File] n=0
+01:13:27 [busybox] restore[mem_file_path_legacy] 1: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 2: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 3: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 4: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 5: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 6: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 7: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 8: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 9: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] 10: None ms 
+01:13:27 [busybox] restore[mem_file_path_legacy] n=0
+01:13:27 [busybox] wrote results.json

@@ -1,0 +1,59 @@
+{
+ "name": "httpbin",
+ "drives": 3,
+ "rootfs": "/users/Arun1903/fc-vm/images/sha256-599fe5e5073102dbb0ee3dbb65f049dab44fa9fc251f6835c9990f8fb196a72b-0d8b2d6b512e.ext4",
+ "port": 80,
+ "boot_ms": [
+  836.4550530022825
+ ],
+ "restore": {
+  "mem_backend_File": {
+   "ms": [
+    null
+   ],
+   "parts": [
+    null
+   ]
+  },
+  "mem_file_path_legacy": {
+   "ms": [
+    null
+   ],
+   "parts": [
+    null
+   ]
+  }
+ },
+ "notes": [
+  {
+   "probe_Uffd_without_handler": "RemoteDisconnected: Remote end closed connection without response"
+  }
+ ],
+ "failures": [
+  "restore[mem_backend_File] 1: load HTTP 599: RemoteDisconnected: Remote end closed connection without response; console: 'est on \"/snapshot/load\" with body \"{\\\\\"snapshot_path\\\\\": \\\\\"/users/Arun1903/fc-vm/spike/httpbin-3drive-csp/snap_file\\\\\", \\\\\"mem_backend\\\\\": {\\\\\"backend_type\\\\\": \\\\\"File\\\\\", \\\\\"backend_path\\\\\": \\\\\"/users/Arun1903/fc-vm/spike/httpbin-3drive-csp/mem_file\\\\\"}, \\\\\"resume_vm\\\\\": true, \\\\\"container_snapshot_path\\\\\": \\\\\"/run/vhive-fcweb/30/guest-config.bin\\\\\"}\".\\n2026-11-19T01:16:06.504871033 [anonymous-instance:main] Firecracker panicked at src/vmm/src/persist.rs:328:5:\\nassertion `left == right` failed\\n  left: 3\\n right: 2\\n'",
+  "restore[mem_file_path_legacy] 1: load HTTP 599: RemoteDisconnected: Remote end closed connection without response; console: 'nce:fc_api] The API server received a Put request on \"/snapshot/load\" with body \"{\\\\\"snapshot_path\\\\\": \\\\\"/users/Arun1903/fc-vm/spike/httpbin-3drive-csp/snap_file\\\\\", \\\\\"mem_file_path\\\\\": \\\\\"/users/Arun1903/fc-vm/spike/httpbin-3drive-csp/mem_file\\\\\", \\\\\"resume_vm\\\\\": true, \\\\\"container_snapshot_path\\\\\": \\\\\"/run/vhive-fcweb/30/guest-config.bin\\\\\"}\".\\n2026-11-19T01:16:06.664702409 [anonymous-instance:main] Firecracker panicked at src/vmm/src/persist.rs:328:5:\\nassertion `left == right` failed\\n  left: 3\\n right: 2\\n'"
+ ],
+ "boot_http": {
+  "status": 200,
+  "bytes": 9593,
+  "sha16": "7c7b091e007ce3f2",
+  "date_hdr": "Thu, 19 Nov 2026 08:16:02 GMT",
+  "host_time": "Thu, 19 Nov 2026 08:16:02 GMT"
+ },
+ "snapshot": {
+  "pause": [
+   204,
+   ""
+  ],
+  "create": [
+   204,
+   ""
+  ],
+  "pause_ms": 0.8223919940064661,
+  "create_ms": 2014.133048003714,
+  "snap_file_bytes": 16289,
+  "mem_file_bytes": 536870912,
+  "mem_file_du": "513M",
+  "created_at": "01:16:06"
+ }
+}

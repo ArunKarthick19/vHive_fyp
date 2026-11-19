@@ -1,0 +1,124 @@
+{
+ "name": "busybox",
+ "rootfs": "/users/Arun1903/fc-vm/images/sha256-0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400-0d8b2d6b512e.ext4",
+ "port": 8000,
+ "boot_ms": [
+  119.6669729979476,
+  118.42199400416575,
+  115.90935500134947,
+  121.94948099931935,
+  119.24507500225445,
+  126.59577500016894,
+  115.37942999711959,
+  117.90984799881699,
+  123.64733599679312,
+  113.51495600683847
+ ],
+ "restore": {
+  "mem_backend_File": {
+   "ms": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "parts": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  },
+  "mem_file_path_legacy": {
+   "ms": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ],
+   "parts": [
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null,
+    null
+   ]
+  }
+ },
+ "notes": [
+  {
+   "probe_Uffd_without_handler": [
+    400,
+    "{\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 181.\"}"
+   ]
+  }
+ ],
+ "failures": [
+  "restore[mem_backend_File] 1: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 2: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 3: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 4: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 5: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 6: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 7: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 8: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 9: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_backend_File] 10: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 190.\"}",
+  "restore[mem_file_path_legacy] 1: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 2: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 3: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 4: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 5: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 6: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 7: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 8: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 9: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}",
+  "restore[mem_file_path_legacy] 10: load HTTP 400: {\"fault_message\":\"An error occurred when deserializing the json body of a request: missing field `container_snapshot_path` at line 1 column 150.\"}"
+ ],
+ "boot_http": {
+  "status": 200,
+  "bytes": 439,
+  "sha16": "d05318e5f8904725",
+  "date_hdr": "Thu, 19 Nov 2026 08:13:23 GMT",
+  "host_time": "Thu, 19 Nov 2026 08:13:23 GMT"
+ },
+ "snapshot": {
+  "pause": [
+   204,
+   ""
+  ],
+  "create": [
+   204,
+   ""
+  ],
+  "pause_ms": 0.6215379980858415,
+  "create_ms": 1691.6196429956472,
+  "snap_file_bytes": 16289,
+  "mem_file_bytes": 536870912,
+  "mem_file_du": "513M",
+  "created_at": "01:13:27"
+ }
+}
