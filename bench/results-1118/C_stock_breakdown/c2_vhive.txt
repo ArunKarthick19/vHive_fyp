@@ -1,0 +1,5 @@
+time="2026-11-18T19:21:46.911295928-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 40-f822843d-a529-48" vmID=40-f822843d-a529-48
+time="2026-11-18T19:21:52.825174917-07:00" level=info msg="httpd started" vmID=41-fb5810d2-c78d-41
+time="2026-11-18T19:21:52.825216628-07:00" level=info vmID=41-fb5810d2-c78d-41
+time="2026-11-18T19:21:53.030226050-07:00" level=info msg="172.17.0.9:48103: response:200" vmID=41-fb5810d2-c78d-41
+time="2026-11-18T19:21:53.030247044-07:00" level=info vmID=41-fb5810d2-c78d-41

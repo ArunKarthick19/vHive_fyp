@@ -1,0 +1,9 @@
+# memcheck 2026-11-18T19:29:20-07:00, cycle 6, pod bb-stock-00001-deployment-64449ddff9-lqqmx
+## stock firecracker processes (pgrep -a -f '^/usr/local/bin/firecracker --api-sock firecracker.sock'), owner:
+ 690325 root     Wed Nov 18 19:29:12 2026 /usr/local/bin/firecracker --api-sock firecracker.sock --id 45-a0b23ab6-f446-46
+## listening firecracker API sockets (ss -xl)
+## sudo -n curl -s --unix-socket /proc/690325/cwd/firecracker.sock http://localhost/machine-config   (GET, read-only)
+{"vcpu_count":1,"mem_size_mib":512,"smt":false,"track_dirty_pages":false,"huge_pages":"None"} (exit 0)
+## create VM request MachineCfg in the firecracker-containerd capture of this cycle (last occurrence)
+## (added 2026-11-18T19:29:49-07:00, after the run) the grep above used MachineCfg:<...>; the log uses MachineCfg:{...}. Corrected grep on c6_firecracker_containerd.txt:
+create VM request: VMID:"45-a0b23ab6-f446-46" MachineCfg:{MemSizeMib:512 VcpuCount:1}

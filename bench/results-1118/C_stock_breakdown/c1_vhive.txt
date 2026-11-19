@@ -1,0 +1,5 @@
+time="2026-11-18T19:19:14.142484251-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-18T19:20:05.185355197-07:00" level=info msg="httpd started" vmID=40-f822843d-a529-48
+time="2026-11-18T19:20:05.185394976-07:00" level=info vmID=40-f822843d-a529-48
+time="2026-11-18T19:20:06.153917215-07:00" level=info msg="172.17.0.9:59685: response:200" vmID=40-f822843d-a529-48
+time="2026-11-18T19:20:06.153949843-07:00" level=info vmID=40-f822843d-a529-48

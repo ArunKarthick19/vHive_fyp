@@ -1,0 +1,26 @@
+2026-11-18 19:19:54 phase C start svc=bb-stock host=bb-stock.default.192.168.1.240.sslip.io ingress=10.103.200.78 cycles=6 out=/users/Arun1903/fc-vm/bench/out/C_stock_breakdown
+2026-11-18 19:20:10 cycle 1: HTTP 200 in 4.293916s (idle wait 4s)
+2026-11-18 19:21:57 cycle 2: HTTP 200 in 3.556483s (idle wait 96s)
+2026-11-18 19:23:47 cycle 3: HTTP 200 in 4.428395s (idle wait 98s)
+2026-11-18 19:25:37 cycle 4: HTTP 200 in 4.379131s (idle wait 98s)
+2026-11-18 19:27:26 cycle 5: HTTP 200 in 4.431154s (idle wait 98s)
+2026-11-18 19:29:20 cycle 6: HTTP 200 in 4.175488s (idle wait 103s)
+2026-11-18 19:29:21 memcheck written: "mem_size_mib":512 
+# Stock cold start breakdown (phase C)
+
+Cycles found: 6; statistics use cycles [2, 3, 4, 5, 6] (cycle 1 is a warm-up).
+
+| step | n | mean s | min s | max s | what it covers |
+|---|---|---|---|---|---|
+| k8s: request -> sandbox ready | 5 | 0.651 | 0.636 | 0.665 | activator, autoscaler, scheduler, kubelet, pause sandbox |
+| pre-VM: sandbox -> create VM request | 5 | 0.005 | 0.004 | 0.005 | kubelet CreateContainer -> vhive; vhive network setup + image lookup (cached, not logged separately) |
+| VM1 VMM launch | 5 | 0.052 | 0.052 | 0.053 | shim start, firecracker process, machine/boot/drive/NIC config |
+| VM2 guest boot + agent | 5 | 2.182 | 2.101 | 2.202 | kernel + systemd + firecracker-containerd agent |
+| VM3 container create (vhive) | 5 | 0.008 | 0.006 | 0.009 | vhive NewContainer: container metadata, snapshot request |
+| VM4 rootfs snapshot (unpack equivalent) | 5 | 0.079 | 0.074 | 0.089 | devmapper thin snapshot of the cached image + hot-plug into the VM |
+| VM5 task create | 5 | 0.305 | 0.274 | 0.322 | agent mounts rootfs and creates the container task in the guest |
+| VM6 task start -> app up | 5 | 0.034 | 0.030 | 0.037 | task.Wait/Start, busybox httpd prints "httpd started" |
+| VM stage total (create VM -> app up) | 5 | 2.660 | 2.589 | 2.701 | the "~2.66 s" stage |
+| post-VM: app up -> response | 5 | 0.889 | 0.209 | 1.183 | placeholder UC + queue-proxy start, readiness, first proxied request |
+| end-to-end | 5 | 4.206 | 3.568 | 4.443 | client view |
+2026-11-18 19:29:21 phase C done (stock_breakdown.py exit 0)
