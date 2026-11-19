@@ -25,6 +25,7 @@ package firecracker
 import (
 	"context"
 	"fmt"
+	"strings"
 	"time"
 
 	log "github.com/sirupsen/logrus"
@@ -62,7 +63,7 @@ type appExit struct {
 // appExitFromVM turns a VM's exit report into a container status, using
 // the reasons Kubernetes shows for ordinary containers where they fit.
 func appExitFromVM(e vmExit) appExit {
-	tail := e.Console
+	tail := strings.ReplaceAll(e.Console, "\r", "") // the serial console ends lines with CRLF
 	if len(tail) > appExitMessageMax {
 		tail = tail[len(tail)-appExitMessageMax:]
 	}
