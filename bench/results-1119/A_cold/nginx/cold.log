@@ -1,0 +1,49 @@
+2026-11-18 23:30:00 start workload=nginx services='nginx-stock nginx-mine' cycles=11 ingress=10.103.200.78
+2026-11-18 23:30:00   nginx-stock -> Host: nginx-stock.default.192.168.1.240.sslip.io
+2026-11-18 23:30:00   nginx-mine -> Host: nginx-mine.default.192.168.1.240.sslip.io
+2026-11-18 23:30:00   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-18 23:30:00 cycle 1 nginx-stock: waiting for idle
+2026-11-18 23:31:47 cycle 1 nginx-stock: HTTP 200 curl_exit=0 time_total=4.353600s bytes=615 idle_wait=102s  
+2026-11-18 23:31:47 cycle 1 nginx-mine: waiting for idle
+2026-11-18 23:33:42 cycle 1 nginx-mine: HTTP 200 curl_exit=0 time_total=1.522164s bytes=615 idle_wait=112s [firecrackerVM=fcweb1 launchToHTTP200=173.433907ms probe=tcp] 
+2026-11-18 23:33:42 cycle 2 nginx-stock: waiting for idle
+2026-11-18 23:35:29 cycle 2 nginx-stock: HTTP 200 curl_exit=0 time_total=4.122796s bytes=615 idle_wait=102s  
+2026-11-18 23:35:29 cycle 2 nginx-mine: waiting for idle
+2026-11-18 23:37:18 cycle 2 nginx-mine: HTTP 200 curl_exit=0 time_total=1.845215s bytes=615 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=176.494089ms probe=tcp] 
+2026-11-18 23:37:18 cycle 3 nginx-stock: waiting for idle
+2026-11-18 23:39:05 cycle 3 nginx-stock: HTTP 200 curl_exit=0 time_total=4.143299s bytes=615 idle_wait=101s  
+2026-11-18 23:39:05 cycle 3 nginx-mine: waiting for idle
+2026-11-18 23:40:54 cycle 3 nginx-mine: HTTP 200 curl_exit=0 time_total=1.810655s bytes=615 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=176.466092ms probe=tcp] 
+2026-11-18 23:40:54 cycle 4 nginx-stock: waiting for idle
+2026-11-18 23:42:41 cycle 4 nginx-stock: HTTP 200 curl_exit=0 time_total=4.188027s bytes=615 idle_wait=101s  
+2026-11-18 23:42:41 cycle 4 nginx-mine: waiting for idle
+2026-11-18 23:44:29 cycle 4 nginx-mine: HTTP 200 curl_exit=0 time_total=1.827230s bytes=615 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=182.500016ms probe=tcp] 
+2026-11-18 23:44:29 cycle 5 nginx-stock: waiting for idle
+2026-11-18 23:46:16 cycle 5 nginx-stock: HTTP 200 curl_exit=0 time_total=4.099950s bytes=615 idle_wait=102s  
+2026-11-18 23:46:16 cycle 5 nginx-mine: waiting for idle
+2026-11-18 23:48:05 cycle 5 nginx-mine: HTTP 200 curl_exit=0 time_total=1.806301s bytes=615 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=184.584444ms probe=tcp] 
+2026-11-18 23:48:05 cycle 6 nginx-stock: waiting for idle
+2026-11-18 23:49:54 cycle 6 nginx-stock: HTTP 200 curl_exit=0 time_total=3.988223s bytes=615 idle_wait=104s  
+2026-11-18 23:49:54 cycle 6 nginx-mine: waiting for idle
+2026-11-18 23:51:43 cycle 6 nginx-mine: HTTP 200 curl_exit=0 time_total=1.824311s bytes=615 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=181.423986ms probe=tcp] 
+2026-11-18 23:51:43 cycle 7 nginx-stock: waiting for idle
+2026-11-18 23:53:30 cycle 7 nginx-stock: HTTP 200 curl_exit=0 time_total=4.102282s bytes=615 idle_wait=102s  
+2026-11-18 23:53:30 cycle 7 nginx-mine: waiting for idle
+2026-11-18 23:55:21 cycle 7 nginx-mine: HTTP 200 curl_exit=0 time_total=1.725646s bytes=615 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=175.38103ms probe=tcp] 
+2026-11-18 23:55:21 cycle 8 nginx-stock: waiting for idle
+2026-11-18 23:57:08 cycle 8 nginx-stock: HTTP 200 curl_exit=0 time_total=4.133489s bytes=615 idle_wait=101s  
+2026-11-18 23:57:08 cycle 8 nginx-mine: waiting for idle
+2026-11-18 23:58:59 cycle 8 nginx-mine: HTTP 200 curl_exit=0 time_total=1.724605s bytes=615 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=174.379943ms probe=tcp] 
+2026-11-18 23:58:59 cycle 9 nginx-stock: waiting for idle
+2026-11-19 00:00:46 cycle 9 nginx-stock: HTTP 200 curl_exit=0 time_total=4.122281s bytes=615 idle_wait=101s  
+2026-11-19 00:00:46 cycle 9 nginx-mine: waiting for idle
+2026-11-19 00:02:36 cycle 9 nginx-mine: HTTP 200 curl_exit=0 time_total=1.690402s bytes=615 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=176.051652ms probe=tcp] 
+2026-11-19 00:02:36 cycle 10 nginx-stock: waiting for idle
+2026-11-19 00:04:23 cycle 10 nginx-stock: HTTP 200 curl_exit=0 time_total=4.142680s bytes=615 idle_wait=102s  
+2026-11-19 00:04:23 cycle 10 nginx-mine: waiting for idle
+2026-11-19 00:06:14 cycle 10 nginx-mine: HTTP 200 curl_exit=0 time_total=1.669874s bytes=615 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=176.968018ms probe=tcp] 
+2026-11-19 00:06:14 cycle 11 nginx-stock: waiting for idle
+2026-11-19 00:08:01 cycle 11 nginx-stock: HTTP 200 curl_exit=0 time_total=4.107026s bytes=615 idle_wait=102s  
+2026-11-19 00:08:01 cycle 11 nginx-mine: waiting for idle
+2026-11-19 00:10:45 cycle 11 nginx-mine: HTTP 200 curl_exit=0 time_total=1.722917s bytes=615 idle_wait=162s [firecrackerVM=fcweb1 launchToHTTP200=174.628541ms probe=tcp] 
+2026-11-19 00:10:45 done workload=nginx

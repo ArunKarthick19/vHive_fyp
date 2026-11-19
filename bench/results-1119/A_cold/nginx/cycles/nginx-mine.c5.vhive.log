@@ -1,0 +1,4 @@
+time="2026-11-18T23:48:03.600112733-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=184.584444ms pid=1149813 probe=tcp tapAndLaunch=1.701851ms
+time="2026-11-18T23:48:03.600152255-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=4abd2ae424fcb172a04917492b8c5828480d0bb144ba9654a991e67c5d782ee4 slot=1 took=220.352031ms vmID=firecracker-vm/pod-1-4abd2ae424fc
+time="2026-11-18T23:48:04.493421093-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-18T23:48:04.814441691-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="

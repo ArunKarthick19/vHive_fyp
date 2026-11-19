@@ -1,0 +1,8 @@
+time="2026-11-18T22:51:42.029325939-07:00" level=info msg="[2026-11-19 05:51:42 +0000] [1] [INFO] Starting gunicorn 19.9.0" vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.029387356-07:00" level=info vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.030628923-07:00" level=info msg="[2026-11-19 05:51:42 +0000] [1] [INFO] Listening at: http://0.0.0.0:80 (1)" vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.030664967-07:00" level=info vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.030917742-07:00" level=info msg="[2026-11-19 05:51:42 +0000] [1] [INFO] Using worker: gevent" vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.030938016-07:00" level=info vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.038998545-07:00" level=info msg="[2026-11-19 05:51:42 +0000] [8] [INFO] Booting worker with pid: 8" vmID=15-4ceb9e48-9c6b-45
+time="2026-11-18T22:51:42.039033360-07:00" level=info vmID=15-4ceb9e48-9c6b-45

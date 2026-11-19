@@ -1,0 +1,2 @@
+time="2026-11-18T23:33:40.722597337-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=173.433907ms pid=1120792 probe=tcp tapAndLaunch=1.536224ms
+time="2026-11-18T23:33:40.722658082-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=122983127a4767a31e0d39be022587d487c5c3e90377e74c86eaccfd9a9fd8c0 slot=1 took=204.84682ms vmID=firecracker-vm/pod-1-122983127a47

@@ -1,0 +1,133 @@
+apiVersion: v1
+items:
+- apiVersion: serving.knative.dev/v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"httpbin-stock","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"80"},{"name":"GUEST_IMAGE","value":"docker.io/kennethreitz/httpbin:latest"}],"image":"docker.io/kennethreitz/httpbin:latest","name":"user-container","ports":[{"containerPort":80,"protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+      serving.knative.dev/creator: kubernetes-admin
+      serving.knative.dev/lastModifier: kubernetes-admin
+    creationTimestamp: "2026-11-18T15:57:12Z"
+    generation: 1
+    name: httpbin-stock
+    namespace: default
+    resourceVersion: "7641"
+    uid: a38908ff-1474-4238-a9fb-92fc3c2f30be
+  spec:
+    template:
+      metadata:
+        annotations:
+          autoscaling.knative.dev/max-scale: "1"
+      spec:
+        containerConcurrency: 0
+        containers:
+        - env:
+          - name: GUEST_PORT
+            value: "80"
+          - name: GUEST_IMAGE
+            value: docker.io/kennethreitz/httpbin:latest
+          image: docker.io/kennethreitz/httpbin:latest
+          name: user-container
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+        enableServiceLinks: false
+        timeoutSeconds: 300
+    traffic:
+    - latestRevision: true
+      percent: 100
+  status:
+    address:
+      url: http://httpbin-stock.default.svc.cluster.local
+    conditions:
+    - lastTransitionTime: "2026-11-18T15:57:47Z"
+      status: "True"
+      type: ConfigurationsReady
+    - lastTransitionTime: "2026-11-18T15:57:47Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-11-18T15:57:47Z"
+      status: "True"
+      type: RoutesReady
+    latestCreatedRevisionName: httpbin-stock-00001
+    latestReadyRevisionName: httpbin-stock-00001
+    observedGeneration: 1
+    traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: httpbin-stock-00001
+    url: http://httpbin-stock.default.192.168.1.240.sslip.io
+- apiVersion: serving.knative.dev/v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"httpbin-mine","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"80"},{"name":"GUEST_IMAGE","value":"firecracker-vm://image"},{"name":"FC_MEM_MIB","value":"512"}],"image":"docker.io/kennethreitz/httpbin:latest","name":"user-container","ports":[{"containerPort":80,"protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+      serving.knative.dev/creator: kubernetes-admin
+      serving.knative.dev/lastModifier: kubernetes-admin
+    creationTimestamp: "2026-11-18T15:57:11Z"
+    generation: 1
+    name: httpbin-mine
+    namespace: default
+    resourceVersion: "7348"
+    uid: 71f37d55-6155-47e4-8688-503a873818bd
+  spec:
+    template:
+      metadata:
+        annotations:
+          autoscaling.knative.dev/max-scale: "1"
+      spec:
+        containerConcurrency: 0
+        containers:
+        - env:
+          - name: GUEST_PORT
+            value: "80"
+          - name: GUEST_IMAGE
+            value: firecracker-vm://image
+          - name: FC_MEM_MIB
+            value: "512"
+          image: docker.io/kennethreitz/httpbin:latest
+          name: user-container
+          ports:
+          - containerPort: 80
+            protocol: TCP
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+        enableServiceLinks: false
+        timeoutSeconds: 300
+    traffic:
+    - latestRevision: true
+      percent: 100
+  status:
+    address:
+      url: http://httpbin-mine.default.svc.cluster.local
+    conditions:
+    - lastTransitionTime: "2026-11-18T15:57:26Z"
+      status: "True"
+      type: ConfigurationsReady
+    - lastTransitionTime: "2026-11-18T15:57:26Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-11-18T15:57:26Z"
+      status: "True"
+      type: RoutesReady
+    latestCreatedRevisionName: httpbin-mine-00001
+    latestReadyRevisionName: httpbin-mine-00001
+    observedGeneration: 1
+    traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: httpbin-mine-00001
+    url: http://httpbin-mine.default.192.168.1.240.sslip.io
+kind: List
+metadata:
+  resourceVersion: ""

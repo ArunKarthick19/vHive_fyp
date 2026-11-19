@@ -1,0 +1,49 @@
+2026-11-18 22:09:40 start workload=busybox services='bb-stock bb-mine' cycles=11 ingress=10.103.200.78
+2026-11-18 22:09:40   bb-stock -> Host: bb-stock.default.192.168.1.240.sslip.io
+2026-11-18 22:09:40   bb-mine -> Host: bb-mine.default.192.168.1.240.sslip.io
+2026-11-18 22:09:40   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-18 22:09:40 cycle 1 bb-stock: waiting for idle
+2026-11-18 22:09:55 cycle 1 bb-stock: HTTP 200 curl_exit=0 time_total=4.389757s bytes=439 idle_wait=9s  
+2026-11-18 22:09:55 cycle 1 bb-mine: waiting for idle
+2026-11-18 22:11:44 cycle 1 bb-mine: HTTP 200 curl_exit=0 time_total=1.952954s bytes=439 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=126.590746ms probe=tcp] 
+2026-11-18 22:11:44 cycle 2 bb-stock: waiting for idle
+2026-11-18 22:13:31 cycle 2 bb-stock: HTTP 200 curl_exit=0 time_total=4.291979s bytes=439 idle_wait=101s  
+2026-11-18 22:13:31 cycle 2 bb-mine: waiting for idle
+2026-11-18 22:15:19 cycle 2 bb-mine: HTTP 200 curl_exit=0 time_total=1.943091s bytes=439 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=119.084078ms probe=tcp] 
+2026-11-18 22:15:19 cycle 3 bb-stock: waiting for idle
+2026-11-18 22:17:06 cycle 3 bb-stock: HTTP 200 curl_exit=0 time_total=4.207874s bytes=439 idle_wait=102s  
+2026-11-18 22:17:06 cycle 3 bb-mine: waiting for idle
+2026-11-18 22:19:34 cycle 3 bb-mine: HTTP 200 curl_exit=0 time_total=1.874109s bytes=439 idle_wait=144s [firecrackerVM=fcweb1 launchToHTTP200=123.584423ms probe=tcp] 
+2026-11-18 22:19:34 cycle 4 bb-stock: waiting for idle
+2026-11-18 22:21:20 cycle 4 bb-stock: HTTP 200 curl_exit=0 time_total=4.250332s bytes=439 idle_wait=101s  
+2026-11-18 22:21:20 cycle 4 bb-mine: waiting for idle
+2026-11-18 22:23:09 cycle 4 bb-mine: HTTP 200 curl_exit=0 time_total=1.884136s bytes=439 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=121.168405ms probe=tcp] 
+2026-11-18 22:23:09 cycle 5 bb-stock: waiting for idle
+2026-11-18 22:24:56 cycle 5 bb-stock: HTTP 200 curl_exit=0 time_total=4.234982s bytes=439 idle_wait=102s  
+2026-11-18 22:24:56 cycle 5 bb-mine: waiting for idle
+2026-11-18 22:27:34 cycle 5 bb-mine: HTTP 200 curl_exit=0 time_total=1.237908s bytes=439 idle_wait=155s [firecrackerVM=fcweb1 launchToHTTP200=122.905081ms probe=tcp] 
+2026-11-18 22:27:34 cycle 6 bb-stock: waiting for idle
+2026-11-18 22:29:21 cycle 6 bb-stock: HTTP 200 curl_exit=0 time_total=4.247836s bytes=439 idle_wait=101s  
+2026-11-18 22:29:21 cycle 6 bb-mine: waiting for idle
+2026-11-18 22:31:09 cycle 6 bb-mine: HTTP 200 curl_exit=0 time_total=1.953671s bytes=439 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=125.09455ms probe=tcp] 
+2026-11-18 22:31:09 cycle 7 bb-stock: waiting for idle
+2026-11-18 22:32:56 cycle 7 bb-stock: HTTP 200 curl_exit=0 time_total=4.244006s bytes=439 idle_wait=102s  
+2026-11-18 22:32:56 cycle 7 bb-mine: waiting for idle
+2026-11-18 22:35:34 cycle 7 bb-mine: HTTP 200 curl_exit=0 time_total=1.253150s bytes=439 idle_wait=155s [firecrackerVM=fcweb1 launchToHTTP200=121.310819ms probe=tcp] 
+2026-11-18 22:35:34 cycle 8 bb-stock: waiting for idle
+2026-11-18 22:37:21 cycle 8 bb-stock: HTTP 200 curl_exit=0 time_total=4.249928s bytes=439 idle_wait=101s  
+2026-11-18 22:37:21 cycle 8 bb-mine: waiting for idle
+2026-11-18 22:39:10 cycle 8 bb-mine: HTTP 200 curl_exit=0 time_total=1.930812s bytes=439 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=125.788394ms probe=tcp] 
+2026-11-18 22:39:10 cycle 9 bb-stock: waiting for idle
+2026-11-18 22:40:56 cycle 9 bb-stock: HTTP 200 curl_exit=0 time_total=4.253166s bytes=439 idle_wait=101s  
+2026-11-18 22:40:56 cycle 9 bb-mine: waiting for idle
+2026-11-18 22:42:45 cycle 9 bb-mine: HTTP 200 curl_exit=0 time_total=1.960419s bytes=439 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=122.39031ms probe=tcp] 
+2026-11-18 22:42:45 cycle 10 bb-stock: waiting for idle
+2026-11-18 22:44:32 cycle 10 bb-stock: HTTP 200 curl_exit=0 time_total=4.251134s bytes=439 idle_wait=102s  
+2026-11-18 22:44:32 cycle 10 bb-mine: waiting for idle
+2026-11-18 22:46:21 cycle 10 bb-mine: HTTP 200 curl_exit=0 time_total=1.896748s bytes=439 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=121.825588ms probe=tcp] 
+2026-11-18 22:46:21 cycle 11 bb-stock: waiting for idle
+2026-11-18 22:48:08 cycle 11 bb-stock: HTTP 200 curl_exit=0 time_total=4.232350s bytes=439 idle_wait=102s  
+2026-11-18 22:48:08 cycle 11 bb-mine: waiting for idle
+2026-11-18 22:49:57 cycle 11 bb-mine: HTTP 200 curl_exit=0 time_total=1.913861s bytes=439 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=121.254609ms probe=tcp] 
+2026-11-18 22:49:57 done workload=busybox

@@ -1,0 +1,4 @@
+time="2026-11-18T22:32:54.828352679-07:00" level=info msg="httpd started" vmID=10-268be023-f1e6-48
+time="2026-11-18T22:32:54.828426669-07:00" level=info vmID=10-268be023-f1e6-48
+time="2026-11-18T22:32:55.716984902-07:00" level=info msg="172.17.0.77:39071: response:200" vmID=10-268be023-f1e6-48
+time="2026-11-18T22:32:55.717026921-07:00" level=info vmID=10-268be023-f1e6-48

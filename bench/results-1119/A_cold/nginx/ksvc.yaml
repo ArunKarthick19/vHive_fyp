@@ -1,0 +1,133 @@
+apiVersion: v1
+items:
+- apiVersion: serving.knative.dev/v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"nginx-stock","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"8080"},{"name":"GUEST_IMAGE","value":"docker.io/nginxinc/nginx-unprivileged:1.27-alpine"}],"image":"docker.io/nginxinc/nginx-unprivileged:1.27-alpine","name":"user-container","ports":[{"containerPort":8080,"protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+      serving.knative.dev/creator: kubernetes-admin
+      serving.knative.dev/lastModifier: kubernetes-admin
+    creationTimestamp: "2026-11-18T15:57:12Z"
+    generation: 1
+    name: nginx-stock
+    namespace: default
+    resourceVersion: "7503"
+    uid: 2ecc7054-b6d8-4ce8-97a6-66205bcd054e
+  spec:
+    template:
+      metadata:
+        annotations:
+          autoscaling.knative.dev/max-scale: "1"
+      spec:
+        containerConcurrency: 0
+        containers:
+        - env:
+          - name: GUEST_PORT
+            value: "8080"
+          - name: GUEST_IMAGE
+            value: docker.io/nginxinc/nginx-unprivileged:1.27-alpine
+          image: docker.io/nginxinc/nginx-unprivileged:1.27-alpine
+          name: user-container
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+        enableServiceLinks: false
+        timeoutSeconds: 300
+    traffic:
+    - latestRevision: true
+      percent: 100
+  status:
+    address:
+      url: http://nginx-stock.default.svc.cluster.local
+    conditions:
+    - lastTransitionTime: "2026-11-18T15:57:35Z"
+      status: "True"
+      type: ConfigurationsReady
+    - lastTransitionTime: "2026-11-18T15:57:35Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-11-18T15:57:35Z"
+      status: "True"
+      type: RoutesReady
+    latestCreatedRevisionName: nginx-stock-00001
+    latestReadyRevisionName: nginx-stock-00001
+    observedGeneration: 1
+    traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: nginx-stock-00001
+    url: http://nginx-stock.default.192.168.1.240.sslip.io
+- apiVersion: serving.knative.dev/v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"nginx-mine","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"8080"},{"name":"GUEST_IMAGE","value":"firecracker-vm://image"},{"name":"FC_MEM_MIB","value":"512"}],"image":"docker.io/nginxinc/nginx-unprivileged:1.27-alpine","name":"user-container","ports":[{"containerPort":8080,"protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+      serving.knative.dev/creator: kubernetes-admin
+      serving.knative.dev/lastModifier: kubernetes-admin
+    creationTimestamp: "2026-11-18T15:57:12Z"
+    generation: 1
+    name: nginx-mine
+    namespace: default
+    resourceVersion: "7428"
+    uid: fd600f36-8004-4acc-84f7-040b4adff022
+  spec:
+    template:
+      metadata:
+        annotations:
+          autoscaling.knative.dev/max-scale: "1"
+      spec:
+        containerConcurrency: 0
+        containers:
+        - env:
+          - name: GUEST_PORT
+            value: "8080"
+          - name: GUEST_IMAGE
+            value: firecracker-vm://image
+          - name: FC_MEM_MIB
+            value: "512"
+          image: docker.io/nginxinc/nginx-unprivileged:1.27-alpine
+          name: user-container
+          ports:
+          - containerPort: 8080
+            protocol: TCP
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+        enableServiceLinks: false
+        timeoutSeconds: 300
+    traffic:
+    - latestRevision: true
+      percent: 100
+  status:
+    address:
+      url: http://nginx-mine.default.svc.cluster.local
+    conditions:
+    - lastTransitionTime: "2026-11-18T15:57:30Z"
+      status: "True"
+      type: ConfigurationsReady
+    - lastTransitionTime: "2026-11-18T15:57:30Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-11-18T15:57:30Z"
+      status: "True"
+      type: RoutesReady
+    latestCreatedRevisionName: nginx-mine-00001
+    latestReadyRevisionName: nginx-mine-00001
+    observedGeneration: 1
+    traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: nginx-mine-00001
+    url: http://nginx-mine.default.192.168.1.240.sslip.io
+kind: List
+metadata:
+  resourceVersion: ""

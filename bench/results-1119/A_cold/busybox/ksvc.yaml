@@ -1,0 +1,133 @@
+apiVersion: v1
+items:
+- apiVersion: serving.knative.dev/v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"bb-stock","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"8000"},{"name":"GUEST_IMAGE","value":"ghcr.io/vhive-serverless/crccheck-hello-world:latest"}],"image":"ghcr.io/vhive-serverless/crccheck-hello-world:latest","name":"user-container","ports":[{"containerPort":8000,"protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+      serving.knative.dev/creator: kubernetes-admin
+      serving.knative.dev/lastModifier: kubernetes-admin
+    creationTimestamp: "2026-11-18T15:57:11Z"
+    generation: 1
+    name: bb-stock
+    namespace: default
+    resourceVersion: "7232"
+    uid: a64050c4-97ec-4491-a870-106a29720ec4
+  spec:
+    template:
+      metadata:
+        annotations:
+          autoscaling.knative.dev/max-scale: "1"
+      spec:
+        containerConcurrency: 0
+        containers:
+        - env:
+          - name: GUEST_PORT
+            value: "8000"
+          - name: GUEST_IMAGE
+            value: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+          image: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+          name: user-container
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+        enableServiceLinks: false
+        timeoutSeconds: 300
+    traffic:
+    - latestRevision: true
+      percent: 100
+  status:
+    address:
+      url: http://bb-stock.default.svc.cluster.local
+    conditions:
+    - lastTransitionTime: "2026-11-18T15:57:17Z"
+      status: "True"
+      type: ConfigurationsReady
+    - lastTransitionTime: "2026-11-18T15:57:17Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-11-18T15:57:17Z"
+      status: "True"
+      type: RoutesReady
+    latestCreatedRevisionName: bb-stock-00001
+    latestReadyRevisionName: bb-stock-00001
+    observedGeneration: 1
+    traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: bb-stock-00001
+    url: http://bb-stock.default.192.168.1.240.sslip.io
+- apiVersion: serving.knative.dev/v1
+  kind: Service
+  metadata:
+    annotations:
+      kubectl.kubernetes.io/last-applied-configuration: |
+        {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"bb-mine","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"8000"},{"name":"GUEST_IMAGE","value":"firecracker-vm://image"},{"name":"FC_MEM_MIB","value":"512"}],"image":"ghcr.io/vhive-serverless/crccheck-hello-world:latest","name":"user-container","ports":[{"containerPort":8000,"protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+      serving.knative.dev/creator: kubernetes-admin
+      serving.knative.dev/lastModifier: kubernetes-admin
+    creationTimestamp: "2026-11-18T15:57:11Z"
+    generation: 1
+    name: bb-mine
+    namespace: default
+    resourceVersion: "7158"
+    uid: fc807b26-f5c4-4af4-9135-46c3b8391219
+  spec:
+    template:
+      metadata:
+        annotations:
+          autoscaling.knative.dev/max-scale: "1"
+      spec:
+        containerConcurrency: 0
+        containers:
+        - env:
+          - name: GUEST_PORT
+            value: "8000"
+          - name: GUEST_IMAGE
+            value: firecracker-vm://image
+          - name: FC_MEM_MIB
+            value: "512"
+          image: ghcr.io/vhive-serverless/crccheck-hello-world:latest
+          name: user-container
+          ports:
+          - containerPort: 8000
+            protocol: TCP
+          readinessProbe:
+            successThreshold: 1
+            tcpSocket:
+              port: 0
+          resources: {}
+        enableServiceLinks: false
+        timeoutSeconds: 300
+    traffic:
+    - latestRevision: true
+      percent: 100
+  status:
+    address:
+      url: http://bb-mine.default.svc.cluster.local
+    conditions:
+    - lastTransitionTime: "2026-11-18T15:57:13Z"
+      status: "True"
+      type: ConfigurationsReady
+    - lastTransitionTime: "2026-11-18T15:57:14Z"
+      status: "True"
+      type: Ready
+    - lastTransitionTime: "2026-11-18T15:57:14Z"
+      status: "True"
+      type: RoutesReady
+    latestCreatedRevisionName: bb-mine-00001
+    latestReadyRevisionName: bb-mine-00001
+    observedGeneration: 1
+    traffic:
+    - latestRevision: true
+      percent: 100
+      revisionName: bb-mine-00001
+    url: http://bb-mine.default.192.168.1.240.sslip.io
+kind: List
+metadata:
+  resourceVersion: ""
