@@ -143,6 +143,9 @@ func (fs *FirecrackerService) imageAppExited(sandboxID string, e vmExit) {
 		l.Warn("image VM app exited but its sandbox has no tracked user container; nothing to report")
 		return
 	}
+	// Copy the app's last lines into this attempt's log before kubelet
+	// restarts the container (kubectl logs --previous).
+	fs.stopVMLog(sandboxID)
 	ctx, cancel := context.WithTimeout(context.Background(), placeholderStopTimeout)
 	defer cancel()
 	if _, err := fs.stockRuntimeClient.StopContainer(ctx, &criapi.StopContainerRequest{ContainerId: containerID, Timeout: 0}); err != nil {

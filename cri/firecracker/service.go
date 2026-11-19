@@ -84,8 +84,9 @@ type FirecrackerService struct {
 
 	// Crash reporting for image VMs (appexit.go).
 	exitMu    sync.Mutex
-	imageUC   map[string]string  // sandbox ID -> its current user container ID
-	appExited map[string]appExit // user container ID -> how its VM's app ended
+	imageUC   map[string]string        // sandbox ID -> its current user container ID
+	appExited map[string]appExit       // user container ID -> how its VM's app ended
+	vmLogs    map[string]*logForwarder // sandbox ID -> VM console -> container log (vmlogs.go)
 }
 
 // VMConfig wraps the IP and port of the guest VM
@@ -327,6 +328,7 @@ func (fs *FirecrackerService) createPodVMUserContainer(ctx context.Context, r *c
 	fs.insertVMConfig(sandboxID, &VMConfig{guestIP: guestIP, guestPort: guestPort})
 	if cfg.StatusDrive {
 		fs.trackImageContainer(sandboxID, (*stockResp).ContainerId)
+		fs.startVMLog(sandboxID, r, fresh)
 	}
 	return *stockResp, nil
 }
@@ -350,6 +352,7 @@ func (fs *FirecrackerService) StopPodSandbox(ctx context.Context, r *criapi.Stop
 	if err := fs.podvms.stop(r.GetPodSandboxId()); err != nil {
 		log.WithError(err).WithField("sandbox", r.GetPodSandboxId()).Error("failed to stop per-pod Firecracker VM")
 	}
+	fs.stopVMLog(r.GetPodSandboxId()) // after the VM is down, so its last lines are copied
 	return fs.stockRuntimeClient.StopPodSandbox(ctx, r)
 }
 
