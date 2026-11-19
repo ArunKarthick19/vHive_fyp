@@ -87,7 +87,7 @@ placeholder is stopped, so `kubectl logs --previous` has the last lines, and als
 ### Options
 | | what | pros | cons | effort |
 |---|---|---|---|---|
-| **A. Host NAT + resolv.conf** (recommended first step) | per slot at tap creation: `iptables -t nat -A POSTROUTING -s 10.200.0.4n+2/32 ! -d 10.200.0.0/24 -j MASQUERADE` plus an anti-spoof rule `-i fcweb<n> ! -s <guestIP> -j DROP`. Removed in cleanup and by the startup sweep. vhive copies `dns_config` onto the config drive and fcinit writes `/etc/resolv.conf` from it | small, mirrors stock vHive, ClusterIP Services work (kube-proxy DNATs in PREROUTING for packets from the tap), CoreDNS works | traffic leaves as the **node's** IP: NetworkPolicy, which Calico applies on the pod's `cali*` interface, does **not** apply to the VM; other pods see the node, not the pod IP | about 1 day: rule lifecycle + sweep + tests (resolv.conf part: 2–3 h) |
+| **A. Host NAT + resolv.conf** (recommended first step) | per slot at tap creation: `iptables -t nat -A POSTROUTING -s 10.200.0.4n+2/32 ! -d 10.200.0.0/24 -j MASQUERADE` plus an anti-spoof rule `-i fcweb<n> ! -s <guestIP> -j DROP`. Removed in cleanup and by the startup sweep. vhive copies `dns_config` onto the config drive and fcinit writes `/etc/resolv.conf` from it | small, mirrors stock vHive; ClusterIP Services and CoreDNS are *expected* to work, because kube-proxy DNATs in PREROUTING for packets from any interface (not tested) | traffic leaves as the **node's** IP: NetworkPolicy, which Calico applies on the pod's `cali*` interface, does **not** apply to the VM; other pods see the node, not the pod IP | about 1 day: rule lifecycle + sweep + tests (resolv.conf part: 2–3 h) |
 | B. VM inside the pod's network namespace | create the tap in the placeholder sandbox's netns and redirect eth0↔tap with tc (like Kata Containers) | the VM *is* the pod IP: NetworkPolicy, Services and source IP are all correct | queue-proxy shares that netns and must reach the app differently; slot networking, probes and teardown change; large | 1–2 weeks |
 | C. Proxy on the host (HTTP CONNECT / SOCKS on the tap) | only proxied traffic leaves | very easy to control | apps must be proxy-aware; not transparent; no DNS | 1–2 days |
 
@@ -98,8 +98,8 @@ placeholder is stopped, so `kubectl logs --previous` has the last lines, and als
   and the cloud metadata address if there is one. INPUT rules for `-i fcweb+` (allow only the established/related traffic for probes, plus DNS to CoreDNS through the
   Service IP) should come with the NAT rules.
 - Rate limiting and connection tracking limits per tap are optional hardening.
-- Stock vHive's uVMs have the same exposure today (their egress is also masqueraded on the host), so option A does not add a new class of risk compared to stock. It is still a change from today's
-  image VMs, which cannot reach anything.
+- From reading `networking/networking.go` (not tested on the node), stock vHive's uVMs get the same kind of masqueraded egress. If so, option A adds no new class of risk compared to stock.
+  It is still a change from today's image VMs, which cannot reach anything.
 
 ### How it would be tested
 Unit: rule generation per slot (pure), resolv.conf rendering from `DNSConfig` (pure). End to end: an image whose app runs `nslookup kubernetes.default` and
