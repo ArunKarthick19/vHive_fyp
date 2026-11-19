@@ -1,0 +1,43 @@
+# 2026-11-19T00:11:15-07:00 normal daemon (no -snapshots), pid 927888
+## /fccd/snapshots before
+00:07:59.7006498400 drwxr-xr-x       4096 /fccd/snapshots
+22:32:54.8276238600 drwxr-xr-x       4096 /fccd/snapshots/10-268be023-f1e6-48
+21:47:06.4805404290 drwxr-xr-x       4096 /fccd/snapshots/1-08da3647-a327-4e
+22:37:19.0087075520 drwxr-xr-x       4096 /fccd/snapshots/11-c99ffa85-bb1b-45
+22:40:54.8833157340 drwxr-xr-x       4096 /fccd/snapshots/12-4971d325-a95f-4e
+22:44:30.7289225650 drwxr-xr-x       4096 /fccd/snapshots/13-572f95a5-34c5-40
+22:48:06.4775264120 drwxr-xr-x       4096 /fccd/snapshots/14-8a44c01d-970e-46
+22:51:41.3081023140 drwxr-xr-x       4096 /fccd/snapshots/15-4ceb9e48-9c6b-45
+22:55:20.2198030930 drwxr-xr-x       4096 /fccd/snapshots/16-bfcef11b-677b-46
+22:59:00.5345465780 drwxr-xr-x       4096 /fccd/snapshots/17-1e60ead6-dcc0-49
+23:02:39.1052366800 drwxr-xr-x       4096 /fccd/snapshots/18-03a7d8ee-df16-4e
+23:06:17.2819152190 drwxr-xr-x       4096 /fccd/snapshots/19-f708ec84-62ba-44
+23:09:53.5205345410 drwxr-xr-x       4096 /fccd/snapshots/20-74e28cdd-c1bc-40
+23:13:34.6023021180 drwxr-xr-x       4096 /fccd/snapshots/21-8e2f4358-fe80-4e
+23:17:13.3199973270 drwxr-xr-x       4096 /fccd/snapshots/22-bb642832-1849-4f
+23:20:49.3266095680 drwxr-xr-x       4096 /fccd/snapshots/23-d22acbf0-042e-47
+23:24:25.8962395670 drwxr-xr-x       4096 /fccd/snapshots/24-86580feb-7e16-44
+23:28:06.9050054650 drwxr-xr-x       4096 /fccd/snapshots/25-ce986a4c-89f2-4d
+23:31:46.1617177270 drwxr-xr-x       4096 /fccd/snapshots/26-850fcdcf-14d4-49
+23:35:27.4774930240 drwxr-xr-x       4096 /fccd/snapshots/27-ceb5580f-fe46-47
+23:39:03.2990991210 drwxr-xr-x       4096 /fccd/snapshots/28-5da6f4b9-a113-45
+23:42:38.9056942880 drwxr-xr-x       4096 /fccd/snapshots/29-2c293adc-685c-44
+21:48:50.0477190050 drwxr-xr-x       4096 /fccd/snapshots/2-f1a40172-c1b2-4d
+23:46:14.8751589490 drwxr-xr-x       4096 /fccd/snapshots/30-6193e66b-1fcc-4b
+23:49:52.8007212380 drwxr-xr-x       4096 /fccd/snapshots/31-06a95787-14b8-47
+23:53:28.3962410510 drwxr-xr-x       4096 /fccd/snapshots/32-d6afda4d-4e28-4b
+23:57:06.3088379050 drwxr-xr-x       4096 /fccd/snapshots/33-dc9674dc-3a82-4b
+00:00:44.1194404480 drwxr-xr-x       4096 /fccd/snapshots/34-ce6d0b8c-4473-44
+00:04:21.9170544370 drwxr-xr-x       4096 /fccd/snapshots/35-0060583d-a44d-43
+00:07:59.7006498400 drwxr-xr-x       4096 /fccd/snapshots/36-5a459d2f-b037-40
+21:49:32.7340290890 drwxr-xr-x       4096 /fccd/snapshots/3-9e3a5880-cfec-43
+22:09:53.0014226440 drwxr-xr-x       4096 /fccd/snapshots/4-1e4e60ea-bfd7-4e
+22:13:28.8970095700 drwxr-xr-x       4096 /fccd/snapshots/5-a8ac8e65-0f8f-4f
+22:17:04.8556179240 drwxr-xr-x       4096 /fccd/snapshots/6-564b39e1-4c24-47
+22:21:18.8513893520 drwxr-xr-x       4096 /fccd/snapshots/7-6da44737-2221-4a
+22:24:54.8179905040 drwxr-xr-x       4096 /fccd/snapshots/8-02e923ea-7873-4e
+22:29:18.9790267780 drwxr-xr-x       4096 /fccd/snapshots/9-87ef8574-321b-49
+service.serving.knative.dev/snap-stock created
+service.serving.knative.dev/snap-stock condition met
+request: 200 0.009477
+files under /fccd/snapshots (not dirs): 0; du: 152K

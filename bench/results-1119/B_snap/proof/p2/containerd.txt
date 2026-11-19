@@ -1,0 +1,61 @@
+INFO[2026-11-19T00:15:42.217130599-07:00] RunPodSandbox for name:"snap-stock-00001-deployment-85bb75dbcd-kkfld" uid:"1c298d93-cc44-4d0f-9950-9b540708f61e" namespace:"default" 
+INFO[2026-11-19T00:15:42.388785135-07:00] connecting to shim 0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8  address="unix:///run/containerd/s/16096b72cc3d25b552e417703aeed06a14a99bbd8967bf55173cdb1ee103fd8c" namespace=k8s.io protocol=ttrpc version=3
+INFO[2026-11-19T00:15:42.483647183-07:00] RunPodSandbox for name:"snap-stock-00001-deployment-85bb75dbcd-kkfld" uid:"1c298d93-cc44-4d0f-9950-9b540708f61e" namespace:"default" returns sandbox id "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" 
+INFO[2026-11-19T00:15:42.488957350-07:00] CreateContainer within sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" for container name:"user-container" 
+INFO[2026-11-19T00:15:42.499125407-07:00] CreateContainer within sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" for name:"user-container" returns container id "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" 
+INFO[2026-11-19T00:15:42.721661739-07:00] StartContainer for "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" 
+INFO[2026-11-19T00:15:42.723420299-07:00] connecting to shim 665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7  address="unix:///run/containerd/s/16096b72cc3d25b552e417703aeed06a14a99bbd8967bf55173cdb1ee103fd8c" protocol=ttrpc version=3
+INFO[2026-11-19T00:15:42.784128473-07:00] StartContainer for "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" returns successfully 
+INFO[2026-11-19T00:15:42.787935450-07:00] CreateContainer within sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" for container name:"queue-proxy" 
+INFO[2026-11-19T00:15:42.796769738-07:00] CreateContainer within sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" for name:"queue-proxy" returns container id "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" 
+INFO[2026-11-19T00:15:42.797583859-07:00] StartContainer for "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" 
+INFO[2026-11-19T00:15:42.799615419-07:00] connecting to shim dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff  address="unix:///run/containerd/s/16096b72cc3d25b552e417703aeed06a14a99bbd8967bf55173cdb1ee103fd8c" protocol=ttrpc version=3
+INFO[2026-11-19T00:15:42.890330395-07:00] StartContainer for "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" returns successfully 
+INFO[2026-11-19T00:15:43.731471129-07:00] container event discarded                     container=1078aeb4a692abfdaa3dc1eadfd0d967ae65334e1bf63c4804060504bbc09a4b type=CONTAINER_CREATED_EVENT
+INFO[2026-11-19T00:15:43.731585039-07:00] container event discarded                     container=1078aeb4a692abfdaa3dc1eadfd0d967ae65334e1bf63c4804060504bbc09a4b type=CONTAINER_STARTED_EVENT
+INFO[2026-11-19T00:15:43.743894908-07:00] container event discarded                     container=a66d3ebf0a9f6e069292d753c3027a9fce564628ff9951d08acbf6f59874aa6f type=CONTAINER_CREATED_EVENT
+INFO[2026-11-19T00:15:43.995962111-07:00] container event discarded                     container=a66d3ebf0a9f6e069292d753c3027a9fce564628ff9951d08acbf6f59874aa6f type=CONTAINER_STARTED_EVENT
+INFO[2026-11-19T00:15:44.008273514-07:00] container event discarded                     container=cc19ff8f51f45e306d5318e5f10bcddd9908b978dbcec7510873149507413f2e type=CONTAINER_CREATED_EVENT
+INFO[2026-11-19T00:15:44.096554909-07:00] container event discarded                     container=cc19ff8f51f45e306d5318e5f10bcddd9908b978dbcec7510873149507413f2e type=CONTAINER_STARTED_EVENT
+INFO[2026-11-19T00:16:16.218028932-07:00] container event discarded                     container=a9b74054a11997011b3cd7151719e47c29ae913a7e69c346f9284bbcd73f0953 type=CONTAINER_CREATED_EVENT
+INFO[2026-11-19T00:16:16.218172859-07:00] container event discarded                     container=a9b74054a11997011b3cd7151719e47c29ae913a7e69c346f9284bbcd73f0953 type=CONTAINER_STARTED_EVENT
+INFO[2026-11-19T00:16:16.231244891-07:00] container event discarded                     container=3a1164efca42723111cb9755d592d0b4805677134833976ad219838d4579f2b0 type=CONTAINER_CREATED_EVENT
+INFO[2026-11-19T00:16:18.987273698-07:00] container event discarded                     container=3a1164efca42723111cb9755d592d0b4805677134833976ad219838d4579f2b0 type=CONTAINER_STARTED_EVENT
+INFO[2026-11-19T00:16:18.999615892-07:00] container event discarded                     container=ea98537e6a160836c6cf1c6022048376bbd100c0106fcce158068a7f6be143bd type=CONTAINER_CREATED_EVENT
+INFO[2026-11-19T00:16:19.093008385-07:00] container event discarded                     container=ea98537e6a160836c6cf1c6022048376bbd100c0106fcce158068a7f6be143bd type=CONTAINER_STARTED_EVENT
+INFO[2026-11-19T00:16:43.747025990-07:00] StopContainer for "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" with timeout 300 (s) 
+INFO[2026-11-19T00:16:43.748341090-07:00] Stop container "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" with signal terminated 
+INFO[2026-11-19T00:17:13.761689496-07:00] StopContainer for "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" with timeout 270 (s) 
+INFO[2026-11-19T00:17:13.762268200-07:00] Stop container "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" with signal terminated 
+INFO[2026-11-19T00:17:13.767072798-07:00] received container exit event container_id:"dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" id:"dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" pid:1204560 exited_at:{seconds:1795072633 nanos:766651569} 
+INFO[2026-11-19T00:17:13.772848279-07:00] received container exit event container_id:"665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" id:"665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" pid:1204533 exited_at:{seconds:1795072633 nanos:772633262} 
+INFO[2026-11-19T00:17:13.833534337-07:00] StopContainer for "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" returns successfully 
+INFO[2026-11-19T00:17:13.844774772-07:00] StopContainer for "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" returns successfully 
+INFO[2026-11-19T00:17:13.845836830-07:00] StopPodSandbox for "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" 
+INFO[2026-11-19T00:17:13.846004135-07:00] Container to stop "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" must be in running or unknown state, current state "CONTAINER_EXITED" 
+INFO[2026-11-19T00:17:13.846033998-07:00] Container to stop "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" must be in running or unknown state, current state "CONTAINER_EXITED" 
+INFO[2026-11-19T00:17:13.856709982-07:00] received sandbox exit event container_id:"0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" id:"0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" exit_status:137 exited_at:{seconds:1795072633 nanos:856374498}  monitor_name=podsandbox
+INFO[2026-11-19T00:17:13.898763201-07:00] shim disconnected                             id=0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8 namespace=k8s.io
+INFO[2026-11-19T00:17:13.898834821-07:00] cleaning up after shim disconnected           id=0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8 namespace=k8s.io
+INFO[2026-11-19T00:17:13.898859432-07:00] cleaning up dead shim                         id=0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8 namespace=k8s.io
+INFO[2026-11-19T00:17:13.917298892-07:00] received sandbox container exit event sandbox_id:"0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" exit_status:137 exited_at:{seconds:1795072633 nanos:856374498}  monitor_name=criService
+INFO[2026-11-19T00:17:14.060526521-07:00] TearDown network for sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" successfully 
+INFO[2026-11-19T00:17:14.060574887-07:00] StopPodSandbox for "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" returns successfully 
+INFO[2026-11-19T00:17:17.027276033-07:00] container event discarded                     container=cc19ff8f51f45e306d5318e5f10bcddd9908b978dbcec7510873149507413f2e type=CONTAINER_STOPPED_EVENT
+INFO[2026-11-19T00:17:17.060024220-07:00] container event discarded                     container=a66d3ebf0a9f6e069292d753c3027a9fce564628ff9951d08acbf6f59874aa6f type=CONTAINER_STOPPED_EVENT
+INFO[2026-11-19T00:17:17.227494553-07:00] container event discarded                     container=1078aeb4a692abfdaa3dc1eadfd0d967ae65334e1bf63c4804060504bbc09a4b type=CONTAINER_STOPPED_EVENT
+INFO[2026-11-19T00:17:17.581372560-07:00] container event discarded                     container=cc19ff8f51f45e306d5318e5f10bcddd9908b978dbcec7510873149507413f2e type=CONTAINER_DELETED_EVENT
+INFO[2026-11-19T00:17:17.591570132-07:00] container event discarded                     container=a66d3ebf0a9f6e069292d753c3027a9fce564628ff9951d08acbf6f59874aa6f type=CONTAINER_DELETED_EVENT
+INFO[2026-11-19T00:17:27.694347165-07:00] container event discarded                     container=1078aeb4a692abfdaa3dc1eadfd0d967ae65334e1bf63c4804060504bbc09a4b type=CONTAINER_DELETED_EVENT
+INFO[2026-11-19T00:17:28.121449199-07:00] RemoveContainer for "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" 
+INFO[2026-11-19T00:17:28.129856600-07:00] RemoveContainer for "dee99d27c424cb4e4591d0641fe5bb24b899def1ba92dc641bc8acc6454896ff" returns successfully 
+INFO[2026-11-19T00:17:28.134079560-07:00] RemoveContainer for "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" 
+INFO[2026-11-19T00:17:28.139536583-07:00] RemoveContainer for "665aa47a2989684c290ca9034195f236215a252ef7074dbe4c0b5c761bcc4da7" returns successfully 
+INFO[2026-11-19T00:17:28.146348015-07:00] StopPodSandbox for "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" 
+INFO[2026-11-19T00:17:28.234318533-07:00] TearDown network for sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" successfully 
+INFO[2026-11-19T00:17:28.234380628-07:00] StopPodSandbox for "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" returns successfully 
+INFO[2026-11-19T00:17:28.235181552-07:00] RemovePodSandbox for "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" 
+INFO[2026-11-19T00:17:28.235210890-07:00] Forcibly stopping sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" 
+INFO[2026-11-19T00:17:28.316939025-07:00] TearDown network for sandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" successfully 
+INFO[2026-11-19T00:17:28.320160988-07:00] Ensure that sandbox 0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8 in task-service has been cleanup successfully 
+INFO[2026-11-19T00:17:28.321441764-07:00] RemovePodSandbox "0c9460bb09079aa9dcd7796f0e724989677b2ba6602e06f98f9356adc2f48eb8" returns successfully 

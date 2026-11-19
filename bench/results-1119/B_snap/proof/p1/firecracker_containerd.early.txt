@@ -1,0 +1,40 @@
+DEBU[2026-11-19T00:13:25.644135380-07:00] (*service).Write started                      expected="sha256:0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400" ref="manifest-sha256:0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400" total=734
+DEBU[2026-11-19T00:13:25.649816913-07:00] (*service).Write started                      expected="sha256:24349d78cb62b52f99af125f18ada6149df5ed7fe6bdeb286004412a202c270d" ref="config-sha256:24349d78cb62b52f99af125f18ada6149df5ed7fe6bdeb286004412a202c270d" total=2339
+DEBU[2026-11-19T00:13:25.654068617-07:00] prepare snapshot                              key="extract-653644358-dsqD sha256:d94c78be13527d00673093f9677f9b43d7e3a02ae6fa0ec74d3d98243b5b40e4" parent= snapshotter=devmapper
+DEBU[2026-11-19T00:13:25.655208558-07:00] stat snapshot                                 key="sha256:d94c78be13527d00673093f9677f9b43d7e3a02ae6fa0ec74d3d98243b5b40e4" snapshotter=devmapper
+DEBU[2026-11-19T00:13:25.655279066-07:00] stat                                          key="firecracker-containerd/2/sha256:d94c78be13527d00673093f9677f9b43d7e3a02ae6fa0ec74d3d98243b5b40e4"
+DEBU[2026-11-19T00:13:25.655952632-07:00] prepare snapshot                              key="extract-655657532-PVHF sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887" parent="sha256:d94c78be13527d00673093f9677f9b43d7e3a02ae6fa0ec74d3d98243b5b40e4" snapshotter=devmapper
+DEBU[2026-11-19T00:13:25.657021247-07:00] stat snapshot                                 key="sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887" snapshotter=devmapper
+DEBU[2026-11-19T00:13:25.657058857-07:00] stat                                          key="firecracker-containerd/4/sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887"
+DEBU[2026-11-19T00:13:25.658734043-07:00] create image                                  name="ghcr.io/vhive-serverless/crccheck-hello-world:latest" target="sha256:0404ca69b522f8629d7d4e9034a7afe0300b713354e8bf12ec9657581cf59400"
+DEBU[2026-11-19T00:13:25.661596097-07:00] create VM request: VMID:"1-c61e464a-56c1-43" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns19" 
+DEBU[2026-11-19T00:13:25.661620524-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-19T00:13:25.661955226-07:00] starting containerd-shim-aws-firecracker      vmID=1-c61e464a-56c1-43
+INFO[2026-11-19T00:13:25.682771707-07:00] creating new VM                               runtime=aws.firecracker vmID=1-c61e464a-56c1-43
+INFO[2026-11-19T00:13:25.683333449-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.695667114-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110518 Smt:0xc000110520 TrackDirtyPages:0xc000110521 VcpuCount:0xc000110510}  runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.695914280-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.695928968-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.696214559-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.696228173-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#1-c61e464a-56c1-43/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.696446131-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#1-c61e464a-56c1-43/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.696458978-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.722261007-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-19T00:13:25.722298652-07:00] calling agent                                 runtime=aws.firecracker vmID=1-c61e464a-56c1-43
+INFO[2026-11-19T00:13:27.824006762-07:00] successfully started the VM                   runtime=aws.firecracker vmID=1-c61e464a-56c1-43
+DEBU[2026-11-19T00:13:27.828084323-07:00] prepare snapshot                              key=vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a parent="sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887" snapshotter=devmapper
+DEBU[2026-11-19T00:13:27.828380894-07:00] prepare                                       key=firecracker-containerd/153/vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a parent="firecracker-containerd/4/sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887"
+DEBU[2026-11-19T00:13:27.828449204-07:00] creating snapshot device 'fc-dev-thinpool-snap-135' from 'fc-dev-thinpool-snap-2' with fsType: 'ext4' 
+DEBU[2026-11-19T00:13:27.877352372-07:00] get snapshot mounts                           key=vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a snapshotter=devmapper
+DEBU[2026-11-19T00:13:27.877402346-07:00] mounts                                        key=firecracker-containerd/153/vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a
+DEBU[2026-11-19T00:13:27.877434606-07:00] stat                                          key=firecracker-containerd/153/vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a
+DEBU[2026-11-19T00:13:27.881528615-07:00] get snapshot mounts                           key=vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a snapshotter=devmapper
+DEBU[2026-11-19T00:13:27.881594257-07:00] mounts                                        key=firecracker-containerd/153/vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a
+DEBU[2026-11-19T00:13:27.881619382-07:00] stat                                          key=firecracker-containerd/153/vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a
+time="2026-11-19T00:13:27.897427510-07:00" level=debug msg=StartShim runtime=aws.firecracker task_id=vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a
+DEBU[2026-11-19T00:13:27.899209648-07:00] create VM request: VMID:"1-c61e464a-56c1-43" 
+DEBU[2026-11-19T00:13:27.899235014-07:00] using namespace: firecracker-containerd      
+time="2026-11-19T00:13:27.899516328-07:00" level=info msg="successfully started shim (git commit: bb007a1ef5692c0e30d8343b20d17b93ab7596f5)." runtime=aws.firecracker task_id=vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a vmID=1-c61e464a-56c1-43
+DEBU[2026-11-19T00:13:27.900749449-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/3104fc6f0cef0f910fc18923b3000975c9525e48a3e9633a4e166e1e81e96129" namespace=firecracker-containerd protocol=ttrpc
+INFO[2026-11-19T00:13:27.901873656-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-19T00:13:28.252550367-07:00] successfully created task                     ExecID= TaskID=vm1-c61e464a-56c1-43-containersnap-cfc2af59-7f90-4a pid_in_vm=792 runtime=aws.firecracker vmID=1-c61e464a-56c1-43

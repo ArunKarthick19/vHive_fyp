@@ -1,0 +1,9 @@
+time="2026-11-19T00:13:28.290509267-07:00" level=info msg="httpd started" vmID=1-c61e464a-56c1-43
+time="2026-11-19T00:13:28.290569628-07:00" level=info vmID=1-c61e464a-56c1-43
+time="2026-11-19T00:13:29.201007354-07:00" level=info msg="172.17.0.77:28124: response:200" vmID=1-c61e464a-56c1-43
+time="2026-11-19T00:13:29.201041762-07:00" level=info vmID=1-c61e464a-56c1-43
+time="2026-11-19T00:14:07.001087802-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-19T00:14:07.371584695-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-19T00:15:07.000334469-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-19T00:15:07.372038940-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-19T00:15:35.010163006-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 1-c61e464a-56c1-43" vmID=1-c61e464a-56c1-43

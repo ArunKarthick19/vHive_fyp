@@ -1,0 +1,26 @@
+2026-11-19 00:20:11 start workload=snapshot services='snap-stock' cycles=11 ingress=10.103.200.78
+2026-11-19 00:20:11   snap-stock -> Host: snap-stock.default.192.168.1.240.sslip.io
+2026-11-19 00:20:11   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-19 00:20:11 cycle 1 snap-stock: waiting for idle
+2026-11-19 00:20:23 cycle 1 snap-stock: HTTP 200 curl_exit=0 time_total=1.893935s bytes=439 idle_wait=9s  
+2026-11-19 00:20:23 cycle 2 snap-stock: waiting for idle
+2026-11-19 00:22:07 cycle 2 snap-stock: HTTP 200 curl_exit=0 time_total=1.097583s bytes=439 idle_wait=102s  
+2026-11-19 00:22:07 cycle 3 snap-stock: waiting for idle
+2026-11-19 00:23:51 cycle 3 snap-stock: HTTP 200 curl_exit=0 time_total=1.181626s bytes=439 idle_wait=102s  
+2026-11-19 00:23:51 cycle 4 snap-stock: waiting for idle
+2026-11-19 00:25:42 cycle 4 snap-stock: HTTP 200 curl_exit=0 time_total=1.761186s bytes=439 idle_wait=108s  
+2026-11-19 00:25:42 cycle 5 snap-stock: waiting for idle
+2026-11-19 00:27:43 cycle 5 snap-stock: HTTP 200 curl_exit=0 time_total=1.144383s bytes=439 idle_wait=119s  
+2026-11-19 00:27:43 cycle 6 snap-stock: waiting for idle
+2026-11-19 00:29:42 cycle 6 snap-stock: HTTP 200 curl_exit=0 time_total=1.233226s bytes=439 idle_wait=116s  
+2026-11-19 00:29:42 cycle 7 snap-stock: waiting for idle
+2026-11-19 00:31:26 cycle 7 snap-stock: HTTP 200 curl_exit=0 time_total=1.171678s bytes=439 idle_wait=101s  
+2026-11-19 00:31:26 cycle 8 snap-stock: waiting for idle
+2026-11-19 00:33:10 cycle 8 snap-stock: HTTP 200 curl_exit=0 time_total=1.131963s bytes=439 idle_wait=101s  
+2026-11-19 00:33:10 cycle 9 snap-stock: waiting for idle
+2026-11-19 00:34:53 cycle 9 snap-stock: HTTP 200 curl_exit=0 time_total=1.140635s bytes=439 idle_wait=101s  
+2026-11-19 00:34:53 cycle 10 snap-stock: waiting for idle
+2026-11-19 00:36:37 cycle 10 snap-stock: HTTP 200 curl_exit=0 time_total=1.141890s bytes=439 idle_wait=102s  
+2026-11-19 00:36:37 cycle 11 snap-stock: waiting for idle
+2026-11-19 00:38:22 cycle 11 snap-stock: HTTP 200 curl_exit=0 time_total=2.118816s bytes=439 idle_wait=102s  
+2026-11-19 00:38:22 done workload=snapshot

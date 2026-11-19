@@ -1,0 +1,11 @@
+DEBU[2026-11-19T00:15:42.491841346-07:00] prepare snapshot                              key=vm2-e70a22e2-690f-4c-containersnap-5dddf4d4-69f8-47 parent="sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887" snapshotter=devmapper
+DEBU[2026-11-19T00:15:42.492148129-07:00] prepare                                       key=firecracker-containerd/155/vm2-e70a22e2-690f-4c-containersnap-5dddf4d4-69f8-47 parent="firecracker-containerd/4/sha256:f8cd239343010e58e285a0bbb348f7e7cbc26ee31faa2dd621974e09ab30f887"
+DEBU[2026-11-19T00:15:42.492211829-07:00] creating snapshot device 'fc-dev-thinpool-snap-137' from 'fc-dev-thinpool-snap-2' with fsType: 'ext4' 
+DEBU[2026-11-19T00:15:42.584625904-07:00] create VM request: VMID:"2-e70a22e2-690f-4c" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns19" LoadSnapshot:true SnapshotPath:"/fccd/snapshots/snap-stock-00001/snap_file" ContainerSnapshotPath:"/dev/mapper/fc-dev-thinpool-snap-137" MemBackend:{BackendType:"File" BackendPath:"/fccd/snapshots/snap-stock-00001/mem_file"} 
+DEBU[2026-11-19T00:15:42.584702954-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-19T00:15:42.585325975-07:00] starting containerd-shim-aws-firecracker      vmID=2-e70a22e2-690f-4c
+INFO[2026-11-19T00:15:42.602753430-07:00] creating new VM                               runtime=aws.firecracker vmID=2-e70a22e2-690f-4c
+INFO[2026-11-19T00:15:42.603081895-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-19T00:15:42.617625683-07:00] calling agent                                 runtime=aws.firecracker vmID=2-e70a22e2-690f-4c
+INFO[2026-11-19T00:15:42.718797608-07:00] successfully started the VM                   runtime=aws.firecracker vmID=2-e70a22e2-690f-4c
+DEBU[2026-11-19T00:15:42.719630370-07:00] resume VM request: VMID:"2-e70a22e2-690f-4c" 

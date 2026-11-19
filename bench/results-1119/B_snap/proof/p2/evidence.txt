@@ -1,0 +1,12 @@
+## p2 evidence counts (firecracker-containerd window / vhive slice)
+fc-ctrd early 1  late 1  /create VM request/
+fc-ctrd early 0  late 0  /startInstance successful/
+fc-ctrd early 1  late 1  /successfully started the VM/
+fc-ctrd early 1  late 1  /LoadSnapshot|load snapshot|Loading snapshot/
+fc-ctrd early 1  late 1  /CreateSnapshot|create snapshot|Creating snapshot/
+fc-ctrd early 0  late 0  /PauseVM|Pausing/
+fc-ctrd early 0  late 0  /ResumeVM|Resuming/
+vhive    0  /httpd started/
+vhive    0  /response:200/
+vhive    0  /failed/
+vhive    0  /level=error/

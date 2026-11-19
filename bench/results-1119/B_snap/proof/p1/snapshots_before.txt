@@ -1,0 +1,2 @@
+00:13:07.3708718800 drwxr-xr-x       4096 /fccd/snapshots
+du: 0 apparent, 4.0K on disk

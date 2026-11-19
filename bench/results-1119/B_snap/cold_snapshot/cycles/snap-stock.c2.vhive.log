@@ -1,0 +1,2 @@
+time="2026-11-19T00:22:07.001180783-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-19T00:22:07.371622873-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="

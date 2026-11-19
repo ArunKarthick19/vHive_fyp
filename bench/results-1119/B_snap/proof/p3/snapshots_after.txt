@@ -1,0 +1,8 @@
+00:15:27.8939473170 drwxr-xr-x       4096 /fccd/snapshots
+00:13:28.2854865920 drwxr-xr-x       4096 /fccd/snapshots/1-c61e464a-56c1-43
+00:15:29.9940080720 drwxr-xr-x       4096 /fccd/snapshots/snap-stock-00001
+00:15:29.9940080720 -rw-r--r--        144 /fccd/snapshots/snap-stock-00001/info_file
+00:15:27.9019475480 -rw-r--r--  536870912 /fccd/snapshots/snap-stock-00001/mem_file
+00:15:29.9440066250 -rw-------       5799 /fccd/snapshots/snap-stock-00001/patch_file
+00:15:27.9019475480 -rw-r--r--      16373 /fccd/snapshots/snap-stock-00001/snap_file
+du: 513M apparent, 513M on disk
