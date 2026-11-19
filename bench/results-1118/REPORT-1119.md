@@ -1,7 +1,7 @@
 # REPORT 1119: phase C (stock VM-stage breakdown) and phase D (scale-out) re-run, 2026-11-18 evening, node-000 (hp109)
 
 Node time (MST, UTC-7). Same cluster as REPORT-1118 (created 08:45), same daemons (vhive-perpod PID 13414), ingress ClusterIP
-**10.103.200.78** (read from kubectl by every script). Work ran 19:18–20:30; the 3-hour limit was not reached.
+**10.103.200.78** (read from kubectl by every script). Work ran 19:18–20:18; the 3-hour limit was not reached.
 Branch `results-1118`, **pushed**: c92505a (phase C), ab34edb (phase D), plus the commit that adds this report.
 
 ## TL;DR
