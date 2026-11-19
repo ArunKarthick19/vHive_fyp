@@ -47,6 +47,8 @@ type fakeVM struct {
 	up       bool
 	boots    int
 	cleanups int
+	exited   chan struct{} // like firecrackerVM.exited: one per boot
+	report   vmExit
 }
 
 func (v *fakeVM) coldBoot(ctx context.Context, cfg fcwebConfig) error {
@@ -62,8 +64,30 @@ func (v *fakeVM) coldBoot(ctx context.Context, cfg fcwebConfig) error {
 	}
 	v.mu.Lock()
 	v.up = true
+	v.exited = make(chan struct{})
 	v.mu.Unlock()
 	return nil
+}
+
+// crash makes the running VM stop on its own, as when its app exits.
+func (v *fakeVM) crash(e vmExit) {
+	v.mu.Lock()
+	defer v.mu.Unlock()
+	v.report = e
+	v.up = false
+	close(v.exited)
+}
+
+func (v *fakeVM) exitCh() <-chan struct{} {
+	v.mu.Lock()
+	defer v.mu.Unlock()
+	return v.exited
+}
+
+func (v *fakeVM) exitReport() vmExit {
+	v.mu.Lock()
+	defer v.mu.Unlock()
+	return v.report
 }
 
 func (v *fakeVM) running() bool {
@@ -82,7 +106,11 @@ func (v *fakeVM) cleanup() error {
 	if err := v.f.cleanupErr; err != nil {
 		return err
 	}
+	if v.up && v.exited != nil {
+		close(v.exited) // stopped by vhive
+	}
 	v.up = false
+	v.exited = nil
 	return nil
 }
 
@@ -127,6 +155,21 @@ type fakeStock struct {
 
 	stopResp *criapi.StopPodSandboxResponse
 	stopErr  error
+
+	ctrStops []string // StopContainer calls (placeholders of exited image VMs)
+}
+
+func (s *fakeStock) StopContainer(ctx context.Context, r *criapi.StopContainerRequest, _ ...grpc.CallOption) (*criapi.StopContainerResponse, error) {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	s.ctrStops = append(s.ctrStops, r.GetContainerId())
+	return &criapi.StopContainerResponse{}, nil
+}
+
+func (s *fakeStock) stoppedCtrs() []string {
+	s.mu.Lock()
+	defer s.mu.Unlock()
+	return append([]string(nil), s.ctrStops...)
 }
 
 func (s *fakeStock) CreateContainer(ctx context.Context, r *criapi.CreateContainerRequest, _ ...grpc.CallOption) (*criapi.CreateContainerResponse, error) {

@@ -33,3 +33,10 @@ type ServiceInterface interface {
 	RemoveContainer(ctx context.Context, r *criapi.RemoveContainerRequest) (*criapi.RemoveContainerResponse, error)
 	StopPodSandbox(ctx context.Context, r *criapi.StopPodSandboxRequest) (*criapi.StopPodSandboxResponse, error)
 }
+
+// ContainerStatusPatcher is optionally implemented by a ServiceInterface that
+// knows more about a container's state than containerd does (e.g. that the
+// app in its VM has exited). It may change the response in place.
+type ContainerStatusPatcher interface {
+	PatchContainerStatus(resp *criapi.ContainerStatusResponse)
+}

@@ -81,6 +81,11 @@ type FirecrackerService struct {
 	// firecracker-vm://image (imagevm.go)
 	images    imageDisks
 	nameImage imageNamer
+
+	// Crash reporting for image VMs (appexit.go).
+	exitMu    sync.Mutex
+	imageUC   map[string]string  // sandbox ID -> its current user container ID
+	appExited map[string]appExit // user container ID -> how its VM's app ended
 }
 
 // VMConfig wraps the IP and port of the guest VM
@@ -102,6 +107,7 @@ func NewFirecrackerService(orch *ctriface.Orchestrator) (*FirecrackerService, er
 	fs.webvm = newKubevirtVM(kubevirtNamespace, kubevirtVMName, kubevirtGuestPort)
 	fs.fcwebvm = newFirecrackerVM(firecrackerGuestPort)
 	fs.podvms = newPodVMs(newRealPodVM)
+	fs.podvms.onAppExit = fs.imageAppExited
 	fs.podvms.sweep()
 	fs.images = rootfs.NewDefault()
 	stockImageClient, err := cri.NewStockImageServiceClient()
@@ -319,6 +325,9 @@ func (fs *FirecrackerService) createPodVMUserContainer(ctx context.Context, r *c
 	}
 
 	fs.insertVMConfig(sandboxID, &VMConfig{guestIP: guestIP, guestPort: guestPort})
+	if cfg.StatusDrive {
+		fs.trackImageContainer(sandboxID, (*stockResp).ContainerId)
+	}
 	return *stockResp, nil
 }
 
@@ -337,6 +346,7 @@ func (fs *FirecrackerService) removePlaceholder(containerID string) {
 // forwards to containerd and returns its answer unchanged. Calling it again
 // for the same sandbox is harmless.
 func (fs *FirecrackerService) StopPodSandbox(ctx context.Context, r *criapi.StopPodSandboxRequest) (*criapi.StopPodSandboxResponse, error) {
+	fs.untrackSandbox(r.GetPodSandboxId())
 	if err := fs.podvms.stop(r.GetPodSandboxId()); err != nil {
 		log.WithError(err).WithField("sandbox", r.GetPodSandboxId()).Error("failed to stop per-pod Firecracker VM")
 	}
@@ -368,6 +378,7 @@ func (fs *FirecrackerService) createQueueProxy(ctx context.Context, r *criapi.Cr
 func (fs *FirecrackerService) RemoveContainer(ctx context.Context, r *criapi.RemoveContainerRequest) (*criapi.RemoveContainerResponse, error) {
 	log.Debugf("RemoveContainer for %q", r.GetContainerId())
 	containerID := r.GetContainerId()
+	fs.forgetContainer(containerID)
 
 	go func() {
 		if err := fs.coordinator.stopVM(context.Background(), containerID); err != nil {

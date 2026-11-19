@@ -178,5 +178,6 @@ func (fs *FirecrackerService) imageVMConfig(ctx context.Context, r *criapi.Creat
 	cfg.Port = port
 	cfg.ProbeTCP = true
 	cfg.GuestConfig = string(drive)
+	cfg.StatusDrive = true
 	return cfg, port, nil
 }
