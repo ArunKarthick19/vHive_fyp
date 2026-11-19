@@ -49,8 +49,8 @@ func TestAppExitFromVM(t *testing.T) {
 		wantReason string
 		wantInMsg  []string
 	}{
-		{"exit 3", vmExit{Status: guest.ExitStatus{ExitCode: 3, Reason: guest.ReasonExited}, Console: "app said bye"},
-			3, "Error", []string{"exit code 3", "app said bye"}},
+		{"exit 3", vmExit{Status: guest.ExitStatus{ExitCode: 3, Reason: guest.ReasonExited}, Console: "app said\r\nbye"},
+			3, "Error", []string{"exit code 3", "app said\nbye"}},
 		{"exit 0", vmExit{Status: guest.ExitStatus{ExitCode: 0, Reason: guest.ReasonExited}}, 0, "Completed", []string{"exit code 0"}},
 		{"signal", vmExit{Status: guest.ExitStatus{ExitCode: 139, Reason: guest.ReasonSignaled, Signal: "segmentation fault"}},
 			139, "Error", []string{"exit code 139 (segmentation fault)"}},
@@ -65,6 +65,7 @@ func TestAppExitFromVM(t *testing.T) {
 		for _, s := range tc.wantInMsg {
 			require.Contains(t, got.Message, s, tc.name)
 		}
+		require.NotContains(t, got.Message, "\r", tc.name)
 	}
 	long := appExitFromVM(vmExit{Status: guest.ExitStatus{ExitCode: 1, Reason: guest.ReasonExited}, Console: strings.Repeat("x", 10*appExitMessageMax) + "END"})
 	require.Less(t, len(long.Message), 2*appExitMessageMax, "console tail is bounded")
