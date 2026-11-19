@@ -59,7 +59,32 @@ func logf(format string, args ...any) {
 // this message in its console.log instead of a boot timeout.
 func fail(err error) {
 	logf("FATAL: %v", err)
+	writeExitStatus(guest.ExitStatus{ExitCode: guest.InitErrorCode, Reason: guest.ReasonInitError, Message: err.Error()})
 	poweroff()
+}
+
+// writeExitStatus records how the app ended on the status drive, so vhive
+// can report it to Kubernetes once the VM is off. VMs without a status drive
+// (none is attached) skip it.
+func writeExitStatus(s guest.ExitStatus) {
+	data, err := guest.EncodeExitStatus(s)
+	if err != nil {
+		logf("WARN: exit status: %v", err)
+		return
+	}
+	f, err := os.OpenFile(guest.StatusDrive, os.O_WRONLY, 0)
+	if err != nil {
+		logf("WARN: no status drive (%v); exit status only on the console", err)
+		return
+	}
+	defer f.Close()
+	if _, err := f.WriteAt(data, 0); err != nil {
+		logf("WARN: writing status drive: %v", err)
+		return
+	}
+	if err := f.Sync(); err != nil {
+		logf("WARN: syncing status drive: %v", err)
+	}
 }
 
 func poweroff() {
@@ -350,7 +375,9 @@ func main() {
 			case <-copied:
 			case <-time.After(200 * time.Millisecond):
 			}
-			logf("app exited (%s); powering off", describe(ws))
+			es := guest.AppExitStatus(ws.Exited(), ws.ExitStatus(), ws.Signaled(), int(ws.Signal()), ws.Signal().String())
+			writeExitStatus(es)
+			logf("app exited (%s, exit code %d); powering off", describe(ws), es.ExitCode)
 			poweroff()
 		}
 	}
