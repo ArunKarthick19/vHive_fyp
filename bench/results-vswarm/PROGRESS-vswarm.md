@@ -90,3 +90,17 @@ run 2 more cycles per mode as a clearly labelled top-up in a separate directory 
 Warm-up (cycle 1): stock 4.717 s, mine 3.478 s. Mine's VM stage (launchToHTTP200) 1.76–1.80 s: the Python server takes ~1.8 s to accept TCP inside
 the VM (fibgo: ~135 ms). aes-go and auth-go: no Phase 2 cycles were run (Phase 2 time used up).
 Phase 3 started automatically at 01:01:35 (deadline 03:31:35 MST).
+
+## Phase 3 — gRPC load, fibonacci-go (01:01–01:38 MST): complete (10 sweep cells + 2 vary runs)
+ghz, c workers on c connections, 30 s warm-up (incl. cold start) + 30 s measured, every cell from zero pods.
+| fibgo (rps / p50 ms / p99 ms; fc CPU s per 30 s) | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| stock | 259.5 / 3.66 / 4.76; 11.9 | 468.0 / 4.12 / 5.52; 15.0 | 845.0 / 4.43 / 7.27; 23.5 | 2052.1 / 3.57 / 6.44; 32.1 | 2566.6 / 5.81 / 10.73; 33.3 |
+| mine  | 264.0 / 3.60 / 4.69; 11.3 | 447.8 / 4.35 / 5.81; 14.4 | 854.4 / 4.38 / 7.09; 23.0 | 2087.9 / 3.51 / 6.36; 31.8 | 2585.7 / 5.80 / 10.64; 32.6 |
+Stock and mine are within ~4% of each other in every cell. **Errors**: each measured cell has errors = c (c=4 mine: 3, c=8 mine: 7), every one
+`Unavailable: error reading from server: read tcp <client>-><ingress>:80: use of closed network connection`, one per client connection: ghz closing its
+own connections when the -z duration ends, not server failures (OK counts are 7786…77562). Client CPU (ghz): up to 48.8 s per 30 s (~1.6 cores) at c=16,
+host busy 8.3 of 20 cores, so the node was not CPU-saturated; firecracker reached ~33 CPU-s per 30 s (~1.1 cores) at c=16 in both modes. Whether the
+1-vCPU VM is the limit was not measured further.
+vary (open loop 1,5,20,5,1 rps; 960 requests each, 0 errors, 1 pod / 1 VM throughout): first request (cold) 3781 ms stock vs 1311 ms mine; afterwards
+p50 4.6–5.3 ms and p99 ≤ 8.9 ms in every step for both. Plots: out/p3/fibgo/{rps_vs_conc,vary}.png.
