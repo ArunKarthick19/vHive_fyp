@@ -104,3 +104,16 @@ host busy 8.3 of 20 cores, so the node was not CPU-saturated; firecracker reache
 1-vCPU VM is the limit was not measured further.
 vary (open loop 1,5,20,5,1 rps; 960 requests each, 0 errors, 1 pod / 1 VM throughout): first request (cold) 3781 ms stock vs 1311 ms mine; afterwards
 p50 4.6–5.3 ms and p99 ≤ 8.9 ms in every step for both. Plots: out/p3/fibgo/{rps_vs_conc,vary}.png.
+
+## Phase 3 — gRPC load, fibonacci-python (01:38–03:05 MST): complete (10 sweep cells + 2 vary runs); aes-go and auth-go NOT run
+| fibpy (rps / p50 ms / p99 ms; fc CPU s per 30 s) | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| stock | 236.7 / 4.04 / 5.13; 12.4 | 474.6 / 4.04 / 5.44; 23.2 | 1169.8 / 3.14 / 5.09; 30.8 | 1635.0 / 4.62 / 7.11; 36.7 | 1643.0 / 9.47 / 12.93; 37.3 |
+| mine  | 239.3 / 4.00 / 5.10; 11.9 | 468.8 / 4.07 / 5.37; 22.7 | 1192.0 / 3.08 / 4.96; 30.3 | 1694.6 / 4.46 / 6.87; 36.7 | 1703.9 / 9.12 / 12.56; 37.6 |
+Mine is within −1%…+4% of stock in every cell; both level off at ~1650–1700 rps from c=8. Errors again ≈ c per cell (Unavailable "use of closed network
+connection", plus one `Canceled` in stock c=2), i.e. ghz closing its connections at the end of -z. Client (ghz) CPU ≤ 37 s per 30 s (~1.2 cores);
+host busy ≤ 7.3 of 20 cores. Idle waits were 371–382 s per cell (the 300 s SIGTERM grace period, see Phase 2 note).
+vary (960 requests each, 0 errors, 1 pod / 1 VM): first request (cold) 4797 ms stock vs 2740 ms mine; afterwards p50 5.1–5.7 ms, p99 ≤ 8.2 ms for both.
+Plots: out/p3/fibpy/{rps_vs_conc,vary}.png.
+**aes-go / auth-go**: Phase 3 started aes-go at 03:05:10; I stopped it at 03:05:30 while aesgo-stock c=1 was still waiting for idle (nothing measured),
+to give the time to the fibpy Phase 2 top-up (your priority: fibgo and fibpy completely first). auth-go was never started. Neither has Phase 2 data either.
