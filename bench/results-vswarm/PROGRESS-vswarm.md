@@ -67,3 +67,26 @@ continued with run_p2b.sh. All 14 fibgo cycles: gRPC OK, identical reply in both
 | ratio stock/mine | 2.32× | 2.34× | | |
 Warm-up (cycle 1): stock 3.694 s, mine 1.580 s. Mine's VM stage (vhive log launchToHTTP200) was 132.6–138.6 ms in every cycle.
 Files: out/p2/fibgo/{cold.csv,cold.log,summary.md,bodies/,cycles/}.
+
+### Phase 2 note, fibonacci-python (00:43 MST): each cycle waits ~6.5 min for the node to go idle — measured cause
+fibpy idle waits were 393 s and 371 s (fibgo: 99–159 s). At 00:42–00:43 the fibpy-stock pod was `Terminating` with queue-proxy not ready but
+**user-container still running ~3.5 min after the deletion request**; the pod has `terminationGracePeriodSeconds: 300` (Knative copies it from
+`timeoutSeconds: 300` in our template) and `deletionTimestamp` = request + 300 s. So the Python gRPC server does not exit on SIGTERM and kubelet
+waits the full 300 s before killing it. This affects both modes (the pod and its containers are the same; mine's placeholder also runs the image).
+I did NOT change the template (that would change the method versus every earlier run); fibpy continues to 6 cycles (n=5) per your priority, which
+pushes Phase 2 to ~01:25 MST and makes each fibpy load cell in Phase 3 ~6 min longer. Consequence: aes-go/auth-go will probably get little or no Phase 3 time.
+
+## Phase 2 — cold starts, fibonacci-python (00:11–01:01 MST): ONLY n=3 (below your n>=5 minimum) — my mistake
+run_p2b.sh wrapped coldg.sh in `timeout 3000` (50 min), sized for ~110 s cycles; with the 6.5-min fibpy cycles (see the SIGTERM note above) the
+timeout killed coldg.sh at 01:01:33 while it was waiting for idle before cycle 5 stock. So fibpy got cycles 1–4 (warm-up + n=3 per mode); every
+cycle completed OK and both modes returned the same reply (sha256/16 6b353fb5e0c790b9). Cycles 5–6 were NOT run. If time remains after Phase 3 I will
+run 2 more cycles per mode as a clearly labelled top-up in a separate directory (not merged silently).
+
+| fibpy cold start (cycles 2–4, n=3) | mean s | median s | min s | max s |
+|---|---|---|---|---|
+| stock | 4.807 | 4.826 | 4.761 | 4.835 |
+| mine | 2.733 | 2.698 | 2.696 | 2.804 |
+| ratio stock/mine | 1.76× | 1.79× | | |
+Warm-up (cycle 1): stock 4.717 s, mine 3.478 s. Mine's VM stage (launchToHTTP200) 1.76–1.80 s: the Python server takes ~1.8 s to accept TCP inside
+the VM (fibgo: ~135 ms). aes-go and auth-go: no Phase 2 cycles were run (Phase 2 time used up).
+Phase 3 started automatically at 01:01:35 (deadline 03:31:35 MST).

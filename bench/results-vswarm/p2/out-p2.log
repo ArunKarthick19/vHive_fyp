@@ -45,3 +45,26 @@
 2026-11-21 00:11:33   fibpy-mine -> Host: fibpy-mine.default.192.168.1.240.sslip.io
 2026-11-21 00:11:33   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
 2026-11-21 00:11:33 cycle 1 fibpy-stock: waiting for idle
+2026-11-21 00:13:18 cycle 1 fibpy-stock: HTTP OK curl_exit=0 time_total=4.716883s bytes=63 idle_wait=99s  
+2026-11-21 00:13:18 cycle 1 fibpy-mine: waiting for idle
+2026-11-21 00:19:41 cycle 1 fibpy-mine: HTTP OK curl_exit=0 time_total=3.477785s bytes=63 idle_wait=378s [firecrackerVM=fcweb1 launchToHTTP200=1.77020001s probe=tcp] 
+2026-11-21 00:19:41 cycle 2 fibpy-stock: waiting for idle
+2026-11-21 00:25:58 cycle 2 fibpy-stock: HTTP OK curl_exit=0 time_total=4.825793s bytes=63 idle_wait=371s  
+2026-11-21 00:25:58 cycle 2 fibpy-mine: waiting for idle
+2026-11-21 00:32:35 cycle 2 fibpy-mine: HTTP OK curl_exit=0 time_total=2.695856s bytes=63 idle_wait=393s [firecrackerVM=fcweb1 launchToHTTP200=1.78611638s probe=tcp] 
+2026-11-21 00:32:35 cycle 3 fibpy-stock: waiting for idle
+2026-11-21 00:38:53 cycle 3 fibpy-stock: HTTP OK curl_exit=0 time_total=4.834572s bytes=63 idle_wait=371s  
+2026-11-21 00:38:53 cycle 3 fibpy-mine: waiting for idle
+2026-11-21 00:45:14 cycle 3 fibpy-mine: HTTP OK curl_exit=0 time_total=2.698318s bytes=63 idle_wait=377s [firecrackerVM=fcweb1 launchToHTTP200=1.758472926s probe=tcp] 
+2026-11-21 00:45:15 cycle 4 fibpy-stock: waiting for idle
+2026-11-21 00:51:32 cycle 4 fibpy-stock: HTTP OK curl_exit=0 time_total=4.761439s bytes=63 idle_wait=371s  
+2026-11-21 00:51:32 cycle 4 fibpy-mine: waiting for idle
+2026-11-21 00:57:52 cycle 4 fibpy-mine: HTTP OK curl_exit=0 time_total=2.803757s bytes=63 idle_wait=376s [firecrackerVM=fcweb1 launchToHTTP200=1.799054067s probe=tcp] 
+2026-11-21 00:57:52 cycle 5 fibpy-stock: waiting for idle
+2026-11-21 01:01:33 === fibpy coldg.sh exit=0
+| service | n (cycles 2+) | n timed | mean s | median s | min s | max s | stdev s | non-OK/failed |
+|---|---|---|---|---|---|---|---|---|
+| fibpy-stock | 3 | 3 | 4.807 | 4.826 | 4.761 | 4.835 | 0.040 | 0 |
+| fibpy-mine | 3 | 3 | 2.733 | 2.698 | 2.696 | 2.804 | 0.062 | 0 |
+
+2026-11-21 01:01:33 run_p2b done
