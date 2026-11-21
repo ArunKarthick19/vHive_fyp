@@ -1,0 +1,33 @@
+2026-11-20 23:44:32 start workload=fibgo services='fibgo-stock fibgo-mine' cycles=7 ingress=10.103.200.78
+2026-11-20 23:44:32   fibgo-stock -> Host: fibgo-stock.default.192.168.1.240.sslip.io
+2026-11-20 23:44:32   fibgo-mine -> Host: fibgo-mine.default.192.168.1.240.sslip.io
+2026-11-20 23:44:32   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-20 23:44:32 cycle 1 fibgo-stock: waiting for idle
+2026-11-20 23:44:47 cycle 1 fibgo-stock: HTTP OK curl_exit=0 time_total=3.694386s bytes=63 idle_wait=9s  
+2026-11-20 23:44:47 cycle 1 fibgo-mine: waiting for idle
+2026-11-20 23:47:29 cycle 1 fibgo-mine: HTTP OK curl_exit=0 time_total=1.580428s bytes=63 idle_wait=159s [firecrackerVM=fcweb1 launchToHTTP200=135.556975ms probe=tcp] 
+2026-11-20 23:47:29 cycle 2 fibgo-stock: waiting for idle
+2026-11-20 23:49:16 cycle 2 fibgo-stock: HTTP OK curl_exit=0 time_total=3.950013s bytes=63 idle_wait=101s  
+2026-11-20 23:49:16 cycle 2 fibgo-mine: waiting for idle
+2026-11-20 23:51:05 cycle 2 fibgo-mine: HTTP OK curl_exit=0 time_total=1.707946s bytes=63 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=136.435938ms probe=tcp] 
+2026-11-20 23:51:05 cycle 3 fibgo-stock: waiting for idle
+2026-11-20 23:52:52 cycle 3 fibgo-stock: HTTP OK curl_exit=0 time_total=3.925919s bytes=63 idle_wait=101s  
+2026-11-20 23:52:52 cycle 3 fibgo-mine: waiting for idle
+2026-11-20 23:55:30 cycle 3 fibgo-mine: HTTP OK curl_exit=0 time_total=1.855147s bytes=63 idle_wait=155s [firecrackerVM=fcweb1 launchToHTTP200=134.13553ms probe=tcp] 
+2026-11-20 23:55:30 cycle 4 fibgo-stock: waiting for idle
+2026-11-20 23:57:15 cycle 4 fibgo-stock: HTTP OK curl_exit=0 time_total=4.052057s bytes=63 idle_wait=99s  
+2026-11-20 23:57:15 cycle 4 fibgo-mine: waiting for idle
+2026-11-20 23:59:04 cycle 4 fibgo-mine: HTTP OK curl_exit=0 time_total=1.633841s bytes=63 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=132.556997ms probe=tcp] 
+2026-11-20 23:59:04 cycle 5 fibgo-stock: waiting for idle
+2026-11-21 00:00:49 cycle 5 fibgo-stock: HTTP OK curl_exit=0 time_total=4.099861s bytes=63 idle_wait=99s  
+2026-11-21 00:00:49 cycle 5 fibgo-mine: waiting for idle
+2026-11-21 00:03:31 cycle 5 fibgo-mine: HTTP OK curl_exit=0 time_total=1.600173s bytes=63 idle_wait=159s [firecrackerVM=fcweb1 launchToHTTP200=138.641901ms probe=tcp] 
+2026-11-21 00:03:31 cycle 6 fibgo-stock: waiting for idle
+2026-11-21 00:05:18 cycle 6 fibgo-stock: HTTP OK curl_exit=0 time_total=3.937889s bytes=63 idle_wait=101s  
+2026-11-21 00:05:18 cycle 6 fibgo-mine: waiting for idle
+2026-11-21 00:07:07 cycle 6 fibgo-mine: HTTP OK curl_exit=0 time_total=1.657340s bytes=63 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=135.779987ms probe=tcp] 
+2026-11-21 00:07:07 cycle 7 fibgo-stock: waiting for idle
+2026-11-21 00:08:54 cycle 7 fibgo-stock: HTTP OK curl_exit=0 time_total=3.900291s bytes=63 idle_wait=101s  
+2026-11-21 00:08:54 cycle 7 fibgo-mine: waiting for idle
+2026-11-21 00:11:32 cycle 7 fibgo-mine: HTTP OK curl_exit=0 time_total=1.815578s bytes=63 idle_wait=155s [firecrackerVM=fcweb1 launchToHTTP200=135.031699ms probe=tcp] 
+2026-11-21 00:11:32 done workload=fibgo

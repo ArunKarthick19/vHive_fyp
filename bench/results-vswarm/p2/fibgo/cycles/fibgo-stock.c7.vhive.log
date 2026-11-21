@@ -1,0 +1,2 @@
+time="2026-11-21T00:08:52.303791179-07:00" level=info msg="time=\"2026-11-21T07:08:52Z\" level=info msg=\"Start fibonacci-go server. Addr : 0.0.0.0:50051\\n\"" vmID=24-dc4171a4-5c6b-4c
+time="2026-11-21T00:08:52.303833101-07:00" level=info vmID=24-dc4171a4-5c6b-4c

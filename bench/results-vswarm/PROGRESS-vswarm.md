@@ -53,3 +53,17 @@ already limit the stock busybox numbers at c=8/16 — not measured further.
 busybox vary (960 requests each, 0 errors): first request (the cold start) 4234 ms stock vs 1888 ms mine; after that p50 ~5 ms in every step for both;
 1 pod / 1 VM throughout for both. Plots: out/p0/busybox/{rps_vs_conc,vary}.png, out/p0/httpbin/rps_vs_conc.png (partial).
 Files: ~/fc-vm/vswarm/out/p0/ → results-vswarm `bench/results-vswarm/p0/`.
+
+## Phase 2 — cold starts, fibonacci-go (23:44–00:11 MST)
+Plan change (yours): Phase 0 stopped, straight to vSwarm. Because the idle wait per cycle was 100–160 s, 11 cycles per mode for fibgo AND fibpy
+would not fit in 1 h; I ran **fibgo with 7 cycles (n=6 after warm-up)** and fibpy with 6 cycles (n=5), letting fibpy finish even if Phase 2 runs
+~10 min past its cap. To do that I killed the runner script run_p2.sh (pid 3519757) during fibgo cycle 2 (its coldg.sh kept running untouched) and
+continued with run_p2b.sh. All 14 fibgo cycles: gRPC OK, identical reply in both modes (sha256/16 8f3171cb13a2651b, "x: 10 y: 55"), no failures.
+
+| fibgo cold start (cycles 2–7, n=6) | mean s | median s | min s | max s |
+|---|---|---|---|---|
+| stock | 3.978 | 3.944 | 3.900 | 4.100 |
+| mine | 1.712 | 1.683 | 1.600 | 1.855 |
+| ratio stock/mine | 2.32× | 2.34× | | |
+Warm-up (cycle 1): stock 3.694 s, mine 1.580 s. Mine's VM stage (vhive log launchToHTTP200) was 132.6–138.6 ms in every cycle.
+Files: out/p2/fibgo/{cold.csv,cold.log,summary.md,bodies/,cycles/}.
