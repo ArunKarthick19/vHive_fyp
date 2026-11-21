@@ -1,0 +1,20 @@
+2026-11-20 23:17:57 start kind=http wl=httpbin prefix=httpbin concs='1 2 4 8 16' vary=1 steps=1:30,5:30,20:30,5:30,1:30 warm=30s measure=30s ingress=10.103.200.78 deadline=00:09:08
+2026-11-20 23:17:57 httpbin-stock c=1: waiting for idle
+2026-11-20 23:20:35 httpbin-stock c=1: warm-up rps=137.7 ok=4132 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 168.0,6.04,7.13,0,5039,,2.77,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=19.67,1.75
+2026-11-20 23:20:35 httpbin-mine c=1: waiting for idle
+2026-11-20 23:23:23 httpbin-mine c=1: warm-up rps=153.2 ok=4595 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 168.0,6.02,7.13,0,5040,,2.77,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=19.49,1.72
+2026-11-20 23:23:23 httpbin-stock c=2: waiting for idle
+2026-11-20 23:26:07 httpbin-stock c=2: warm-up rps=415.2 ok=12456 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 477.4,4.14,5.28,0,14324,,7.16,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=29.49,2.87
+2026-11-20 23:26:07 httpbin-mine c=2: waiting for idle
+2026-11-20 23:28:56 httpbin-mine c=2: warm-up rps=432.2 ok=12969 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 476.2,4.15,5.29,0,14287,,7.24,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=29.08,2.90
+2026-11-20 23:28:56 httpbin-stock c=4: waiting for idle
+2026-11-20 23:31:38 httpbin-stock c=4: warm-up rps=469.2 ok=14078 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 548.2,7.25,9.85,0,16450,,8.23,30.01 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.56,3.29
+2026-11-20 23:31:38 httpbin-mine c=4: waiting for idle
+2026-11-20 23:34:26 httpbin-mine c=4: warm-up rps=518.2 ok=15549 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 559.0,7.09,9.66,0,16775,,8.56,30.01 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.44,3.28
+2026-11-20 23:34:26 httpbin-stock c=8: waiting for idle
+2026-11-20 23:37:08 httpbin-stock c=8: warm-up rps=473.6 ok=14214 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 546.6,14.53,17.77,0,16406,,8.35,30.01 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.60,3.30
+2026-11-20 23:37:08 httpbin-mine c=8: waiting for idle
+2026-11-20 23:39:54 httpbin-mine c=8: warm-up rps=512.2 ok=15373 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 557.3,14.30,17.31,0,16726,,8.72,30.01 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.42,3.33
+2026-11-20 23:39:54 httpbin-stock c=16: waiting for idle
+2026-11-20 23:42:39 httpbin-stock c=16: warm-up rps=473.5 ok=14217 err=0 [] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 541.5,29.46,33.73,0,16259,,8.37,30.03 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.55,3.31
+2026-11-20 23:42:39 httpbin-mine c=16: waiting for idle

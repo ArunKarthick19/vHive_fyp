@@ -1,0 +1,68 @@
+{
+ "svc": "bb-mine",
+ "host": "bb-mine.default.192.168.1.240.sslip.io",
+ "mode": "http",
+ "steps": "1:30,5:30,20:30,5:30,1:30",
+ "start_epoch": 1795241725.2138813,
+ "sent": 960,
+ "ok": 960,
+ "errors_by_type": {},
+ "late_sends_over_50ms": 0,
+ "per_step": [
+  {
+   "step": 0,
+   "rate": 1.0,
+   "dur_s": 30.0,
+   "sent": 30,
+   "ok": 30,
+   "p50_ms": "5.22",
+   "p99_ms": "1888.15",
+   "max_ms": "1888.15"
+  },
+  {
+   "step": 1,
+   "rate": 5.0,
+   "dur_s": 30.0,
+   "sent": 150,
+   "ok": 150,
+   "p50_ms": "5.05",
+   "p99_ms": "7.16",
+   "max_ms": "7.21"
+  },
+  {
+   "step": 2,
+   "rate": 20.0,
+   "dur_s": 30.0,
+   "sent": 600,
+   "ok": 600,
+   "p50_ms": "4.54",
+   "p99_ms": "5.38",
+   "max_ms": "16.69"
+  },
+  {
+   "step": 3,
+   "rate": 5.0,
+   "dur_s": 30.0,
+   "sent": 150,
+   "ok": 150,
+   "p50_ms": "4.96",
+   "p99_ms": "6.54",
+   "max_ms": "6.61"
+  },
+  {
+   "step": 4,
+   "rate": 1.0,
+   "dur_s": 30.0,
+   "sent": 30,
+   "ok": 30,
+   "p50_ms": "5.03",
+   "p99_ms": "6.41",
+   "max_ms": "6.41"
+  }
+ ],
+ "max_pods": 1,
+ "max_vms": 1,
+ "first_ok_latency_ms": "1888.15",
+ "client_cpu_s": 1.15,
+ "elapsed_s": 149.0
+}

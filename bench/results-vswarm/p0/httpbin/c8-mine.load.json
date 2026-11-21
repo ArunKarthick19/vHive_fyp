@@ -1,0 +1,18 @@
+{
+ "conc": 8,
+ "rps": "557.3",
+ "p50_ms": "14.30",
+ "p99_ms": "17.31",
+ "errors": 0,
+ "ok": 16726,
+ "attempts": 16726,
+ "elapsed_s": "30.01",
+ "conns_opened": 8,
+ "mode": "keepalive",
+ "err_breakdown": "",
+ "client_cpu_s": "8.72",
+ "errors_by_type": {},
+ "timeout_s": 10.0,
+ "path": "/",
+ "host": "httpbin-mine.default.192.168.1.240.sslip.io"
+}

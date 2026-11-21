@@ -4,7 +4,7 @@ Start state: ~/vhive HEAD 4ba8903 (branch snapshot-spike, not switched), vhive-p
 no pods in `default`, only firecracker-containerd running (no firecracker VMs, no fcweb taps). Ingress ClusterIP 10.103.200.78.
 Results worktree: ~/fc-vm/wt-results-vswarm (new branch `results-vswarm`, created from results-1118 at 60e2646), dir `bench/results-vswarm/`.
 
-## Phase 1 — vSwarm feasibility (22:24–22:40 MST, ~16 min of the 1.5 h cap)
+## Phase 1 — vSwarm feasibility (22:24–22:29 MST node time, ~6 min of the 1.5 h cap)
 What ran: shallow clone of vSwarm (c91a381, 2025-03-04) and vSwarm-proto into ~/fc-vm/vswarm-src; installed grpcurl v1.9.1 and ghz v0.120.0
 (`go install`, into ~/fc-vm/tools). vSwarm's Knative yamls run each function as TWO containers (a `relay` gRPC sidecar on 50000 + the function on 50051);
 I did NOT use the relay: each function is ONE container (the function image itself, gRPC/h2c on 50051, port name `h2c`), in the same template as
@@ -25,3 +25,31 @@ Both modes really ran in VMs at the time: 8 firecracker processes (4 firecracker
 Tracing is off by default in these images (zipkin only if tracing is enabled), so they make no outbound calls. Not checked: the nodejs variants,
 sleeping/spinning, and the larger apps (online-shop, hotel-app, video-*, gptj, bert …), which call other services or need big models.
 Files: ~/fc-vm/vswarm/{yaml/,fn.sh,p1/,logs/rootfs-*.log} → results-vswarm `bench/results-vswarm/p1/`.
+
+**Push failed** (22:29 MST): `fatal: could not read Username for 'https://github.com': terminal prompts disabled` — the git credential cache (cache --timeout=43200) has expired. Commit 68ba295 is local only. I will keep committing and try one push per phase; to push, re-enter the token once (e.g. `! cd ~/fc-vm/wt-results-vswarm && git push origin results-vswarm`).
+
+## Phase 0 — load on the 3 HTTP images (22:41–23:43 MST), STOPPED EARLY AT YOUR REQUEST
+What ran: `run_p0.sh` → `sweep.sh` (load2.py keep-alive, 30 s warm-up incl. the cold start + 30 s measured, every cell from zero pods, stock/mine
+alternating) and `vary.py` (open-loop 1,5,20,5,1 rps × 30 s from zero pods). **busybox: complete** (10 sweep cells + both vary runs, 0 errors anywhere).
+**httpbin: 9 of 10 cells** (httpbin-mine c=16 never ran; no vary runs). **nginx: not run.** httpbin's remaining cell, httpbin's vary runs and all of
+nginx were **intentionally skipped at your request (CHANGE OF PLAN, 23:43 MST), not failed**: I killed only run_p0.sh (pid 3411275) and its sweep.sh
+(pid 3476128) while it was waiting for idle (no load client was running), then deleted the six bb/httpbin/nginx ksvcs; the node was idle at 23:44:19.
+CPU accounting (firecracker-process CPU s and host busy cores during the 30 s measured window) was added from httpbin on, so busybox has none.
+
+| busybox (rps / p50 ms / p99 ms) | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| stock | 233.5 / 4.33 / 5.07 | 524.4 / 3.80 / 4.98 | 1109.1 / 3.54 / 5.33 | 1436.0 / 5.45 / 8.97 | 1459.0 / 10.83 / 16.44 |
+| mine  | 292.6 / 3.47 / 4.23 | 611.8 / 3.24 / 4.23 | 754.4 / 5.20 / 7.70 | 813.3 / 9.57 / 19.81 | 828.4 / 14.11 / **229.04** |
+
+| httpbin (rps / p50 / p99; fc CPU s per 30 s) | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| stock | 168.0 / 6.04 / 7.13; 19.7 | 477.4 / 4.14 / 5.28; 29.5 | 548.2 / 7.25 / 9.85; 33.6 | 546.6 / 14.53 / 17.77; 33.6 | 541.5 / 29.46 / 33.73; 33.6 |
+| mine  | 168.0 / 6.02 / 7.13; 19.5 | 476.2 / 4.15 / 5.29; 29.1 | 559.0 / 7.09 / 9.66; 33.4 | 557.3 / 14.30 / 17.31; 33.4 | skipped (your request) |
+
+Observations (measured, causes NOT measured): busybox-mine levels off at ~800 rps from c=4 while stock keeps rising to ~1450; mine's p99 at c=16 is 229 ms.
+For httpbin both modes level off at ~550 rps from c=4 with the firecracker process at ~33.5 CPU-s per 30 s (~1.1 cores) in both. Client CPU (load2.py,
+one Python process) was at most 21 s per 30 s (~0.7 core, busybox-stock c=16), so it was not pegged at one core, but a Python client near 0.7 core may
+already limit the stock busybox numbers at c=8/16 — not measured further.
+busybox vary (960 requests each, 0 errors): first request (the cold start) 4234 ms stock vs 1888 ms mine; after that p50 ~5 ms in every step for both;
+1 pod / 1 VM throughout for both. Plots: out/p0/busybox/{rps_vs_conc,vary}.png, out/p0/httpbin/rps_vs_conc.png (partial).
+Files: ~/fc-vm/vswarm/out/p0/ → results-vswarm `bench/results-vswarm/p0/`.

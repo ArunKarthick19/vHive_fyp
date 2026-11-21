@@ -1,0 +1,18 @@
+{
+ "conc": 2,
+ "rps": "454.9",
+ "p50_ms": "3.86",
+ "p99_ms": "5.07",
+ "errors": 0,
+ "ok": 13648,
+ "attempts": 13648,
+ "elapsed_s": "30.00",
+ "conns_opened": 2,
+ "mode": "keepalive",
+ "err_breakdown": "",
+ "client_cpu_s": "6.37",
+ "errors_by_type": {},
+ "timeout_s": 10.0,
+ "path": "/",
+ "host": "bb-stock.default.192.168.1.240.sslip.io"
+}
