@@ -1,0 +1,4 @@
+time="2026-11-21T03:24:00.461331465-07:00" level=info msg="INFO:root:Start server: listen on : [::]:50051" vmID=42-4e459264-296e-41
+time="2026-11-21T03:24:00.461413333-07:00" level=info vmID=42-4e459264-296e-41
+time="2026-11-21T03:24:00.557681024-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T03:24:00.921153791-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="

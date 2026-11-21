@@ -1,0 +1,13 @@
+2026-11-21 03:05:39 start workload=fibpy services='fibpy-stock fibpy-mine' cycles=2 ingress=10.103.200.78
+2026-11-21 03:05:39   fibpy-stock -> Host: fibpy-stock.default.192.168.1.240.sslip.io
+2026-11-21 03:05:39   fibpy-mine -> Host: fibpy-mine.default.192.168.1.240.sslip.io
+2026-11-21 03:05:39   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-21 03:05:39 cycle 1 fibpy-stock: waiting for idle
+2026-11-21 03:11:24 cycle 1 fibpy-stock: HTTP OK curl_exit=0 time_total=4.679858s bytes=63 idle_wait=339s  
+2026-11-21 03:11:24 cycle 1 fibpy-mine: waiting for idle
+2026-11-21 03:17:44 cycle 1 fibpy-mine: HTTP OK curl_exit=0 time_total=2.889106s bytes=63 idle_wait=376s [firecrackerVM=fcweb1 launchToHTTP200=1.787719278s probe=tcp] 
+2026-11-21 03:17:44 cycle 2 fibpy-stock: waiting for idle
+2026-11-21 03:24:01 cycle 2 fibpy-stock: HTTP OK curl_exit=0 time_total=4.754764s bytes=63 idle_wait=371s  
+2026-11-21 03:24:01 cycle 2 fibpy-mine: waiting for idle
+2026-11-21 03:30:24 cycle 2 fibpy-mine: HTTP OK curl_exit=0 time_total=3.550871s bytes=63 idle_wait=378s [firecrackerVM=fcweb1 launchToHTTP200=1.78909935s probe=tcp] 
+2026-11-21 03:30:24 done workload=fibpy

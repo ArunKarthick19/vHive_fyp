@@ -117,3 +117,10 @@ vary (960 requests each, 0 errors, 1 pod / 1 VM): first request (cold) 4797 ms s
 Plots: out/p3/fibpy/{rps_vs_conc,vary}.png.
 **aes-go / auth-go**: Phase 3 started aes-go at 03:05:10; I stopped it at 03:05:30 while aesgo-stock c=1 was still waiting for idle (nothing measured),
 to give the time to the fibpy Phase 2 top-up (your priority: fibgo and fibpy completely first). auth-go was never started. Neither has Phase 2 data either.
+
+## Phase 2 top-up — fibonacci-python, 2 more cycles per mode (03:05–03:30 MST), labelled, separate dir out/p2/fibpy-topup/
+All 4 OK, same reply. stock 4.680, 4.755 s; mine 2.889, 3.551 s (VM stage 1.788/1.789 s). Combined with the main run's cycles 2–4 (n=5 per mode):
+stock median 4.761 / mean 4.771 (4.680–4.835), mine median 2.804 / mean 2.928 (2.696–3.551), ratio 1.70× median / 1.63× mean.
+(coldg.sh flags the top-up's cycle 1 as warm-up; I counted it, because the image was already cached and pods had been through many cold starts.)
+End state 03:57 MST: 0 pods in default, no firecracker VMs, no load processes. The 8 vSwarm ksvcs (fibgo/fibpy/aesgo/authgo -stock/-mine) are left
+deployed (scaled to zero); bb/httpbin/nginx ksvcs were deleted at your request; d19-* and snap-stock untouched. Final report: ~/fc-vm/REPORT-vswarm.md.

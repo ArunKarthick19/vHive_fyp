@@ -1,0 +1,5 @@
+workload,service,cycle,warmup,idle_ok,idle_wait_s,send_epoch,node_time,http_code,curl_exit,time_total_s,body_bytes,body_sha256_16,pods_after,vm_boot_line,note
+fibpy,fibpy-stock,1,1,1,339,1795255878.383409841,2026-11-21T03:11:18-07:00,OK,0,4.679858,63,6b353fb5e0c790b9,1,,
+fibpy,fibpy-mine,1,1,1,376,1795256260.095655952,2026-11-21T03:17:40-07:00,OK,0,2.889106,63,6b353fb5e0c790b9,1,firecrackerVM=fcweb1 launchToHTTP200=1.787719278s probe=tcp,
+fibpy,fibpy-stock,2,0,1,371,1795256635.660738190,2026-11-21T03:23:55-07:00,OK,0,4.754764,63,6b353fb5e0c790b9,1,,
+fibpy,fibpy-mine,2,0,1,378,1795257019.600502791,2026-11-21T03:30:19-07:00,OK,0,3.550871,63,6b353fb5e0c790b9,1,firecrackerVM=fcweb1 launchToHTTP200=1.78909935s probe=tcp,
