@@ -1,0 +1,34 @@
+# vSwarm docker.io/vhiveease/fibonacci-python:latest as ONE container (no relay sidecar), gRPC (h2c) on 50051. Same template as ~/fc-vm/bench/yaml/bb-*.yaml;
+# only the port (name h2c, 50051) and the image differ. -stock and -mine differ only in GUEST_IMAGE (and FC_MEM_MIB=512 for mine).
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  name: fibpy-mine
+  namespace: default
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "1"
+    spec:
+      containerConcurrency: 0
+      containers:
+      - env:
+        - name: GUEST_PORT
+          value: "50051"
+        - name: GUEST_IMAGE
+          value: firecracker-vm://image
+        - name: FC_MEM_MIB
+          value: "512"
+        image: docker.io/vhiveease/fibonacci-python:latest
+        name: user-container
+        ports:
+        - containerPort: 50051
+          name: h2c
+          protocol: TCP
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+      enableServiceLinks: false
+      timeoutSeconds: 300

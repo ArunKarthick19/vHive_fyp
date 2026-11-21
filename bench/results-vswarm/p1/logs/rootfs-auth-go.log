@@ -1,0 +1,4 @@
+rootfs: unpacking docker.io/vhiveease/auth-go:latest (sha256:f0576a3fc14097dda7c4f33234f5fe9035782680779c739f9b657c4c7f3ac390)
+rootfs: built /users/Arun1903/fc-vm/images/sha256-f0576a3fc14097dda7c4f33234f5fe9035782680779c739f9b657c4c7f3ac390-0d8b2d6b512e.ext4 (17 entries)
+docker.io/vhiveease/auth-go:latest -> /users/Arun1903/fc-vm/images/sha256-f0576a3fc14097dda7c4f33234f5fe9035782680779c739f9b657c4c7f3ac390-0d8b2d6b512e.ext4 (sha256:f0576a3fc14097dda7c4f33234f5fe9035782680779c739f9b657c4c7f3ac390, built in 3.084s)
+/users/Arun1903/fc-vm/images/sha256-f0576a3fc14097dda7c4f33234f5fe9035782680779c739f9b657c4c7f3ac390-0d8b2d6b512e.ext4

@@ -1,0 +1,4 @@
+rootfs: unpacking docker.io/vhiveease/fibonacci-python:latest (sha256:32a48f9b6825af6eb6a7217220fcdad5dd26d350f7d05137166b0411a5905441)
+rootfs: built /users/Arun1903/fc-vm/images/sha256-32a48f9b6825af6eb6a7217220fcdad5dd26d350f7d05137166b0411a5905441-0d8b2d6b512e.ext4 (8439 entries)
+docker.io/vhiveease/fibonacci-python:latest -> /users/Arun1903/fc-vm/images/sha256-32a48f9b6825af6eb6a7217220fcdad5dd26d350f7d05137166b0411a5905441-0d8b2d6b512e.ext4 (sha256:32a48f9b6825af6eb6a7217220fcdad5dd26d350f7d05137166b0411a5905441, built in 12.038s)
+/users/Arun1903/fc-vm/images/sha256-32a48f9b6825af6eb6a7217220fcdad5dd26d350f7d05137166b0411a5905441-0d8b2d6b512e.ext4
