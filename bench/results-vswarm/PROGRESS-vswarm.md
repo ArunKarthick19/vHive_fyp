@@ -224,4 +224,4 @@ Mine vs stock: −4.1% at c=2 (440.7 vs 459.6), +0.4…+2.3% elsewhere. Measured
 Client CPU ≤ 48.8 s per 30 s; host busy ≤ 8.28 of 20 cores.
 vary (960 sent, 960 OK, 0 errors, 0 late, max 1 pod / 1 VM both): first (cold) request **4007 ms stock vs 1431 ms mine**; afterwards p50 4.7–5.5 ms,
 p99 ≤ 7.3 ms (max ≤ 9.5 ms). Plots: `r2/authgo/load/{rps_vs_conc,vary}.png`. Files: `bench/results-vswarm/r2/authgo/`.
-End state: 0 pods in default, no firecracker VMs, no load processes; the 8 vSwarm ksvcs remain deployed (scaled to zero).
+End state: at 22:59:50 the authgo-mine vary pod was still Terminating (its VM up 227 s); 0 pods and 0 firecracker VMs at 23:00:06, no load processes. (Commit 3ff79d8 said "0 pods" before I had checked — corrected here.) The 8 vSwarm ksvcs remain deployed (scaled to zero).

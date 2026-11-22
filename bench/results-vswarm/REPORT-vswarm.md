@@ -133,3 +133,95 @@ nohup env FN=fibpy WORKLOAD=fibpy SERVICES="fibpy-stock fibpy-mine" CYCLES=2 OUT
 nohup bash ~/fc-vm/vswarm/chain_p3.sh > out-p3.log 2>&1 &     # run_p3.sh: KIND=grpc sweep.sh per fn, then plot.py
 ```
 Scripts: `bench/results-vswarm/scripts/` (sweep.sh, vary.py, plot.py, coldg.sh, cold1.py, statsg.py, fn.sh, run_p0/p2/p3.sh) and `p2/run_p2b.sh`, `p2/chain_p3.sh`.
+
+---
+
+# Second run — aes-go and auth-go (Sun 2026-11-22 11:37–~14:05 SGT = Sat 20:37–23:05 MST)
+
+## Plain-language summary
+* **Both functions ran completely in both modes; nothing failed, nothing was re-run, no cycle or cell was dropped.** Same node, same daemons
+  (not restarted), ~/vhive unchanged (HEAD 4ba8903, not switched), same service template (the aesgo/authgo ksvcs from the first run, not changed).
+* **Cold start: mine is ~2.3–2.5× faster.** One request from a fully idle node, 8 cycles per mode, first cycle = warm-up, n=7:
+  | function | stock median (mean) s | mine median (mean) s | ratio median / mean | mine VM stage (launch → port accepts) |
+  |---|---|---|---|---|
+  | aes-go | 4.079 (4.076) | 1.752 (1.742) | 2.33× / 2.34× | 132–142 ms |
+  | auth-go | 4.073 (4.060) | 1.633 (1.647) | 2.49× / 2.46× | 132–140 ms |
+
+  Every reply was gRPC OK, and stock and mine returned byte-identical bodies (aes 7bfd0cc3ed50de86, auth 65cddb0024a32feb).
+* **Under load the two modes are the same.** gRPC throughput and latency match within a few percent at every concurrency (≈260 rps at c=1,
+  ≈2,550 rps at c=16 for both functions). Worst gap: auth-go c=2, mine 4.1% below stock. The time-varying runs (1→5→20→5→1 rps) had 0 errors
+  and 1 pod / 1 VM throughout. The only difference was the first (cold) request: aes 3.60 s vs 2.02 s, auth 4.01 s vs 1.43 s.
+* **Memory: mine's firecracker process uses about a third of stock's resident memory.** Idle pod: 183,036–184,040 KiB stock vs
+  60,300–61,784 KiB mine. End of the c=16 load: 188,604–189,696 KiB vs 65,644–66,888 KiB. Both guests are configured with 512 MiB; RSS
+  only counts host memory actually touched. I did **not** measure why they differ.
+* **Teardown: stock takes ~5.06 s to kill its VM; mine ~0.03–0.08 s.** For every stock cycle (16/16), firecracker-containerd's log shows the same thing:
+  a graceful shutdown, then a 5-second wait that runs out (`context deadline exceeded`), then a forced kill (`firecracker exited: signal: killed`).
+  For mine, vhive's own timer (SIGTERM → process gone + tap/socket removed) reads 0.068–0.101 s, and my PID watcher saw the process gone
+  0.034–0.082 s after the stop began. Why stock's guest does not shut down within 5 s was not measured.
+* **ghz "errors"** in the sweeps are again the client closing its own connections at the end of each run (`Unavailable … use of closed network connection`,
+  plus 4 `Canceled: client connection is closing` in aes-go), roughly c per cell; no other error type occurred.
+* **Pushes worked this time** (credentials were available): both commits, and the first run's earlier local-only commits, are on origin/results-vswarm.
+
+## Deviations and things to know (all recorded, none silent)
+1. **New harness pieces** (old scripts not modified): `run_r2.sh` (runner), `pidwatch.py` (logs firecracker process appear/exit, 20 ms poll, run only during
+   the cold-start part), `fccdcap.sh` (read-only `tmux capture-pane` of the firecracker-containerd pane every 15 s, because that daemon logs only to its
+   pane with a 2000-line history; no keys were sent to the pane), `mem.sh` (memory snapshot), `sweep2.sh` (= sweep.sh plus one `ps` snapshot right
+   after each measured window), `teardown.py` (parser). All in `bench/results-vswarm/scripts/`.
+2. **Teardown for mine is not entirely from daemon logs.** vhive logs only the end of a mine teardown (`per-pod Firecracker VM stopped ... took=`). The stop
+   start is computed as line time − took (vhive's own timer; no separate log line exists). There is no log line at all for the moment the process exits:
+   that comes from my PID watcher (±20 ms). For stock, both ends are real log lines (`stop VM: VMID:"<id>"` and `firecracker exited: signal: killed`,
+   paired in order; only one stock VM existed at a time, and the PID watcher agrees within 0.007–0.046 s).
+3. **"Stock firecracker is a child of firecracker-containerd": strictly it is a grandchild.** Its parent is `containerd-shim-aws-firecracker`
+   (~28–29 MB RSS, not counted), whose parent is firecracker-containerd. I identified stock VMs that way and recorded the VM `--id` for each number.
+4. **The memory "idle" snapshot** was taken 5 s after the pod was *seen* Ready (polled every 0.2 s right after the single request that created it).
+   Knative reported Ready at whole-second resolution, at the same second as the reply, so "5 s after Ready" is ±1 s.
+5. **One excluded teardown row (auth-go)**: the aes-go vary pod's VM was still alive when auth-go's watchers started. Its teardown (mine, 21:49:58) is
+   listed in `r2/authgo/cold/teardown.md`, labelled, and left out of the auth-go numbers.
+6. **A premature claim, corrected**: auth-go's PROGRESS section in commit 3ff79d8 said "0 pods" at the end before I had checked. At 22:59:50 the auth-go-mine
+   vary pod was still Terminating. The node was idle at 23:00:06. Corrected in the next commit.
+7. Mine's vary cold requests (aes 2.02 s, auth 1.43 s) differ from its coldg medians (1.75, 1.63 s). vary uses one shared channel and measures
+   from the scheduled send time. Cause not investigated.
+
+## Results in detail
+Full per-cycle / per-cell tables: `PROGRESS-vswarm.md`, sections "Second run — aes-go" and "Second run — auth-go". Raw data: `bench/results-vswarm/r2/<fn>/`:
+`cold/{cold.csv,summary.md,bodies/,cycles/,teardown.md,pidwatch.log,fccd-pane.dedup.txt,fccd-pane.raw.gz}`, `mem/{mem.log,stock.ps.txt,mine.ps.txt}`,
+`load/{sweep.csv,sweep.log,c<c>-<mode>.{warmup,load}.json,c<c>-<mode>.ps.txt,vary-<mode>/,rps_vs_conc.png,vary.png}`, `vhive.log`, `run.log`.
+
+### Load sweeps (rps / p50 ms / p99 ms)
+| | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| aes-go stock | 260.3 / 3.68 / 4.73 | 462.5 / 4.15 / 5.64 | 858.6 / 4.37 / 7.02 | 2054.4 / 3.56 / 6.42 | 2564.7 / 5.83 / 10.78 |
+| aes-go mine | 263.8 / 3.61 / 4.66 | 474.3 / 4.05 / 5.42 | 874.6 / 4.26 / 7.21 | 2103.1 / 3.48 / 6.36 | 2591.0 / 5.78 / 10.67 |
+| auth-go stock | 256.0 / 3.72 / 4.77 | 459.6 / 4.19 / 5.66 | 856.5 / 4.34 / 7.33 | 2004.7 / 3.66 / 6.48 | 2534.8 / 5.89 / 10.97 |
+| auth-go mine | 261.6 / 3.65 / 4.70 | 440.7 / 4.41 / 5.88 | 859.8 / 4.34 / 7.28 | 2050.7 / 3.57 / 6.40 | 2565.8 / 5.83 / 10.67 |
+firecracker CPU per 30 s measured window ≈ 11–12 s (c=1) to ≈ 33–34 s (c=16) in both modes; ghz client ≤ 48.8 CPU-s per 30 s; host ≤ 8.3 of 20 cores busy.
+
+### Memory (firecracker RSS, KiB)
+| | aes-go stock | aes-go mine | auth-go stock | auth-go mine |
+|---|---|---|---|---|
+| idle, Ready + 5 s | 184,040 (VM 51-33c133b0-2945-4a) | 61,784 (fcweb slot 1, pid 630314) | 183,036 (VM 66-7804ed0b-9ef6-4b) | 60,300 (slot 1, pid 763660) |
+| end of c=16 | 189,696 (VM 56-785caeab-7148-4d) | 66,888 (slot 1, pid 676832) | 188,604 (VM 71-578c9e60-af84-45) | 65,644 (slot 1, pid 810188) |
+
+### Teardown, every cold-start cycle (s)
+| | aes-go | auth-go |
+|---|---|---|
+| stock: `stop VM` → `firecracker exited` (fccd log) | 5.051 5.066 5.063 5.062 5.052 5.053 5.057 5.056 | 5.073 5.060 5.064 5.057 5.062 5.057 5.063 5.062 |
+| mine: vhive `took` (SIGTERM → process gone + cleanup) | 0.082 0.101 0.076 0.071 0.074 0.098 0.068 0.080 | 0.099 0.085 0.094 0.087 0.088 0.091 0.074 0.092 |
+| mine: stop start → process gone (pidwatch, ±0.02) | 0.064 0.051 0.060 0.063 0.068 0.043 0.050 0.034 | 0.082 0.062 0.073 0.062 0.064 0.072 0.055 0.050 |
+
+### Time-varying runs (960 requests each, 0 errors, 0 late sends, 1 pod / 1 VM; p50 / p99 ms per step 1, 5, 20, 5, 1 rps)
+| run | first (cold) ms | 1 rps | 5 | 20 | 5 | 1 |
+|---|---|---|---|---|---|---|
+| aes-go stock | 3602 | 5.21 / 3602 | 5.21 / 6.44 | 4.68 / 5.89 | 5.19 / 6.67 | 5.04 / 5.36 |
+| aes-go mine | 2024 | 5.26 / 2024 | 5.36 / 6.22 | 4.64 / 5.61 | 5.19 / 6.39 | 4.96 / 5.38 |
+| auth-go stock | 4007 | 5.17 / 4007 | 5.23 / 6.09 | 4.70 / 5.92 | 5.18 / 5.99 | 4.98 / 7.24 |
+| auth-go mine | 1431 | 5.45 / 1431 | 5.42 / 6.48 | 4.78 / 5.69 | 5.25 / 6.78 | 4.99 / 5.97 |
+
+## Exact commands (second run)
+```bash
+nohup env DEADLINE=1795330500 bash ~/fc-vm/vswarm/run_r2.sh aesgo  > ~/fc-vm/vswarm/out-r2-aesgo.log  2>&1 &   # 20:39:22 MST
+nohup env DEADLINE=1795330500 bash ~/fc-vm/vswarm/run_r2.sh authgo > ~/fc-vm/vswarm/out-r2-authgo.log 2>&1 &   # 21:48:38 MST
+python3 ~/fc-vm/vswarm/teardown.py ~/fc-vm/vswarm/out/r2/<fn>/cold      # needs out/r2/<fn>/vhive-cold.log = vhive log from the run start to "watchers stopped"
+```
+run_r2.sh = coldg.sh (CYCLES=8, unchanged) with pidwatch.py + fccdcap.sh in the background → wait for idle → stop watchers → statsg.py → mem.sh →
+sweep2.sh (KIND=grpc, c=1,2,4,8,16, 30+30 s, VARY=1) → plot.py.
