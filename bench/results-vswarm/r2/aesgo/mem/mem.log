@@ -1,0 +1,32 @@
+2026-11-21 21:09:19.880 aesgo-stock: waiting for idle
+2026-11-21 21:09:33.857 aesgo-stock: request -> OK 4.195133
+2026-11-21 21:09:33.944 aesgo-stock: Ready seen: aesgo-stock-00001-deployment-6d9677b4c6-4d22n True 2026-11-22T04:09:33Z
+2026-11-21 21:09:38.948 aesgo-stock: snapshot (5 s after Ready seen)
+2026-11-21 21:09:38.950
+pods:
+aesgo-stock-00001-deployment-6d9677b4c6-4d22n   2/2   Running   0     10s   192.168.77.185   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>   <none>
+ps:
+  13370   13313  7268  304290 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13373   13370  2608  304290 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13374   13373 98912  304290 /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+ 626501   13374 28996       8 containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock
+ 626514  626501 184040      8 /usr/local/bin/firecracker --api-sock firecracker.sock --id 51-33c133b0-2945-4a
+parents:
+fc pid 626514 rss_kib=184040 parent 626501: containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock
+fc pid 626514 rss_kib=184040 parent 626501: containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock
+2026-11-21 21:09:39.173 aesgo-mine: waiting for idle
+2026-11-21 21:11:22.750 aesgo-mine: request -> OK 1.699897
+2026-11-21 21:11:22.840 aesgo-mine: Ready seen: aesgo-mine-00001-deployment-6b7476b57c-z9dvj True 2026-11-22T04:11:22Z
+2026-11-21 21:11:27.844 aesgo-mine: snapshot (5 s after Ready seen)
+2026-11-21 21:11:27.847
+pods:
+aesgo-mine-00001-deployment-6b7476b57c-z9dvj   2/2   Running   0     6s    192.168.77.182   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>   <none>
+ps:
+  13370   13313  7268  304399 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13373   13370  2608  304399 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13374   13373 99092  304399 /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+ 630314 1251110 61784       6 /usr/local/bin/firecracker --api-sock /run/vhive-fcweb/1/fc.sock --config-file /run/vhive-fcweb/1/vm-config.json
+parents:
+fc pid 630314 rss_kib=61784 parent 1251110: ./vhive-perpod
+fc pid 630314 rss_kib=61784 parent 1251110: ./vhive-perpod
+2026-11-21 21:11:28.083 done

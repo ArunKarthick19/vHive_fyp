@@ -1,0 +1,37 @@
+2026-11-21 20:39:22 start workload=aesgo services='aesgo-stock aesgo-mine' cycles=8 ingress=10.103.200.78
+2026-11-21 20:39:22   aesgo-stock -> Host: aesgo-stock.default.192.168.1.240.sslip.io
+2026-11-21 20:39:22   aesgo-mine -> Host: aesgo-mine.default.192.168.1.240.sslip.io
+2026-11-21 20:39:22   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-21 20:39:22 cycle 1 aesgo-stock: waiting for idle
+2026-11-21 20:39:37 cycle 1 aesgo-stock: HTTP OK curl_exit=0 time_total=4.459091s bytes=122 idle_wait=9s  
+2026-11-21 20:39:37 cycle 1 aesgo-mine: waiting for idle
+2026-11-21 20:41:28 cycle 1 aesgo-mine: HTTP OK curl_exit=0 time_total=1.701407s bytes=122 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=138.46514ms probe=tcp] 
+2026-11-21 20:41:28 cycle 2 aesgo-stock: waiting for idle
+2026-11-21 20:43:15 cycle 2 aesgo-stock: HTTP OK curl_exit=0 time_total=4.080565s bytes=122 idle_wait=102s  
+2026-11-21 20:43:15 cycle 2 aesgo-mine: waiting for idle
+2026-11-21 20:45:04 cycle 2 aesgo-mine: HTTP OK curl_exit=0 time_total=1.730070s bytes=122 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=134.66573ms probe=tcp] 
+2026-11-21 20:45:04 cycle 3 aesgo-stock: waiting for idle
+2026-11-21 20:46:51 cycle 3 aesgo-stock: HTTP OK curl_exit=0 time_total=3.983971s bytes=122 idle_wait=101s  
+2026-11-21 20:46:51 cycle 3 aesgo-mine: waiting for idle
+2026-11-21 20:48:40 cycle 3 aesgo-mine: HTTP OK curl_exit=0 time_total=1.769150s bytes=122 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=138.871541ms probe=tcp] 
+2026-11-21 20:48:40 cycle 4 aesgo-stock: waiting for idle
+2026-11-21 20:50:26 cycle 4 aesgo-stock: HTTP OK curl_exit=0 time_total=4.035398s bytes=122 idle_wait=101s  
+2026-11-21 20:50:26 cycle 4 aesgo-mine: waiting for idle
+2026-11-21 20:52:15 cycle 4 aesgo-mine: HTTP OK curl_exit=0 time_total=1.751032s bytes=122 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=142.441322ms probe=tcp] 
+2026-11-21 20:52:15 cycle 5 aesgo-stock: waiting for idle
+2026-11-21 20:54:02 cycle 5 aesgo-stock: HTTP OK curl_exit=0 time_total=4.079220s bytes=122 idle_wait=102s  
+2026-11-21 20:54:02 cycle 5 aesgo-mine: waiting for idle
+2026-11-21 20:55:51 cycle 5 aesgo-mine: HTTP OK curl_exit=0 time_total=1.751683s bytes=122 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=138.279129ms probe=tcp] 
+2026-11-21 20:55:51 cycle 6 aesgo-stock: waiting for idle
+2026-11-21 20:57:36 cycle 6 aesgo-stock: HTTP OK curl_exit=0 time_total=4.180571s bytes=122 idle_wait=99s  
+2026-11-21 20:57:36 cycle 6 aesgo-mine: waiting for idle
+2026-11-21 20:59:57 cycle 6 aesgo-mine: HTTP OK curl_exit=0 time_total=1.963605s bytes=122 idle_wait=138s [firecrackerVM=fcweb1 launchToHTTP200=131.915235ms probe=tcp] 
+2026-11-21 20:59:57 cycle 7 aesgo-stock: waiting for idle
+2026-11-21 21:01:44 cycle 7 aesgo-stock: HTTP OK curl_exit=0 time_total=4.103757s bytes=122 idle_wait=101s  
+2026-11-21 21:01:44 cycle 7 aesgo-mine: waiting for idle
+2026-11-21 21:03:56 cycle 7 aesgo-mine: HTTP OK curl_exit=0 time_total=1.408733s bytes=122 idle_wait=129s [firecrackerVM=fcweb1 launchToHTTP200=140.784525ms probe=tcp] 
+2026-11-21 21:03:56 cycle 8 aesgo-stock: waiting for idle
+2026-11-21 21:05:43 cycle 8 aesgo-stock: HTTP OK curl_exit=0 time_total=4.068019s bytes=122 idle_wait=101s  
+2026-11-21 21:05:43 cycle 8 aesgo-mine: waiting for idle
+2026-11-21 21:07:32 cycle 8 aesgo-mine: HTTP OK curl_exit=0 time_total=1.818024s bytes=122 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=136.941254ms probe=tcp] 
+2026-11-21 21:07:32 done workload=aesgo

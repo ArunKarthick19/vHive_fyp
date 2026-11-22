@@ -1,0 +1,227 @@
+time="2026-11-21T20:39:35.526080359-07:00" level=info msg="time=\"2026-11-22T03:39:35Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=43-6d7ea0ec-6df1-41
+time="2026-11-21T20:39:35.526123738-07:00" level=info vmID=43-6d7ea0ec-6df1-41
+time="2026-11-21T20:40:00.557200068-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:40:00.922062281-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:41:00.557721333-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:41:00.921126475-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:41:19.238924902-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 43-6d7ea0ec-6df1-41" vmID=43-6d7ea0ec-6df1-41
+time="2026-11-21T20:41:26.497464836-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=138.46514ms pid=569397 probe=tcp tapAndLaunch=1.374223ms
+time="2026-11-21T20:41:26.497532805-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=89004623ffc781e326bd830a557ddb2a1dc88bbdcbfb90e454ee4e6a916f58b5 slot=1 took=159.009809ms vmID=firecracker-vm/pod-1-89004623ffc7
+time="2026-11-21T20:42:00.557433607-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:42:00.922022528-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:42:58.589170142-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=89004623ffc781e326bd830a557ddb2a1dc88bbdcbfb90e454ee4e6a916f58b5 slot=1 took=81.775059ms vmID=firecracker-vm/pod-1-89004623ffc7
+time="2026-11-21T20:43:00.556744908-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:43:00.921809657-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:43:13.555675857-07:00" level=info msg="time=\"2026-11-22T03:43:13Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=44-6f0c6a77-568f-49
+time="2026-11-21T20:43:13.555717286-07:00" level=info vmID=44-6f0c6a77-568f-49
+time="2026-11-21T20:44:00.557131385-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:44:00.921934961-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:44:54.943131947-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 44-6f0c6a77-568f-49" vmID=44-6f0c6a77-568f-49
+time="2026-11-21T20:45:00.556945899-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:45:00.921621054-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:45:02.134702345-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=134.66573ms pid=576853 probe=tcp tapAndLaunch=1.394261ms
+time="2026-11-21T20:45:02.134773826-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=5e77d69c25e6b2c77dba8b37666abb9719c627067534fc3a9f33631ecec33977 slot=1 took=157.547929ms vmID=firecracker-vm/pod-1-5e77d69c25e6
+time="2026-11-21T20:46:00.556812129-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:46:00.921088282-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:46:34.606324413-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=5e77d69c25e6b2c77dba8b37666abb9719c627067534fc3a9f33631ecec33977 slot=1 took=101.319001ms vmID=firecracker-vm/pod-1-5e77d69c25e6
+time="2026-11-21T20:46:49.311168796-07:00" level=info msg="time=\"2026-11-22T03:46:49Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=45-668dd530-4f69-4e
+time="2026-11-21T20:46:49.311209824-07:00" level=info vmID=45-668dd530-4f69-4e
+time="2026-11-21T20:47:00.556698999-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:47:00.921906233-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:48:00.556751027-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:48:00.921920575-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:48:31.681145927-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 45-668dd530-4f69-4e" vmID=45-668dd530-4f69-4e
+time="2026-11-21T20:48:37.834845078-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=138.871541ms pid=584421 probe=tcp tapAndLaunch=1.021083ms
+time="2026-11-21T20:48:37.834895429-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=68834ec467c046a23e6fd6fbebc1b9524c47dc2f24ad6c67144bd12bec13ece2 slot=1 took=157.817224ms vmID=firecracker-vm/pod-1-68834ec467c0
+time="2026-11-21T20:49:00.557095861-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:49:00.921529576-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:50:00.557504416-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:50:00.921749189-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:50:10.578342534-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=68834ec467c046a23e6fd6fbebc1b9524c47dc2f24ad6c67144bd12bec13ece2 slot=1 took=75.659329ms vmID=firecracker-vm/pod-1-68834ec467c0
+time="2026-11-21T20:50:25.059652934-07:00" level=info msg="time=\"2026-11-22T03:50:25Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=46-ef30bc4d-0eb7-45
+time="2026-11-21T20:50:25.059694703-07:00" level=info vmID=46-ef30bc4d-0eb7-45
+time="2026-11-21T20:51:00.556763046-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:51:00.921865410-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:52:00.557513357-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:52:00.921304270-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:52:07.393451003-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 46-ef30bc4d-0eb7-45" vmID=46-ef30bc4d-0eb7-45
+time="2026-11-21T20:52:13.590305682-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=142.441322ms pid=591720 probe=tcp tapAndLaunch=1.269198ms
+time="2026-11-21T20:52:13.590339998-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=b61bf393d6e603b7a97c0207a40ac657bc1e6d2caf95426c847417561c94fc03 slot=1 took=164.739503ms vmID=firecracker-vm/pod-1-b61bf393d6e6
+time="2026-11-21T20:53:00.556735747-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:53:00.922084086-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:53:46.573573263-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=b61bf393d6e603b7a97c0207a40ac657bc1e6d2caf95426c847417561c94fc03 slot=1 took=70.94952ms vmID=firecracker-vm/pod-1-b61bf393d6e6
+time="2026-11-21T20:54:00.557434126-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:54:00.695022570-07:00" level=info msg="time=\"2026-11-22T03:54:00Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=47-8f744388-b7fc-45
+time="2026-11-21T20:54:00.695074408-07:00" level=info vmID=47-8f744388-b7fc-45
+time="2026-11-21T20:54:00.921666525-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:55:00.557069728-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:55:00.921840875-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:55:43.108963223-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 47-8f744388-b7fc-45" vmID=47-8f744388-b7fc-45
+time="2026-11-21T20:55:49.287215272-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=138.279129ms pid=599200 probe=tcp tapAndLaunch=1.288044ms
+time="2026-11-21T20:55:49.287286432-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=397ea566c8865ce061925d08512a0e96d010f766b38a6061c9de932ff6f4b468 slot=1 took=159.903732ms vmID=firecracker-vm/pod-1-397ea566c886
+time="2026-11-21T20:56:00.557636642-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:56:00.921382398-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:57:00.557416196-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T20:57:00.921397373-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:57:20.582263243-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=397ea566c8865ce061925d08512a0e96d010f766b38a6061c9de932ff6f4b468 slot=1 took=74.239331ms vmID=firecracker-vm/pod-1-397ea566c886
+time="2026-11-21T20:57:34.377000783-07:00" level=info msg="time=\"2026-11-22T03:57:34Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=48-933badec-77c0-45
+time="2026-11-21T20:57:34.377041403-07:00" level=info vmID=48-933badec-77c0-45
+time="2026-11-21T20:58:00.557381167-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:58:00.921926863-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:59:00.557726950-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:59:00.921562645-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T20:59:47.845817904-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 48-933badec-77c0-45" vmID=48-933badec-77c0-45
+time="2026-11-21T20:59:55.023065955-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=131.915235ms pid=607534 probe=tcp tapAndLaunch=1.531904ms
+time="2026-11-21T20:59:55.023108412-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=7e52c35744488d7b73b18400db27b2cf8f0c8fb88107584ca26d61789aa18726 slot=1 took=156.510636ms vmID=firecracker-vm/pod-1-7e52c3574448
+time="2026-11-21T21:00:00.557729060-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:00:00.921590332-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:01:00.557164076-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:01:00.921136347-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:01:26.628412513-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=7e52c35744488d7b73b18400db27b2cf8f0c8fb88107584ca26d61789aa18726 slot=1 took=98.375807ms vmID=firecracker-vm/pod-1-7e52c3574448
+time="2026-11-21T21:01:42.340449484-07:00" level=info msg="time=\"2026-11-22T04:01:42Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=49-5361be55-a642-42
+time="2026-11-21T21:01:42.340490083-07:00" level=info vmID=49-5361be55-a642-42
+time="2026-11-21T21:02:00.557048544-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:02:00.921490886-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:03:00.556982782-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:03:00.921683503-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:03:48.256495075-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 49-5361be55-a642-42" vmID=49-5361be55-a642-42
+time="2026-11-21T21:03:54.459437681-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=140.784525ms pid=615613 probe=tcp tapAndLaunch=1.231056ms
+time="2026-11-21T21:03:54.459497388-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=59c1b9ab1898394ac1b6ebcd64a70bd728b9f6881d0458dc8969f8950f580987 slot=1 took=162.914345ms vmID=firecracker-vm/pod-1-59c1b9ab1898
+time="2026-11-21T21:04:00.557487343-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:04:00.921110225-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:05:00.557021376-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:05:00.922141624-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:05:26.575764948-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=59c1b9ab1898394ac1b6ebcd64a70bd728b9f6881d0458dc8969f8950f580987 slot=1 took=68.499293ms vmID=firecracker-vm/pod-1-59c1b9ab1898
+time="2026-11-21T21:05:41.316965520-07:00" level=info msg="time=\"2026-11-22T04:05:41Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=50-85fcf119-e606-42
+time="2026-11-21T21:05:41.317057103-07:00" level=info vmID=50-85fcf119-e606-42
+time="2026-11-21T21:06:00.557594302-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:06:00.922130436-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:07:00.557364826-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:07:00.921940015-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:07:23.660042402-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 50-85fcf119-e606-42" vmID=50-85fcf119-e606-42
+time="2026-11-21T21:07:29.788943320-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=136.941254ms pid=622958 probe=tcp tapAndLaunch=1.157951ms
+time="2026-11-21T21:07:29.789037393-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=b7f27d9b8e8de73fd198537799407992d015e358e430a2eec9633a93b387c5a0 slot=1 took=157.11921ms vmID=firecracker-vm/pod-1-b7f27d9b8e8d
+time="2026-11-21T21:08:00.557751215-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:08:00.921919624-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:09:00.556858513-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:09:00.922019721-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:09:02.588893116-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=b7f27d9b8e8de73fd198537799407992d015e358e430a2eec9633a93b387c5a0 slot=1 took=79.938627ms vmID=firecracker-vm/pod-1-b7f27d9b8e8d
+time="2026-11-21T21:09:33.006122674-07:00" level=info msg="time=\"2026-11-22T04:09:32Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=51-33c133b0-2945-4a
+time="2026-11-21T21:09:33.006165813-07:00" level=info vmID=51-33c133b0-2945-4a
+time="2026-11-21T21:10:00.557470842-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:10:00.922070799-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:11:00.557182999-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:11:00.921797189-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:11:15.573096269-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 51-33c133b0-2945-4a" vmID=51-33c133b0-2945-4a
+time="2026-11-21T21:11:21.822176468-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=137.690518ms pid=630314 probe=tcp tapAndLaunch=1.726054ms
+time="2026-11-21T21:11:21.822263257-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=1d49816c0ad3ab142916a4655454b6b5da451d97ea4161a7781a0e1759bb6daa slot=1 took=176.304303ms vmID=firecracker-vm/pod-1-1d49816c0ad3
+time="2026-11-21T21:12:00.557138580-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:12:00.922027861-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:12:54.621866645-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=1d49816c0ad3ab142916a4655454b6b5da451d97ea4161a7781a0e1759bb6daa slot=1 took=94.889183ms vmID=firecracker-vm/pod-1-1d49816c0ad3
+time="2026-11-21T21:13:00.556843943-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:13:00.921086257-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:13:09.144583573-07:00" level=info msg="time=\"2026-11-22T04:13:09Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=52-1fa22dd3-eb4c-4a
+time="2026-11-21T21:13:09.144618878-07:00" level=info vmID=52-1fa22dd3-eb4c-4a
+time="2026-11-21T21:14:00.556721813-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:14:00.921105751-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:15:00.557497560-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:15:00.922130144-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:15:49.477128130-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 52-1fa22dd3-eb4c-4a" vmID=52-1fa22dd3-eb4c-4a
+time="2026-11-21T21:15:55.224126497-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=132.672733ms pid=638706 probe=tcp tapAndLaunch=1.149162ms
+time="2026-11-21T21:15:55.224179999-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=2d372cf0637389603e52bc89b740721719b54c093e854868d242d1e8d4e2dd90 slot=1 took=153.046304ms vmID=firecracker-vm/pod-1-2d372cf06373
+time="2026-11-21T21:16:00.557350898-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:16:00.922080017-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:17:00.557508104-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:17:00.921181782-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:18:00.557497881-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:18:00.921334581-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:18:26.628048925-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=2d372cf0637389603e52bc89b740721719b54c093e854868d242d1e8d4e2dd90 slot=1 took=90.21955ms vmID=firecracker-vm/pod-1-2d372cf06373
+time="2026-11-21T21:18:42.229994599-07:00" level=info msg="time=\"2026-11-22T04:18:42Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=53-b5c08d09-f487-4b
+time="2026-11-21T21:18:42.230051708-07:00" level=info vmID=53-b5c08d09-f487-4b
+time="2026-11-21T21:19:00.557354777-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:19:00.921851008-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:20:00.557430328-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:20:00.921765877-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:21:00.556731305-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:21:00.921204417-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:21:21.642281681-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 53-b5c08d09-f487-4b" vmID=53-b5c08d09-f487-4b
+time="2026-11-21T21:21:28.408642746-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=138.127622ms pid=647744 probe=tcp tapAndLaunch=8.517374ms
+time="2026-11-21T21:21:28.408713300-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=b97fd9a53807cec2c83110666a2d070ef0634d089b42dc25dd56af2b02d2cf26 slot=1 took=166.067057ms vmID=firecracker-vm/pod-1-b97fd9a53807
+time="2026-11-21T21:22:00.557545208-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:22:00.921141120-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:23:00.557049889-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:23:00.921148535-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:23:58.602171546-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=b97fd9a53807cec2c83110666a2d070ef0634d089b42dc25dd56af2b02d2cf26 slot=1 took=97.855295ms vmID=firecracker-vm/pod-1-b97fd9a53807
+time="2026-11-21T21:24:00.557397116-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:24:00.921710091-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:24:13.321670126-07:00" level=info msg="time=\"2026-11-22T04:24:13Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=54-d430785c-3606-4f
+time="2026-11-21T21:24:13.321720016-07:00" level=info vmID=54-d430785c-3606-4f
+time="2026-11-21T21:25:00.557710601-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:25:00.922171635-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:26:00.557583024-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:26:00.921093181-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:26:51.450702051-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 54-d430785c-3606-4f" vmID=54-d430785c-3606-4f
+time="2026-11-21T21:26:57.488284498-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=139.544578ms pid=656836 probe=tcp tapAndLaunch=1.068302ms
+time="2026-11-21T21:26:57.488365180-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=6233284c1e057014723980dad87769675dd19e252664f6567e2023a52f9eb618 slot=1 took=159.305655ms vmID=firecracker-vm/pod-1-6233284c1e05
+time="2026-11-21T21:27:00.557213262-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:27:00.921831067-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:28:00.557034152-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:28:00.921926068-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:29:00.557398829-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:29:00.922047990-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:29:28.631762897-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=6233284c1e057014723980dad87769675dd19e252664f6567e2023a52f9eb618 slot=1 took=82.750853ms vmID=firecracker-vm/pod-1-6233284c1e05
+time="2026-11-21T21:29:44.583429477-07:00" level=info msg="time=\"2026-11-22T04:29:44Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=55-bf21174a-3cb1-43
+time="2026-11-21T21:29:44.583484684-07:00" level=info vmID=55-bf21174a-3cb1-43
+time="2026-11-21T21:30:00.557453861-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:30:00.921829237-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:31:00.557748284-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:31:00.922130454-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:32:00.557218955-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:32:00.921852762-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:32:23.125571237-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 55-bf21174a-3cb1-43" vmID=55-bf21174a-3cb1-43
+time="2026-11-21T21:32:29.062951750-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=138.639488ms pid=665905 probe=tcp tapAndLaunch=1.705842ms
+time="2026-11-21T21:32:29.063044631-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=493f5e4755d667f428e6945966427bbf734528bcbdf0a1cb4877b1b9ad36e655 slot=1 took=163.591938ms vmID=firecracker-vm/pod-1-493f5e4755d6
+time="2026-11-21T21:33:00.556778393-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:33:00.921314367-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:34:00.556887116-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:34:00.921755914-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:35:00.557121514-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:35:00.599193354-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=493f5e4755d667f428e6945966427bbf734528bcbdf0a1cb4877b1b9ad36e655 slot=1 took=72.736361ms vmID=firecracker-vm/pod-1-493f5e4755d6
+time="2026-11-21T21:35:00.921312231-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:35:16.486867376-07:00" level=info msg="time=\"2026-11-22T04:35:16Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=56-785caeab-7148-4d
+time="2026-11-21T21:35:16.486908216-07:00" level=info vmID=56-785caeab-7148-4d
+time="2026-11-21T21:36:00.557636232-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:36:00.921696812-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:37:00.557803466-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:37:00.921094205-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:38:00.557189017-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:38:00.921925146-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:38:51.219919268-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 56-785caeab-7148-4d" vmID=56-785caeab-7148-4d
+time="2026-11-21T21:38:56.622770458-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=134.837445ms pid=676832 probe=tcp tapAndLaunch=1.085094ms
+time="2026-11-21T21:38:56.622835734-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=f00ff55d1a539d79b4573c3bb8ffc42f656bced3473626aa77fc078b5271bb69 slot=1 took=154.238699ms vmID=firecracker-vm/pod-1-f00ff55d1a53
+time="2026-11-21T21:39:00.557549116-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:39:00.921722614-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:40:00.557502588-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:40:00.921793041-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:41:00.557191413-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:41:00.921123784-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:41:26.623841797-07:00" level=info msg="per-pod Firecracker VM stopped" sandbox=f00ff55d1a539d79b4573c3bb8ffc42f656bced3473626aa77fc078b5271bb69 slot=1 took=91.903507ms vmID=firecracker-vm/pod-1-f00ff55d1a53
+time="2026-11-21T21:41:43.389872661-07:00" level=info msg="time=\"2026-11-22T04:41:43Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=57-c500dae2-6304-48
+time="2026-11-21T21:41:43.389931741-07:00" level=info vmID=57-c500dae2-6304-48
+time="2026-11-21T21:42:00.557356723-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:42:00.921549439-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:43:00.556728117-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:43:00.922124814-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:44:00.557793870-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:44:00.921774498-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:45:00.557792613-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T21:45:00.922111927-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:45:51.504734152-07:00" level=error msg="failed to stop firecracker-containerd VM" error="rpc error: code = Internal desc = forcefully terminated VM 57-c500dae2-6304-48" vmID=57-c500dae2-6304-48
+time="2026-11-21T21:45:58.421204165-07:00" level=info msg="Firecracker VM booted" firecrackerVM=fcweb1 launchToHTTP200=133.100977ms pid=690626 probe=tcp tapAndLaunch=1.080769ms
+time="2026-11-21T21:45:58.421249105-07:00" level=info msg="per-pod Firecracker VM reachable" ip=10.200.0.6 sandbox=3315ba6a6b8cd0d24d843ed149c34e9d6aa5e81df69dd17faa1165823c77c9d6 slot=1 took=152.8315ms vmID=firecracker-vm/pod-1-3315ba6a6b8c
+time="2026-11-21T21:46:00.557333825-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:46:00.922154516-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:47:00.557231795-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:47:00.921879048-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="
+time="2026-11-21T21:48:00.557531233-07:00" level=info msg="HEARTBEAT: number of active VMs: 0"
+time="2026-11-21T21:48:00.921122263-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="

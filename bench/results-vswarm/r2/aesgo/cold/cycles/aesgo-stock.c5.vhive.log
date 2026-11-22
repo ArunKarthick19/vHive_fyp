@@ -1,0 +1,4 @@
+time="2026-11-21T20:54:00.557434126-07:00" level=info msg="HEARTBEAT: number of active VMs: 1"
+time="2026-11-21T20:54:00.695022570-07:00" level=info msg="time=\"2026-11-22T03:54:00Z\" level=info msg=\"Start AES-go server. Addr: 0.0.0.0:50051\\n\"" vmID=47-8f744388-b7fc-45
+time="2026-11-21T20:54:00.695074408-07:00" level=info vmID=47-8f744388-b7fc-45
+time="2026-11-21T20:54:00.921666525-07:00" level=info msg="FuncPool heartbeat: ==== Stats by cold functions ====\nfID, #started, #served\n==================================="

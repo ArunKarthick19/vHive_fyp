@@ -124,3 +124,62 @@ stock median 4.761 / mean 4.771 (4.680–4.835), mine median 2.804 / mean 2.928 
 (coldg.sh flags the top-up's cycle 1 as warm-up; I counted it, because the image was already cached and pods had been through many cold starts.)
 End state 03:57 MST: 0 pods in default, no firecracker VMs, no load processes. The 8 vSwarm ksvcs (fibgo/fibpy/aesgo/authgo -stock/-mine) are left
 deployed (scaled to zero); bb/httpbin/nginx ksvcs were deleted at your request; d19-* and snap-stock untouched. Final report: ~/fc-vm/REPORT-vswarm.md.
+
+# Second run — aes-go then auth-go, stock vs mine (started Sun 2026-11-22 11:37 SGT = Sat 20:37 MST node time; hard stop 15:07 SGT = 00:07 MST)
+Start state (20:37 MST): ~/vhive HEAD 4ba8903 (snapshot-spike, not switched, no source change), vhive-perpod md5 8fdc5b6a56e1f78fedae10fee1d36a09,
+daemons not restarted (tmux containerd/firecracker/vhive from Nov 18). 0 pods in default, 0 firecracker VMs. aesgo/authgo -stock/-mine ksvcs still
+deployed from the first run (rev 00001, Ready) — same yamls (`yaml/aesgo-*.yaml`, `yaml/authgo-*.yaml`), not recreated, template unchanged.
+New harness pieces (old scripts untouched): `run_r2.sh` (runner per function), `pidwatch.py` (logs each firecracker process appear/exit, 20 ms poll,
+runs only during the cold-start part), `fccdcap.sh` (read-only `tmux capture-pane -J` of the firecracker-containerd pane every 15 s — that daemon
+logs only to its pane, 2000-line history; no keys sent), `mem.sh` (one pod Ready + 5 s, ps RSS), `sweep2.sh` (= sweep.sh + one `ps` snapshot right
+after each measured 30 s window). Output: ~/fc-vm/vswarm/out/r2/<fn>/{cold,mem,load}/.
+Command: `nohup env DEADLINE=<23:55 MST> bash ~/fc-vm/vswarm/run_r2.sh aesgo > out-r2-aesgo.log 2>&1 &` (20:39:22 MST).
+
+## Second run — aes-go (20:39:22–21:48:29 MST), complete: 16 cold cycles, memory, 10 sweep cells, 2 vary runs; nothing failed, nothing re-run
+Request aes.Aes/ShowEncryption {"plaintext_message":"world"}. All 16 cold-start replies were gRPC OK and byte-identical in both modes (122 B,
+sha256/16 7bfd0cc3ed50de86: `fn: AES | plaintext: defaultplaintext | ciphertext: d80e9ec83a6acbef3d909876e79904a9 | runtime: golang`).
+
+**(a) Cold start** (coldg.sh, 8 cycles per mode, stock then mine each round, cycle 1 = warm-up; idle waits 99–138 s):
+| aesgo (cycles 2–8, n=7) | mean s | median s | min s | max s | stdev s |
+|---|---|---|---|---|---|
+| stock | 4.076 | 4.079 | 3.984 | 4.181 | 0.060 |
+| mine | 1.742 | 1.752 | 1.409 | 1.964 | 0.167 |
+| ratio stock/mine | 2.34× | 2.33× | | | |
+All cycles (s): stock 4.459(w) 4.081 3.984 4.035 4.079 4.181 4.104 4.068; mine 1.701(w) 1.730 1.769 1.751 1.752 1.964 1.409 1.818.
+Mine's VM stage (vhive `Firecracker VM booted ... launchToHTTP200`): 131.9–142.4 ms over all 8 cycles (= launch → TCP accept of the gRPC port).
+Stock has no comparable per-stage line in the vhive Info log (not measured).
+
+**(c) Memory** (RSS of the firecracker process, `ps -eo pid,ppid,rss,etimes,args`):
+| | stock | mine |
+|---|---|---|
+| one pod Ready + 5 s, idle (mem.sh) | **184,040 KiB** — pid 626514, VM `--id 51-33c133b0-2945-4a` (21:09:38.950) | **61,784 KiB** — pid 630314, `/run/vhive-fcweb/1/fc.sock` (21:11:27.847) |
+| end of the c=16 measured window, VM up 60 s | **189,696 KiB** — pid 670422, VM `56-785caeab-7148-4d` (21:36:13.898) | **66,888 KiB** — pid 676832, `/run/vhive-fcweb/1/fc.sock` (21:39:56.682) |
+(also end of c=1: stock 189,180 KiB VM 52-1fa22dd3-eb4c-4a; mine 67,400 KiB pid 638706.) Both guests are configured with 512 MiB; RSS counts only
+host pages the VM has touched. Identification: the stock firecracker's parent is **containerd-shim-aws-firecracker** (e.g. pid 626501, RSS 28,996 KiB,
+not counted above), whose parent is firecracker-containerd (pid 13374) — i.e. a grandchild, not a direct child, of firecracker-containerd. Mine's parent
+is vhive-perpod (pid 1251110). Why the RSS differs was not measured.
+
+**(d) Teardown** (stop request → VM process exit, every cold-start cycle, `cold/teardown.md`):
+* stock, from firecracker-containerd's pane log: `DEBU[...] stop VM: VMID:"<id>"` → next `WARN[...] firecracker exited: signal: killed`:
+  **5.051, 5.066, 5.063, 5.062, 5.052, 5.053, 5.057, 5.056 s** (8/8 VMs, 43…50). My PID watcher saw the process gone 0.007–0.044 s after the exit line.
+  The log shows the same sequence every time (example `cold/stock-stop-example-vm44.txt`): `gracefully shutdown VM` → 5.00 s later
+  `failed to wait VM error="context deadline exceeded"` → `forcefully terminate VM` → `firecracker exited: signal: killed`; then 5 s more until
+  `shim has been terminated` / `shim disconnected`; vhive logs `failed to stop firecracker-containerd VM ... forcefully terminated VM` at that point.
+  So every stock VM was killed after the graceful-shutdown wait ran out; why the guest did not exit within it was not measured.
+* mine: vhive logs only one line, at the end: `per-pod Firecracker VM stopped ... took=<d>`; `took` is vhive's own timer started just before
+  SIGTERM and stopped after the process is gone AND the tap/socket are removed. There is **no log line for the process-exit instant**; I take it from
+  my PID watcher (`pidwatch.py`, 20 ms poll, not a daemon log). took = **0.082, 0.101, 0.076, 0.071, 0.074, 0.098, 0.068, 0.080 s**; stop start
+  (line − took) → process gone (pidwatch): **0.064, 0.051, 0.060, 0.063, 0.068, 0.043, 0.050, 0.034 s** (±0.02 s poll resolution).
+
+**(b) Load** (ghz, 30 s warm-up incl. cold start + 30 s measured, each cell from zero pods; rps / p50 ms / p99 ms; fc CPU-s per 30 s):
+| aesgo | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| stock | 260.3 / 3.68 / 4.73; 11.9 | 462.5 / 4.15 / 5.64; 14.9 | 858.6 / 4.37 / 7.02; 23.6 | 2054.4 / 3.56 / 6.42; 32.2 | 2564.7 / 5.83 / 10.78; 33.5 |
+| mine  | 263.8 / 3.61 / 4.66; 11.3 | 474.3 / 4.05 / 5.42; 14.3 | 874.6 / 4.26 / 7.21; 23.3 | 2103.1 / 3.48 / 6.36; 31.8 | 2591.0 / 5.78 / 10.67; 32.7 |
+Mine is within 0…+3% of stock in every cell. Measured-window errors: stock 0, 2, 4, 7, 13; mine 1, 2, 3, 8, 12 — all `Unavailable … use of closed
+network connection` except one `Canceled: the client connection is closing` (mine c=4), the same ghz end-of-run connection-close artifact as in the
+first run. Client (ghz) CPU ≤ 48.6 s per 30 s; host busy ≤ 8.25 of 20 cores.
+vary (open loop 1,5,20,5,1 rps; 960 sent, 960 OK, 0 errors, 0 late sends, max 1 pod / 1 VM in both): first request (cold) **3602 ms stock vs
+2024 ms mine**; afterwards p50 4.6–5.4 ms, p99 ≤ 6.7 ms (max ≤ 10.5 ms) in every step for both. Mine's vary cold request (2.02 s) is slower than
+any of its 8 coldg cycles (1.41–1.96 s); cause not investigated (vary uses one shared channel and measures from the scheduled send time).
+Plots: `r2/aesgo/load/rps_vs_conc.png`, `r2/aesgo/load/vary.png`. Files: `bench/results-vswarm/r2/aesgo/` (fccd-pane.raw gzipped + deduplicated copy).

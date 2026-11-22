@@ -1,0 +1,6 @@
+2026-11-21 21:27:57.172
+  13370   13313  7268  305388 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13373   13370  2608  305388 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13374   13373 101484 305388 /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+ 656836 1251110 65620      59 /usr/local/bin/firecracker --api-sock /run/vhive-fcweb/1/fc.sock --config-file /run/vhive-fcweb/1/vm-config.json
+fc pid 656836 rss_kib=65620 parent 1251110: ./vhive-perpod

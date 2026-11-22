@@ -1,0 +1,17 @@
+DEBU[2026-11-21T20:44:44.926446864-07:00] stop VM: VMID:"44-6f0c6a77-568f-49"          
+DEBU[2026-11-21T20:44:54.936795399-07:00] shim has been terminated                      error="exit status 1" vmID=44-6f0c6a77-568f-49
+ERRO[2026-11-21T20:44:44.939363964-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=44-6f0c6a77-568f-49
+ERRO[2026-11-21T20:44:49.931042994-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=44-6f0c6a77-568f-49
+ERRO[2026-11-21T20:44:49.931101838-07:00] forcefully terminate VM 44-6f0c6a77-568f-49   runtime=aws.firecracker vmID=44-6f0c6a77-568f-49
+ERRO[2026-11-21T20:44:49.931761479-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=44-6f0c6a77-568f-49
+ERRO[2026-11-21T20:44:49.931828167-07:00] error waiting for exit                        ExecID= TaskID=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 error=shutdown runtime=aws.firecracker vmID=44-6f0c6a77-568f-49
+ERRO[2026-11-21T20:44:49.931999758-07:00] error closing io stream                       ExecID= TaskID=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 error="1 error occurred:\n\t* close unix @->firecracker.vsock: u
+ERRO[2026-11-21T20:44:54.934099934-07:00] error closing io stream                       ExecID= TaskID=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 error="1 error occurred:\n\t* close unix @->firecracker.vsock: u
+INFO[2026-11-21T20:44:44.927179196-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:44:44.927215987-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=44-6f0c6a77-568f-49
+INFO[2026-11-21T20:44:49.931876773-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 runtime=aws.firecracker stream=stdin vmID=4
+INFO[2026-11-21T20:44:54.936790190-07:00] shim disconnected                             id=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 namespace=firecracker-containerd
+INFO[2026-11-21T20:44:54.936875583-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+WARN[2026-11-21T20:44:49.992422834-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T20:44:54.936857962-07:00] cleaning up after shim disconnected           id=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 namespace=firecracker-containerd
+WARN[2026-11-21T20:44:54.953864425-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm44-6f0c6a77-568f-49-containersnap-846516bd-6327-41 namespace=firecracker-c
