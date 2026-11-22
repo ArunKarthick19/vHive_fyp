@@ -1,0 +1,10 @@
+2026-11-21 22:21:38.906
+pods:
+authgo-mine-00001-deployment-7844b47dc6-6kgwb   2/2   Running   0     6s    192.168.77.173   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>   <none>
+ps:
+  13370   13313  7268  308610 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13373   13370  2608  308610 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13374   13373 98888  308610 /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+ 763660 1251110 60300       6 /usr/local/bin/firecracker --api-sock /run/vhive-fcweb/1/fc.sock --config-file /run/vhive-fcweb/1/vm-config.json
+parents:
+fc pid 763660 rss_kib=60300 parent 1251110: ./vhive-perpod

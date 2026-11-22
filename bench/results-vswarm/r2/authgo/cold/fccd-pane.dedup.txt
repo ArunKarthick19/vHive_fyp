@@ -1,0 +1,956 @@
+DEBU[2026-11-21T20:48:21.662938579-07:00] stop VM: VMID:"45-668dd530-4f69-4e"          
+DEBU[2026-11-21T20:48:31.675606935-07:00] shim has been terminated                      error="exit status 1" vmID=45-668dd530-4f69-4e
+DEBU[2026-11-21T20:50:22.265602800-07:00] create VM request: VMID:"46-ef30bc4d-0eb7-45" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T20:50:22.265637644-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T20:50:22.265892839-07:00] starting containerd-shim-aws-firecracker      vmID=46-ef30bc4d-0eb7-45
+DEBU[2026-11-21T20:50:24.527714349-07:00] prepare snapshot                              key=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T20:50:24.528198098-07:00] prepare                                       key=firecracker-containerd/245/vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T20:50:24.528333906-07:00] creating snapshot device 'fc-dev-thinpool-snap-211' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T20:50:24.577289224-07:00] get snapshot mounts                           key=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f snapshotter=devmapper
+DEBU[2026-11-21T20:50:24.577327310-07:00] mounts                                        key=firecracker-containerd/245/vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f
+DEBU[2026-11-21T20:50:24.577348292-07:00] stat                                          key=firecracker-containerd/245/vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f
+DEBU[2026-11-21T20:50:24.581158380-07:00] get snapshot mounts                           key=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f snapshotter=devmapper
+DEBU[2026-11-21T20:50:24.581205725-07:00] mounts                                        key=firecracker-containerd/245/vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f
+DEBU[2026-11-21T20:50:24.581236055-07:00] stat                                          key=firecracker-containerd/245/vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f
+DEBU[2026-11-21T20:50:24.597901637-07:00] create VM request: VMID:"46-ef30bc4d-0eb7-45" 
+DEBU[2026-11-21T20:50:24.597928024-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T20:50:24.599450003-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/6825ff437e6a8be8cb3cbb548dadcc920419099aea7a4f03503f87cfe3306722" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T20:51:57.376471688-07:00] stop VM: VMID:"46-ef30bc4d-0eb7-45"          
+DEBU[2026-11-21T20:52:07.385153366-07:00] shim has been terminated                      error="exit status 1" vmID=46-ef30bc4d-0eb7-45
+DEBU[2026-11-21T20:53:57.944203006-07:00] create VM request: VMID:"47-8f744388-b7fc-45" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T20:53:57.944236641-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T20:53:57.944590675-07:00] starting containerd-shim-aws-firecracker      vmID=47-8f744388-b7fc-45
+DEBU[2026-11-21T20:54:00.205451977-07:00] prepare snapshot                              key=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T20:54:00.205935011-07:00] prepare                                       key=firecracker-containerd/246/vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T20:54:00.206152226-07:00] creating snapshot device 'fc-dev-thinpool-snap-212' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T20:54:00.264355880-07:00] get snapshot mounts                           key=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a snapshotter=devmapper
+DEBU[2026-11-21T20:54:00.264391963-07:00] mounts                                        key=firecracker-containerd/246/vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a
+DEBU[2026-11-21T20:54:00.264413757-07:00] stat                                          key=firecracker-containerd/246/vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a
+DEBU[2026-11-21T20:54:00.268995715-07:00] get snapshot mounts                           key=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a snapshotter=devmapper
+DEBU[2026-11-21T20:54:00.269023268-07:00] mounts                                        key=firecracker-containerd/246/vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a
+DEBU[2026-11-21T20:54:00.269043699-07:00] stat                                          key=firecracker-containerd/246/vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a
+DEBU[2026-11-21T20:54:00.284521669-07:00] create VM request: VMID:"47-8f744388-b7fc-45" 
+DEBU[2026-11-21T20:54:00.284544647-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T20:54:00.285776581-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/37e93560dc8a886ad2370a210154aa608e7f7e8db18482298b65484719c10028" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T20:55:33.092552399-07:00] stop VM: VMID:"47-8f744388-b7fc-45"          
+DEBU[2026-11-21T20:55:43.103783439-07:00] shim has been terminated                      error="exit status 1" vmID=47-8f744388-b7fc-45
+DEBU[2026-11-21T20:57:31.520932705-07:00] create VM request: VMID:"48-933badec-77c0-45" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T20:57:31.520986504-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T20:57:31.521236662-07:00] starting containerd-shim-aws-firecracker      vmID=48-933badec-77c0-45
+DEBU[2026-11-21T20:57:33.888939098-07:00] prepare snapshot                              key=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T20:57:33.889362981-07:00] prepare                                       key=firecracker-containerd/247/vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T20:57:33.889438981-07:00] creating snapshot device 'fc-dev-thinpool-snap-213' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T20:57:33.937773331-07:00] get snapshot mounts                           key=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 snapshotter=devmapper
+DEBU[2026-11-21T20:57:33.937817993-07:00] mounts                                        key=firecracker-containerd/247/vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43
+DEBU[2026-11-21T20:57:33.937839492-07:00] stat                                          key=firecracker-containerd/247/vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43
+DEBU[2026-11-21T20:57:33.941448682-07:00] get snapshot mounts                           key=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 snapshotter=devmapper
+DEBU[2026-11-21T20:57:33.941479691-07:00] mounts                                        key=firecracker-containerd/247/vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43
+DEBU[2026-11-21T20:57:33.941502242-07:00] stat                                          key=firecracker-containerd/247/vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43
+DEBU[2026-11-21T20:57:33.957656130-07:00] create VM request: VMID:"48-933badec-77c0-45" 
+DEBU[2026-11-21T20:57:33.957688933-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T20:57:33.958893897-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/761b7b1a8465a20ffef7c94b41740d0ef23b186f5945c7185434852ffd28ea71" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T20:59:37.828405475-07:00] stop VM: VMID:"48-933badec-77c0-45"          
+DEBU[2026-11-21T20:59:47.840659583-07:00] shim has been terminated                      error="exit status 1" vmID=48-933badec-77c0-45
+DEBU[2026-11-21T21:01:39.592145554-07:00] create VM request: VMID:"49-5361be55-a642-42" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:01:39.592179037-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:01:39.592496598-07:00] starting containerd-shim-aws-firecracker      vmID=49-5361be55-a642-42
+DEBU[2026-11-21T21:01:41.853457629-07:00] prepare snapshot                              key=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:01:41.853933240-07:00] prepare                                       key=firecracker-containerd/248/vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:01:41.854073388-07:00] creating snapshot device 'fc-dev-thinpool-snap-214' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:01:41.907862034-07:00] get snapshot mounts                           key=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 snapshotter=devmapper
+DEBU[2026-11-21T21:01:41.907896902-07:00] mounts                                        key=firecracker-containerd/248/vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49
+DEBU[2026-11-21T21:01:41.907917188-07:00] stat                                          key=firecracker-containerd/248/vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49
+DEBU[2026-11-21T21:01:41.911848314-07:00] get snapshot mounts                           key=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 snapshotter=devmapper
+DEBU[2026-11-21T21:01:41.911886980-07:00] mounts                                        key=firecracker-containerd/248/vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49
+DEBU[2026-11-21T21:01:41.911911950-07:00] stat                                          key=firecracker-containerd/248/vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49
+DEBU[2026-11-21T21:01:41.927030112-07:00] create VM request: VMID:"49-5361be55-a642-42" 
+DEBU[2026-11-21T21:01:41.927055852-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:01:41.928347949-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/ac2260eac5968e2b8179eff8c341850ea1d614dec62ecbf512871c25b923781a" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:03:38.240438355-07:00] stop VM: VMID:"49-5361be55-a642-42"          
+DEBU[2026-11-21T21:03:48.251310875-07:00] shim has been terminated                      error="exit status 1" vmID=49-5361be55-a642-42
+DEBU[2026-11-21T21:05:38.514478459-07:00] create VM request: VMID:"50-85fcf119-e606-42" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:05:38.514532758-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:05:38.514783409-07:00] starting containerd-shim-aws-firecracker      vmID=50-85fcf119-e606-42
+DEBU[2026-11-21T21:05:40.782373047-07:00] prepare snapshot                              key=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:05:40.782847298-07:00] prepare                                       key=firecracker-containerd/249/vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:05:40.782967088-07:00] creating snapshot device 'fc-dev-thinpool-snap-215' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:05:40.842307973-07:00] get snapshot mounts                           key=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 snapshotter=devmapper
+DEBU[2026-11-21T21:05:40.842344896-07:00] mounts                                        key=firecracker-containerd/249/vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40
+DEBU[2026-11-21T21:05:40.842366416-07:00] stat                                          key=firecracker-containerd/249/vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40
+DEBU[2026-11-21T21:05:40.846477180-07:00] get snapshot mounts                           key=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 snapshotter=devmapper
+DEBU[2026-11-21T21:05:40.846516665-07:00] mounts                                        key=firecracker-containerd/249/vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40
+DEBU[2026-11-21T21:05:40.846545613-07:00] stat                                          key=firecracker-containerd/249/vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40
+DEBU[2026-11-21T21:05:40.863441396-07:00] create VM request: VMID:"50-85fcf119-e606-42" 
+DEBU[2026-11-21T21:05:40.863465981-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:05:40.864726369-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/955d31f88a07e6ad5195404106a8dbc56966a89e77e9bd74ba777c8e0bd4f99f" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:07:13.646460421-07:00] stop VM: VMID:"50-85fcf119-e606-42"          
+DEBU[2026-11-21T21:07:23.654867125-07:00] shim has been terminated                      error="exit status 1" vmID=50-85fcf119-e606-42
+DEBU[2026-11-21T21:09:30.245385873-07:00] create VM request: VMID:"51-33c133b0-2945-4a" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:09:30.245441876-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:09:30.245721515-07:00] starting containerd-shim-aws-firecracker      vmID=51-33c133b0-2945-4a
+DEBU[2026-11-21T21:09:32.510032614-07:00] prepare snapshot                              key=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:09:32.510501178-07:00] prepare                                       key=firecracker-containerd/250/vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:09:32.510632161-07:00] creating snapshot device 'fc-dev-thinpool-snap-216' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:09:32.562884000-07:00] get snapshot mounts                           key=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 snapshotter=devmapper
+DEBU[2026-11-21T21:09:32.562931851-07:00] mounts                                        key=firecracker-containerd/250/vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45
+DEBU[2026-11-21T21:09:32.562958862-07:00] stat                                          key=firecracker-containerd/250/vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45
+DEBU[2026-11-21T21:09:32.566884454-07:00] get snapshot mounts                           key=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 snapshotter=devmapper
+DEBU[2026-11-21T21:09:32.566916641-07:00] mounts                                        key=firecracker-containerd/250/vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45
+DEBU[2026-11-21T21:09:32.566939631-07:00] stat                                          key=firecracker-containerd/250/vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45
+DEBU[2026-11-21T21:09:32.582579612-07:00] create VM request: VMID:"51-33c133b0-2945-4a" 
+DEBU[2026-11-21T21:09:32.582619880-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:09:32.584304862-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/158cdc036473e57baeccc4bea3c3296eef21a952e66f1c162a9bad3d6d3f9f8b" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:11:05.555237820-07:00] stop VM: VMID:"51-33c133b0-2945-4a"          
+DEBU[2026-11-21T21:11:15.565726805-07:00] shim has been terminated                      error="exit status 1" vmID=51-33c133b0-2945-4a
+DEBU[2026-11-21T21:13:06.362317256-07:00] create VM request: VMID:"52-1fa22dd3-eb4c-4a" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:13:06.362354458-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:13:06.362597002-07:00] starting containerd-shim-aws-firecracker      vmID=52-1fa22dd3-eb4c-4a
+DEBU[2026-11-21T21:13:08.623183312-07:00] prepare snapshot                              key=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:13:08.623572158-07:00] prepare                                       key=firecracker-containerd/251/vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:13:08.623696766-07:00] creating snapshot device 'fc-dev-thinpool-snap-217' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:13:08.685258908-07:00] get snapshot mounts                           key=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e snapshotter=devmapper
+DEBU[2026-11-21T21:13:08.685321735-07:00] mounts                                        key=firecracker-containerd/251/vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e
+DEBU[2026-11-21T21:13:08.685361435-07:00] stat                                          key=firecracker-containerd/251/vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e
+DEBU[2026-11-21T21:13:08.689281550-07:00] get snapshot mounts                           key=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e snapshotter=devmapper
+DEBU[2026-11-21T21:13:08.689343368-07:00] mounts                                        key=firecracker-containerd/251/vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e
+DEBU[2026-11-21T21:13:08.689380950-07:00] stat                                          key=firecracker-containerd/251/vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e
+DEBU[2026-11-21T21:13:08.706259923-07:00] create VM request: VMID:"52-1fa22dd3-eb4c-4a" 
+DEBU[2026-11-21T21:13:08.706283554-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:13:08.707440313-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/cf8b0d09ee6d88938db18c68dbebf522774d4137b756cf801f138f46aac918af" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:15:39.459451525-07:00] stop VM: VMID:"52-1fa22dd3-eb4c-4a"          
+DEBU[2026-11-21T21:15:49.472479000-07:00] shim has been terminated                      error="exit status 1" vmID=52-1fa22dd3-eb4c-4a
+DEBU[2026-11-21T21:18:39.462447814-07:00] create VM request: VMID:"53-b5c08d09-f487-4b" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:18:39.462494205-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:18:39.462829049-07:00] starting containerd-shim-aws-firecracker      vmID=53-b5c08d09-f487-4b
+DEBU[2026-11-21T21:18:41.724334784-07:00] prepare snapshot                              key=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:18:41.724665323-07:00] prepare                                       key=firecracker-containerd/252/vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:18:41.724766751-07:00] creating snapshot device 'fc-dev-thinpool-snap-218' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:18:41.777917329-07:00] get snapshot mounts                           key=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c snapshotter=devmapper
+DEBU[2026-11-21T21:18:41.777992371-07:00] mounts                                        key=firecracker-containerd/252/vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c
+DEBU[2026-11-21T21:18:41.778022238-07:00] stat                                          key=firecracker-containerd/252/vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c
+DEBU[2026-11-21T21:18:41.783413249-07:00] get snapshot mounts                           key=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c snapshotter=devmapper
+DEBU[2026-11-21T21:18:41.783461138-07:00] mounts                                        key=firecracker-containerd/252/vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c
+DEBU[2026-11-21T21:18:41.783495388-07:00] stat                                          key=firecracker-containerd/252/vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c
+DEBU[2026-11-21T21:18:41.799486742-07:00] create VM request: VMID:"53-b5c08d09-f487-4b" 
+DEBU[2026-11-21T21:18:41.799508834-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:18:41.801102617-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/6acf7c5b076a6150557e9a69359e72fa0fa6f8752dfd91879dee49b486300563" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:21:11.626609428-07:00] stop VM: VMID:"53-b5c08d09-f487-4b"          
+DEBU[2026-11-21T21:21:21.638001977-07:00] shim has been terminated                      error="exit status 1" vmID=53-b5c08d09-f487-4b
+DEBU[2026-11-21T21:24:10.575034429-07:00] create VM request: VMID:"54-d430785c-3606-4f" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:24:10.575071155-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:24:10.575331707-07:00] starting containerd-shim-aws-firecracker      vmID=54-d430785c-3606-4f
+DEBU[2026-11-21T21:24:12.838403983-07:00] prepare snapshot                              key=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:24:12.838822446-07:00] prepare                                       key=firecracker-containerd/253/vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:24:12.838946042-07:00] creating snapshot device 'fc-dev-thinpool-snap-219' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:24:12.898513418-07:00] get snapshot mounts                           key=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 snapshotter=devmapper
+DEBU[2026-11-21T21:24:12.898570844-07:00] mounts                                        key=firecracker-containerd/253/vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46
+DEBU[2026-11-21T21:24:12.898606471-07:00] stat                                          key=firecracker-containerd/253/vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46
+DEBU[2026-11-21T21:24:12.906913930-07:00] get snapshot mounts                           key=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 snapshotter=devmapper
+DEBU[2026-11-21T21:24:12.906942165-07:00] mounts                                        key=firecracker-containerd/253/vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46
+DEBU[2026-11-21T21:24:12.906979556-07:00] stat                                          key=firecracker-containerd/253/vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46
+DEBU[2026-11-21T21:24:12.925852015-07:00] create VM request: VMID:"54-d430785c-3606-4f" 
+DEBU[2026-11-21T21:24:12.925893809-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:24:12.927314534-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/726c65db095b8ab81bf02ef29229931dfb8eeb783791e2578bd1c64d0ec87248" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:26:41.434965988-07:00] stop VM: VMID:"54-d430785c-3606-4f"          
+DEBU[2026-11-21T21:26:51.445362417-07:00] shim has been terminated                      error="exit status 1" vmID=54-d430785c-3606-4f
+DEBU[2026-11-21T21:29:41.899010116-07:00] create VM request: VMID:"55-bf21174a-3cb1-43" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:29:41.899052389-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:29:41.899311823-07:00] starting containerd-shim-aws-firecracker      vmID=55-bf21174a-3cb1-43
+DEBU[2026-11-21T21:29:44.059515397-07:00] prepare snapshot                              key=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:29:44.059907418-07:00] prepare                                       key=firecracker-containerd/254/vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:29:44.060068860-07:00] creating snapshot device 'fc-dev-thinpool-snap-220' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:29:44.124765043-07:00] get snapshot mounts                           key=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 snapshotter=devmapper
+DEBU[2026-11-21T21:29:44.124802614-07:00] mounts                                        key=firecracker-containerd/254/vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40
+DEBU[2026-11-21T21:29:44.124833199-07:00] stat                                          key=firecracker-containerd/254/vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40
+DEBU[2026-11-21T21:29:44.128751774-07:00] get snapshot mounts                           key=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 snapshotter=devmapper
+DEBU[2026-11-21T21:29:44.128798886-07:00] mounts                                        key=firecracker-containerd/254/vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40
+DEBU[2026-11-21T21:29:44.128828594-07:00] stat                                          key=firecracker-containerd/254/vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40
+DEBU[2026-11-21T21:29:44.146225906-07:00] create VM request: VMID:"55-bf21174a-3cb1-43" 
+DEBU[2026-11-21T21:29:44.146266163-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:29:44.147665708-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/7e6c6375e6a5dce45c12af9fb10e89da08c936b2d63855a3f62b9933972c1e2e" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:32:13.108578848-07:00] stop VM: VMID:"55-bf21174a-3cb1-43"          
+DEBU[2026-11-21T21:32:23.120384456-07:00] shim has been terminated                      error="exit status 1" vmID=55-bf21174a-3cb1-43
+DEBU[2026-11-21T21:35:13.714443264-07:00] create VM request: VMID:"56-785caeab-7148-4d" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:35:13.714478199-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:35:13.714710027-07:00] starting containerd-shim-aws-firecracker      vmID=56-785caeab-7148-4d
+DEBU[2026-11-21T21:35:15.977812676-07:00] prepare snapshot                              key=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:35:15.978154440-07:00] prepare                                       key=firecracker-containerd/255/vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:35:15.978239833-07:00] creating snapshot device 'fc-dev-thinpool-snap-221' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:35:16.027195747-07:00] get snapshot mounts                           key=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d snapshotter=devmapper
+DEBU[2026-11-21T21:35:16.027228596-07:00] mounts                                        key=firecracker-containerd/255/vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d
+DEBU[2026-11-21T21:35:16.027255599-07:00] stat                                          key=firecracker-containerd/255/vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d
+DEBU[2026-11-21T21:35:16.030624836-07:00] get snapshot mounts                           key=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d snapshotter=devmapper
+DEBU[2026-11-21T21:35:16.030686828-07:00] mounts                                        key=firecracker-containerd/255/vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d
+DEBU[2026-11-21T21:35:16.030725575-07:00] stat                                          key=firecracker-containerd/255/vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d
+DEBU[2026-11-21T21:35:16.046849250-07:00] create VM request: VMID:"56-785caeab-7148-4d" 
+DEBU[2026-11-21T21:35:16.046873418-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:35:16.048138390-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/d96cb2993f067cfd0b2fa36852926d9c39903be714cf9f3e8f0a7fa3d7760d78" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:38:41.205040368-07:00] stop VM: VMID:"56-785caeab-7148-4d"          
+DEBU[2026-11-21T21:38:51.215163376-07:00] shim has been terminated                      error="exit status 1" vmID=56-785caeab-7148-4d
+DEBU[2026-11-21T21:41:40.675773406-07:00] create VM request: VMID:"57-c500dae2-6304-48" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:41:40.675812974-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:41:40.676110459-07:00] starting containerd-shim-aws-firecracker      vmID=57-c500dae2-6304-48
+DEBU[2026-11-21T21:41:42.838783290-07:00] prepare snapshot                              key=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 parent="sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d" snapshotter=devmapper
+DEBU[2026-11-21T21:41:42.839285105-07:00] prepare                                       key=firecracker-containerd/256/vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 parent="firecracker-containerd/188/sha256:1b7c443df4af74613b45c353e6423cc07d85966557481e5c4a5c129260dc686d"
+DEBU[2026-11-21T21:41:42.839428575-07:00] creating snapshot device 'fc-dev-thinpool-snap-222' from 'fc-dev-thinpool-snap-160' with fsType: 'ext4' 
+DEBU[2026-11-21T21:41:42.886504423-07:00] get snapshot mounts                           key=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 snapshotter=devmapper
+DEBU[2026-11-21T21:41:42.886559037-07:00] mounts                                        key=firecracker-containerd/256/vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46
+DEBU[2026-11-21T21:41:42.886591215-07:00] stat                                          key=firecracker-containerd/256/vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46
+DEBU[2026-11-21T21:41:42.894399853-07:00] get snapshot mounts                           key=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 snapshotter=devmapper
+DEBU[2026-11-21T21:41:42.894447081-07:00] mounts                                        key=firecracker-containerd/256/vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46
+DEBU[2026-11-21T21:41:42.894479378-07:00] stat                                          key=firecracker-containerd/256/vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46
+DEBU[2026-11-21T21:41:42.910523559-07:00] create VM request: VMID:"57-c500dae2-6304-48" 
+DEBU[2026-11-21T21:41:42.910547787-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:41:42.912120047-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/930c322a1e30aa225a830c5fb746ee006cadcb1680bc8bff02d167e50c133d28" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:45:41.490355495-07:00] stop VM: VMID:"57-c500dae2-6304-48"          
+DEBU[2026-11-21T21:45:51.500134051-07:00] shim has been terminated                      error="exit status 1" vmID=57-c500dae2-6304-48
+DEBU[2026-11-21T21:50:10.436571917-07:00] create VM request: VMID:"58-b5584525-154c-48" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:50:10.436627811-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:50:10.437007712-07:00] starting containerd-shim-aws-firecracker      vmID=58-b5584525-154c-48
+DEBU[2026-11-21T21:50:12.702925073-07:00] prepare snapshot                              key=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T21:50:12.703440162-07:00] prepare                                       key=firecracker-containerd/257/vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T21:50:12.703616374-07:00] creating snapshot device 'fc-dev-thinpool-snap-223' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T21:50:12.754569905-07:00] get snapshot mounts                           key=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 snapshotter=devmapper
+DEBU[2026-11-21T21:50:12.754615986-07:00] mounts                                        key=firecracker-containerd/257/vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42
+DEBU[2026-11-21T21:50:12.754638361-07:00] stat                                          key=firecracker-containerd/257/vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42
+DEBU[2026-11-21T21:50:12.757883023-07:00] get snapshot mounts                           key=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 snapshotter=devmapper
+DEBU[2026-11-21T21:50:12.757951844-07:00] mounts                                        key=firecracker-containerd/257/vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42
+DEBU[2026-11-21T21:50:12.758021715-07:00] stat                                          key=firecracker-containerd/257/vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42
+DEBU[2026-11-21T21:50:12.774522158-07:00] create VM request: VMID:"58-b5584525-154c-48" 
+DEBU[2026-11-21T21:50:12.774544374-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:50:12.775765271-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/ee7b6c188ba479efbb927c573c5aac46dc05012d3ab861701a3d8fa79e43b01b" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:51:45.488716268-07:00] stop VM: VMID:"58-b5584525-154c-48"          
+DEBU[2026-11-21T21:51:55.500997794-07:00] shim has been terminated                      error="exit status 1" vmID=58-b5584525-154c-48
+DEBU[2026-11-21T21:53:46.151887398-07:00] create VM request: VMID:"59-ef9beac3-25ff-4d" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:53:46.151921494-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:53:46.152212688-07:00] starting containerd-shim-aws-firecracker      vmID=59-ef9beac3-25ff-4d
+DEBU[2026-11-21T21:53:48.412293824-07:00] prepare snapshot                              key=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T21:53:48.412749123-07:00] prepare                                       key=firecracker-containerd/258/vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T21:53:48.412875903-07:00] creating snapshot device 'fc-dev-thinpool-snap-224' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T21:53:48.475449494-07:00] get snapshot mounts                           key=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e snapshotter=devmapper
+DEBU[2026-11-21T21:53:48.475495554-07:00] mounts                                        key=firecracker-containerd/258/vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e
+DEBU[2026-11-21T21:53:48.475520729-07:00] stat                                          key=firecracker-containerd/258/vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e
+DEBU[2026-11-21T21:53:48.483062843-07:00] get snapshot mounts                           key=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e snapshotter=devmapper
+DEBU[2026-11-21T21:53:48.483099629-07:00] mounts                                        key=firecracker-containerd/258/vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e
+DEBU[2026-11-21T21:53:48.483133331-07:00] stat                                          key=firecracker-containerd/258/vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e
+DEBU[2026-11-21T21:53:48.499123279-07:00] create VM request: VMID:"59-ef9beac3-25ff-4d" 
+DEBU[2026-11-21T21:53:48.499145747-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:53:48.500533701-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/b35f34271a0e8d1e459339c2a05e2834ad44922f752439f7728f938caecc1f88" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:55:21.212885808-07:00] stop VM: VMID:"59-ef9beac3-25ff-4d"          
+DEBU[2026-11-21T21:55:31.220951485-07:00] shim has been terminated                      error="exit status 1" vmID=59-ef9beac3-25ff-4d
+DEBU[2026-11-21T21:57:21.802349427-07:00] create VM request: VMID:"60-68b509d8-87c9-47" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T21:57:21.802397520-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:57:21.802756158-07:00] starting containerd-shim-aws-firecracker      vmID=60-68b509d8-87c9-47
+DEBU[2026-11-21T21:57:24.063079566-07:00] prepare snapshot                              key=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T21:57:24.063420284-07:00] prepare                                       key=firecracker-containerd/259/vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T21:57:24.063559484-07:00] creating snapshot device 'fc-dev-thinpool-snap-225' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T21:57:24.121032871-07:00] get snapshot mounts                           key=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c snapshotter=devmapper
+DEBU[2026-11-21T21:57:24.121097957-07:00] mounts                                        key=firecracker-containerd/259/vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c
+DEBU[2026-11-21T21:57:24.121148819-07:00] stat                                          key=firecracker-containerd/259/vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c
+DEBU[2026-11-21T21:57:24.126200467-07:00] get snapshot mounts                           key=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c snapshotter=devmapper
+DEBU[2026-11-21T21:57:24.126234993-07:00] mounts                                        key=firecracker-containerd/259/vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c
+DEBU[2026-11-21T21:57:24.126271061-07:00] stat                                          key=firecracker-containerd/259/vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c
+DEBU[2026-11-21T21:57:24.143038852-07:00] create VM request: VMID:"60-68b509d8-87c9-47" 
+DEBU[2026-11-21T21:57:24.143093577-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T21:57:24.144590190-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/2b08f3a06f222762b6b6d90867e32297c29e30801dd47bf9219ce26ee003e02f" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T21:58:56.950577676-07:00] stop VM: VMID:"60-68b509d8-87c9-47"          
+DEBU[2026-11-21T21:59:06.963055171-07:00] shim has been terminated                      error="exit status 1" vmID=60-68b509d8-87c9-47
+DEBU[2026-11-21T22:00:57.545615992-07:00] create VM request: VMID:"61-6f3f224c-a072-40" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T22:00:57.545662818-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:00:57.545951376-07:00] starting containerd-shim-aws-firecracker      vmID=61-6f3f224c-a072-40
+DEBU[2026-11-21T22:00:59.808293891-07:00] prepare snapshot                              key=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T22:00:59.808774185-07:00] prepare                                       key=firecracker-containerd/260/vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T22:00:59.808902291-07:00] creating snapshot device 'fc-dev-thinpool-snap-226' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T22:00:59.859209075-07:00] get snapshot mounts                           key=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 snapshotter=devmapper
+DEBU[2026-11-21T22:00:59.859247207-07:00] mounts                                        key=firecracker-containerd/260/vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42
+DEBU[2026-11-21T22:00:59.859267981-07:00] stat                                          key=firecracker-containerd/260/vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42
+DEBU[2026-11-21T22:00:59.863568551-07:00] get snapshot mounts                           key=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 snapshotter=devmapper
+DEBU[2026-11-21T22:00:59.863599231-07:00] mounts                                        key=firecracker-containerd/260/vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42
+DEBU[2026-11-21T22:00:59.863620071-07:00] stat                                          key=firecracker-containerd/260/vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42
+DEBU[2026-11-21T22:00:59.879611854-07:00] create VM request: VMID:"61-6f3f224c-a072-40" 
+DEBU[2026-11-21T22:00:59.879638169-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:00:59.880892915-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/878d27c2c97dd41fddd46e333f262a796fff6bf8eb3f5bf05ed56998d03c64de" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T22:02:33.687071172-07:00] stop VM: VMID:"61-6f3f224c-a072-40"          
+DEBU[2026-11-21T22:02:43.695301879-07:00] shim has been terminated                      error="exit status 1" vmID=61-6f3f224c-a072-40
+DEBU[2026-11-21T22:04:35.214998949-07:00] create VM request: VMID:"62-7c432926-fede-49" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T22:04:35.215036347-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:04:35.215326302-07:00] starting containerd-shim-aws-firecracker      vmID=62-7c432926-fede-49
+DEBU[2026-11-21T22:04:37.379273676-07:00] prepare snapshot                              key=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T22:04:37.379674165-07:00] prepare                                       key=firecracker-containerd/261/vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T22:04:37.379765913-07:00] creating snapshot device 'fc-dev-thinpool-snap-227' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T22:04:37.436230425-07:00] get snapshot mounts                           key=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 snapshotter=devmapper
+DEBU[2026-11-21T22:04:37.436273281-07:00] mounts                                        key=firecracker-containerd/261/vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46
+DEBU[2026-11-21T22:04:37.436294605-07:00] stat                                          key=firecracker-containerd/261/vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46
+DEBU[2026-11-21T22:04:37.439570431-07:00] get snapshot mounts                           key=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 snapshotter=devmapper
+DEBU[2026-11-21T22:04:37.439624688-07:00] mounts                                        key=firecracker-containerd/261/vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46
+DEBU[2026-11-21T22:04:37.439661745-07:00] stat                                          key=firecracker-containerd/261/vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46
+DEBU[2026-11-21T22:04:37.455684268-07:00] create VM request: VMID:"62-7c432926-fede-49" 
+DEBU[2026-11-21T22:04:37.455724253-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:04:37.457250886-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/d47ceaab28db175d92bb72de5c36c7af84de97374b0f9947c23da217c06a2e35" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T22:06:11.414181826-07:00] stop VM: VMID:"62-7c432926-fede-49"          
+DEBU[2026-11-21T22:06:21.426922530-07:00] shim has been terminated                      error="exit status 1" vmID=62-7c432926-fede-49
+DEBU[2026-11-21T22:08:12.958597253-07:00] create VM request: VMID:"63-bb4f6c6e-8007-42" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T22:08:12.958639262-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:08:12.958876942-07:00] starting containerd-shim-aws-firecracker      vmID=63-bb4f6c6e-8007-42
+DEBU[2026-11-21T22:08:15.218845441-07:00] prepare snapshot                              key=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T22:08:15.219343131-07:00] prepare                                       key=firecracker-containerd/262/vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T22:08:15.219452285-07:00] creating snapshot device 'fc-dev-thinpool-snap-228' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T22:08:15.275257352-07:00] get snapshot mounts                           key=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 snapshotter=devmapper
+DEBU[2026-11-21T22:08:15.275312085-07:00] mounts                                        key=firecracker-containerd/262/vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47
+DEBU[2026-11-21T22:08:15.275333283-07:00] stat                                          key=firecracker-containerd/262/vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47
+DEBU[2026-11-21T22:08:15.278464139-07:00] get snapshot mounts                           key=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 snapshotter=devmapper
+DEBU[2026-11-21T22:08:15.278491608-07:00] mounts                                        key=firecracker-containerd/262/vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47
+DEBU[2026-11-21T22:08:15.278510967-07:00] stat                                          key=firecracker-containerd/262/vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47
+DEBU[2026-11-21T22:08:15.293748655-07:00] create VM request: VMID:"63-bb4f6c6e-8007-42" 
+DEBU[2026-11-21T22:08:15.293774433-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:08:15.295017649-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/003cd5d161bb35f837ebc30c719ee98dbed1aaee964c58058a78a74751486a0c" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T22:09:49.177773125-07:00] stop VM: VMID:"63-bb4f6c6e-8007-42"          
+DEBU[2026-11-21T22:09:59.190500408-07:00] shim has been terminated                      error="exit status 1" vmID=63-bb4f6c6e-8007-42
+DEBU[2026-11-21T22:11:50.844170337-07:00] create VM request: VMID:"64-c770d0b9-d03d-4c" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T22:11:50.844209260-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:11:50.844479803-07:00] starting containerd-shim-aws-firecracker      vmID=64-c770d0b9-d03d-4c
+DEBU[2026-11-21T22:11:53.103954575-07:00] prepare snapshot                              key=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T22:11:53.104268412-07:00] prepare                                       key=firecracker-containerd/263/vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T22:11:53.104331709-07:00] creating snapshot device 'fc-dev-thinpool-snap-229' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T22:11:53.151585340-07:00] get snapshot mounts                           key=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 snapshotter=devmapper
+DEBU[2026-11-21T22:11:53.151624758-07:00] mounts                                        key=firecracker-containerd/263/vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40
+DEBU[2026-11-21T22:11:53.151657332-07:00] stat                                          key=firecracker-containerd/263/vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40
+DEBU[2026-11-21T22:11:53.157208715-07:00] get snapshot mounts                           key=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 snapshotter=devmapper
+DEBU[2026-11-21T22:11:53.157238615-07:00] mounts                                        key=firecracker-containerd/263/vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40
+DEBU[2026-11-21T22:11:53.157260381-07:00] stat                                          key=firecracker-containerd/263/vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40
+DEBU[2026-11-21T22:11:53.174701310-07:00] create VM request: VMID:"64-c770d0b9-d03d-4c" 
+DEBU[2026-11-21T22:11:53.174722665-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:11:53.176148925-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/c61a17231e4cfe908a67eeeafc2a724ca1050758351c22da845d34399b3db38e" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T22:13:44.446833986-07:00] stop VM: VMID:"64-c770d0b9-d03d-4c"          
+DEBU[2026-11-21T22:13:54.456099356-07:00] shim has been terminated                      error="exit status 1" vmID=64-c770d0b9-d03d-4c
+DEBU[2026-11-21T22:15:45.642596928-07:00] create VM request: VMID:"65-7d61f5ba-1393-40" MachineCfg:{MemSizeMib:512 VcpuCount:1} KernelArgs:"ro noapic reboot=k panic=1 acpi=off pci=off nomodules systemd.log_color=false systemd.journald.forward_to_console systemd.unit=firecracker.target init=/sbin/overlay-init tsc=reliable quiet ipv6.disable=1 console=ttyS0" NetworkInterfaces:{AllowMMDS:true StaticConfig:{MacAddress:"06:00:AC:10:00:02" HostDevName:"tap0" IPConfig:{PrimaryAddr:"172.16.0.2/24" GatewayAddr:"172.16.0.1" Nameservers:"10.96.0.10" Nameservers:"8.8.8.8"}}} TimeoutSeconds:100 NetNS:"/var/run/netns/uvmns23" 
+DEBU[2026-11-21T22:15:45.642631668-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:15:45.642950679-07:00] starting containerd-shim-aws-firecracker      vmID=65-7d61f5ba-1393-40
+DEBU[2026-11-21T22:15:47.903951561-07:00] prepare snapshot                              key=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a parent="sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a" snapshotter=devmapper
+DEBU[2026-11-21T22:15:47.904477776-07:00] prepare                                       key=firecracker-containerd/264/vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a parent="firecracker-containerd/173/sha256:8fef380a0fcf00aff67f9ae945c36bb9c34901d9b17875ff5c942b0c776b856a"
+DEBU[2026-11-21T22:15:47.904650026-07:00] creating snapshot device 'fc-dev-thinpool-snap-230' from 'fc-dev-thinpool-snap-152' with fsType: 'ext4' 
+DEBU[2026-11-21T22:15:47.959893390-07:00] get snapshot mounts                           key=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a snapshotter=devmapper
+DEBU[2026-11-21T22:15:47.959934780-07:00] mounts                                        key=firecracker-containerd/264/vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a
+DEBU[2026-11-21T22:15:47.959959943-07:00] stat                                          key=firecracker-containerd/264/vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a
+DEBU[2026-11-21T22:15:47.962974327-07:00] get snapshot mounts                           key=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a snapshotter=devmapper
+DEBU[2026-11-21T22:15:47.963009502-07:00] mounts                                        key=firecracker-containerd/264/vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a
+DEBU[2026-11-21T22:15:47.963037500-07:00] stat                                          key=firecracker-containerd/264/vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a
+DEBU[2026-11-21T22:15:47.984327735-07:00] create VM request: VMID:"65-7d61f5ba-1393-40" 
+DEBU[2026-11-21T22:15:47.984366952-07:00] using namespace: firecracker-containerd      
+DEBU[2026-11-21T22:15:47.986071252-07:00] shim bootstrap parameters                     address="unix:///run/containerd/s/2e0881a70fc854fe88e2efb95da90929895acdf8bfccde50ea9d64235e0924ae" namespace=firecracker-containerd protocol=ttrpc
+DEBU[2026-11-21T22:17:21.714009191-07:00] stop VM: VMID:"65-7d61f5ba-1393-40"          
+DEBU[2026-11-21T22:17:31.726497987-07:00] shim has been terminated                      error="exit status 1" vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T20:48:21.677278703-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=45-668dd530-4f69-4e
+ERRO[2026-11-21T20:48:26.668389352-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=45-668dd530-4f69-4e
+ERRO[2026-11-21T20:48:26.668452403-07:00] forcefully terminate VM 45-668dd530-4f69-4e   runtime=aws.firecracker vmID=45-668dd530-4f69-4e
+ERRO[2026-11-21T20:48:26.669148514-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=45-668dd530-4f69-4e
+ERRO[2026-11-21T20:48:26.669222447-07:00] error waiting for exit                        ExecID= TaskID=vm45-668dd530-4f69-4e-containersnap-8c0d466a-d95e-4c error=shutdown runtime=aws.firecracker vmID=45-668dd530-4f69-4e
+ERRO[2026-11-21T20:48:26.669372013-07:00] error closing io stream                       ExecID= TaskID=vm45-668dd530-4f69-4e-containersnap-8c0d466a-d95e-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=45-668dd530-4f69-4e
+ERRO[2026-11-21T20:51:02.266039613-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T20:51:57.388200648-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+ERRO[2026-11-21T20:52:02.381261247-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+ERRO[2026-11-21T20:52:02.381318080-07:00] forcefully terminate VM 46-ef30bc4d-0eb7-45   runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+ERRO[2026-11-21T20:52:02.381966248-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+ERRO[2026-11-21T20:52:02.382064695-07:00] error waiting for exit                        ExecID= TaskID=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f error=shutdown runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+ERRO[2026-11-21T20:52:02.382192163-07:00] error closing io stream                       ExecID= TaskID=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=46-ef30bc4d-0eb7-45
+ERRO[2026-11-21T20:54:37.944527003-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T20:55:33.104160886-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:55:38.097078512-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:55:38.097140985-07:00] forcefully terminate VM 47-8f744388-b7fc-45   runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:55:38.097754401-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:55:38.097812330-07:00] error waiting for exit                        ExecID= TaskID=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a error=shutdown runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:55:38.098030017-07:00] error closing io stream                       ExecID= TaskID=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:55:43.102069485-07:00] error closing io stream                       ExecID= TaskID=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=47-8f744388-b7fc-45
+ERRO[2026-11-21T20:58:11.521296095-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T20:59:37.850126294-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:42.833376414-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:42.833433925-07:00] forcefully terminate VM 48-933badec-77c0-45   runtime=aws.firecracker vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:42.834166440-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:42.834230574-07:00] error waiting for exit                        ExecID= TaskID=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 error=shutdown runtime=aws.firecracker vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:42.834393375-07:00] error closing io stream                       ExecID= TaskID=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:47.838445927-07:00] error closing io stream                       ExecID= TaskID=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=48-933badec-77c0-45
+ERRO[2026-11-21T20:59:47.838491299-07:00] error closing io stream                       ExecID= TaskID=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=48-933badec-77c0-45
+ERRO[2026-11-21T21:02:19.592624196-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:03:38.267593982-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:03:43.243869527-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:03:43.243930143-07:00] forcefully terminate VM 49-5361be55-a642-42   runtime=aws.firecracker vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:03:43.244794634-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:03:43.244885125-07:00] error waiting for exit                        ExecID= TaskID=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 error=shutdown runtime=aws.firecracker vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:03:43.245024011-07:00] error closing io stream                       ExecID= TaskID=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:03:48.249302413-07:00] error closing io stream                       ExecID= TaskID=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=49-5361be55-a642-42
+ERRO[2026-11-21T21:06:18.514935577-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:07:13.671051840-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:18.647848977-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:18.647927157-07:00] forcefully terminate VM 50-85fcf119-e606-42   runtime=aws.firecracker vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:18.648770434-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:18.648867358-07:00] error waiting for exit                        ExecID= TaskID=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 error=shutdown runtime=aws.firecracker vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:18.648990814-07:00] error closing io stream                       ExecID= TaskID=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:23.653061202-07:00] error closing io stream                       ExecID= TaskID=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:07:23.653123478-07:00] error closing io stream                       ExecID= TaskID=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=50-85fcf119-e606-42
+ERRO[2026-11-21T21:10:10.245503489-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:11:05.573773604-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+ERRO[2026-11-21T21:11:10.560890093-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+ERRO[2026-11-21T21:11:10.560952405-07:00] forcefully terminate VM 51-33c133b0-2945-4a   runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+ERRO[2026-11-21T21:11:10.561690093-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+ERRO[2026-11-21T21:11:10.561777501-07:00] error waiting for exit                        ExecID= TaskID=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 error=shutdown runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+ERRO[2026-11-21T21:11:10.561944004-07:00] error closing io stream                       ExecID= TaskID=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=51-33c133b0-2945-4a
+ERRO[2026-11-21T21:13:46.362635478-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:15:39.472259237-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:15:44.464039987-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:15:44.464125989-07:00] forcefully terminate VM 52-1fa22dd3-eb4c-4a   runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:15:44.465011545-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:15:44.465115155-07:00] error waiting for exit                        ExecID= TaskID=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e error=shutdown runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:15:44.465197638-07:00] error closing io stream                       ExecID= TaskID=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:15:49.469677118-07:00] error closing io stream                       ExecID= TaskID=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=52-1fa22dd3-eb4c-4a
+ERRO[2026-11-21T21:19:19.462768664-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:21:11.639999786-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:16.629960081-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:16.630075214-07:00] forcefully terminate VM 53-b5c08d09-f487-4b   runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:16.630751909-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:16.630796931-07:00] error waiting for exit                        ExecID= TaskID=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c error=shutdown runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:16.631027504-07:00] error closing io stream                       ExecID= TaskID=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:21.635623221-07:00] error closing io stream                       ExecID= TaskID=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:21:21.635668513-07:00] error closing io stream                       ExecID= TaskID=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=53-b5c08d09-f487-4b
+ERRO[2026-11-21T21:24:50.584292633-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:26:41.455237436-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=54-d430785c-3606-4f
+ERRO[2026-11-21T21:26:46.437962539-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=54-d430785c-3606-4f
+ERRO[2026-11-21T21:26:46.438076114-07:00] forcefully terminate VM 54-d430785c-3606-4f   runtime=aws.firecracker vmID=54-d430785c-3606-4f
+ERRO[2026-11-21T21:26:46.438824891-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=54-d430785c-3606-4f
+ERRO[2026-11-21T21:26:46.438853157-07:00] error waiting for exit                        ExecID= TaskID=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 error=shutdown runtime=aws.firecracker vmID=54-d430785c-3606-4f
+ERRO[2026-11-21T21:26:46.438929746-07:00] error closing io stream                       ExecID= TaskID=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=54-d430785c-3606-4f
+ERRO[2026-11-21T21:30:21.899320466-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:32:13.123127895-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+ERRO[2026-11-21T21:32:18.113089018-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+ERRO[2026-11-21T21:32:18.113163566-07:00] forcefully terminate VM 55-bf21174a-3cb1-43   runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+ERRO[2026-11-21T21:32:18.114242208-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+ERRO[2026-11-21T21:32:18.114325690-07:00] error waiting for exit                        ExecID= TaskID=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 error=shutdown runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+ERRO[2026-11-21T21:32:18.114406797-07:00] error closing io stream                       ExecID= TaskID=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=55-bf21174a-3cb1-43
+ERRO[2026-11-21T21:35:53.714772846-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:38:41.224349552-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:38:46.207126861-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:38:46.207191816-07:00] forcefully terminate VM 56-785caeab-7148-4d   runtime=aws.firecracker vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:38:46.207890285-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:38:46.207943031-07:00] error waiting for exit                        ExecID= TaskID=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d error=shutdown runtime=aws.firecracker vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:38:46.208049989-07:00] error closing io stream                       ExecID= TaskID=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:38:51.212607402-07:00] error closing io stream                       ExecID= TaskID=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=56-785caeab-7148-4d
+ERRO[2026-11-21T21:42:20.676220846-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:45:41.503716267-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:45:46.492388617-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:45:46.492481542-07:00] forcefully terminate VM 57-c500dae2-6304-48   runtime=aws.firecracker vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:45:46.493238016-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:45:46.493327255-07:00] error waiting for exit                        ExecID= TaskID=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 error=shutdown runtime=aws.firecracker vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:45:46.493489117-07:00] error closing io stream                       ExecID= TaskID=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:45:51.497740677-07:00] error closing io stream                       ExecID= TaskID=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=57-c500dae2-6304-48
+ERRO[2026-11-21T21:50:50.436956511-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:51:45.519899126-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:51:50.493991649-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:51:50.494067867-07:00] forcefully terminate VM 58-b5584525-154c-48   runtime=aws.firecracker vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:51:50.494695724-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:51:50.494763980-07:00] error waiting for exit                        ExecID= TaskID=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 error=shutdown runtime=aws.firecracker vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:51:50.494887100-07:00] error closing io stream                       ExecID= TaskID=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:51:55.499048292-07:00] error closing io stream                       ExecID= TaskID=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=58-b5584525-154c-48
+ERRO[2026-11-21T21:54:26.152266309-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:55:21.244852156-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:55:26.213634319-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:55:26.213708659-07:00] forcefully terminate VM 59-ef9beac3-25ff-4d   runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:55:26.214371035-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:55:26.214371251-07:00] error waiting for exit                        ExecID= TaskID=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e error=shutdown runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:55:26.214541518-07:00] error closing io stream                       ExecID= TaskID=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:55:31.218608806-07:00] error closing io stream                       ExecID= TaskID=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=59-ef9beac3-25ff-4d
+ERRO[2026-11-21T21:58:01.802811725-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T21:58:56.960122934-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:01.955285443-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:01.955349108-07:00] forcefully terminate VM 60-68b509d8-87c9-47   runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:01.956060891-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:01.956101376-07:00] error waiting for exit                        ExecID= TaskID=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c error=shutdown runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:01.956332433-07:00] error closing io stream                       ExecID= TaskID=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:06.960587942-07:00] error closing io stream                       ExecID= TaskID=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T21:59:06.960641283-07:00] error closing io stream                       ExecID= TaskID=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=60-68b509d8-87c9-47
+ERRO[2026-11-21T22:01:37.555814130-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T22:02:33.700680408-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:02:38.689168054-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:02:38.689225064-07:00] forcefully terminate VM 61-6f3f224c-a072-40   runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:02:38.689881494-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:02:38.689926352-07:00] error waiting for exit                        ExecID= TaskID=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 error=shutdown runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:02:38.690135900-07:00] error closing io stream                       ExecID= TaskID=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:02:43.693123099-07:00] error closing io stream                       ExecID= TaskID=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=61-6f3f224c-a072-40
+ERRO[2026-11-21T22:05:15.215261208-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T22:06:11.434884830-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:06:16.419059109-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:06:16.419117025-07:00] forcefully terminate VM 62-7c432926-fede-49   runtime=aws.firecracker vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:06:16.419737481-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:06:16.419805764-07:00] error waiting for exit                        ExecID= TaskID=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 error=shutdown runtime=aws.firecracker vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:06:16.420063337-07:00] error closing io stream                       ExecID= TaskID=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:06:21.424601028-07:00] error closing io stream                       ExecID= TaskID=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=62-7c432926-fede-49
+ERRO[2026-11-21T22:08:52.959018162-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T22:09:49.198152621-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:09:54.183363207-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:09:54.183421630-07:00] forcefully terminate VM 63-bb4f6c6e-8007-42   runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:09:54.184274891-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:09:54.184364581-07:00] error waiting for exit                        ExecID= TaskID=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 error=shutdown runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:09:54.184451070-07:00] error closing io stream                       ExecID= TaskID=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:09:59.188489099-07:00] error closing io stream                       ExecID= TaskID=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=63-bb4f6c6e-8007-42
+ERRO[2026-11-21T22:12:30.853565745-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T22:13:44.458238152-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+ERRO[2026-11-21T22:13:49.451103273-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+ERRO[2026-11-21T22:13:49.451165402-07:00] forcefully terminate VM 64-c770d0b9-d03d-4c   runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+ERRO[2026-11-21T22:13:49.451814071-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+ERRO[2026-11-21T22:13:49.451907897-07:00] error waiting for exit                        ExecID= TaskID=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 error=shutdown runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+ERRO[2026-11-21T22:13:49.452163575-07:00] error closing io stream                       ExecID= TaskID=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=64-c770d0b9-d03d-4c
+ERRO[2026-11-21T22:16:25.652399367-07:00] ttrpc: received message on inactive stream    stream=9
+ERRO[2026-11-21T22:17:21.726795442-07:00] error while forwarding events from VM agent   error="rpc error: code = Canceled desc = context canceled" runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:26.719054914-07:00] failed to wait VM                             error="context deadline exceeded" runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:26.719111828-07:00] forcefully terminate VM 65-7d61f5ba-1393-40   runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:26.719706824-07:00] error returned from VM wait                   error=shutdown runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:26.719754322-07:00] error waiting for exit                        ExecID= TaskID=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a error=shutdown runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:26.719917925-07:00] error closing io stream                       ExecID= TaskID=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdin vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:31.724106689-07:00] error closing io stream                       ExecID= TaskID=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stderr vmID=65-7d61f5ba-1393-40
+ERRO[2026-11-21T22:17:31.724156332-07:00] error closing io stream                       ExecID= TaskID=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a error="1 error occurred:\n\t* close unix @->firecracker.vsock: use of closed network connection\n\n" runtime=aws.firecracker stream=stdout vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T20:48:21.664062448-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:48:21.664115034-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=45-668dd530-4f69-4e
+INFO[2026-11-21T20:48:26.669267862-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm45-668dd530-4f69-4e-containersnap-8c0d466a-d95e-4c runtime=aws.firecracker stream=stdin vmID=45-668dd530-4f69-4e
+INFO[2026-11-21T20:48:31.675550275-07:00] shim disconnected                             id=vm45-668dd530-4f69-4e-containersnap-8c0d466a-d95e-4c namespace=firecracker-containerd
+INFO[2026-11-21T20:48:31.675713206-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T20:50:22.281949026-07:00] creating new VM                               runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+INFO[2026-11-21T20:50:22.282360335-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.294501345-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc0004771c8 Smt:0xc0004771d0 TrackDirtyPages:0xc0004771d1 VcpuCount:0xc0004771c0}  runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.294762633-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.294787280-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.295055745-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.295070542-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#46-ef30bc4d-0eb7-45/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.295238598-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#46-ef30bc4d-0eb7-45/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.295250666-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.319145181-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:50:22.319172057-07:00] calling agent                                 runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+INFO[2026-11-21T20:50:24.520217298-07:00] successfully started the VM                   runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+INFO[2026-11-21T20:50:24.600389394-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:50:24.930147895-07:00] successfully created task                     ExecID= TaskID=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f pid_in_vm=793 runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+INFO[2026-11-21T20:51:57.377617491-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:51:57.377660742-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=46-ef30bc4d-0eb7-45
+INFO[2026-11-21T20:52:02.382114117-07:00] connection was closed: read /proc/self/fd/8: file already closed  ExecID= TaskID=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f runtime=aws.firecracker stream=stdin vmID=46-ef30bc4d-0eb7-45
+INFO[2026-11-21T20:52:07.385146873-07:00] shim disconnected                             id=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f namespace=firecracker-containerd
+INFO[2026-11-21T20:52:07.385220945-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T20:53:57.961083770-07:00] creating new VM                               runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+INFO[2026-11-21T20:53:57.961492637-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.973286910-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110888 Smt:0xc000110890 TrackDirtyPages:0xc000110891 VcpuCount:0xc000110880}  runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.973583754-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.973596644-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.973836883-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.973847527-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#47-8f744388-b7fc-45/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.974043881-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#47-8f744388-b7fc-45/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.974061584-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.996530174-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:53:57.996572285-07:00] calling agent                                 runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+INFO[2026-11-21T20:54:00.197364306-07:00] successfully started the VM                   runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+INFO[2026-11-21T20:54:00.286682171-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:54:00.568714812-07:00] successfully created task                     ExecID= TaskID=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a pid_in_vm=792 runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+INFO[2026-11-21T20:55:33.093474942-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:55:33.093526723-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=47-8f744388-b7fc-45
+INFO[2026-11-21T20:55:38.097885889-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a runtime=aws.firecracker stream=stdin vmID=47-8f744388-b7fc-45
+INFO[2026-11-21T20:55:43.103770838-07:00] shim disconnected                             id=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a namespace=firecracker-containerd
+INFO[2026-11-21T20:55:43.103863435-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T20:57:31.539741261-07:00] creating new VM                               runtime=aws.firecracker vmID=48-933badec-77c0-45
+INFO[2026-11-21T20:57:31.540186663-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552123838-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000013338 Smt:0xc000013340 TrackDirtyPages:0xc000013341 VcpuCount:0xc000013330}  runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552352002-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552363326-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552601230-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552612340-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#48-933badec-77c0-45/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552758190-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#48-933badec-77c0-45/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.552784041-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.578988172-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T20:57:31.579017568-07:00] calling agent                                 runtime=aws.firecracker vmID=48-933badec-77c0-45
+INFO[2026-11-21T20:57:33.879934528-07:00] successfully started the VM                   runtime=aws.firecracker vmID=48-933badec-77c0-45
+INFO[2026-11-21T20:57:33.960004031-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:57:34.249279634-07:00] successfully created task                     ExecID= TaskID=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 pid_in_vm=808 runtime=aws.firecracker vmID=48-933badec-77c0-45
+INFO[2026-11-21T20:59:37.829628659-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T20:59:37.829681135-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=48-933badec-77c0-45
+INFO[2026-11-21T20:59:42.834293658-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 runtime=aws.firecracker stream=stdin vmID=48-933badec-77c0-45
+INFO[2026-11-21T20:59:47.840586265-07:00] shim disconnected                             id=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 namespace=firecracker-containerd
+INFO[2026-11-21T20:59:47.840658407-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:01:39.608999494-07:00] creating new VM                               runtime=aws.firecracker vmID=49-5361be55-a642-42
+INFO[2026-11-21T21:01:39.609575653-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.621557999-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110868 Smt:0xc000110870 TrackDirtyPages:0xc000110871 VcpuCount:0xc000110860}  runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.621737023-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.621753266-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.622099946-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.622114930-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#49-5361be55-a642-42/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.622311824-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#49-5361be55-a642-42/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.622326401-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.645566711-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:01:39.645599410-07:00] calling agent                                 runtime=aws.firecracker vmID=49-5361be55-a642-42
+INFO[2026-11-21T21:01:41.846789035-07:00] successfully started the VM                   runtime=aws.firecracker vmID=49-5361be55-a642-42
+INFO[2026-11-21T21:01:41.929275950-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:01:42.228357528-07:00] successfully created task                     ExecID= TaskID=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 pid_in_vm=792 runtime=aws.firecracker vmID=49-5361be55-a642-42
+INFO[2026-11-21T21:03:38.241683871-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:03:38.241726174-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=49-5361be55-a642-42
+INFO[2026-11-21T21:03:43.244883061-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 runtime=aws.firecracker stream=stdin vmID=49-5361be55-a642-42
+INFO[2026-11-21T21:03:48.251300143-07:00] shim disconnected                             id=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 namespace=firecracker-containerd
+INFO[2026-11-21T21:03:48.251360534-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:05:38.530648048-07:00] creating new VM                               runtime=aws.firecracker vmID=50-85fcf119-e606-42
+INFO[2026-11-21T21:05:38.531123105-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.543155680-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc00049e1d8 Smt:0xc00049e1e0 TrackDirtyPages:0xc00049e1e1 VcpuCount:0xc00049e1d0}  runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.543367430-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.543382935-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.544266115-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.544298775-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#50-85fcf119-e606-42/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.545000378-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#50-85fcf119-e606-42/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.545017916-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.573089949-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:05:38.573112986-07:00] calling agent                                 runtime=aws.firecracker vmID=50-85fcf119-e606-42
+INFO[2026-11-21T21:05:40.774800879-07:00] successfully started the VM                   runtime=aws.firecracker vmID=50-85fcf119-e606-42
+INFO[2026-11-21T21:05:40.865669935-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:05:41.190492542-07:00] successfully created task                     ExecID= TaskID=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 pid_in_vm=790 runtime=aws.firecracker vmID=50-85fcf119-e606-42
+INFO[2026-11-21T21:07:13.647446483-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:07:13.647486794-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=50-85fcf119-e606-42
+INFO[2026-11-21T21:07:18.648860208-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 runtime=aws.firecracker stream=stdin vmID=50-85fcf119-e606-42
+INFO[2026-11-21T21:07:23.654810498-07:00] shim disconnected                             id=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 namespace=firecracker-containerd
+INFO[2026-11-21T21:07:23.654862973-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:09:30.261672488-07:00] creating new VM                               runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+INFO[2026-11-21T21:09:30.262105604-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.274394629-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110c58 Smt:0xc000110c60 TrackDirtyPages:0xc000110c61 VcpuCount:0xc000110c50}  runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.274672487-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.274709887-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.275071925-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.275087514-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#51-33c133b0-2945-4a/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.275319710-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#51-33c133b0-2945-4a/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.275334760-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.300761422-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:09:30.300797958-07:00] calling agent                                 runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+INFO[2026-11-21T21:09:32.502678461-07:00] successfully started the VM                   runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+INFO[2026-11-21T21:09:32.586165799-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:09:32.895681734-07:00] successfully created task                     ExecID= TaskID=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 pid_in_vm=791 runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+INFO[2026-11-21T21:11:05.556376596-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:11:05.556423820-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=51-33c133b0-2945-4a
+INFO[2026-11-21T21:11:10.561754594-07:00] connection was closed: read /proc/self/fd/3: file already closed  ExecID= TaskID=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 runtime=aws.firecracker stream=stdin vmID=51-33c133b0-2945-4a
+INFO[2026-11-21T21:11:15.565673072-07:00] shim disconnected                             id=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 namespace=firecracker-containerd
+INFO[2026-11-21T21:11:15.565798495-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:13:06.380655839-07:00] creating new VM                               runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+INFO[2026-11-21T21:13:06.381044991-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.392895960-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000116938 Smt:0xc000116940 TrackDirtyPages:0xc000116941 VcpuCount:0xc000116930}  runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.393168946-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.393185450-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.393513944-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.393536595-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#52-1fa22dd3-eb4c-4a/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.393731082-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#52-1fa22dd3-eb4c-4a/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.393745337-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.417105284-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:13:06.417141537-07:00] calling agent                                 runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+INFO[2026-11-21T21:13:08.617846050-07:00] successfully started the VM                   runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+INFO[2026-11-21T21:13:08.708497688-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:13:09.028086833-07:00] successfully created task                     ExecID= TaskID=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e pid_in_vm=808 runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+INFO[2026-11-21T21:15:39.460738255-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:15:39.460785375-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=52-1fa22dd3-eb4c-4a
+INFO[2026-11-21T21:15:44.465036180-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e runtime=aws.firecracker stream=stdin vmID=52-1fa22dd3-eb4c-4a
+INFO[2026-11-21T21:15:49.472406555-07:00] shim disconnected                             id=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e namespace=firecracker-containerd
+INFO[2026-11-21T21:15:49.472499312-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:18:39.479001744-07:00] creating new VM                               runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+INFO[2026-11-21T21:18:39.479414657-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.491433596-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000476f58 Smt:0xc000476f60 TrackDirtyPages:0xc000476f61 VcpuCount:0xc000476f50}  runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.491685172-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.491702317-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.491964251-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.492007843-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#53-b5c08d09-f487-4b/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.492173410-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#53-b5c08d09-f487-4b/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.492190171-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.515407651-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:18:39.515457329-07:00] calling agent                                 runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+INFO[2026-11-21T21:18:41.717521334-07:00] successfully started the VM                   runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+INFO[2026-11-21T21:18:41.802056694-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:18:42.115771859-07:00] successfully created task                     ExecID= TaskID=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c pid_in_vm=809 runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+INFO[2026-11-21T21:21:11.627909989-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:21:11.627956989-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=53-b5c08d09-f487-4b
+INFO[2026-11-21T21:21:16.630873102-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c runtime=aws.firecracker stream=stdin vmID=53-b5c08d09-f487-4b
+INFO[2026-11-21T21:21:21.637947626-07:00] shim disconnected                             id=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c namespace=firecracker-containerd
+INFO[2026-11-21T21:21:21.638061353-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:24:10.591788443-07:00] creating new VM                               runtime=aws.firecracker vmID=54-d430785c-3606-4f
+INFO[2026-11-21T21:24:10.592135571-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.603940991-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000012b78 Smt:0xc000012b80 TrackDirtyPages:0xc000012b81 VcpuCount:0xc000012b70}  runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.604179961-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.604193134-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.604400887-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.604412200-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#54-d430785c-3606-4f/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.604550422-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#54-d430785c-3606-4f/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.604561673-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.629562941-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:24:10.629626306-07:00] calling agent                                 runtime=aws.firecracker vmID=54-d430785c-3606-4f
+INFO[2026-11-21T21:24:12.831612491-07:00] successfully started the VM                   runtime=aws.firecracker vmID=54-d430785c-3606-4f
+INFO[2026-11-21T21:24:12.928224624-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:24:13.211258360-07:00] successfully created task                     ExecID= TaskID=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 pid_in_vm=794 runtime=aws.firecracker vmID=54-d430785c-3606-4f
+INFO[2026-11-21T21:26:41.436151775-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:26:41.436197829-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=54-d430785c-3606-4f
+INFO[2026-11-21T21:26:46.438813150-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 runtime=aws.firecracker stream=stdin vmID=54-d430785c-3606-4f
+INFO[2026-11-21T21:26:51.445291820-07:00] shim disconnected                             id=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 namespace=firecracker-containerd
+INFO[2026-11-21T21:26:51.445353845-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:29:41.915565566-07:00] creating new VM                               runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+INFO[2026-11-21T21:29:41.915948906-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.928246204-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000111288 Smt:0xc000111290 TrackDirtyPages:0xc000111291 VcpuCount:0xc000111280}  runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.928561432-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.928589979-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.928941444-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.928966332-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#55-bf21174a-3cb1-43/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.929218015-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#55-bf21174a-3cb1-43/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.929234939-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.952159577-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:29:41.952213782-07:00] calling agent                                 runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+INFO[2026-11-21T21:29:44.053251386-07:00] successfully started the VM                   runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+INFO[2026-11-21T21:29:44.148636609-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:29:44.459635065-07:00] successfully created task                     ExecID= TaskID=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 pid_in_vm=790 runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+INFO[2026-11-21T21:32:13.109763378-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:32:13.109879680-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=55-bf21174a-3cb1-43
+INFO[2026-11-21T21:32:18.114268804-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 runtime=aws.firecracker stream=stdin vmID=55-bf21174a-3cb1-43
+INFO[2026-11-21T21:32:23.120314560-07:00] shim disconnected                             id=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 namespace=firecracker-containerd
+INFO[2026-11-21T21:32:23.120365008-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:35:13.733083377-07:00] creating new VM                               runtime=aws.firecracker vmID=56-785caeab-7148-4d
+INFO[2026-11-21T21:35:13.733490943-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.745481344-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc0001110a8 Smt:0xc0001110b0 TrackDirtyPages:0xc0001110b1 VcpuCount:0xc0001110a0}  runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.745768719-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.745801150-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.746130872-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.746150984-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#56-785caeab-7148-4d/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.746412804-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#56-785caeab-7148-4d/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.746431781-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.769602601-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:35:13.769683858-07:00] calling agent                                 runtime=aws.firecracker vmID=56-785caeab-7148-4d
+INFO[2026-11-21T21:35:15.970930486-07:00] successfully started the VM                   runtime=aws.firecracker vmID=56-785caeab-7148-4d
+INFO[2026-11-21T21:35:16.050425857-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:35:16.358349494-07:00] successfully created task                     ExecID= TaskID=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d pid_in_vm=808 runtime=aws.firecracker vmID=56-785caeab-7148-4d
+INFO[2026-11-21T21:38:41.206205723-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:38:41.206259633-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=56-785caeab-7148-4d
+INFO[2026-11-21T21:38:46.207896272-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d runtime=aws.firecracker stream=stdin vmID=56-785caeab-7148-4d
+INFO[2026-11-21T21:38:51.215124452-07:00] shim disconnected                             id=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d namespace=firecracker-containerd
+INFO[2026-11-21T21:38:51.215193261-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:41:40.691628749-07:00] creating new VM                               runtime=aws.firecracker vmID=57-c500dae2-6304-48
+INFO[2026-11-21T21:41:40.692008671-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704008184-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000111178 Smt:0xc000111180 TrackDirtyPages:0xc000111181 VcpuCount:0xc000111170}  runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704310992-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704337589-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704667300-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704682002-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#57-c500dae2-6304-48/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704935020-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#57-c500dae2-6304-48/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.704956143-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.728855304-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:41:40.728902850-07:00] calling agent                                 runtime=aws.firecracker vmID=57-c500dae2-6304-48
+INFO[2026-11-21T21:41:42.829748755-07:00] successfully started the VM                   runtime=aws.firecracker vmID=57-c500dae2-6304-48
+INFO[2026-11-21T21:41:42.912973929-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:41:43.259497026-07:00] successfully created task                     ExecID= TaskID=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 pid_in_vm=792 runtime=aws.firecracker vmID=57-c500dae2-6304-48
+INFO[2026-11-21T21:45:41.491531478-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:45:41.491590252-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=57-c500dae2-6304-48
+INFO[2026-11-21T21:45:46.493374626-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 runtime=aws.firecracker stream=stdin vmID=57-c500dae2-6304-48
+INFO[2026-11-21T21:45:51.500135345-07:00] shim disconnected                             id=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 namespace=firecracker-containerd
+INFO[2026-11-21T21:45:51.500274075-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:50:10.453892164-07:00] creating new VM                               runtime=aws.firecracker vmID=58-b5584525-154c-48
+INFO[2026-11-21T21:50:10.454273077-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466288999-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc00045b9b8 Smt:0xc00045b9c0 TrackDirtyPages:0xc00045b9c1 VcpuCount:0xc00045b9b0}  runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466480183-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466495226-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466737098-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466750790-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#58-b5584525-154c-48/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466922913-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#58-b5584525-154c-48/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.466935990-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.490075530-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:50:10.490115428-07:00] calling agent                                 runtime=aws.firecracker vmID=58-b5584525-154c-48
+INFO[2026-11-21T21:50:12.692176959-07:00] successfully started the VM                   runtime=aws.firecracker vmID=58-b5584525-154c-48
+INFO[2026-11-21T21:50:12.776807658-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:50:13.121710517-07:00] successfully created task                     ExecID= TaskID=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 pid_in_vm=807 runtime=aws.firecracker vmID=58-b5584525-154c-48
+INFO[2026-11-21T21:51:45.489917216-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:51:45.489963555-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=58-b5584525-154c-48
+INFO[2026-11-21T21:51:50.494785447-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 runtime=aws.firecracker stream=stdin vmID=58-b5584525-154c-48
+INFO[2026-11-21T21:51:55.500947297-07:00] shim disconnected                             id=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 namespace=firecracker-containerd
+INFO[2026-11-21T21:51:55.501026879-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:53:46.167573670-07:00] creating new VM                               runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+INFO[2026-11-21T21:53:46.167929935-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180081006-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110b28 Smt:0xc000110b30 TrackDirtyPages:0xc000110b31 VcpuCount:0xc000110b20}  runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180332897-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180347881-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180576828-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180588759-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#59-ef9beac3-25ff-4d/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180754349-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#59-ef9beac3-25ff-4d/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.180770965-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.204790949-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:53:46.204816732-07:00] calling agent                                 runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+INFO[2026-11-21T21:53:48.406308996-07:00] successfully started the VM                   runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+INFO[2026-11-21T21:53:48.501391247-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:53:48.819701055-07:00] successfully created task                     ExecID= TaskID=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e pid_in_vm=792 runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+INFO[2026-11-21T21:55:21.214043226-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:55:21.214088321-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=59-ef9beac3-25ff-4d
+INFO[2026-11-21T21:55:26.214453356-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e runtime=aws.firecracker stream=stdin vmID=59-ef9beac3-25ff-4d
+INFO[2026-11-21T21:55:31.220831567-07:00] shim disconnected                             id=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e namespace=firecracker-containerd
+INFO[2026-11-21T21:55:31.220911835-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T21:57:21.817326041-07:00] creating new VM                               runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+INFO[2026-11-21T21:57:21.817665070-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.829543010-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000477ca8 Smt:0xc000477cb0 TrackDirtyPages:0xc000477cb1 VcpuCount:0xc000477ca0}  runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.829908792-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.829938901-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.831641798-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.831654956-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#60-68b509d8-87c9-47/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.831881246-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#60-68b509d8-87c9-47/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.831910528-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.856206316-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T21:57:21.856239624-07:00] calling agent                                 runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+INFO[2026-11-21T21:57:24.056811580-07:00] successfully started the VM                   runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+INFO[2026-11-21T21:57:24.145542421-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:57:24.432196945-07:00] successfully created task                     ExecID= TaskID=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c pid_in_vm=792 runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+INFO[2026-11-21T21:58:56.951405730-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T21:58:56.951447645-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=60-68b509d8-87c9-47
+INFO[2026-11-21T21:59:01.956213802-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c runtime=aws.firecracker stream=stdin vmID=60-68b509d8-87c9-47
+INFO[2026-11-21T21:59:06.962955922-07:00] shim disconnected                             id=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c namespace=firecracker-containerd
+INFO[2026-11-21T21:59:06.963051298-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T22:00:57.562640697-07:00] creating new VM                               runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+INFO[2026-11-21T22:00:57.563101459-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575079515-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110e58 Smt:0xc000110e60 TrackDirtyPages:0xc000110e61 VcpuCount:0xc000110e50}  runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575272678-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575302969-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575575750-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575586065-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#61-6f3f224c-a072-40/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575748748-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#61-6f3f224c-a072-40/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.575759013-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.597949398-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:00:57.598014730-07:00] calling agent                                 runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+INFO[2026-11-21T22:00:59.799846740-07:00] successfully started the VM                   runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+INFO[2026-11-21T22:00:59.882095509-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:01:00.248189873-07:00] successfully created task                     ExecID= TaskID=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 pid_in_vm=807 runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+INFO[2026-11-21T22:02:33.687983065-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:02:33.688023390-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=61-6f3f224c-a072-40
+INFO[2026-11-21T22:02:38.690019313-07:00] connection was closed: read /proc/self/fd/4: file already closed  ExecID= TaskID=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 runtime=aws.firecracker stream=stdin vmID=61-6f3f224c-a072-40
+INFO[2026-11-21T22:02:43.695216296-07:00] shim disconnected                             id=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 namespace=firecracker-containerd
+INFO[2026-11-21T22:02:43.695294890-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T22:04:35.233102731-07:00] creating new VM                               runtime=aws.firecracker vmID=62-7c432926-fede-49
+INFO[2026-11-21T22:04:35.233503599-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.245376504-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110888 Smt:0xc000110890 TrackDirtyPages:0xc000110891 VcpuCount:0xc000110880}  runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.245622354-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.245635443-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.245885215-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.245896601-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#62-7c432926-fede-49/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.246113986-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#62-7c432926-fede-49/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.246141350-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.270270270-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:04:35.270310058-07:00] calling agent                                 runtime=aws.firecracker vmID=62-7c432926-fede-49
+INFO[2026-11-21T22:04:37.371041168-07:00] successfully started the VM                   runtime=aws.firecracker vmID=62-7c432926-fede-49
+INFO[2026-11-21T22:04:37.459288487-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:04:37.809574122-07:00] successfully created task                     ExecID= TaskID=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 pid_in_vm=794 runtime=aws.firecracker vmID=62-7c432926-fede-49
+INFO[2026-11-21T22:06:11.415290725-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:06:11.415351768-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=62-7c432926-fede-49
+INFO[2026-11-21T22:06:16.419920914-07:00] connection was closed: read /proc/self/fd/3: file already closed  ExecID= TaskID=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 runtime=aws.firecracker stream=stdin vmID=62-7c432926-fede-49
+INFO[2026-11-21T22:06:21.426856986-07:00] shim disconnected                             id=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 namespace=firecracker-containerd
+INFO[2026-11-21T22:06:21.426930966-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T22:08:12.975071883-07:00] creating new VM                               runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+INFO[2026-11-21T22:08:12.975497015-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.987578814-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000474ef8 Smt:0xc000474f00 TrackDirtyPages:0xc000474f01 VcpuCount:0xc000474ef0}  runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.987888207-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.987909248-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.988158798-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.988173453-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#63-bb4f6c6e-8007-42/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.988362578-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#63-bb4f6c6e-8007-42/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:08:12.988379561-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T22:08:13.010826269-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:08:13.011089636-07:00] calling agent                                 runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+INFO[2026-11-21T22:08:15.212396263-07:00] successfully started the VM                   runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+INFO[2026-11-21T22:08:15.296048745-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:08:15.605951631-07:00] successfully created task                     ExecID= TaskID=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 pid_in_vm=790 runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+INFO[2026-11-21T22:09:49.179051311-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:09:49.179100209-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=63-bb4f6c6e-8007-42
+INFO[2026-11-21T22:09:54.184377107-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 runtime=aws.firecracker stream=stdin vmID=63-bb4f6c6e-8007-42
+INFO[2026-11-21T22:09:59.190502004-07:00] shim disconnected                             id=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 namespace=firecracker-containerd
+INFO[2026-11-21T22:09:59.190677926-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T22:11:50.861300146-07:00] creating new VM                               runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+INFO[2026-11-21T22:11:50.861692484-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.873540629-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000110878 Smt:0xc000110880 TrackDirtyPages:0xc000110881 VcpuCount:0xc000110870}  runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.873721475-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.873733924-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.873930543-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.873941326-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#64-c770d0b9-d03d-4c/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.874146749-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#64-c770d0b9-d03d-4c/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.874158628-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.897025933-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:11:50.897063872-07:00] calling agent                                 runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+INFO[2026-11-21T22:11:53.098313522-07:00] successfully started the VM                   runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+INFO[2026-11-21T22:11:53.177119711-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:11:53.534127246-07:00] successfully created task                     ExecID= TaskID=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 pid_in_vm=808 runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+INFO[2026-11-21T22:13:44.447575432-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:13:44.447604924-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=64-c770d0b9-d03d-4c
+INFO[2026-11-21T22:13:49.452007564-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 runtime=aws.firecracker stream=stdin vmID=64-c770d0b9-d03d-4c
+INFO[2026-11-21T22:13:54.456035917-07:00] shim disconnected                             id=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 namespace=firecracker-containerd
+INFO[2026-11-21T22:13:54.456085416-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+INFO[2026-11-21T22:15:45.658194311-07:00] creating new VM                               runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T22:15:45.658600957-07:00] Called startVMM(), setting up a VMM on firecracker.sock  runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.670459097-07:00] refreshMachineConfiguration: [GET /machine-config][200] getMachineConfigurationOK  &{CPUTemplate: MemSizeMib:0xc000477238 Smt:0xc000477240 TrackDirtyPages:0xc000477241 VcpuCount:0xc000477230}  runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.670693842-07:00] PutGuestBootSource: [PUT /boot-source][204] putGuestBootSourceNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.670730610-07:00] Attaching drive /var/lib/firecracker-containerd/runtime/default-rootfs.img, slot root_drive, root true.  runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.671062633-07:00] Attached drive /var/lib/firecracker-containerd/runtime/default-rootfs.img: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.671078296-07:00] Attaching drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#65-7d61f5ba-1393-40/ctrstub0, slot MN2HE43UOVRDA, root false.  runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.671426645-07:00] Attached drive /var/lib/firecracker-containerd/shim-base/firecracker-containerd#65-7d61f5ba-1393-40/ctrstub0: [PUT /drives/{drive_id}][204] putGuestDriveByIdNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.671441067-07:00] Attaching NIC tap0 (hwaddr 06:00:AC:10:00:02) at index 1  runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.695413216-07:00] startInstance successful: [PUT /actions][204] createSyncActionNoContent   runtime=aws.firecracker
+INFO[2026-11-21T22:15:45.695445305-07:00] calling agent                                 runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T22:15:47.897740814-07:00] successfully started the VM                   runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T22:15:47.986854643-07:00] PatchGuestDrive successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:15:48.275183492-07:00] successfully created task                     ExecID= TaskID=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a pid_in_vm=790 runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T22:17:21.715041725-07:00] GetInstanceInfo successful                    runtime=aws.firecracker
+INFO[2026-11-21T22:17:21.715087088-07:00] gracefully shutdown VM                        runtime=aws.firecracker vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T22:17:26.719824162-07:00] connection was closed: read /proc/self/fd/11: file already closed  ExecID= TaskID=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a runtime=aws.firecracker stream=stdin vmID=65-7d61f5ba-1393-40
+INFO[2026-11-21T22:17:31.726401785-07:00] shim disconnected                             id=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a namespace=firecracker-containerd
+INFO[2026-11-21T22:17:31.726484512-07:00] cleaning up dead shim                         namespace=firecracker-containerd
+WARN[2026-11-21T20:48:26.725453675-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T20:48:31.675609675-07:00] cleaning up after shim disconnected           id=vm45-668dd530-4f69-4e-containersnap-8c0d466a-d95e-4c namespace=firecracker-containerd
+WARN[2026-11-21T20:48:31.693763739-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm45-668dd530-4f69-4e-containersnap-8c0d466a-d95e-4c namespace=firecracker-containerd
+WARN[2026-11-21T20:52:02.438482310-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T20:52:07.385208834-07:00] cleaning up after shim disconnected           id=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f namespace=firecracker-containerd
+WARN[2026-11-21T20:52:07.401658607-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm46-ef30bc4d-0eb7-45-containersnap-703fd9e3-d5a8-4f namespace=firecracker-containerd
+WARN[2026-11-21T20:55:38.144471247-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T20:55:43.103833645-07:00] cleaning up after shim disconnected           id=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a namespace=firecracker-containerd
+WARN[2026-11-21T20:55:43.120238028-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm47-8f744388-b7fc-45-containersnap-987f03d0-9c7c-4a namespace=firecracker-containerd
+WARN[2026-11-21T20:59:42.881472031-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T20:59:47.840641705-07:00] cleaning up after shim disconnected           id=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 namespace=firecracker-containerd
+WARN[2026-11-21T20:59:47.858390386-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm48-933badec-77c0-45-containersnap-9cee2b45-e0a6-43 namespace=firecracker-containerd
+WARN[2026-11-21T21:03:43.297514789-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:03:48.251348406-07:00] cleaning up after shim disconnected           id=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 namespace=firecracker-containerd
+WARN[2026-11-21T21:03:48.268566560-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm49-5361be55-a642-42-containersnap-e7357fcc-709a-49 namespace=firecracker-containerd
+WARN[2026-11-21T21:07:18.702643356-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:07:23.654843198-07:00] cleaning up after shim disconnected           id=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 namespace=firecracker-containerd
+WARN[2026-11-21T21:07:23.672088159-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm50-85fcf119-e606-42-containersnap-6e21eabf-bc89-40 namespace=firecracker-containerd
+WARN[2026-11-21T21:11:10.618786263-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:11:15.565729119-07:00] cleaning up after shim disconnected           id=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 namespace=firecracker-containerd
+WARN[2026-11-21T21:11:15.585819015-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm51-33c133b0-2945-4a-containersnap-0793ee0b-502b-45 namespace=firecracker-containerd
+WARN[2026-11-21T21:15:44.524629946-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:15:49.472472830-07:00] cleaning up after shim disconnected           id=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e namespace=firecracker-containerd
+WARN[2026-11-21T21:15:49.491295687-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm52-1fa22dd3-eb4c-4a-containersnap-c26fb815-f644-4e namespace=firecracker-containerd
+WARN[2026-11-21T21:21:16.697738586-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:21:21.638040537-07:00] cleaning up after shim disconnected           id=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c namespace=firecracker-containerd
+WARN[2026-11-21T21:21:21.655844768-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm53-b5c08d09-f487-4b-containersnap-cf1ca1f5-ff5a-4c namespace=firecracker-containerd
+WARN[2026-11-21T21:26:46.490548606-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:26:51.445339463-07:00] cleaning up after shim disconnected           id=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 namespace=firecracker-containerd
+WARN[2026-11-21T21:26:51.465164548-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm54-d430785c-3606-4f-containersnap-6e405bda-ea27-46 namespace=firecracker-containerd
+WARN[2026-11-21T21:32:18.169474440-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:32:23.120355600-07:00] cleaning up after shim disconnected           id=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 namespace=firecracker-containerd
+WARN[2026-11-21T21:32:23.135021726-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm55-bf21174a-3cb1-43-containersnap-bb7794bb-a82c-40 namespace=firecracker-containerd
+WARN[2026-11-21T21:38:46.268575510-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:38:51.215179297-07:00] cleaning up after shim disconnected           id=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d namespace=firecracker-containerd
+WARN[2026-11-21T21:38:51.233450916-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm56-785caeab-7148-4d-containersnap-728dbeaf-8b83-4d namespace=firecracker-containerd
+WARN[2026-11-21T21:45:46.549751272-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:45:51.500256825-07:00] cleaning up after shim disconnected           id=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 namespace=firecracker-containerd
+WARN[2026-11-21T21:45:51.518907265-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm57-c500dae2-6304-48-containersnap-6afe1f41-27bc-46 namespace=firecracker-containerd
+WARN[2026-11-21T21:51:50.561390312-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:51:55.501015774-07:00] cleaning up after shim disconnected           id=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 namespace=firecracker-containerd
+WARN[2026-11-21T21:51:55.517591705-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm58-b5584525-154c-48-containersnap-36b7d7e0-1344-42 namespace=firecracker-containerd
+WARN[2026-11-21T21:55:26.272627242-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:55:31.220892333-07:00] cleaning up after shim disconnected           id=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e namespace=firecracker-containerd
+WARN[2026-11-21T21:55:31.239140184-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm59-ef9beac3-25ff-4d-containersnap-6f314928-901c-4e namespace=firecracker-containerd
+WARN[2026-11-21T21:59:02.014445161-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T21:59:06.963030690-07:00] cleaning up after shim disconnected           id=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c namespace=firecracker-containerd
+WARN[2026-11-21T21:59:06.980002605-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm60-68b509d8-87c9-47-containersnap-0eaaf746-77f9-4c namespace=firecracker-containerd
+WARN[2026-11-21T22:02:38.744483155-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T22:02:43.695276764-07:00] cleaning up after shim disconnected           id=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 namespace=firecracker-containerd
+WARN[2026-11-21T22:02:43.712333466-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm61-6f3f224c-a072-40-containersnap-d3ce831d-0e9c-42 namespace=firecracker-containerd
+WARN[2026-11-21T22:06:16.476649600-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T22:06:21.426910839-07:00] cleaning up after shim disconnected           id=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 namespace=firecracker-containerd
+WARN[2026-11-21T22:06:21.444852755-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm62-7c432926-fede-49-containersnap-7b89b3bc-10e4-46 namespace=firecracker-containerd
+WARN[2026-11-21T22:09:54.234492844-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T22:09:59.190645570-07:00] cleaning up after shim disconnected           id=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 namespace=firecracker-containerd
+WARN[2026-11-21T22:09:59.208543328-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm63-bb4f6c6e-8007-42-containersnap-e3e798b7-b5b2-47 namespace=firecracker-containerd
+WARN[2026-11-21T22:13:49.509507165-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T22:13:54.456074741-07:00] cleaning up after shim disconnected           id=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 namespace=firecracker-containerd
+WARN[2026-11-21T22:13:54.473313917-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm64-c770d0b9-d03d-4c-containersnap-9c31a128-0a59-40 namespace=firecracker-containerd
+WARN[2026-11-21T22:17:26.776478436-07:00] firecracker exited: signal: killed            runtime=aws.firecracker
+WARN[2026-11-21T22:17:31.726461471-07:00] cleaning up after shim disconnected           id=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a namespace=firecracker-containerd
+WARN[2026-11-21T22:17:31.743250483-07:00] failed to clean up after shim disconnected    error="proto: cannot parse invalid wire-format data" id=vm65-7d61f5ba-1393-40-containersnap-77b45c74-6eb8-4a namespace=firecracker-containerd

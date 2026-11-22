@@ -1,0 +1,7 @@
+2026-11-21 22:30:43.754
+  13370   13313  7268  309155 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13373   13370  2608  309155 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13374   13373 95488  309155 /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+ 778146   13374 28484      59 containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock
+ 778159  778146 187984     59 /usr/local/bin/firecracker --api-sock firecracker.sock --id 68-030617cb-8b2e-4f
+fc pid 778159 rss_kib=187984 parent 778146: containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock

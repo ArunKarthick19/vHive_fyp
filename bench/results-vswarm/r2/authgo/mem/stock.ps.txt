@@ -1,0 +1,11 @@
+2026-11-21 22:19:47.998
+pods:
+authgo-stock-00001-deployment-c94d49976-k5v8k   2/2   Running   0     10s   192.168.77.177   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>   <none>
+ps:
+  13370   13313  7268  308499 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13373   13370  2608  308499 sudo /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+  13374   13373 98876  308499 /usr/local/bin/firecracker-containerd --config /etc/firecracker-containerd/config.toml
+ 759764   13374 28912       8 containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock
+ 759776  759764 183036      8 /usr/local/bin/firecracker --api-sock firecracker.sock --id 66-7804ed0b-9ef6-4b
+parents:
+fc pid 759776 rss_kib=183036 parent 759764: containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock

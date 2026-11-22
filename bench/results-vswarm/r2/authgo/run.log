@@ -1,0 +1,85 @@
+2026-11-21 21:48:38 run_r2 authgo start; vhive log line 2315831; deadline 23:55:00
+2026-11-21 21:48:38 start workload=authgo services='authgo-stock authgo-mine' cycles=8 ingress=10.103.200.78
+2026-11-21 21:48:38   authgo-stock -> Host: authgo-stock.default.192.168.1.240.sslip.io
+2026-11-21 21:48:38   authgo-mine -> Host: authgo-mine.default.192.168.1.240.sslip.io
+2026-11-21 21:48:38   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-21 21:48:38 cycle 1 authgo-stock: waiting for idle
+2026-11-21 21:50:15 cycle 1 authgo-stock: HTTP OK curl_exit=0 time_total=4.006074s bytes=341 idle_wait=91s  
+2026-11-21 21:50:15 cycle 1 authgo-mine: waiting for idle
+2026-11-21 21:52:03 cycle 1 authgo-mine: HTTP OK curl_exit=0 time_total=1.810972s bytes=341 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=139.382831ms probe=tcp] 
+2026-11-21 21:52:03 cycle 2 authgo-stock: waiting for idle
+2026-11-21 21:53:50 cycle 2 authgo-stock: HTTP OK curl_exit=0 time_total=4.021111s bytes=341 idle_wait=102s  
+2026-11-21 21:53:50 cycle 2 authgo-mine: waiting for idle
+2026-11-21 21:55:39 cycle 2 authgo-mine: HTTP OK curl_exit=0 time_total=1.732027s bytes=341 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=133.784871ms probe=tcp] 
+2026-11-21 21:55:39 cycle 3 authgo-stock: waiting for idle
+2026-11-21 21:57:26 cycle 3 authgo-stock: HTTP OK curl_exit=0 time_total=4.086027s bytes=341 idle_wait=102s  
+2026-11-21 21:57:26 cycle 3 authgo-mine: waiting for idle
+2026-11-21 21:59:15 cycle 3 authgo-mine: HTTP OK curl_exit=0 time_total=1.679667s bytes=341 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=133.526229ms probe=tcp] 
+2026-11-21 21:59:15 cycle 4 authgo-stock: waiting for idle
+2026-11-21 22:01:02 cycle 4 authgo-stock: HTTP OK curl_exit=0 time_total=4.072671s bytes=341 idle_wait=101s  
+2026-11-21 22:01:02 cycle 4 authgo-mine: waiting for idle
+2026-11-21 22:02:53 cycle 4 authgo-mine: HTTP OK curl_exit=0 time_total=1.621273s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=137.015458ms probe=tcp] 
+2026-11-21 22:02:53 cycle 5 authgo-stock: waiting for idle
+2026-11-21 22:04:39 cycle 5 authgo-stock: HTTP OK curl_exit=0 time_total=4.126124s bytes=341 idle_wait=101s  
+2026-11-21 22:04:39 cycle 5 authgo-mine: waiting for idle
+2026-11-21 22:06:30 cycle 5 authgo-mine: HTTP OK curl_exit=0 time_total=1.586618s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=131.511341ms probe=tcp] 
+2026-11-21 22:06:30 cycle 6 authgo-stock: waiting for idle
+2026-11-21 22:08:17 cycle 6 authgo-stock: HTTP OK curl_exit=0 time_total=4.126496s bytes=341 idle_wait=102s  
+2026-11-21 22:08:17 cycle 6 authgo-mine: waiting for idle
+2026-11-21 22:10:08 cycle 6 authgo-mine: HTTP OK curl_exit=0 time_total=1.597995s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=134.410003ms probe=tcp] 
+2026-11-21 22:10:08 cycle 7 authgo-stock: waiting for idle
+2026-11-21 22:11:55 cycle 7 authgo-stock: HTTP OK curl_exit=0 time_total=3.973820s bytes=341 idle_wait=102s  
+2026-11-21 22:11:55 cycle 7 authgo-mine: waiting for idle
+2026-11-21 22:14:03 cycle 7 authgo-mine: HTTP OK curl_exit=0 time_total=1.632869s bytes=341 idle_wait=125s [firecrackerVM=fcweb1 launchToHTTP200=137.315866ms probe=tcp] 
+2026-11-21 22:14:03 cycle 8 authgo-stock: waiting for idle
+2026-11-21 22:15:50 cycle 8 authgo-stock: HTTP OK curl_exit=0 time_total=4.012768s bytes=341 idle_wait=101s  
+2026-11-21 22:15:50 cycle 8 authgo-mine: waiting for idle
+2026-11-21 22:17:41 cycle 8 authgo-mine: HTTP OK curl_exit=0 time_total=1.678640s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=139.810426ms probe=tcp] 
+2026-11-21 22:17:41 done workload=authgo
+2026-11-21 22:17:41 coldg exit=0; waiting for the last VM to go away
+2026-11-21 22:19:28 watchers stopped
+| service | n (cycles 2+) | n timed | mean s | median s | min s | max s | stdev s | non-OK/failed |
+|---|---|---|---|---|---|---|---|---|
+| authgo-stock | 7 | 7 | 4.060 | 4.073 | 3.974 | 4.126 | 0.059 | 0 |
+| authgo-mine | 7 | 7 | 1.647 | 1.633 | 1.587 | 1.732 | 0.052 | 0 |
+
+ratio authgo-stock/authgo-mine: mean 2.46x, median 2.49x
+2026-11-21 22:19:28.883 authgo-stock: waiting for idle
+2026-11-21 22:19:42.903 authgo-stock: request -> OK 4.249280
+2026-11-21 22:19:42.990 authgo-stock: Ready seen: authgo-stock-00001-deployment-c94d49976-k5v8k True 2026-11-22T05:19:42Z
+2026-11-21 22:19:47.995 authgo-stock: snapshot (5 s after Ready seen)
+fc pid 759776 rss_kib=183036 parent 759764: containerd-shim-aws-firecracker -namespace firecracker-containerd -address /run/firecracker-containerd/containerd.sock
+2026-11-21 22:19:48.241 authgo-mine: waiting for idle
+2026-11-21 22:21:33.810 authgo-mine: request -> OK 1.561919
+2026-11-21 22:21:33.899 authgo-mine: Ready seen: authgo-mine-00001-deployment-7844b47dc6-6kgwb True 2026-11-22T05:21:33Z
+2026-11-21 22:21:38.904 authgo-mine: snapshot (5 s after Ready seen)
+fc pid 763660 rss_kib=60300 parent 1251110: ./vhive-perpod
+2026-11-21 22:21:39.135 done
+2026-11-21 22:21:39 start kind=grpc wl=authgo prefix=authgo concs='1 2 4 8 16' vary=1 steps=1:30,5:30,20:30,5:30,1:30 warm=30s measure=30s ingress=10.103.200.78 deadline=23:55:00
+2026-11-21 22:21:39 authgo-stock c=1: waiting for idle
+2026-11-21 22:24:17 authgo-stock c=1: warm-up rps=222.8 ok=6683 err=1 [Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 256.0,3.72,4.77,1,7680,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.54,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=12.19,2.18
+2026-11-21 22:24:17 authgo-mine c=1: waiting for idle
+2026-11-21 22:28:01 authgo-mine c=1: warm-up rps=247.8 ok=7433 err=1 [Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 261.6,3.65,4.70,1,7849,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.61,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=11.61,2.20
+2026-11-21 22:28:01 authgo-stock c=2: waiting for idle
+2026-11-21 22:30:44 authgo-stock c=2: warm-up rps=387.6 ok=11628 err=2 [Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 459.6,4.19,5.66,2,13789,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,13.24,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=15.52,3.29
+2026-11-21 22:30:44 authgo-mine c=2: waiting for idle
+2026-11-21 22:33:30 authgo-mine c=2: warm-up rps=424.9 ok=12746 err=1 [Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 440.7,4.41,5.88,2,13220,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,12.53,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=15.03,3.05
+2026-11-21 22:33:30 authgo-stock c=4: waiting for idle
+2026-11-21 22:36:13 authgo-stock c=4: warm-up rps=738.0 ok=22138 err=2 [Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 856.5,4.34,7.33,4,25696,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,23.46,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=24.11,5.21
+2026-11-21 22:36:13 authgo-mine c=4: waiting for idle
+2026-11-21 22:39:02 authgo-mine c=4: warm-up rps=718.0 ok=21540 err=4 [Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 859.8,4.34,7.28,4,25793,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,23.66,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=23.67,5.22
+2026-11-21 22:39:02 authgo-stock c=8: waiting for idle
+2026-11-21 22:41:44 authgo-stock c=8: warm-up rps=1762.3 ok=52865 err=7 [Unavailable=7;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2004.7,3.66,6.48,8,60136,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,41.90,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=32.90,7.61
+2026-11-21 22:41:44 authgo-mine c=8: waiting for idle
+2026-11-21 22:44:31 authgo-mine c=8: warm-up rps=1992.3 ok=59766 err=7 [Unavailable=7;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2050.7,3.57,6.40,8,61515,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,42.44,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=32.10,7.65
+2026-11-21 22:44:31 authgo-stock c=16: waiting for idle
+2026-11-21 22:47:14 authgo-stock c=16: warm-up rps=2229.6 ok=66880 err=16 [Unavailable=16;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2534.8,5.89,10.97,15,76037,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,47.81,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.75,8.23
+2026-11-21 22:47:14 authgo-mine c=16: waiting for idle
+2026-11-21 22:50:01 authgo-mine c=16: warm-up rps=2420.0 ok=72591 err=14 [Unavailable=14;err:rpc error: code = Unavailable desc = error reading from serv=1] | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2565.8,5.83,10.67,16,76964,Unavailable=16;err:rpc error: code = Unavailable desc = error reading from serv=1,48.80,30.00 | pods=1 vms=1 fc_cpu_s,host_busy_cores=33.34,8.28
+2026-11-21 22:50:01 vary authgo-stock: waiting for idle
+2026-11-21 22:54:15 vary authgo-stock: exit=0 {"svc": "authgo-stock", "host": "authgo-stock.default.192.168.1.240.sslip.io", "mode": "grpc", "steps": "1:30,5:30,20:30,5:30,1:30", "start_epoch": 1795326704.788096, "sent": 960, "ok": 960, "errors_by_type": {}, "late_sends_over_50ms": 0, "per_step": [{"step": 0, "rate": 1.0, "dur_s": 30.0, "sent": 30, "ok": 30, "p50_ms": "5.17", "p99_ms": "4007.11", "max_ms": "4007.11"}, {"step": 1, "rate": 5.0, "dur_s": 30.0, "sent": 150, "ok": 150, "p50_ms": "5.23", "p99_ms": "6.09", "max_ms": "6.25"}, {"step": 2, "rate": 20.0, "dur_s": 30.0, "sent": 600, "ok": 600, "p50_ms": "4.70", "p99_ms": "5.92", "max
+2026-11-21 22:54:15 vary authgo-mine: waiting for idle
+2026-11-21 22:58:32 vary authgo-mine: exit=0 {"svc": "authgo-mine", "host": "authgo-mine.default.192.168.1.240.sslip.io", "mode": "grpc", "steps": "1:30,5:30,20:30,5:30,1:30", "start_epoch": 1795326962.4408312, "sent": 960, "ok": 960, "errors_by_type": {}, "late_sends_over_50ms": 0, "per_step": [{"step": 0, "rate": 1.0, "dur_s": 30.0, "sent": 30, "ok": 30, "p50_ms": "5.45", "p99_ms": "1430.80", "max_ms": "1430.80"}, {"step": 1, "rate": 5.0, "dur_s": 30.0, "sent": 150, "ok": 150, "p50_ms": "5.42", "p99_ms": "6.48", "max_ms": "6.75"}, {"step": 2, "rate": 20.0, "dur_s": 30.0, "sent": 600, "ok": 600, "p50_ms": "4.78", "p99_ms": "5.69", "max_
+2026-11-21 22:58:32 done wl=authgo
+plots written in /users/Arun1903/fc-vm/vswarm/out/r2/authgo/load
+2026-11-21 22:58:34 run_r2 authgo done

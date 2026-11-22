@@ -1,0 +1,1 @@
+message: "fn: Auth | token: allow | resp: {principalId:user policyDocument:{Version:2012-10-17 Statement:[{Action:execute-api:Invoke Effect:Allow Resource:arn:aws:execute-api:{regionId}:{accountId}:{apiId}/{stage}/{httpVerb}/[{resource}/[{child-resources}]]}]} context:{stringKey:stringval numberKey:123 booleanKey:true}} | runtime: golang"

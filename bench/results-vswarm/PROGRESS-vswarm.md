@@ -183,3 +183,45 @@ vary (open loop 1,5,20,5,1 rps; 960 sent, 960 OK, 0 errors, 0 late sends, max 1 
 2024 ms mine**; afterwards p50 4.6–5.4 ms, p99 ≤ 6.7 ms (max ≤ 10.5 ms) in every step for both. Mine's vary cold request (2.02 s) is slower than
 any of its 8 coldg cycles (1.41–1.96 s); cause not investigated (vary uses one shared channel and measures from the scheduled send time).
 Plots: `r2/aesgo/load/rps_vs_conc.png`, `r2/aesgo/load/vary.png`. Files: `bench/results-vswarm/r2/aesgo/` (fccd-pane.raw gzipped + deduplicated copy).
+Push after aes-go (21:5x MST): **succeeded** (2d5678d..9f9a6f1 → origin/results-vswarm; this also pushed the first run's earlier local-only commits).
+
+## Second run — auth-go (21:48:38–22:58:34 MST), complete: 16 cold cycles, memory, 10 sweep cells, 2 vary runs; nothing failed, nothing re-run
+Request auth.Greeter/SayHello {"name":"allow"}. All 16 cold-start replies gRPC OK and byte-identical in both modes (341 B, sha256/16 65cddb0024a32feb,
+`fn: Auth | token: allow | resp: {principalId:user policyDocument:{... Effect:Allow ...}} ... | runtime: golang`).
+
+**(a) Cold start** (8 cycles per mode, cycle 1 = warm-up; idle waits 91–125 s):
+| authgo (cycles 2–8, n=7) | mean s | median s | min s | max s | stdev s |
+|---|---|---|---|---|---|
+| stock | 4.060 | 4.073 | 3.974 | 4.126 | 0.059 |
+| mine | 1.647 | 1.633 | 1.587 | 1.732 | 0.052 |
+| ratio stock/mine | 2.46× | 2.49× | | | |
+All cycles (s): stock 4.006(w) 4.021 4.086 4.073 4.126 4.126 3.974 4.013; mine 1.811(w) 1.732 1.680 1.621 1.587 1.598 1.633 1.679.
+Mine's VM stage (launchToHTTP200): 131.5–139.8 ms over all 8 cycles.
+
+**(c) Memory** (firecracker RSS):
+| | stock | mine |
+|---|---|---|
+| one pod Ready + 5 s, idle | **183,036 KiB** — pid 759776, VM `66-7804ed0b-9ef6-4b` (22:19:47.995) | **60,300 KiB** — pid 763660, `/run/vhive-fcweb/1/fc.sock` (22:21:38.904) |
+| end of the c=16 measured window | **188,604 KiB** — pid 805495, VM `71-578c9e60-af84-45` (22:47:14.312) | **65,644 KiB** — pid 810188, `/run/vhive-fcweb/1/fc.sock` (22:50:01.399) |
+(end of c=1: stock 187,556 KiB VM 67-642facc1-17d9-4d; mine 65,824 KiB pid 773740.) Parents as for aes-go (stock: containerd-shim-aws-firecracker,
+child of firecracker-containerd; mine: vhive-perpod).
+
+**(d) Teardown** (same log lines and method as aes-go; `cold/teardown.md`):
+* stock `stop VM` → `firecracker exited: signal: killed`: **5.073, 5.060, 5.064, 5.057, 5.062, 5.057, 5.063, 5.062 s** (8/8, VMs 58…65; same
+  graceful-shutdown-timeout → forced-kill sequence every time). PID watcher: process gone 0.015–0.046 s after the exit line.
+* mine took: **0.099, 0.085, 0.094, 0.087, 0.088, 0.091, 0.074, 0.092 s**; stop start → process gone (pidwatch): **0.082, 0.062, 0.073, 0.062, 0.064,
+  0.072, 0.055, 0.050 s**.
+* **Excluded, labelled in teardown.md**: one more mine teardown at 21:49:58 (took 0.073 s) was the **aes-go vary pod's VM** (pid 690626, already running
+  when the watchers started at 21:48:38, ~10 s after aes-go's vary run ended); coldg.sh waited 91 s for it to go before auth-go cycle 1.
+
+**(b) Load** (rps / p50 ms / p99 ms; fc CPU-s per 30 s):
+| authgo | c=1 | c=2 | c=4 | c=8 | c=16 |
+|---|---|---|---|---|---|
+| stock | 256.0 / 3.72 / 4.77; 12.2 | 459.6 / 4.19 / 5.66; 15.5 | 856.5 / 4.34 / 7.33; 24.1 | 2004.7 / 3.66 / 6.48; 32.9 | 2534.8 / 5.89 / 10.97; 33.8 |
+| mine  | 261.6 / 3.65 / 4.70; 11.6 | 440.7 / 4.41 / 5.88; 15.0 | 859.8 / 4.34 / 7.28; 23.7 | 2050.7 / 3.57 / 6.40; 32.1 | 2565.8 / 5.83 / 10.67; 33.3 |
+Mine vs stock: −4.1% at c=2 (440.7 vs 459.6), +0.4…+2.3% elsewhere. Measured-window errors: stock 1, 2, 4, 8, 15; mine 1, 2, 4, 8, 16 — all
+`Unavailable … use of closed network connection` (ghz end-of-run artifact; 116 over all auth-go warm-up + measured runs, no other error type).
+Client CPU ≤ 48.8 s per 30 s; host busy ≤ 8.28 of 20 cores.
+vary (960 sent, 960 OK, 0 errors, 0 late, max 1 pod / 1 VM both): first (cold) request **4007 ms stock vs 1431 ms mine**; afterwards p50 4.7–5.5 ms,
+p99 ≤ 7.3 ms (max ≤ 9.5 ms). Plots: `r2/authgo/load/{rps_vs_conc,vary}.png`. Files: `bench/results-vswarm/r2/authgo/`.
+End state: 0 pods in default, no firecracker VMs, no load processes; the 8 vSwarm ksvcs remain deployed (scaled to zero).

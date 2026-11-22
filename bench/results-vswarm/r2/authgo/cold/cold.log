@@ -1,0 +1,37 @@
+2026-11-21 21:48:38 start workload=authgo services='authgo-stock authgo-mine' cycles=8 ingress=10.103.200.78
+2026-11-21 21:48:38   authgo-stock -> Host: authgo-stock.default.192.168.1.240.sslip.io
+2026-11-21 21:48:38   authgo-mine -> Host: authgo-mine.default.192.168.1.240.sslip.io
+2026-11-21 21:48:38   settings: IDLE_TIMEOUT_S=600 STABLE_POLLS=3 POLL_S=2 SETTLE_S=5 CURL_MAX_S=300
+2026-11-21 21:48:38 cycle 1 authgo-stock: waiting for idle
+2026-11-21 21:50:15 cycle 1 authgo-stock: HTTP OK curl_exit=0 time_total=4.006074s bytes=341 idle_wait=91s  
+2026-11-21 21:50:15 cycle 1 authgo-mine: waiting for idle
+2026-11-21 21:52:03 cycle 1 authgo-mine: HTTP OK curl_exit=0 time_total=1.810972s bytes=341 idle_wait=105s [firecrackerVM=fcweb1 launchToHTTP200=139.382831ms probe=tcp] 
+2026-11-21 21:52:03 cycle 2 authgo-stock: waiting for idle
+2026-11-21 21:53:50 cycle 2 authgo-stock: HTTP OK curl_exit=0 time_total=4.021111s bytes=341 idle_wait=102s  
+2026-11-21 21:53:50 cycle 2 authgo-mine: waiting for idle
+2026-11-21 21:55:39 cycle 2 authgo-mine: HTTP OK curl_exit=0 time_total=1.732027s bytes=341 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=133.784871ms probe=tcp] 
+2026-11-21 21:55:39 cycle 3 authgo-stock: waiting for idle
+2026-11-21 21:57:26 cycle 3 authgo-stock: HTTP OK curl_exit=0 time_total=4.086027s bytes=341 idle_wait=102s  
+2026-11-21 21:57:26 cycle 3 authgo-mine: waiting for idle
+2026-11-21 21:59:15 cycle 3 authgo-mine: HTTP OK curl_exit=0 time_total=1.679667s bytes=341 idle_wait=106s [firecrackerVM=fcweb1 launchToHTTP200=133.526229ms probe=tcp] 
+2026-11-21 21:59:15 cycle 4 authgo-stock: waiting for idle
+2026-11-21 22:01:02 cycle 4 authgo-stock: HTTP OK curl_exit=0 time_total=4.072671s bytes=341 idle_wait=101s  
+2026-11-21 22:01:02 cycle 4 authgo-mine: waiting for idle
+2026-11-21 22:02:53 cycle 4 authgo-mine: HTTP OK curl_exit=0 time_total=1.621273s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=137.015458ms probe=tcp] 
+2026-11-21 22:02:53 cycle 5 authgo-stock: waiting for idle
+2026-11-21 22:04:39 cycle 5 authgo-stock: HTTP OK curl_exit=0 time_total=4.126124s bytes=341 idle_wait=101s  
+2026-11-21 22:04:39 cycle 5 authgo-mine: waiting for idle
+2026-11-21 22:06:30 cycle 5 authgo-mine: HTTP OK curl_exit=0 time_total=1.586618s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=131.511341ms probe=tcp] 
+2026-11-21 22:06:30 cycle 6 authgo-stock: waiting for idle
+2026-11-21 22:08:17 cycle 6 authgo-stock: HTTP OK curl_exit=0 time_total=4.126496s bytes=341 idle_wait=102s  
+2026-11-21 22:08:17 cycle 6 authgo-mine: waiting for idle
+2026-11-21 22:10:08 cycle 6 authgo-mine: HTTP OK curl_exit=0 time_total=1.597995s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=134.410003ms probe=tcp] 
+2026-11-21 22:10:08 cycle 7 authgo-stock: waiting for idle
+2026-11-21 22:11:55 cycle 7 authgo-stock: HTTP OK curl_exit=0 time_total=3.973820s bytes=341 idle_wait=102s  
+2026-11-21 22:11:55 cycle 7 authgo-mine: waiting for idle
+2026-11-21 22:14:03 cycle 7 authgo-mine: HTTP OK curl_exit=0 time_total=1.632869s bytes=341 idle_wait=125s [firecrackerVM=fcweb1 launchToHTTP200=137.315866ms probe=tcp] 
+2026-11-21 22:14:03 cycle 8 authgo-stock: waiting for idle
+2026-11-21 22:15:50 cycle 8 authgo-stock: HTTP OK curl_exit=0 time_total=4.012768s bytes=341 idle_wait=101s  
+2026-11-21 22:15:50 cycle 8 authgo-mine: waiting for idle
+2026-11-21 22:17:41 cycle 8 authgo-mine: HTTP OK curl_exit=0 time_total=1.678640s bytes=341 idle_wait=108s [firecrackerVM=fcweb1 launchToHTTP200=139.810426ms probe=tcp] 
+2026-11-21 22:17:41 done workload=authgo
