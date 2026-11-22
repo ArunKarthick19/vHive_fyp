@@ -1,0 +1,158 @@
+=== 2026-11-22 08:59:14.180
+No resources found in default namespace.
+=== 2026-11-22 08:59:15.255
+No resources found in default namespace.
+=== 2026-11-22 08:59:16.336
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   0/2   ContainerCreating   0     1s
+=== 2026-11-22 08:59:17.414
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     2s
+=== 2026-11-22 08:59:18.498
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   0/2   ContainerCreating   0     0s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running             0     3s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   0/2   ContainerCreating   0     0s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   0/2   ContainerCreating   0     0s
+=== 2026-11-22 08:59:19.584
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   0/2   ContainerCreating   0     1s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running             0     4s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   0/2   ContainerCreating   0     1s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   0/2   ContainerCreating   0     1s
+=== 2026-11-22 08:59:20.667
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     2s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     5s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     2s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     2s
+=== 2026-11-22 08:59:21.758
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     3s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     6s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     3s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     3s
+=== 2026-11-22 08:59:22.852
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     4s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     7s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     4s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     4s
+=== 2026-11-22 08:59:23.940
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     6s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     9s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     6s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     6s
+=== 2026-11-22 08:59:25.030
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     7s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     10s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     7s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     7s
+=== 2026-11-22 08:59:26.122
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     8s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     11s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     8s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     8s
+=== 2026-11-22 08:59:27.215
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     9s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     12s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     9s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     9s
+=== 2026-11-22 08:59:28.308
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     10s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     13s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     10s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     10s
+=== 2026-11-22 08:59:29.397
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     11s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     14s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     11s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     11s
+=== 2026-11-22 08:59:30.486
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     12s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     15s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     12s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     12s
+=== 2026-11-22 08:59:31.575
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     13s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     16s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     13s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     13s
+=== 2026-11-22 08:59:32.661
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     14s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     17s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     14s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     14s
+=== 2026-11-22 08:59:33.751
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     15s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     18s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     15s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     15s
+=== 2026-11-22 08:59:34.841
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     16s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     19s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     16s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     16s
+=== 2026-11-22 08:59:35.928
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     18s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     21s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     18s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     18s
+=== 2026-11-22 08:59:37.020
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     19s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     22s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     19s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     19s
+=== 2026-11-22 08:59:38.111
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     20s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     23s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     20s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     20s
+=== 2026-11-22 08:59:39.200
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     21s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     24s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     21s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     21s
+=== 2026-11-22 08:59:40.293
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     22s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     25s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     22s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     22s
+=== 2026-11-22 08:59:41.388
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     23s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     26s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     23s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     23s
+=== 2026-11-22 08:59:42.475
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     24s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     27s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     24s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     24s
+=== 2026-11-22 08:59:43.568
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     25s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     28s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     25s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     25s
+=== 2026-11-22 08:59:44.659
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     26s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     29s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     26s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     26s
+=== 2026-11-22 08:59:45.750
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     27s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     30s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     27s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     27s
+=== 2026-11-22 08:59:46.844
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     28s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     31s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     28s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     28s
+=== 2026-11-22 08:59:47.938
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     30s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     33s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     30s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     30s
+=== 2026-11-22 08:59:49.032
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     31s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     34s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     31s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     31s
+=== 2026-11-22 08:59:50.119
+aesgo-mine-00002-deployment-5d9667b74c-2fvj9   2/2   Running   0     32s
+aesgo-mine-00002-deployment-5d9667b74c-cfdmc   2/2   Running   0     35s
+aesgo-mine-00002-deployment-5d9667b74c-kjzkh   2/2   Running   0     32s
+aesgo-mine-00002-deployment-5d9667b74c-r6b8p   2/2   Running   0     32s

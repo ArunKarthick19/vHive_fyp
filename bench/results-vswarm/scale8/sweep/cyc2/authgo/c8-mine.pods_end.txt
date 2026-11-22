@@ -1,0 +1,4 @@
+NAME                                            READY   STATUS    RESTARTS   AGE   IP               NODE                                                      NOMINATED NODE   READINESS GATES
+authgo-mine-00002-deployment-84f54489f6-thvgf   2/2     Running   0          59s   192.168.77.161   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-mine-00002-deployment-84f54489f6-vsxp8   2/2     Running   0          60s   192.168.77.172   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-mine-00002-deployment-84f54489f6-xn4k5   2/2     Running   0          55s   192.168.77.174   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>

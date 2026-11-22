@@ -1,0 +1,26 @@
+{
+ "aesgo-mine-00002-deployment-5d9667b74c-m6mch": {
+  "creation": "2026-11-22T17:34:35Z",
+  "first_seen_epoch": 1795368876.4310248,
+  "ready_api": "2026-11-22T17:34:37Z",
+  "first_seen_ready_epoch": 1795368877.431109
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-5nkw9": {
+  "creation": "2026-11-22T17:34:38Z",
+  "first_seen_epoch": 1795368878.431189,
+  "ready_api": "2026-11-22T17:34:39Z",
+  "first_seen_ready_epoch": 1795368880.431301
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-t6qgj": {
+  "creation": "2026-11-22T17:34:38Z",
+  "first_seen_epoch": 1795368878.431189,
+  "ready_api": "2026-11-22T17:34:39Z",
+  "first_seen_ready_epoch": 1795368880.431301
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-wpqmt": {
+  "creation": "2026-11-22T17:34:38Z",
+  "first_seen_epoch": 1795368878.431189,
+  "ready_api": "2026-11-22T17:34:40Z",
+  "first_seen_ready_epoch": 1795368881.4313726
+ }
+}

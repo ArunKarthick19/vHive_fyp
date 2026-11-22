@@ -1,0 +1,6 @@
+NAME                                           READY   STATUS    RESTARTS   AGE   IP               NODE                                                      NOMINATED NODE   READINESS GATES
+aesgo-mine-00002-deployment-5d9667b74c-26c58   2/2     Running   0          57s   192.168.77.179   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+aesgo-mine-00002-deployment-5d9667b74c-5kn5x   2/2     Running   0          59s   192.168.77.176   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+aesgo-mine-00002-deployment-5d9667b74c-tk9xx   2/2     Running   0          61s   192.168.77.180   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+aesgo-mine-00002-deployment-5d9667b74c-vjgls   2/2     Running   0          55s   192.168.77.174   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+aesgo-mine-00002-deployment-5d9667b74c-zmrpx   2/2     Running   0          59s   192.168.77.178   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>

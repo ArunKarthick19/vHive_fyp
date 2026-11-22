@@ -1,0 +1,7 @@
+2026-11-22 08:59:14 gate: pods now: 0, firecracker: 0, ingress 10.103.200.78 host aesgo-mine.default.192.168.1.240.sslip.io
+2026-11-22 08:59:15.683 ghz start
+2026-11-22 08:59:45.912 ghz exit=0
+ok {'OK': 72383, 'Unavailable': 14} rps 2413.6 total_s 29.995628142
+max pods / ready in samples:
+awk: cmd. line:1: NR>1{if(\$2>p)p=\$2; if(\$3>r)r=\$3; if(\$6>c)c=\$6} END{print p, r, \"max host busy cores\", c}
+awk: cmd. line:1:         ^ backslash not last character on line

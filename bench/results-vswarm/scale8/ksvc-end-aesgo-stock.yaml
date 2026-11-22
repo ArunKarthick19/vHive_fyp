@@ -1,0 +1,66 @@
+apiVersion: serving.knative.dev/v1
+kind: Service
+metadata:
+  annotations:
+    kubectl.kubernetes.io/last-applied-configuration: |
+      {"apiVersion":"serving.knative.dev/v1","kind":"Service","metadata":{"annotations":{},"name":"aesgo-stock","namespace":"default"},"spec":{"template":{"metadata":{"annotations":{"autoscaling.knative.dev/max-scale":"1"}},"spec":{"containerConcurrency":0,"containers":[{"env":[{"name":"GUEST_PORT","value":"50051"},{"name":"GUEST_IMAGE","value":"docker.io/vhiveease/aes-go:latest"}],"image":"docker.io/vhiveease/aes-go:latest","name":"user-container","ports":[{"containerPort":50051,"name":"h2c","protocol":"TCP"}],"readinessProbe":{"successThreshold":1,"tcpSocket":{"port":0}}}],"enableServiceLinks":false,"timeoutSeconds":300}}}}
+    serving.knative.dev/creator: kubernetes-admin
+    serving.knative.dev/lastModifier: kubernetes-admin
+  creationTimestamp: "2026-11-21T05:26:23Z"
+  generation: 2
+  name: aesgo-stock
+  namespace: default
+  resourceVersion: "2452853"
+  uid: 7404a130-a0b2-47b7-a8dd-81db7de2cba9
+spec:
+  template:
+    metadata:
+      annotations:
+        autoscaling.knative.dev/max-scale: "8"
+        autoscaling.knative.dev/target: "4"
+        client.knative.dev/updateTimestamp: "2026-11-22T15:54:00Z"
+    spec:
+      containerConcurrency: 0
+      containers:
+      - env:
+        - name: GUEST_PORT
+          value: "50051"
+        - name: GUEST_IMAGE
+          value: docker.io/vhiveease/aes-go:latest
+        image: docker.io/vhiveease/aes-go:latest
+        name: user-container
+        ports:
+        - containerPort: 50051
+          name: h2c
+          protocol: TCP
+        readinessProbe:
+          successThreshold: 1
+          tcpSocket:
+            port: 0
+        resources: {}
+      enableServiceLinks: false
+      timeoutSeconds: 300
+  traffic:
+  - latestRevision: true
+    percent: 100
+status:
+  address:
+    url: http://aesgo-stock.default.svc.cluster.local
+  conditions:
+  - lastTransitionTime: "2026-11-22T15:54:05Z"
+    status: "True"
+    type: ConfigurationsReady
+  - lastTransitionTime: "2026-11-22T15:54:05Z"
+    status: "True"
+    type: Ready
+  - lastTransitionTime: "2026-11-22T15:54:05Z"
+    status: "True"
+    type: RoutesReady
+  latestCreatedRevisionName: aesgo-stock-00002
+  latestReadyRevisionName: aesgo-stock-00002
+  observedGeneration: 2
+  traffic:
+  - latestRevision: true
+    percent: 100
+    revisionName: aesgo-stock-00002
+  url: http://aesgo-stock.default.192.168.1.240.sslip.io

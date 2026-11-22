@@ -1,0 +1,8 @@
+{
+ "aesgo-stock-00002-deployment-67f45f9464-kjndd": {
+  "creation": "2026-11-22T16:07:01Z",
+  "first_seen_epoch": 1795363621.8742187,
+  "ready_api": "2026-11-22T16:07:05Z",
+  "first_seen_ready_epoch": 1795363625.87474
+ }
+}

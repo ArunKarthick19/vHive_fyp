@@ -225,3 +225,80 @@ python3 ~/fc-vm/vswarm/teardown.py ~/fc-vm/vswarm/out/r2/<fn>/cold      # needs 
 ```
 run_r2.sh = coldg.sh (CYCLES=8, unchanged) with pidwatch.py + fccdcap.sh in the background → wait for idle → stop watchers → statsg.py → mem.sh →
 sweep2.sh (KIND=grpc, c=1,2,4,8,16, 30+30 s, VARY=1) → plot.py.
+
+# Third run — autoscaling on (max-scale 8, target 4), aes-go and auth-go (Sun 2026-11-22 08:59–12:22 MST)
+
+## Setup
+* Services `aesgo-{stock,mine}`, `authgo-{stock,mine}` had already been updated (before this run, not by me) with `kn service update --scale-max 8 --concurrency-target 4`
+  → revision 00002 of each, 100 % traffic, annotations `max-scale: "8"`, `target: "4"`; GUEST_IMAGE `firecracker-vm://image` on mine, the normal image ref on stock.
+  Checked before the run and again after it: unchanged (`scale8/ksvc-end-*.yaml`). The cluster-wide autoscaler config is all defaults (stable window 60 s,
+  scale-to-zero grace 30 s, target utilisation 70 %). The harness does not deploy, update or scale anything. It only reads ksvc URLs and pods.
+* The earlier "max-scale typo" (`autoscaling.knative.devmax-scale`): the live revision 00001 objects of all four services show a correctly spelled
+  `autoscaling.knative.dev/max-scale: "1"`, so I could not see the typo in the cluster. In any case the pod count is recorded in every cell below.
+* Method = sweep2.sh (its `run_load`/ghz invocation copied verbatim into `scale8.sh`): every cell starts from zero pods (node-wide idle check: no pods
+  in `default`, no firecracker process, no fcweb tap/socket, 3 stable polls + 5 s), then 30 s warm-up (this includes the cold start), then 30 s measured. Closed loop,
+  c workers and c connections, stock then mine for each (fn, c). c = 1, 2, 4, 8, 16, 32. 3 cycles, cycle-major (cycle → fn → c → mode) = 72 cells. **All 72 ran;
+  none were skipped, re-run or dropped.**
+* Added: `podsamp.py` samples 1 Hz per cell (pods / Ready / Terminating of that service, firecracker process count, host busy cores over the last second from
+  `/proc/stat`) and records every pod's API `creationTimestamp` and Ready `lastTransitionTime`.
+* Gate (one ghz, c=16, 30 s, aesgo-mine from zero, `kubectl get pods` every 1 s): 0 → 1 pod (Ready about 2 s after the load started) → 4 pods (all Ready by about 5 s), stayed at 4.
+  72,383 OK / 14 Unavailable, 2,414 rps including the cold start, host peak 10.2 of 20 cores. `scale8/gate/`.
+
+## Results (n = 3 per cell; RPS = OK/s in the 30 s measured window; ranges are min–max over the 3 cycles)
+| fn | c | stock RPS median (range) | mine RPS median (range) | stock pods at end of warm-up / end of measured | mine pods at end of warm-up / end of measured | stock p50 / p99 ms | mine p50 / p99 ms | old 1-pod RPS stock / mine (n=1) |
+|---|---|---|---|---|---|---|---|---|
+| aes-go | 1 | 279.2 (277.4–280.0) | 284.3 (283.9–285.1) | 1 / 1 | 1 / 1 | 3.56–3.59 / 4.48–4.60 | 3.50 / 4.38–4.53 | 260.3 / 263.8 |
+| aes-go | 2 | 487.6 (483.4–510.5) | 520.1 (517.4–521.1) | 1 / 1 | 1 / 1 | 3.89–4.08 / 5.36–5.66 | 3.83 / 5.25–5.31 | 462.5 / 474.3 |
+| aes-go | 4 | 1275.7 (1261.9–1290.9) | 1310.3 (1295.9–1324.8) | 2 / 2 | 2 / 2 | 2.83–2.88 / 4.99–5.20 | 2.76–2.82 / 4.84–5.02 | 858.6 / 874.6 |
+| aes-go | 8 | 2275.4 (2240.3–2275.8) | 2288.8 (2288.0–2289.9) | 3 / 3 | **2 / 2** | 3.27–3.33 / 6.10–6.21 | 3.24 / 5.98–6.11 | 2054.4 / 2103.1 |
+| aes-go | 16 | 2492.6 (2489.5–2497.0) | 2524.5 (2521.6–2533.2) | 5–6 / 5–6 | **4–5 / 4–5** | 6.17–6.18 / 10.64–10.83 | 6.07–6.09 / 10.60–10.78 | 2564.7 / 2591.0 |
+| aes-go | 32 | 2571.7 (2569.5–2575.5) | 2611.3 (2577.4–2613.5) | 8 / 8 | 7–8 / 7–8 | 12.10–12.14 / 19.48–19.79 | 11.91–12.08 / 19.37–19.52 | – |
+| auth-go | 1 | 275.1 (274.7–275.9) | 280.3 (280.1–280.8) | 1 / 1 | 1 / 1 | 3.61–3.62 / 4.56–4.58 | 3.54–3.55 / 4.42–4.53 | 256.0 / 261.6 |
+| auth-go | 2 | 486.1 (483.4–505.5) | 488.5 (480.9–514.8) | 1 / 1 | 1 / 1 | 3.92–4.06 / 5.50–5.63 | 3.87–4.16 / 5.32–5.70 | 459.6 / 440.7 |
+| auth-go | 4 | 1251.9 (1233.3–1257.2) | 1277.0 (**952.7**–1315.5) | 2 / 2 | **1–2 / 1–2** | 2.90–2.96 / 5.19–5.31 | 2.78–3.79 / 4.81–7.39 | 856.5 / 859.8 |
+| auth-go | 8 | 2254.5 (2218.1–2268.1) | 2272.8 (2259.2–2281.7) | 3 / 3 | 3 / 3 | 3.28–3.37 / 6.09–6.20 | 3.26–3.29 / 6.10–6.28 | 2004.7 / 2050.7 |
+| auth-go | 16 | 2454.1 (2453.0–2463.2) | 2509.8 (2492.3–2513.1) | 6 / 6 | **4–5 / 4–5** | 6.25–6.28 / 10.84–11.01 | 6.11–6.16 / 10.54–10.70 | 2534.8 / 2565.8 |
+| auth-go | 32 | 2553.7 (2545.2–2554.6) | 2566.6 (2553.4–2568.9) | 8 / 8 | 8 / 8 | 12.18–12.21 / 19.65–20.04 | 12.12–12.20 / 19.69–19.92 | – |
+
+* **Errors**: only `Unavailable … error reading from server`, 0–32 per cell (≤ c). This is the same end-of-run connection close as in the earlier runs.
+* **Pod count never changed between the end of warm-up and the end of the measured window** in any cell, so every measured window ran at a fixed pod count.
+* **Time to Ready** (per pod, relative to the start of ghz; full lists in `scale8/sweep/summary.md` and `cells_full.csv`). First pod: stock 2.7–4.6 s from the API timestamp
+  (3.5–5.5 s when the sampler first saw it Ready), mine 0.3–2.3 s (1.5–3.5 s). Additional pods: stock 3.8–10.6 s, mine 0.9–7.6 s. The API Ready timestamp has whole-second
+  resolution, so these are ±1 s. Some mine values below 1 s are earlier than the ~1.6–1.75 s cold start measured before. I have not checked whether that is only
+  the resolution or something else.
+* **Host CPU** (20 logical CPUs; ghz runs on the same node): the busiest second in any measured window was 10.0 cores busy (c=32). During warm-up the peak was 16.0
+  (stock c=32 cycle 1, while scaling out to 8 pods; 11 cells had a warm-up peak ≥ 12). By this `/proc/stat` measure the node was **not saturated** during any measured window.
+
+## Compared with the old max-scale-1 runs (old = second run, n=1 per cell, always 1 pod)
+* **c=16: about 2–3 % *lower* with 4–6 pods than with 1 pod.** aes 2,493 vs 2,565 (stock), 2,525 vs 2,591 (mine); auth 2,454 vs 2,535, 2,510 vs 2,566. p99 is about the same
+  (10.5–11.0 ms vs 10.7–11.0). With 8 pods at c=32, RPS is only 2,546–2,614, so RPS levels off at ~2,450–2,610 from c=16 on whatever the pod count. Host CPU was at most
+  half busy. **I did not find the bottleneck** (see "unmeasured").
+* c=4 (2 pods): +46–50 % vs old (1,234–1,325 vs 857–875). c=8 (2–3 pods): +9–13 %. c=1 and c=2 stay at 1 pod but are still 4–8 % above the old run; the old value is n=1, and
+  the reason is not measured.
+* **Stock vs mine, different from before.** In the earlier 1-pod runs the two were within a few % with no consistent direction. Here, (a) mine's median RPS is higher than stock's in all
+  12 (fn, c) pairs, by 0.5–6.7 % (8 of 12 pairs have non-overlapping ranges). (b) **Mine scaled to fewer pods than stock in several cells:** aes c=8 (2 vs 3, all 3 cycles),
+  c=16 for both functions (4–5 vs 5–6), aes c=32 (7–8 vs 8). Also one authgo-mine c=4 cell (cycle 2) never got a second pod. It ran the full cell on 1 pod at 953 rps, close
+  to the old 1-pod 860. The cause of either difference is **not measured**. n=3, and stock always ran just before mine for each (fn, c).
+
+## What is unmeasured / not done
+* What limits throughput at ~2.5k rps from c=16 on (ingress/activator/queue-proxy CPU, ghz, network, per-pod request distribution): none of these were measured separately.
+* Why mine reached fewer pods than stock at c=8/16 and why one authgo-mine c=4 cell stayed at 1 pod (autoscaler metrics/decisions were not logged).
+* How requests were spread across pods. Firecracker RSS with several VMs: unlike sweep2.sh, scale8.sh did **not** take a `ps` snapshot.
+* Teardown timing with several VMs, and the time-varying (vary.py) run with autoscaling: not run.
+* fib-python excluded as instructed. Mode order was not swapped between cycles (stock first every time, as in the earlier harness).
+
+## Deviations / things to know
+* Run in a new tmux session `scale8` (as this task asked; earlier runs used nohup). The daemon tmux sessions were not touched. Log: `scale8/run.log`, per-cell `scale8/sweep/sweep.log`.
+* Results live in `bench/results-vswarm/scale8/` (next to p0–p3/r2), not at the repo root. All ghz JSON files (>100 KB) are **gzipped** (591 MB raw → 68 MB). Earlier runs committed them raw.
+* The gate script's final one-line awk summary failed (quoting bug). The raw samples it should have summarised (`gate/gate.samples.csv`, `kubectl_pods_1s.log`) are complete and were read directly.
+* The sampler starts 1.5 s before ghz, so the first sample of each cell shows 0 pods. Pod counts at the end of warm-up / measured are the last 1 Hz sample before that moment.
+  `pods_end_kubectl` in `cells.csv` is a direct `kubectl` count taken right after the measured window. It agrees in every cell.
+* After the last cell, 5 authgo-mine pods were still scaling down (expected, since the stable window is 60 s).
+
+## Exact commands
+```bash
+bash ~/fc-vm/vswarm/scale8_gate.sh <repo>/bench/results-vswarm/scale8/gate | tee scale8/gate.log            # in tmux session scale8, 08:59:14 MST
+OUT=<repo>/bench/results-vswarm/scale8/sweep DEADLINE=<now+7h> bash ~/fc-vm/vswarm/scale8.sh > scale8/run.log 2>&1   # tmux scale8:sweep, 08:59:59–12:21:57
+python3 ~/fc-vm/vswarm/analyze_scale8.py scale8/sweep r2      # -> scale8/sweep/{cells_full.csv,summary.md}
+```
+Scripts: `bench/results-vswarm/scripts/{scale8.sh,scale8_gate.sh,podsamp.py,analyze_scale8.py}`.

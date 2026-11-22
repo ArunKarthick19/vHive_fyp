@@ -1,0 +1,9 @@
+NAME                                            READY   STATUS    RESTARTS   AGE   IP               NODE                                                      NOMINATED NODE   READINESS GATES
+authgo-stock-00002-deployment-ff6c5fc57-4ggw5   2/2     Running   0          58s   192.168.77.181   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-756dd   2/2     Running   0          58s   192.168.77.185   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-7xdhw   2/2     Running   0          61s   192.168.77.180   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-jlfc4   2/2     Running   0          58s   192.168.77.187   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-k7bs4   2/2     Running   0          58s   192.168.77.190   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-rx87j   2/2     Running   0          58s   192.168.77.182   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-zml7h   2/2     Running   0          58s   192.168.77.186   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>
+authgo-stock-00002-deployment-ff6c5fc57-znmck   2/2     Running   0          58s   192.168.77.184   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>

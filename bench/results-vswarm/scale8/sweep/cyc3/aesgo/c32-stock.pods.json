@@ -1,0 +1,50 @@
+{
+ "aesgo-stock-00002-deployment-67f45f9464-hcg7b": {
+  "creation": "2026-11-22T18:44:37Z",
+  "first_seen_epoch": 1795373078.1572454,
+  "ready_api": "2026-11-22T18:44:42Z",
+  "first_seen_ready_epoch": 1795373082.1576393
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-599cm": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:46Z",
+  "first_seen_ready_epoch": 1795373087.1584675
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-5nrnj": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:44Z",
+  "first_seen_ready_epoch": 1795373084.1582248
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-5tvrd": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:44Z",
+  "first_seen_ready_epoch": 1795373085.1583004
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-hsr74": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:44Z",
+  "first_seen_ready_epoch": 1795373085.1583004
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-lgcf4": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:44Z",
+  "first_seen_ready_epoch": 1795373084.1582248
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-nl8zr": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:45Z",
+  "first_seen_ready_epoch": 1795373086.1583812
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-qv54r": {
+  "creation": "2026-11-22T18:44:39Z",
+  "first_seen_epoch": 1795373080.1574464,
+  "ready_api": "2026-11-22T18:44:44Z",
+  "first_seen_ready_epoch": 1795373084.1582248
+ }
+}

@@ -1,0 +1,44 @@
+{
+ "aesgo-mine-00002-deployment-5d9667b74c-b8nmb": {
+  "creation": "2026-11-22T18:47:27Z",
+  "first_seen_epoch": 1795373247.9703777,
+  "ready_api": "2026-11-22T18:47:28Z",
+  "first_seen_ready_epoch": 1795373248.9704523
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-92p97": {
+  "creation": "2026-11-22T18:47:30Z",
+  "first_seen_epoch": 1795373250.970628,
+  "ready_api": "2026-11-22T18:47:33Z",
+  "first_seen_ready_epoch": 1795373253.970931
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-nxpn7": {
+  "creation": "2026-11-22T18:47:30Z",
+  "first_seen_epoch": 1795373250.970628,
+  "ready_api": "2026-11-22T18:47:32Z",
+  "first_seen_ready_epoch": 1795373252.970856
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-qbqc6": {
+  "creation": "2026-11-22T18:47:30Z",
+  "first_seen_epoch": 1795373250.970628,
+  "ready_api": "2026-11-22T18:47:32Z",
+  "first_seen_ready_epoch": 1795373252.970856
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-vqq48": {
+  "creation": "2026-11-22T18:47:30Z",
+  "first_seen_epoch": 1795373250.970628,
+  "ready_api": "2026-11-22T18:47:32Z",
+  "first_seen_ready_epoch": 1795373252.970856
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-xbth2": {
+  "creation": "2026-11-22T18:47:30Z",
+  "first_seen_epoch": 1795373250.970628,
+  "ready_api": "2026-11-22T18:47:31Z",
+  "first_seen_ready_epoch": 1795373251.9707832
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-zlfv4": {
+  "creation": "2026-11-22T18:47:30Z",
+  "first_seen_epoch": 1795373250.970628,
+  "ready_api": "2026-11-22T18:47:32Z",
+  "first_seen_ready_epoch": 1795373252.970856
+ }
+}

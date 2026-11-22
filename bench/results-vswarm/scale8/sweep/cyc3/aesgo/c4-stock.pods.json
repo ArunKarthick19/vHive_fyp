@@ -1,0 +1,14 @@
+{
+ "aesgo-stock-00002-deployment-67f45f9464-b56b5": {
+  "creation": "2026-11-22T18:27:49Z",
+  "first_seen_epoch": 1795372070.0886028,
+  "ready_api": "2026-11-22T18:27:53Z",
+  "first_seen_ready_epoch": 1795372073.0889437
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-cqdpm": {
+  "creation": "2026-11-22T18:27:53Z",
+  "first_seen_epoch": 1795372074.0890038,
+  "ready_api": "2026-11-22T18:27:58Z",
+  "first_seen_ready_epoch": 1795372079.0894303
+ }
+}

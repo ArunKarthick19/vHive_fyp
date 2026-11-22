@@ -1,0 +1,38 @@
+{
+ "authgo-stock-00002-deployment-ff6c5fc57-rs6p5": {
+  "creation": "2026-11-22T19:12:22Z",
+  "first_seen_epoch": 1795374743.3613694,
+  "ready_api": "2026-11-22T19:12:26Z",
+  "first_seen_ready_epoch": 1795374747.3617337
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-hhw5p": {
+  "creation": "2026-11-22T19:12:24Z",
+  "first_seen_epoch": 1795374744.3614748,
+  "ready_api": "2026-11-22T19:12:28Z",
+  "first_seen_ready_epoch": 1795374749.3618863
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-xt9c8": {
+  "creation": "2026-11-22T19:12:24Z",
+  "first_seen_epoch": 1795374744.3614748,
+  "ready_api": "2026-11-22T19:12:28Z",
+  "first_seen_ready_epoch": 1795374749.3618863
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-7fc94": {
+  "creation": "2026-11-22T19:12:26Z",
+  "first_seen_epoch": 1795374746.3616571,
+  "ready_api": "2026-11-22T19:12:31Z",
+  "first_seen_ready_epoch": 1795374752.362081
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-g6gpm": {
+  "creation": "2026-11-22T19:12:26Z",
+  "first_seen_epoch": 1795374746.3616571,
+  "ready_api": "2026-11-22T19:12:30Z",
+  "first_seen_ready_epoch": 1795374751.3620012
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-xslmw": {
+  "creation": "2026-11-22T19:12:28Z",
+  "first_seen_epoch": 1795374748.3618104,
+  "ready_api": "2026-11-22T19:12:33Z",
+  "first_seen_ready_epoch": 1795374754.362228
+ }
+}

@@ -1,0 +1,32 @@
+{
+ "aesgo-stock-00002-deployment-67f45f9464-p4dg4": {
+  "creation": "2026-11-22T17:31:46Z",
+  "first_seen_epoch": 1795368706.9226513,
+  "ready_api": "2026-11-22T17:31:50Z",
+  "first_seen_ready_epoch": 1795368710.9231057
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-jqlgk": {
+  "creation": "2026-11-22T17:31:47Z",
+  "first_seen_epoch": 1795368707.9227393,
+  "ready_api": "2026-11-22T17:31:52Z",
+  "first_seen_ready_epoch": 1795368712.9232583
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-sw7nf": {
+  "creation": "2026-11-22T17:31:47Z",
+  "first_seen_epoch": 1795368707.9227393,
+  "ready_api": "2026-11-22T17:31:52Z",
+  "first_seen_ready_epoch": 1795368712.9232583
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-7wj6r": {
+  "creation": "2026-11-22T17:31:49Z",
+  "first_seen_epoch": 1795368709.9230313,
+  "ready_api": "2026-11-22T17:31:54Z",
+  "first_seen_ready_epoch": 1795368714.9234076
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-k876f": {
+  "creation": "2026-11-22T17:31:49Z",
+  "first_seen_epoch": 1795368709.9230313,
+  "ready_api": "2026-11-22T17:31:54Z",
+  "first_seen_ready_epoch": 1795368714.9234076
+ }
+}

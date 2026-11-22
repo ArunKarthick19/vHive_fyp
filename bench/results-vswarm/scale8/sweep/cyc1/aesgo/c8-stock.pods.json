@@ -1,0 +1,20 @@
+{
+ "aesgo-stock-00002-deployment-67f45f9464-pvgj9": {
+  "creation": "2026-11-22T16:18:09Z",
+  "first_seen_epoch": 1795364289.6886866,
+  "ready_api": "2026-11-22T16:18:13Z",
+  "first_seen_ready_epoch": 1795364293.689108
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-vzsz4": {
+  "creation": "2026-11-22T16:18:09Z",
+  "first_seen_epoch": 1795364289.6886866,
+  "ready_api": "2026-11-22T16:18:13Z",
+  "first_seen_ready_epoch": 1795364293.689108
+ },
+ "aesgo-stock-00002-deployment-67f45f9464-xr256": {
+  "creation": "2026-11-22T16:18:09Z",
+  "first_seen_epoch": 1795364289.6886866,
+  "ready_api": "2026-11-22T16:18:13Z",
+  "first_seen_ready_epoch": 1795364293.689108
+ }
+}

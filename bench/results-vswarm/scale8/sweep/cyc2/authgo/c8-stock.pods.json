@@ -1,0 +1,20 @@
+{
+ "authgo-stock-00002-deployment-ff6c5fc57-n4r6l": {
+  "creation": "2026-11-22T18:00:02Z",
+  "first_seen_epoch": 1795370403.1245925,
+  "ready_api": "2026-11-22T18:00:06Z",
+  "first_seen_ready_epoch": 1795370407.1249871
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-58xm2": {
+  "creation": "2026-11-22T18:00:04Z",
+  "first_seen_epoch": 1795370405.1248295,
+  "ready_api": "2026-11-22T18:00:09Z",
+  "first_seen_ready_epoch": 1795370410.1252155
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-x7gzq": {
+  "creation": "2026-11-22T18:00:06Z",
+  "first_seen_epoch": 1795370407.1249871,
+  "ready_api": "2026-11-22T18:00:11Z",
+  "first_seen_ready_epoch": 1795370412.12535
+ }
+}

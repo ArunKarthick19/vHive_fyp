@@ -1,0 +1,14 @@
+{
+ "aesgo-mine-00002-deployment-5d9667b74c-jqskm": {
+  "creation": "2026-11-22T16:15:24Z",
+  "first_seen_epoch": 1795364124.8310828,
+  "ready_api": "2026-11-22T16:15:26Z",
+  "first_seen_ready_epoch": 1795364126.8313084
+ },
+ "aesgo-mine-00002-deployment-5d9667b74c-trcqk": {
+  "creation": "2026-11-22T16:15:26Z",
+  "first_seen_epoch": 1795364126.8313084,
+  "ready_api": "2026-11-22T16:15:28Z",
+  "first_seen_ready_epoch": 1795364128.831476
+ }
+}

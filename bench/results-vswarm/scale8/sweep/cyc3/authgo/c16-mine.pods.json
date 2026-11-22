@@ -1,0 +1,26 @@
+{
+ "authgo-mine-00002-deployment-84f54489f6-92wkn": {
+  "creation": "2026-11-22T19:15:12Z",
+  "first_seen_epoch": 1795374913.0633872,
+  "ready_api": "2026-11-22T19:15:14Z",
+  "first_seen_ready_epoch": 1795374915.0635552
+ },
+ "authgo-mine-00002-deployment-84f54489f6-vlnqj": {
+  "creation": "2026-11-22T19:15:13Z",
+  "first_seen_epoch": 1795374914.0634627,
+  "ready_api": "2026-11-22T19:15:15Z",
+  "first_seen_ready_epoch": 1795374916.063629
+ },
+ "authgo-mine-00002-deployment-84f54489f6-wc7b8": {
+  "creation": "2026-11-22T19:15:13Z",
+  "first_seen_epoch": 1795374914.0634627,
+  "ready_api": "2026-11-22T19:15:16Z",
+  "first_seen_ready_epoch": 1795374917.0637128
+ },
+ "authgo-mine-00002-deployment-84f54489f6-sjn25": {
+  "creation": "2026-11-22T19:15:15Z",
+  "first_seen_epoch": 1795374916.063629,
+  "ready_api": "2026-11-22T19:15:18Z",
+  "first_seen_ready_epoch": 1795374919.0638783
+ }
+}

@@ -1,0 +1,2 @@
+NAME                                            READY   STATUS    RESTARTS   AGE   IP               NODE                                                      NOMINATED NODE   READINESS GATES
+aesgo-stock-00002-deployment-67f45f9464-lqwsh   2/2     Running   0          60s   192.168.77.159   node-000.arun1903-326455.ntu-cloud-pg0.utah.cloudlab.us   <none>           <none>

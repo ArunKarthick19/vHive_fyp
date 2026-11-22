@@ -1,0 +1,146 @@
+2026-11-22 08:59:59 start fns='aesgo authgo' concs='1 2 4 8 16 32' cycles=3 warm=30s measure=30s ingress=10.103.200.78 deadline=15:59:59
+2026-11-22 09:00:00 cyc1 aesgo-stock c=1: waiting for idle
+2026-11-22 09:02:29 cyc1 aesgo-stock c=1: warm-up rps=241.2 ok=7236 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 277.4,3.59,4.60,0,8322,,7.61,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.99,2.61
+2026-11-22 09:02:29 cyc1 aesgo-mine c=1: waiting for idle
+2026-11-22 09:05:18 cyc1 aesgo-mine c=1: warm-up rps=272.8 ok=8185 err=0 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 285.1,3.50,4.38,0,8553,,7.67,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.28,2.61
+2026-11-22 09:05:18 cyc1 aesgo-stock c=2: waiting for idle
+2026-11-22 09:08:02 cyc1 aesgo-stock c=2: warm-up rps=428.4 ok=12852 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 483.4,4.08,5.60,2,14502,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,12.38,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=15.49,3.40
+2026-11-22 09:08:02 cyc1 aesgo-mine c=2: waiting for idle
+2026-11-22 09:10:51 cyc1 aesgo-mine c=2: warm-up rps=509.0 ok=15270 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 517.4,3.83,5.31,2,15523,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,13.52,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=14.52,3.65
+2026-11-22 09:10:51 cyc1 aesgo-stock c=4: waiting for idle
+2026-11-22 09:13:36 cyc1 aesgo-stock c=4: warm-up rps=1083.0 ok=32487 err=3 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1290.9,2.83,4.99,3,38727,Unavailable=3;err:rpc error: code = Unavailable desc = error reading from serv=1,27.26,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=37.75,6.60
+2026-11-22 09:13:36 cyc1 aesgo-mine c=4: waiting for idle
+2026-11-22 09:16:25 cyc1 aesgo-mine c=4: warm-up rps=1258.6 ok=37755 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1324.8,2.76,4.84,4,39741,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,27.92,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=36.42,6.67
+2026-11-22 09:16:25 cyc1 aesgo-stock c=8: waiting for idle
+2026-11-22 09:19:10 cyc1 aesgo-stock c=8: warm-up rps=1919.3 ok=57577 err=7 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2240.3,3.33,6.21,8,67202,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,35.61,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=52.51,8.64
+2026-11-22 09:19:10 cyc1 aesgo-mine c=8: waiting for idle
+2026-11-22 09:22:02 cyc1 aesgo-mine c=8: warm-up rps=2102.9 ok=63081 err=7 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2289.9,3.24,5.98,8,68693,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,37.32,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=44.64,8.42
+2026-11-22 09:22:02 cyc1 aesgo-stock c=16: waiting for idle
+2026-11-22 09:24:46 cyc1 aesgo-stock c=16: warm-up rps=2069.2 ok=62068 err=16 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2489.5,6.18,10.83,13,74675,Unavailable=13;err:rpc error: code = Unavailable desc = error reading from serv=1,36.28,30.00 | pods_end=6 vms=6 fc_cpu_s,host_busy_cores=65.58,9.30
+2026-11-22 09:24:46 cyc1 aesgo-mine c=16: waiting for idle
+2026-11-22 09:27:36 cyc1 aesgo-mine c=16: warm-up rps=2373.5 ok=71200 err=16 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2521.6,6.09,10.64,14,75639,Unavailable=14;err:rpc error: code = Unavailable desc = error reading from serv=1,36.61,30.00 | pods_end=5 vms=5 fc_cpu_s,host_busy_cores=59.70,9.08
+2026-11-22 09:27:36 cyc1 aesgo-stock c=32: waiting for idle
+2026-11-22 09:30:21 cyc1 aesgo-stock c=32: warm-up rps=2166.2 ok=64974 err=31 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2569.5,12.14,19.48,31,77072,Unavailable=31;err:rpc error: code = Unavailable desc = error reading from serv=1,36.26,30.00 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=72.33,9.57
+2026-11-22 09:30:21 cyc1 aesgo-mine c=32: waiting for idle
+2026-11-22 09:33:11 cyc1 aesgo-mine c=32: warm-up rps=2524.6 ok=75722 err=32 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2611.3,11.92,19.46,27,78326,Unavailable=27;err:rpc error: code = Unavailable desc = error reading from serv=1,36.50,30.00 | pods_end=7 vms=7 fc_cpu_s,host_busy_cores=65.88,9.25
+2026-11-22 09:33:11 cyc1 authgo-stock c=1: waiting for idle
+2026-11-22 09:35:54 cyc1 authgo-stock c=1: warm-up rps=241.5 ok=7246 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 275.9,3.61,4.58,1,8277,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.46,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=12.26,2.55
+2026-11-22 09:35:54 cyc1 authgo-mine c=1: waiting for idle
+2026-11-22 09:38:43 cyc1 authgo-mine c=1: warm-up rps=270.7 ok=8122 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 280.1,3.55,4.42,1,8404,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.60,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.60,2.50
+2026-11-22 09:38:43 cyc1 authgo-stock c=2: waiting for idle
+2026-11-22 09:41:28 cyc1 authgo-stock c=2: warm-up rps=419.6 ok=12587 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 483.4,4.06,5.62,2,14503,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,12.42,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=16.11,3.43
+2026-11-22 09:41:28 cyc1 authgo-mine c=2: waiting for idle
+2026-11-22 09:44:17 cyc1 authgo-mine c=2: warm-up rps=470.3 ok=14110 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 480.9,4.16,5.69,2,14427,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,12.43,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=14.88,3.38
+2026-11-22 09:44:17 cyc1 authgo-stock c=4: waiting for idle
+2026-11-22 09:47:02 cyc1 authgo-stock c=4: warm-up rps=1070.2 ok=32103 err=3 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1257.2,2.90,5.19,4,37714,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,26.94,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=38.23,6.66
+2026-11-22 09:47:02 cyc1 authgo-mine c=4: waiting for idle
+2026-11-22 09:50:23 cyc1 authgo-mine c=4: warm-up rps=1222.6 ok=36674 err=3 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1277.0,2.87,5.06,4,38307,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,27.30,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=37.22,6.71
+2026-11-22 09:50:23 cyc1 authgo-stock c=8: waiting for idle
+2026-11-22 09:53:08 cyc1 authgo-stock c=8: warm-up rps=1889.1 ok=56670 err=6 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2268.1,3.28,6.09,8,68038,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,35.35,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=53.80,8.63
+2026-11-22 09:53:08 cyc1 authgo-mine c=8: waiting for idle
+2026-11-22 09:55:57 cyc1 authgo-mine c=8: warm-up rps=2144.3 ok=64325 err=7 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2272.8,3.28,6.10,7,68181,Unavailable=7;err:rpc error: code = Unavailable desc = error reading from serv=1,35.42,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=51.48,8.60
+2026-11-22 09:55:57 cyc1 authgo-stock c=16: waiting for idle
+2026-11-22 09:58:42 cyc1 authgo-stock c=16: warm-up rps=2044.7 ok=61334 err=14 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2453.0,6.28,10.84,15,73582,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,35.99,30.00 | pods_end=6 vms=6 fc_cpu_s,host_busy_cores=66.84,9.25
+2026-11-22 09:58:42 cyc1 authgo-mine c=16: waiting for idle
+2026-11-22 10:01:32 cyc1 authgo-mine c=16: warm-up rps=2250.3 ok=67498 err=16 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2492.3,6.16,10.70,15,74762,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,36.21,30.00 | pods_end=5 vms=5 fc_cpu_s,host_busy_cores=60.89,9.10
+2026-11-22 10:01:32 cyc1 authgo-stock c=32: waiting for idle
+2026-11-22 10:04:17 cyc1 authgo-stock c=32: warm-up rps=2163.4 ok=64891 err=31 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2554.6,12.18,19.65,31,76624,Unavailable=31;err:rpc error: code = Unavailable desc = error reading from serv=1,35.81,29.99 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=73.51,9.49
+2026-11-22 10:04:17 cyc1 authgo-mine c=32: waiting for idle
+2026-11-22 10:07:04 cyc1 authgo-mine c=32: warm-up rps=2458.1 ok=73731 err=32 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2568.9,12.12,19.92,32,77056,Unavailable=32;err:rpc error: code = Unavailable desc = error reading from serv=1,35.77,30.00 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=69.04,9.33
+2026-11-22 10:07:04 cyc2 aesgo-stock c=1: waiting for idle
+2026-11-22 10:09:50 cyc2 aesgo-stock c=1: warm-up rps=244.8 ok=7345 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 279.2,3.56,4.48,1,8375,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.57,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.93,2.50
+2026-11-22 10:09:50 cyc2 aesgo-mine c=1: waiting for idle
+2026-11-22 10:12:39 cyc2 aesgo-mine c=1: warm-up rps=272.3 ok=8169 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 284.3,3.50,4.40,1,8529,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.72,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.40,2.55
+2026-11-22 10:12:39 cyc2 aesgo-stock c=2: waiting for idle
+2026-11-22 10:15:22 cyc2 aesgo-stock c=2: warm-up rps=424.8 ok=12745 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 510.5,3.89,5.36,2,15314,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,13.28,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=15.27,3.62
+2026-11-22 10:15:22 cyc2 aesgo-mine c=2: waiting for idle
+2026-11-22 10:18:30 cyc2 aesgo-mine c=2: warm-up rps=457.2 ok=13717 err=0 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 521.1,3.83,5.25,2,15634,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,13.53,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=14.63,3.60
+2026-11-22 10:18:30 cyc2 aesgo-stock c=4: waiting for idle
+2026-11-22 10:21:15 cyc2 aesgo-stock c=4: warm-up rps=1093.2 ok=32794 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1275.7,2.85,5.09,3,38267,Unavailable=3;err:rpc error: code = Unavailable desc = error reading from serv=1,27.28,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=37.68,6.62
+2026-11-22 10:21:15 cyc2 aesgo-mine c=4: waiting for idle
+2026-11-22 10:24:30 cyc2 aesgo-mine c=4: warm-up rps=1222.5 ok=36672 err=3 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1295.9,2.82,5.02,3,38876,Unavailable=3;err:rpc error: code = Unavailable desc = error reading from serv=1,27.52,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=36.58,6.70
+2026-11-22 10:24:30 cyc2 aesgo-stock c=8: waiting for idle
+2026-11-22 10:27:15 cyc2 aesgo-stock c=8: warm-up rps=1933.5 ok=58001 err=8 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2275.4,3.27,6.10,7,68255,Unavailable=7;err:rpc error: code = Unavailable desc = error reading from serv=1,35.33,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=52.43,8.62
+2026-11-22 10:27:15 cyc2 aesgo-mine c=8: waiting for idle
+2026-11-22 10:30:05 cyc2 aesgo-mine c=8: warm-up rps=2165.1 ok=64947 err=8 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2288.0,3.24,6.11,8,68636,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,37.16,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=44.49,8.40
+2026-11-22 10:30:05 cyc2 aesgo-stock c=16: waiting for idle
+2026-11-22 10:32:47 cyc2 aesgo-stock c=16: warm-up rps=2165.3 ok=64950 err=14 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2497.0,6.18,10.64,16,74899,Unavailable=16;err:rpc error: code = Unavailable desc = error reading from serv=1,36.62,30.00 | pods_end=5 vms=5 fc_cpu_s,host_busy_cores=63.17,9.12
+2026-11-22 10:32:47 cyc2 aesgo-mine c=16: waiting for idle
+2026-11-22 10:35:37 cyc2 aesgo-mine c=16: warm-up rps=2394.7 ok=71832 err=16 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2533.2,6.07,10.78,15,75988,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,37.35,30.00 | pods_end=4 vms=4 fc_cpu_s,host_busy_cores=56.56,9.04
+2026-11-22 10:35:37 cyc2 aesgo-stock c=32: waiting for idle
+2026-11-22 10:38:20 cyc2 aesgo-stock c=32: warm-up rps=2201.2 ok=66024 err=32 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2575.5,12.10,19.53,22,77251,Unavailable=22;err:rpc error: code = Unavailable desc = error reading from serv=1,36.09,29.99 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=71.93,9.45
+2026-11-22 10:38:20 cyc2 aesgo-mine c=32: waiting for idle
+2026-11-22 10:41:35 cyc2 aesgo-mine c=32: warm-up rps=2466.4 ok=73979 err=31 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2577.4,12.08,19.52,32,77307,Unavailable=32;err:rpc error: code = Unavailable desc = error reading from serv=1,36.36,29.99 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=68.06,9.42
+2026-11-22 10:41:36 cyc2 authgo-stock c=1: waiting for idle
+2026-11-22 10:44:21 cyc2 authgo-stock c=1: warm-up rps=237.0 ok=7111 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 274.7,3.62,4.56,1,8241,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.54,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=12.28,2.52
+2026-11-22 10:44:21 cyc2 authgo-mine c=1: waiting for idle
+2026-11-22 10:47:10 cyc2 authgo-mine c=1: warm-up rps=269.3 ok=8078 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 280.3,3.54,4.53,1,8408,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.61,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.58,2.55
+2026-11-22 10:47:10 cyc2 authgo-stock c=2: waiting for idle
+2026-11-22 10:49:55 cyc2 authgo-stock c=2: warm-up rps=428.3 ok=12850 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 505.5,3.92,5.50,2,15165,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,13.20,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=16.04,3.61
+2026-11-22 10:49:55 cyc2 authgo-mine c=2: waiting for idle
+2026-11-22 10:52:45 cyc2 authgo-mine c=2: warm-up rps=458.3 ok=13748 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 514.8,3.87,5.32,2,15443,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,13.50,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=15.03,3.62
+2026-11-22 10:52:45 cyc2 authgo-stock c=4: waiting for idle
+2026-11-22 10:55:30 cyc2 authgo-stock c=4: warm-up rps=1078.9 ok=32366 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1251.9,2.91,5.31,2,37556,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,26.73,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=38.31,6.66
+2026-11-22 10:55:30 cyc2 authgo-mine c=4: waiting for idle
+2026-11-22 10:58:19 cyc2 authgo-mine c=4: warm-up rps=1013.4 ok=30399 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 952.7,3.79,7.39,4,28580,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,22.53,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=22.46,5.12
+2026-11-22 10:58:19 cyc2 authgo-stock c=8: waiting for idle
+2026-11-22 11:01:04 cyc2 authgo-stock c=8: warm-up rps=1945.5 ok=58360 err=6 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2254.5,3.31,6.18,8,67631,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,35.29,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=53.55,8.67
+2026-11-22 11:01:04 cyc2 authgo-mine c=8: waiting for idle
+2026-11-22 11:03:53 cyc2 authgo-mine c=8: warm-up rps=2132.4 ok=63965 err=7 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2259.2,3.29,6.28,7,67772,Unavailable=7;err:rpc error: code = Unavailable desc = error reading from serv=1,35.51,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=51.44,8.62
+2026-11-22 11:03:53 cyc2 authgo-stock c=16: waiting for idle
+2026-11-22 11:06:38 cyc2 authgo-stock c=16: warm-up rps=2098.6 ok=62950 err=15 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2454.1,6.28,11.01,16,73615,Unavailable=16;err:rpc error: code = Unavailable desc = error reading from serv=1,35.89,30.00 | pods_end=6 vms=6 fc_cpu_s,host_busy_cores=66.77,9.29
+2026-11-22 11:06:38 cyc2 authgo-mine c=16: waiting for idle
+2026-11-22 11:09:28 cyc2 authgo-mine c=16: warm-up rps=2343.1 ok=70284 err=14 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2513.1,6.12,10.54,15,75385,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,37.14,30.00 | pods_end=4 vms=4 fc_cpu_s,host_busy_cores=58.02,9.00
+2026-11-22 11:09:28 cyc2 authgo-stock c=32: waiting for idle
+2026-11-22 11:12:11 cyc2 authgo-stock c=32: warm-up rps=2155.1 ok=64642 err=27 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2545.2,12.21,20.04,32,76346,Unavailable=32;err:rpc error: code = Unavailable desc = error reading from serv=1,35.67,30.00 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=73.13,9.47
+2026-11-22 11:12:11 cyc2 authgo-mine c=32: waiting for idle
+2026-11-22 11:14:58 cyc2 authgo-mine c=32: warm-up rps=2393.2 ok=71784 err=29 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2566.6,12.13,19.69,32,76987,Unavailable=32;err:rpc error: code = Unavailable desc = error reading from serv=1,35.90,30.00 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=68.90,9.31
+2026-11-22 11:14:59 cyc3 aesgo-stock c=1: waiting for idle
+2026-11-22 11:17:44 cyc3 aesgo-stock c=1: warm-up rps=242.3 ok=7269 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 280.0,3.56,4.54,1,8400,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.57,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.92,2.56
+2026-11-22 11:17:44 cyc3 aesgo-mine c=1: waiting for idle
+2026-11-22 11:20:31 cyc3 aesgo-mine c=1: warm-up rps=264.6 ok=7939 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 283.9,3.50,4.53,1,8516,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.75,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.28,2.53
+2026-11-22 11:20:31 cyc3 aesgo-stock c=2: waiting for idle
+2026-11-22 11:23:16 cyc3 aesgo-stock c=2: warm-up rps=439.7 ok=13192 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 487.6,4.06,5.66,1,14628,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,12.48,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=15.61,3.42
+2026-11-22 11:23:16 cyc3 aesgo-mine c=2: waiting for idle
+2026-11-22 11:26:06 cyc3 aesgo-mine c=2: warm-up rps=469.7 ok=14089 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 520.1,3.83,5.30,1,15602,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,13.57,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=14.57,3.62
+2026-11-22 11:26:06 cyc3 aesgo-stock c=4: waiting for idle
+2026-11-22 11:28:51 cyc3 aesgo-stock c=4: warm-up rps=1099.5 ok=32983 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1261.9,2.88,5.20,3,37854,Unavailable=3;err:rpc error: code = Unavailable desc = error reading from serv=1,26.93,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=37.43,6.69
+2026-11-22 11:28:51 cyc3 aesgo-mine c=4: waiting for idle
+2026-11-22 11:31:46 cyc3 aesgo-mine c=4: warm-up rps=1298.9 ok=38967 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1310.3,2.78,5.02,3,39306,Unavailable=3;err:rpc error: code = Unavailable desc = error reading from serv=1,27.43,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=36.32,6.70
+2026-11-22 11:31:46 cyc3 aesgo-stock c=8: waiting for idle
+2026-11-22 11:34:31 cyc3 aesgo-stock c=8: warm-up rps=1922.7 ok=57676 err=7 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2275.8,3.27,6.15,7,68271,Unavailable=7;err:rpc error: code = Unavailable desc = error reading from serv=1,35.30,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=52.52,8.61
+2026-11-22 11:34:31 cyc3 aesgo-mine c=8: waiting for idle
+2026-11-22 11:37:21 cyc3 aesgo-mine c=8: warm-up rps=2164.3 ok=64924 err=8 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2288.8,3.24,6.01,8,68659,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,37.04,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=44.56,8.40
+2026-11-22 11:37:21 cyc3 aesgo-stock c=16: waiting for idle
+2026-11-22 11:40:04 cyc3 aesgo-stock c=16: warm-up rps=2094.8 ok=62834 err=14 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2492.6,6.17,10.68,15,74769,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,36.51,30.00 | pods_end=5 vms=5 fc_cpu_s,host_busy_cores=62.89,9.18
+2026-11-22 11:40:04 cyc3 aesgo-mine c=16: waiting for idle
+2026-11-22 11:42:53 cyc3 aesgo-mine c=16: warm-up rps=2400.9 ok=72016 err=12 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2524.5,6.08,10.60,15,75728,Unavailable=15;err:rpc error: code = Unavailable desc = error reading from serv=1,37.22,30.00 | pods_end=4 vms=4 fc_cpu_s,host_busy_cores=56.59,9.00
+2026-11-22 11:42:53 cyc3 aesgo-stock c=32: waiting for idle
+2026-11-22 11:45:39 cyc3 aesgo-stock c=32: warm-up rps=2141.3 ok=64228 err=26 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2571.7,12.10,19.79,28,77138,Unavailable=28;err:rpc error: code = Unavailable desc = error reading from serv=1,35.88,29.99 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=71.57,9.44
+2026-11-22 11:45:39 cyc3 aesgo-mine c=32: waiting for idle
+2026-11-22 11:48:28 cyc3 aesgo-mine c=32: warm-up rps=2491.1 ok=74720 err=32 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2613.5,11.91,19.37,30,78390,Unavailable=30;err:rpc error: code = Unavailable desc = error reading from serv=1,36.51,29.99 | pods_end=7 vms=7 fc_cpu_s,host_busy_cores=65.67,9.23
+2026-11-22 11:48:29 cyc3 authgo-stock c=1: waiting for idle
+2026-11-22 11:51:12 cyc3 authgo-stock c=1: warm-up rps=239.4 ok=7183 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 275.1,3.62,4.56,1,8253,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.46,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=12.25,2.51
+2026-11-22 11:51:12 cyc3 authgo-mine c=1: waiting for idle
+2026-11-22 11:54:01 cyc3 authgo-mine c=1: warm-up rps=269.0 ok=8070 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 280.8,3.54,4.49,1,8423,Unavailable=1;err:rpc error: code = Unavailable desc = error reading from serv=1,7.64,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=11.65,2.56
+2026-11-22 11:54:01 cyc3 authgo-stock c=2: waiting for idle
+2026-11-22 11:56:47 cyc3 authgo-stock c=2: warm-up rps=428.9 ok=12867 err=1 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 486.1,4.01,5.63,2,14584,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,12.59,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=16.81,3.50
+2026-11-22 11:56:47 cyc3 authgo-mine c=2: waiting for idle
+2026-11-22 11:59:36 cyc3 authgo-mine c=2: warm-up rps=463.5 ok=13905 err=2 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 488.5,4.00,5.70,2,14655,Unavailable=2;err:rpc error: code = Unavailable desc = error reading from serv=1,12.73,30.00 | pods_end=1 vms=1 fc_cpu_s,host_busy_cores=15.75,3.48
+2026-11-22 11:59:36 cyc3 authgo-stock c=4: waiting for idle
+2026-11-22 12:02:19 cyc3 authgo-stock c=4: warm-up rps=1087.3 ok=32618 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1233.3,2.96,5.30,4,36999,Unavailable=4;err:rpc error: code = Unavailable desc = error reading from serv=1,26.71,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=38.13,6.67
+2026-11-22 12:02:19 cyc3 authgo-mine c=4: waiting for idle
+2026-11-22 12:05:06 cyc3 authgo-mine c=4: warm-up rps=1196.9 ok=35906 err=4 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 1315.5,2.78,4.81,3,39465,Unavailable=3;err:rpc error: code = Unavailable desc = error reading from serv=1,27.60,30.00 | pods_end=2 vms=2 fc_cpu_s,host_busy_cores=37.15,6.67
+2026-11-22 12:05:06 cyc3 authgo-stock c=8: waiting for idle
+2026-11-22 12:07:49 cyc3 authgo-stock c=8: warm-up rps=1896.7 ok=56897 err=7 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2218.1,3.37,6.20,6,66537,Unavailable=6;err:rpc error: code = Unavailable desc = error reading from serv=1,35.20,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=53.71,8.64
+2026-11-22 12:07:49 cyc3 authgo-mine c=8: waiting for idle
+2026-11-22 12:10:39 cyc3 authgo-mine c=8: warm-up rps=2111.2 ok=63330 err=8 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2281.7,3.26,6.25,8,68447,Unavailable=8;err:rpc error: code = Unavailable desc = error reading from serv=1,35.08,30.00 | pods_end=3 vms=3 fc_cpu_s,host_busy_cores=51.24,8.60
+2026-11-22 12:10:39 cyc3 authgo-stock c=16: waiting for idle
+2026-11-22 12:13:24 cyc3 authgo-stock c=16: warm-up rps=2091.2 ok=62727 err=16 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2463.2,6.25,10.91,16,73890,Unavailable=16;err:rpc error: code = Unavailable desc = error reading from serv=1,35.81,30.00 | pods_end=6 vms=6 fc_cpu_s,host_busy_cores=66.70,9.29
+2026-11-22 12:13:24 cyc3 authgo-mine c=16: waiting for idle
+2026-11-22 12:16:14 cyc3 authgo-mine c=16: warm-up rps=2357.4 ok=70711 err=14 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2509.8,6.11,10.62,16,75286,Unavailable=16;err:rpc error: code = Unavailable desc = error reading from serv=1,37.27,30.00 | pods_end=4 vms=4 fc_cpu_s,host_busy_cores=57.83,9.01
+2026-11-22 12:16:14 cyc3 authgo-stock c=32: waiting for idle
+2026-11-22 12:18:57 cyc3 authgo-stock c=32: warm-up rps=2167.1 ok=64998 err=29 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2553.7,12.20,19.98,30,76598,Unavailable=30;err:rpc error: code = Unavailable desc = error reading from serv=1,35.62,29.99 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=73.06,9.47
+2026-11-22 12:18:57 cyc3 authgo-mine c=32: waiting for idle
+2026-11-22 12:21:57 cyc3 authgo-mine c=32: warm-up rps=2386.9 ok=71592 err=32 | measured rps,p50,p99,err,ok,breakdown,cpu,elapsed = 2553.4,12.20,19.69,32,76589,Unavailable=32;err:rpc error: code = Unavailable desc = error reading from serv=1,35.85,29.99 | pods_end=8 vms=8 fc_cpu_s,host_busy_cores=68.98,9.31
+2026-11-22 12:21:57 done

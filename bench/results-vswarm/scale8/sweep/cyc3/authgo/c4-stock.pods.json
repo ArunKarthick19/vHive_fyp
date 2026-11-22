@@ -1,0 +1,14 @@
+{
+ "authgo-stock-00002-deployment-ff6c5fc57-6zhp2": {
+  "creation": "2026-11-22T19:01:17Z",
+  "first_seen_epoch": 1795374078.3412178,
+  "ready_api": "2026-11-22T19:01:21Z",
+  "first_seen_ready_epoch": 1795374082.3415792
+ },
+ "authgo-stock-00002-deployment-ff6c5fc57-tjhbc": {
+  "creation": "2026-11-22T19:01:22Z",
+  "first_seen_epoch": 1795374082.3415792,
+  "ready_api": "2026-11-22T19:01:26Z",
+  "first_seen_ready_epoch": 1795374087.3420057
+ }
+}

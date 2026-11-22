@@ -1,0 +1,14 @@
+{
+ "authgo-mine-00002-deployment-84f54489f6-dklz5": {
+  "creation": "2026-11-22T16:49:22Z",
+  "first_seen_epoch": 1795366162.633587,
+  "ready_api": "2026-11-22T16:49:23Z",
+  "first_seen_ready_epoch": 1795366164.6338067
+ },
+ "authgo-mine-00002-deployment-84f54489f6-6xw7q": {
+  "creation": "2026-11-22T16:49:23Z",
+  "first_seen_epoch": 1795366163.6336927,
+  "ready_api": "2026-11-22T16:49:25Z",
+  "first_seen_ready_epoch": 1795366166.6339526
+ }
+}
