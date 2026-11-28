@@ -1,4 +1,4 @@
-# Guest-side tools for firecracker-vm://image (see docs/DESIGN.md).
+# Guest-side tools for firecracker-vm://image.
 #   make -C cri/firecracker fcinit     static guest init -> $(CACHE)/fcinit
 #   make -C cri/firecracker fc-rootfs  pre-build CLI     -> ../../bin/fc-rootfs
 CACHE ?= /users/Arun1903/fc-vm/images

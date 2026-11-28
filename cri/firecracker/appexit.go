@@ -33,7 +33,7 @@ import (
 	criapi "k8s.io/cri-api/pkg/apis/runtime/v1"
 )
 
-// Crash reporting for firecracker-vm://image (docs/DRAWBACKS_PLAN.md §1).
+// Crash reporting for firecracker-vm://image.
 //
 // kubelet learns a container's state from containerd, which only knows the
 // host placeholder of the user container. When the app in the pod's image VM

@@ -36,7 +36,7 @@ import (
 	criapi "k8s.io/cri-api/pkg/apis/runtime/v1"
 )
 
-// kubectl logs for firecracker-vm://image (docs/DRAWBACKS_PLAN.md §2).
+// kubectl logs for firecracker-vm://image.
 //
 // kubelet reads a container's log from the file at ContainerStatus.LogPath,
 // in the CRI log format. containerd writes the host placeholder's output

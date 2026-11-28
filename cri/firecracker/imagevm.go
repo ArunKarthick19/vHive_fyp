@@ -38,8 +38,7 @@ import (
 
 // firecracker-vm://image: a per-pod Firecracker VM (same slots, teardown and
 // FC_VCPUS/FC_MEM_MIB sizing as firecracker-vm://pod) that boots the
-// function's own container image instead of the baked-in rootfs. See
-// docs/DESIGN.md.
+// function's own container image instead of the baked-in rootfs.
 const (
 	firecrackerImageGuestImage = "firecracker-vm://image"
 
