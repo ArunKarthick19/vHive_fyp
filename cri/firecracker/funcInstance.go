@@ -35,8 +35,6 @@ type funcInstance struct {
 	SnapBooted      bool
 	StartVMResponse *ctriface.StartVMResponse
 
-	// Set when the instance is backed by a KubeVirt VM instead of a Firecracker microVM
-	kubevirtVM *kubevirtVM
 	// Set when the instance is backed by a standalone Firecracker VM
 	firecrackerVM *firecrackerVM
 	// Set when the instance is backed by its pod's own Firecracker VM, which
@@ -53,13 +51,6 @@ func newPodFuncInstance(vmID string) *funcInstance {
 func newFirecrackerFuncInstance(vm *firecrackerVM) *funcInstance {
 	f := newFuncInstance("firecracker-vm/"+vm.spec.Tap, firecrackerGuestImage, "", false, nil)
 	f.firecrackerVM = vm
-	return f
-}
-
-func newKubevirtFuncInstance(vm *kubevirtVM) *funcInstance {
-	vmID := "kubevirt/" + vm.namespace + "/" + vm.name
-	f := newFuncInstance(vmID, kubevirtGuestImage, "", false, nil)
-	f.kubevirtVM = vm
 	return f
 }
 

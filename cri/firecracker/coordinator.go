@@ -107,9 +107,6 @@ func (c *coordinator) stopVM(ctx context.Context, containerID string) error {
 	if fi.perPodVM {
 		return nil
 	}
-	if fi.kubevirtVM != nil {
-		return fi.kubevirtVM.release(ctx)
-	}
 	if fi.firecrackerVM != nil {
 		return fi.firecrackerVM.release(ctx)
 	}
